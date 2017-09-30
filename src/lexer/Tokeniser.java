@@ -59,7 +59,8 @@ public class Tokeniser {
          		while (c != '\n') {
         			scanner.next();
         			c = scanner.peek();
-        	        if (c == '*') {  
+        	        if (c == '*') { 
+        	          System.out.println("aaaaaaa");
         		      scanner.next();
         	          c = scanner.peek();
         	          if (c == '/')
@@ -88,6 +89,7 @@ public class Tokeniser {
         		      scanner.next();
         	          c = scanner.peek();
         	          if (c == '/') 
+        	        	 iscomment = false;
         	        	 return next();
         	        }
         		}
@@ -163,8 +165,9 @@ public class Tokeniser {
         
         	
         // recognises the plus operator'=
-        if (c == '+')
+        if (c == '+') {
             return new Token(TokenClass.PLUS, Character.toString(c), line, column);
+        }
         if (c == '-')
             return new Token(TokenClass.MINUS, Character.toString(c), line, column);
         if (c == '*')
@@ -282,15 +285,19 @@ public class Tokeniser {
                     se.setCharAt(0, c);
                     scanner.next();
                     c = scanner.peek();
-                    if (c == '\'')
-                    return new Token(TokenClass.CHAR_LITERAL, se.toString(), line, column);
+                    if (c == '\'') {
+                        scanner.next();
+                        return new Token(TokenClass.CHAR_LITERAL, se.toString(), line, column);
+                    }
                 }
                 else if (c == 't' | c == 'n' | c == 'b' | c == 'r' | c == 'f') {
                     se.append(c);
                     scanner.next();
                     c = scanner.peek();
-                    if (c == '\'')
-                    return new Token(TokenClass.CHAR_LITERAL, se.toString(), line, column);
+                    if (c == '\'') {
+                        scanner.next();
+                        return new Token(TokenClass.CHAR_LITERAL, se.toString(), line, column);
+                    }
 
                 }
                 error(c, line, column);
@@ -300,11 +307,17 @@ public class Tokeniser {
         		se.append(c);
         		scanner.next();
         		c = scanner.peek();
-        		if (c == '\'') 
+        		if (c == '\'') {
+                    scanner.next();
         			return new Token(TokenClass.CHAR_LITERAL, se.toString(), line, column);
+        		}
         	}
-        	error(c, line, column);
-        	return new Token(TokenClass.INVALID, line, column);
+        	else {
+        //		System.out.println("here");
+        		error(c, line, column);
+        	    return new Token(TokenClass.INVALID, line, column);
+        	}
+        
         }
         
         if (c == '"') {        		
@@ -336,8 +349,7 @@ public class Tokeniser {
 
 
    // ... to be completed
-
-
+       // System.out.println("there");
         // if we reach this point, it means we did not recognise a valid token
         error(c, line, column);
         return new Token(TokenClass.INVALID, line, column);
