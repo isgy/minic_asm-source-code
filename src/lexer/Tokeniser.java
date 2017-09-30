@@ -48,40 +48,57 @@ public class Tokeniser {
     /*
      * To be completed
      */
+    boolean iscomment = false;
     private Token next() throws IOException {
 
         int line = scanner.getLine();
         int column = scanner.getColumn();
-
         // get the next character
         char c = scanner.next();
-
-        // skip white spaces
-        if (Character.isWhitespace(c))
-            return next();
-        if (c == '\n' || c == '\r') {
-        	scanner.nextline();
-            return next();
+        if (iscomment) {
+         		while (c != '\n') {
+        			scanner.next();
+        			c = scanner.peek();
+        	        if (c == '*') {  
+        		      scanner.next();
+        	          c = scanner.peek();
+        	          if (c == '/')
+        	        	 iscomment = false;
+        	        	 return next();
+        	        }
+        		}
+         		return next();
         }
         if (c == '/') {
         	c = scanner.peek();
         	if (c == '/') { 
-        		scanner.nextline();
+        		scanner.next();
+        		c = scanner.peek();
+        		while (c != '\n') {
+        			scanner.next();
+        			c = scanner.peek();
+        		}
         		return next();
         	}
         	if (c == '*') {
-        		while (true) {
-        		  scanner.next();
-        		  c = scanner.peek();
-        	      if (c == '*') {  
-        		     scanner.next();
-        	         c = scanner.peek();
-        	         if (c == '/') 
+        		while (c != '\n') {
+        			scanner.next();
+        			c = scanner.peek();
+        	        if (c == '*') {  
+        		      scanner.next();
+        	          c = scanner.peek();
+        	          if (c == '/') 
         	        	 return next();
-        	      }
+        	        }
         		}
+        		iscomment = true;
+        		return next();
         	}
         } 
+        // skip white spaces
+        if (Character.isWhitespace(c))
+            return next();
+       
         
         if (c == '{')
             return new Token(TokenClass.LBRA, Character.toString(c), line, column);
