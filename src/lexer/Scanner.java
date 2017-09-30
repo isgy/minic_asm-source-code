@@ -60,6 +60,10 @@ public class Scanner {
         return r;
     }
 
+    public void nextline() throws IOException {
+    	line++;
+    	column = 0;
+    }
     public void close() throws IOException {
         input.close();
     }

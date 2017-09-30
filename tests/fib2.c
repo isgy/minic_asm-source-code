@@ -1,6 +1,5 @@
-#include "minic-stdlib.h" /*  comms */
-/* hsh
- * shsh*/
+#include "minic-stdlib.h"
+//com
 void 
 
 void main() {
