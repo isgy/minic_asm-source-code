@@ -1,7 +1,16 @@
 #include "minic-stdlib.h"
 //com
 void 
+/*asdaw **/
+sdg
+/*
+ * 
+ */
+/**/
+sga /* asdg
 
+*/
+"newste \' c \' and \" str \" \n st"
 void main() {
   int n;
   int first;

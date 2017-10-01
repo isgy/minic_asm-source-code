@@ -7,6 +7,7 @@
 /* sdgas
 *
 * sdfasd */
+char p/* sdat */ */y
 char a11; char a12; char a13;
 char a21; char a22; char a23;
 char a31; char a32; char a33;

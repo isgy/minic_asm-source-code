@@ -49,6 +49,7 @@ public class Tokeniser {
      * To be completed
      */
     boolean iscomment = false;
+    boolean ex = false;
     private Token next() throws IOException {
 
         int line = scanner.getLine();
@@ -56,22 +57,47 @@ public class Tokeniser {
         // get the next character
         char c = scanner.next();
         if (iscomment) {
+        	    c = scanner.peek();
          		while (c != '\n') {
-        			scanner.next();
+         			if (!ex) {     // if false, we have seen the 2nd asterisk
+        		    scanner.next();
         			c = scanner.peek();
+        	//		System.out.println("middlenew");
+         			}
         	        if (c == '*') { 
-        	          System.out.println("aaaaaaa");
         		      scanner.next();
         	          c = scanner.peek();
-        	          if (c == '/')
-        	        	 iscomment = false;
-        	        	 return next();
+        	 //         System.out.println("aftersecondnew");
+        	          if (c == '\n') {
+        	        	  ex = false;
+        	              break;
+        	          }
+        	          if (c == '*') {
+        	  //      	  System.out.println("afterextranew");
+        	        	  ex = true;
+        	        	  continue;
+        	          }
+        	          if (c == '/') {
+        	        	  scanner.next();  // 
+        	        	  ex = false;
+        	        	  iscomment = false;
+        	        	  return next();
+        	          }
+        	          else {
+        	        	  ex = false;
+        	        	  continue;
+        	          }
         	        }
         		}
+         		iscomment = false;
          		return next();
         }
         if (c == '/') {
         	c = scanner.peek();
+        	if (c != '*' && c != '/') {
+        		System.out.println(column);
+        	    return new Token(TokenClass.DIV, Character.toString(c), line, column);
+        	}
         	if (c == '/') { 
         		scanner.next();
         		c = scanner.peek();
@@ -81,20 +107,46 @@ public class Tokeniser {
         		}
         		return next();
         	}
+        	
         	if (c == '*') {
+        		c = scanner.peek();
         		while (c != '\n') {
-        			scanner.next();
+        			if (!ex) {     // if false, we have seen the 2nd asterisk
+        		    scanner.next();
         			c = scanner.peek();
-        	        if (c == '*') {  
+        			System.out.println("middle");
+        			}
+        	        if (c == '*') { 
         		      scanner.next();
         	          c = scanner.peek();
-        	          if (c == '/') 
-        	        	 iscomment = false;
-        	        	 return next();
+        	          System.out.println("aftersec");
+        	          if (c == '\n') {
+        	        	  ex = false;
+        	              break;
+        	          }
+        	          if (c == '*') {
+        	        	  System.out.println("extra");
+        	        	  ex = true;
+        	        	  continue;
+        	          }
+        	          if (c == '/') {
+         	        	  scanner.next();
+        	        	  ex = false;
+        	        	  iscomment = false;
+        	        	  return next();
+        	          }
+        	          else {
+        	        	  ex = false;
+        	        	  continue;
+        	          }
         	        }
         		}
         		iscomment = true;
         		return next();
+        	}
+        	else {
+        	    //error(c, line, column);
+                //return new Token(TokenClass.INVALID, line, column);	
         	}
         } 
         // skip white spaces
@@ -170,10 +222,10 @@ public class Tokeniser {
         }
         if (c == '-')
             return new Token(TokenClass.MINUS, Character.toString(c), line, column);
-        if (c == '*')
+        if (c == '*') {
         	return new Token(TokenClass.ASTERIX, Character.toString(c), line, column);
-        if (c == '/')
-        	return new Token(TokenClass.DIV, Character.toString(c), line, column);
+        }
+
         if (c == '%')
         	return new Token(TokenClass.REM, Character.toString(c), line, column);
         if (c == '&') {
