@@ -62,18 +62,18 @@ public class Tokeniser {
          			if (!ex) {     // if false, we have seen the 2nd asterisk
         		    scanner.next();
         			c = scanner.peek();
-        	//		System.out.println("middlenew");
+        			System.out.println("middlenew");
          			}
         	        if (c == '*') { 
         		      scanner.next();
         	          c = scanner.peek();
-        	 //         System.out.println("aftersecondnew");
+        	          System.out.println("aftersecondnew");
         	          if (c == '\n') {
         	        	  ex = false;
-        	              break;
+        	              continue;
         	          }
         	          if (c == '*') {
-        	  //      	  System.out.println("afterextranew");
+        	        	  System.out.println("afterextranew");
         	        	  ex = true;
         	        	  continue;
         	          }
@@ -96,6 +96,7 @@ public class Tokeniser {
         	c = scanner.peek();
         	if (c != '*' && c != '/') {
         		System.out.println(column);
+        		System.out.println(line);
         	    return new Token(TokenClass.DIV, Character.toString(c), line, column);
         	}
         	if (c == '/') { 
@@ -109,6 +110,7 @@ public class Tokeniser {
         	}
         	
         	if (c == '*') {
+        	    scanner.next();
         		c = scanner.peek();
         		while (c != '\n') {
         			if (!ex) {     // if false, we have seen the 2nd asterisk
@@ -117,35 +119,37 @@ public class Tokeniser {
         			System.out.println("middle");
         			}
         	        if (c == '*') { 
-        		      scanner.next();
-        	          c = scanner.peek();
-        	          System.out.println("aftersec");
-        	          if (c == '\n') {
-        	        	  ex = false;
-        	              break;
-        	          }
-        	          if (c == '*') {
-        	        	  System.out.println("extra");
-        	        	  ex = true;
-        	        	  continue;
-        	          }
-        	          if (c == '/') {
-         	        	  scanner.next();
-        	        	  ex = false;
-        	        	  iscomment = false;
-        	        	  return next();
-        	          }
-        	          else {
-        	        	  ex = false;
-        	        	  continue;
-        	          }
+        		         scanner.next();
+        	             c = scanner.peek();
+        	             System.out.println("aftersec");
+        	             if (c == '\n') {
+        	        	    ex = false;
+        	                break;
+        	             }
+        	             if (c == '*') {
+        	        	     System.out.println("extra");
+        	        	     ex = true;
+        	        	     continue;
+        	             }
+        	             if (c == '/') {
+         	        	     scanner.next();
+        	        	     ex = false;
+        	        	     iscomment = false;
+        	        	     System.out.println("end");
+        	        	     return next();
+        	             }
+        	             else {
+        	        	     ex = false;
+        	        	     continue;
+        	             }
+        	        
         	        }
         		}
         		iscomment = true;
         		return next();
         	}
         	else {
-        	    //error(c, line, column);
+        	   // error(c, line, column);
                 //return new Token(TokenClass.INVALID, line, column);	
         	}
         } 
@@ -372,19 +376,25 @@ public class Tokeniser {
         
         }
         
-        if (c == '"') {        		
+        if (c == '"') {  
+        //	boolean es = false;
         	StringBuilder sf = new StringBuilder();
         	c = scanner.peek();
         	while (c != '"') {
         	    if (c == '\\') {
+        //	    	es = true;
         	        sf.append(c);
         		    scanner.next();
                     c = scanner.peek();	
                     if (c == '"' | c == '\'' | c == '\\') {
                       sf.setCharAt(sf.length()-1, c);
+                      scanner.next();
+                      c = scanner.peek();
                     }
                     else if (c == 't' | c == 'n' | c == 'b' | c == 'r' | c == 'f') {
                       sf.append(c);
+                      scanner.next();
+                      c = scanner.peek();
                     }
         	    }
         	    else {

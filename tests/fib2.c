@@ -2,12 +2,12 @@
 //com
 void 
 /*asdaw **/
-sdg
+//sdg
 /*
  * 
  */
 /**/
-sga /* asdg
+ /* asdg
 
 */
 "newste \' c \' and \" str \" \n st"
