@@ -61,49 +61,49 @@ public class Tokeniser {
          		while (c != '\n') {
          			if (!ex && c !='*') {     // if false, we have seen the 2nd asterisk
          		    
-     //       		System.out.println(column);
-     //       		System.out.println(line);
-     //   		    System.out.println(c);
+            		System.out.println(column);
+            		System.out.println(line);
+        		    System.out.println(c);
             		scanner.next();
         			c = scanner.peek();
-     //   			System.out.println("middlenew");
-     //       		System.out.println(column);
-     //       		System.out.println(line);
-     //       		System.out.println(c);
+        			System.out.println("middlenew");
+            		System.out.println(column);
+            		System.out.println(line);
+            		System.out.println(c);
                      }
         	        if (c == '*') { 
         		      scanner.next();
         	          c = scanner.peek();
         	         
-     //   	          System.out.println("aftersecondnew");
-     //   	          System.out.println(c);
-     //         	 	  System.out.println(column);
-     //         		  System.out.println(line);
+        	          System.out.println("aftersecondnew");
+        	          System.out.println(c);
+              	 	  System.out.println(column);
+              		  System.out.println(line);
         	          if (c == '\n') {
         	        	  //System.out.println("n2");
         	        	  ex = false;
         	              continue;
         	          }
         	          if (c == '*') {
-     //   	        	  System.out.println("afterextranew");
+        	        	  System.out.println("afterextranew");
         	        	  ex = true;
         	        	  continue;
         	          }
         	          if (c == '/') {
-     //   	        	  System.out.println("afterslash");
+        	        	  System.out.println("afterslash");
         	        	  scanner.next();  // 
         	        	  c = scanner.peek();
-   //     	        	  System.out.println(c);
+        	        	  System.out.println(c);
         	        	  ex = false;
         	        	  iscomment = false;
         	        	  return next();
         	          }
         	          else {
-   //     	        	  System.out.println("whW");
+        	        	  System.out.println("whW");
         	        	  c = scanner.peek();
-  //      	        	  System.out.println(c);
-  //      	        	  System.out.println(column);
-  //      	        	  System.out.println(line);
+        	        	  System.out.println(c);
+        	        	  System.out.println(column);
+        	        	  System.out.println(line);
         	        	  ex = false;
         	        	  continue;
         	          }
@@ -116,8 +116,8 @@ public class Tokeniser {
         if (c == '/') {
         	c = scanner.peek();
         	if (c != '*' && c != '/') {
-   //     		System.out.println(column);
-   //     		System.out.println(line);
+        		System.out.println(column);
+        		System.out.println(line);
         	    return new Token(TokenClass.DIV, Character.toString(c), line, column);
         	}
         	if (c == '/') { 
@@ -138,34 +138,34 @@ public class Tokeniser {
         			if (!ex && c != '*') {     // if false, we have seen the 2nd asterisk
         		    scanner.next();
         			c = scanner.peek();
-      //  			System.out.println("middle");
-      //  			System.out.println(column);
-      //  			System.out.println(line);
-      //  			System.out.println(c);
+        			System.out.println("middle");
+        			System.out.println(column);
+        			System.out.println(line);
+        			System.out.println(c);
         			}
         	        if (c == '*') { 
         		         scanner.next();
         	             c = scanner.peek();
-      //  	             System.out.println("aftersec");
+        	             System.out.println("aftersec");
         	             if (c == '\n') {
         	        	    ex = false;
         	                break;
         	             }
         	             if (c == '*') {
-     //   	        	     System.out.println("extra");
+        	        	     System.out.println("extra");
         	        	     ex = true;
-     //   	        	     System.out.println(column);
-     //   	        	     System.out.println(line);
+        	        	     System.out.println(column);
+        	        	     System.out.println(line);
         	        	     continue;
         	        	     
         	             }
         	             if (c == '/') {
-     //   	            	 System.out.println(c);
+        	            	 System.out.println(c);
          	        	     scanner.next();
         	        	     ex = false;
         	        	     iscomment = false;
-     //   	        	     System.out.println("end");
-     //   	        	     System.out.println(c);
+        	        	     System.out.println("end");
+        	        	     System.out.println(c);
         	        	     return next();
         	             }
         	             else {
@@ -175,10 +175,10 @@ public class Tokeniser {
         	        
         	        }
         		}
-     //   		System.out.println("comm");
-     //   		System.out.println(column);
-     //   		System.out.println(line);
-     //   		System.out.println(c);
+        		System.out.println("comm");
+        		System.out.println(column);
+        		System.out.println(line);
+        		System.out.println(c);
         		iscomment = true;
         		return next();
         	}
