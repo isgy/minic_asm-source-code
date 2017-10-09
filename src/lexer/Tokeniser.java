@@ -66,10 +66,6 @@ public class Tokeniser {
      //   		    System.out.println(c);
             		scanner.next();
         			c = scanner.peek();
-     //   			System.out.println("middlenew");
-     //       		System.out.println(column);
-     //       		System.out.println(line);
-     //       		System.out.println(c);
                      }
         	        if (c == '*') { 
         		      scanner.next();

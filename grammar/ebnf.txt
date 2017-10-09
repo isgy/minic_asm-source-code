@@ -21,10 +21,9 @@
          structtype -> "struct" IDENT
          params -> ti paramslist | epsilon
          paramslist -> "," ti paramslist | epsilon
-         stmt ->  "if" "(" exp ")" stmt | "if" "(" exp ")" withelse "else" stmt             # if then else
+         stmt ->  "if" "(" exp ")" stmt elsestmt
                 | otherstmt
-         withelse -> "if" "(" exp ")" withelse "else" withelse            # if then else
-                | otherstmt
+         elsestmt -> "else" stmt | epsilon
          otherstmt  -> block
                 | "while" "(" exp ")" stmt              # while loop
                 | "return" exp ";" | "return" ";"                   # return
@@ -34,7 +33,7 @@
          stmtlist = stmt stmtlist | epsilon
          block -> "{" vardecllist stmtlist "}"
 
-         exp ->  exp1 ("||" exp1)*
+         exp ->  exp1 ("||" exp1)*   -> exp1 | exp1 "||" exp
          exp1 -> exp2 ("&&" exp2)*
          exp2 -> exp3 ("==" exp3)* | exp3 ("!=" exp3)*
          exp3 -> exp4 ("<" exp4)* | exp4 ("<=" exp4)* | exp4 (">" exp4)* | exp4 (">=" exp4)*
@@ -47,8 +46,8 @@
          funcall -> IDENT "(" arglist ")"
          arglist -> exp argrep | epsilon
          argrep -> "," exp argrep | epsilon
-         arrayaccess -> exp "[" exp "]"
-         fieldaccess -> exp "." IDENT                    # structure field member access
+         arrayaccess -> accessexp "[" exp "]"
+         fieldaccess -> fieldexp "." IDENT                    # structure field member access
          valueat -> "*" exp                          # Value at operator (pointer indirection)
          sizeof -> "sizeof" "(" type ")"            # size of type
          typecast -> "(" type ")" exp                 # type casting
