@@ -5,6 +5,55 @@
 # +  one or more
 # |  alternative
 
+         program -> includelist structdecllist vardecllist funcdecllist EOF
+         includelist -> include includelist | epsilon
+         structdecllist -> structdecl structdecllist | epsilon
+         vardecllist -> vardecl vardecllist | epsilon
+         funcdecllist -> funcdecl funcdecllist | epsilon
+         include -> "#include" STRING_LITERAL
+         structdecl -> structtype "{" vardecl vardecllist "}" ";"    # structure declaration
+         ti -> type IDENT
+         vardecl -> ti vartail                        # normal declaration, e.g. int a;
+         vartail -> ";" | "[" INT_LITERAL "]" ";"   # array declaration, e.g. int a[2];
+         fundecl -> ti "(" params ")" block    # function declaration
+         type -> "int" typetail | "char" typetail | "void" typetail | structtype typetail
+         typetail -> "*" | epsilon
+         structtype -> "struct" IDENT
+         params -> ti paramslist | epsilon
+         paramslist -> "," ti paramslist | epsilon
+         stmt ->  "if" "(" exp ")" stmt | "if" "(" exp ")" withelse "else" stmt             # if then else
+                | otherstmt
+         withelse -> "if" "(" exp ")" withelse "else" withelse            # if then else
+                | otherstmt
+         otherstmt  -> block
+                | "while" "(" exp ")" stmt              # while loop
+                | "return" exp ";" | "return" ";"                   # return
+                | exp "=" exp ";"                      # assignment
+                | exp ";" # expression statement, e.g. a function call
+         
+         stmtlist = stmt stmtlist | epsilon
+         block -> "{" vardecllist stmtlist "}"
+
+         exp ->  exp1 ("||" exp1)*
+         exp1 -> exp2 ("&&" exp2)*
+         exp2 -> exp3 ("==" exp3)* | exp3 ("!=" exp3)*
+         exp3 -> exp4 ("<" exp4)* | exp4 ("<=" exp4)* | exp4 (">" exp4)* | exp4 (">=" exp4)*
+         exp4 -> exp5 ("+" exp5)* | exp5 ("-" exp5)*
+         exp5 -> exp6 ("*" exp6)* | exp6 ("/" exp6)* | exp6 ("%" exp6)*
+         exp6 -> "-" IDENT | "-" INT_LITERAL | sizeof | valueat | typecast | exp7
+         exp7 -> arrayaccess  | fieldaccess | funcall | exp8
+         exp8 -> IDENT | INT_LITERAL | CHAR_LITERAL | STRING_LITERAL | exp9
+         exp9 -> "(" exp ")"
+         funcall -> IDENT "(" arglist ")"
+         arglist -> exp argrep | epsilon
+         argrep -> "," exp argrep | epsilon
+         arrayaccess -> exp "[" exp "]"
+         fieldaccess -> exp "." IDENT                    # structure field member access
+         valueat -> "*" exp                          # Value at operator (pointer indirection)
+         sizeof -> "sizeof" "(" type ")"            # size of type
+         typecast -> "(" type ")" exp                 # type casting
+
+
 
 program    ::= (include)* (structdecl)* (vardecl)* (fundecl)* EOF
 

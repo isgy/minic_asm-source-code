@@ -136,18 +136,100 @@ public class Parser {
             parseIncludes();
         }
     }
-
+    private void parseType() {
+    	if(accept(TokenClass.STRUCT)) {
+    		parseStructType();
+    		if (accept(TokenClass.ASTERIX))
+    			nextToken();
+    	}
+    	else {
+    		expect(TokenClass.INT,TokenClass.CHAR,TokenClass.VOID);
+    		if (accept(TokenClass.ASTERIX))
+    			nextToken();
+    	}
+    }
+    private void parseTI() {
+    	parseType();
+    	expect(TokenClass.IDENTIFIER);
+    }
+    private void parseStructType() {
+    	expect(TokenClass.STRUCT);
+    	expect(TokenClass.IDENTIFIER);
+    }
+    private void parseStructDecl() {
+    	parseStructType();
+    	expect(TokenClass.LBRA);
+    	parseVarDecl();
+    	parseVarDecls();
+    	expect(TokenClass.RBRA);
+    	expect(TokenClass.SC);
+    }
     private void parseStructDecls() {
-        // to be completed ...
+        if(accept(TokenClass.STRUCT)) {
+        	parseStructDecl();
+        	parseStructDecls();
+        }
+    }
+    private void parseVarDecl() {
+        parseTI();
+        parseVarTail();
+    }
+    
+    private void parseVarDecls() {
+        if(accept(TokenClass.INT,TokenClass.CHAR,TokenClass.VOID,TokenClass.STRUCT)) {
+        	parseVarDecl();
+        	parseVarDecls();
+        }
+    }
+    private void parseVarTail() {
+    	if(accept(TokenClass.LSBR)) {
+    		nextToken();
+    		expect(TokenClass.INT_LITERAL);
+    		expect(TokenClass.RSBR);
+    		expect(TokenClass.SC);
+    	}
+    	else 
+    		expect(TokenClass.SC);
     }
 
-    private void parseVarDecls() {
-        // to be completed ...
+
+    private void parseParams() {
+    	if(accept(TokenClass.INT,TokenClass.CHAR,TokenClass.VOID,TokenClass.STRUCT)) {
+    		parseTI();
+    		parseParamsList();
+    	}
+    }
+    private void parseParamsList() {
+    	if(accept(TokenClass.COMMA)) {
+    		nextToken();
+    		parseTI();
+    		parseParamsList();
+    	}
+    }
+    private void parseStmt() {
+    	
+    }
+    private void parseStmts() {
+    	
+    }
+    private void parseBlock() {
+    	expect(TokenClass.LBRA);
+    	parseVarDecls();
+    	parseStmts();
+    }
+    private void parseFunDecl() {
+    	parseTI();
+    	expect(TokenClass.LPAR);
+    	parseParams();
+    	expect(TokenClass.RPAR);
+    	parseBlock();
     }
 
     private void parseFunDecls() {
         // to be completed ...
     }
 
+    
+    
     // to be completed ...        
 }

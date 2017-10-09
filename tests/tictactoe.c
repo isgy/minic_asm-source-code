@@ -13,6 +13,13 @@ char a21; char a22; char a23;
 char a31; char a32; char a33;
 char empty; // Empty cell character
 
+struct Books {
+   char  title[50];
+   char  author[50];
+   char  subject[100];
+   int   book_id;
+} book;
+
 // Resets the board
 void reset() {
  a11 = empty; a12 = empty;  a13 = empty;
