@@ -34,14 +34,14 @@
          block -> "{" vardecllist stmtlist "}"
 
          exp ->  exp1 ("||" exp1)*   -> exp1 | exp1 "||" exp
-         exp1 -> exp2 ("&&" exp2)*
-         exp2 -> exp3 ("==" exp3)* | exp3 ("!=" exp3)*
-         exp3 -> exp4 ("<" exp4)* | exp4 ("<=" exp4)* | exp4 (">" exp4)* | exp4 (">=" exp4)*
+         exp1 -> exp2 ("&&" exp2)*   -> exp2 | exp2 && exp1
+         exp2 -> exp3 ("==" exp3)* | exp3 ("!=" exp3)* -> exp3 | exp3 == exp2
+         exp3 -> exp4 ("<" exp4)* | exp4 ("<=" exp4)* | exp4 (">" exp4)* | exp4 (">=" exp4)*     
          exp4 -> exp5 ("+" exp5)* | exp5 ("-" exp5)*
          exp5 -> exp6 ("*" exp6)* | exp6 ("/" exp6)* | exp6 ("%" exp6)*
-         exp6 -> "-" IDENT | "-" INT_LITERAL | sizeof | valueat | typecast | exp7
+         exp6 -> sizeof | valueat | typecast | exp7
          exp7 -> arrayaccess  | fieldaccess | funcall | exp8
-         exp8 -> IDENT | INT_LITERAL | CHAR_LITERAL | STRING_LITERAL | exp9
+         exp8 -> "-" IDENT | "-" INT_LITERAL | IDENT | INT_LITERAL | CHAR_LITERAL | STRING_LITERAL | exp9
          exp9 -> "(" exp ")"
          funcall -> IDENT "(" arglist ")"
          arglist -> exp argrep | epsilon

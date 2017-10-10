@@ -293,6 +293,17 @@ public class Parser {
     	if (accept(TokenClass.MINUS)) {
     		nextToken();
     		expect(TokenClass.IDENTIFIER,TokenClass.INT_LITERAL);
+    		if(accept(TokenClass.LSBR,TokenClass.DOT)) {
+    			if(accept(TokenClass.LSBR)) {
+    	  			nextToken();
+    	  			parseExp();
+    	  			expect(TokenClass.RSBR);
+    	  		}
+    	  		else {
+    	  			expect(TokenClass.DOT);
+    	  			expect(TokenClass.IDENTIFIER);
+    	  		}
+    		}
     	}
         else if(accept(TokenClass.SIZEOF)) {
     		parseSizeof();
@@ -332,10 +343,43 @@ public class Parser {
         		if(lookAhead(1).tokenClass==TokenClass.LPAR) {
         			parseFuncall();
         		}
+        		else {
+        			expect(TokenClass.IDENTIFIER);
+        			if(accept(TokenClass.LSBR,TokenClass.DOT)) {
+            			if(accept(TokenClass.LSBR)) {
+            	  			nextToken();
+            	  			parseExp();
+            	  			expect(TokenClass.RSBR);
+            	  		}
+            	  		else {
+            	  			expect(TokenClass.DOT);
+            	  			expect(TokenClass.IDENTIFIER);
+            	  		}
+            		}
+        		}
     		}
-    		else if(lookAhead(1).tokenClass==TokenClass.LSBR || lookAhead(1).tokenClass==TokenClass.DOT) {
-    	  		expect(TokenClass.INT_LITERAL,TokenClass.CHAR_LITERAL,TokenClass.STRING_LITERAL,TokenClass.IDENTIFIER);
-    	  		if(accept(TokenClass.LSBR)) {
+    		else {
+    			expect(TokenClass.INT_LITERAL,TokenClass.CHAR_LITERAL,TokenClass.STRING_LITERAL);
+    			if(accept(TokenClass.LSBR,TokenClass.DOT)) {
+        			if(accept(TokenClass.LSBR)) {
+        	  			nextToken();
+        	  			parseExp();
+        	  			expect(TokenClass.RSBR);
+        	  		}
+        	  		else {
+        	  			expect(TokenClass.DOT);
+        	  			expect(TokenClass.IDENTIFIER);
+        	  		}
+        		}
+    		}
+    	  		
+    	}
+    	else {
+    		expect(TokenClass.LPAR);
+    		parseExp();
+    		expect(TokenClass.RPAR);
+    		if(accept(TokenClass.LSBR,TokenClass.DOT)) {
+    			if(accept(TokenClass.LSBR)) {
     	  			nextToken();
     	  			parseExp();
     	  			expect(TokenClass.RSBR);
@@ -344,28 +388,7 @@ public class Parser {
     	  			expect(TokenClass.DOT);
     	  			expect(TokenClass.IDENTIFIER);
     	  		}
-    	  	}
-    	  	else
-    	  		expect(TokenClass.INT_LITERAL,TokenClass.CHAR_LITERAL,TokenClass.STRING_LITERAL,TokenClass.IDENTIFIER);
-    	  		
-    	}
-    	if(accept(TokenClass.MINUS,TokenClass.LPAR,TokenClass.SIZEOF,TokenClass.ASTERIX)) {	
-    		parseExp();
-    		if(accept(TokenClass.LSBR)) {
-	  			nextToken();
-	  			parseExp();
-	  			expect(TokenClass.RSBR);
-	  		}
-	  		else {
-	  			expect(TokenClass.DOT);
-	  			expect(TokenClass.IDENTIFIER);
-	  		}
-    		
-    	}
-    	else if(accept(TokenClass.LPAR)) {
-    		nextToken();
-    		parseExp();
-    		expect(TokenClass.RPAR);
+    		}
     	}
  
     }
