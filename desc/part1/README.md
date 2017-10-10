@@ -58,7 +58,9 @@ You should make sure that the resulting grammar is non-ambiguous, eliminate left
 | 2             | sizeof(type)  | Size of type|
 | 3             | * / %         | Multiplication, division, remainder |
 | 4             | + -           | Addition, substraction |
-| 5             | < <= > >=     | Relational operators |
+| 5             | < <= > >= 
+
+    | Relational operators |
 | 6             | == \!=        | Relational operators |
 | 7             | &&            | Logical AND |
 | 8             | ⎮⎮            | Logical OR |

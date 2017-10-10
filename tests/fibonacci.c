@@ -1,7 +1,7 @@
 #include "minic-stdlib.h" /*  comms */
 /* hsh
 shsh*/
-void 
+
 
 void main() {
   int n;

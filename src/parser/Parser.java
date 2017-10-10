@@ -177,8 +177,49 @@ public class Parser {
     
     private void parseVarDecls() {
         if(accept(TokenClass.INT,TokenClass.CHAR,TokenClass.VOID,TokenClass.STRUCT)) {
-        	parseVarDecl();
-        	parseVarDecls();
+        //	parseTI();
+           	if(accept(TokenClass.STRUCT)) {
+           		if(lookAhead(1).tokenClass==TokenClass.IDENTIFIER) {
+           			
+        		     if(lookAhead(2).tokenClass==TokenClass.ASTERIX) {
+        			     if(lookAhead(3).tokenClass==TokenClass.IDENTIFIER) {
+                    	     if(lookAhead(4).tokenClass==TokenClass.LSBR || lookAhead(4).tokenClass==TokenClass.SC) {
+                    		     parseVarDecl();
+                    		     parseVarDecls();
+                           	 }
+            		      }
+        		     }
+        	    	 else if(lookAhead(2).tokenClass==TokenClass.IDENTIFIER) {
+                   	    if(lookAhead(3).tokenClass==TokenClass.LSBR || lookAhead(3).tokenClass==TokenClass.SC) {
+                  	       parseVarDecl();
+                   		   parseVarDecls();
+                 	    }
+        		     }
+        		     
+           		}
+
+        	}
+        	else {
+        		if(accept(TokenClass.INT,TokenClass.CHAR,TokenClass.VOID)) {
+            		
+        			if(lookAhead(1).tokenClass==TokenClass.ASTERIX) {
+            			if(lookAhead(2).tokenClass==TokenClass.IDENTIFIER) {
+                        	if(lookAhead(3).tokenClass==TokenClass.LSBR || lookAhead(3).tokenClass==TokenClass.SC) {
+                        		parseVarDecl();
+                        		parseVarDecls();
+                        	}
+                		}
+            		}
+            		else if(lookAhead(1).tokenClass==TokenClass.IDENTIFIER) {
+                    	if(lookAhead(2).tokenClass==TokenClass.LSBR || lookAhead(2).tokenClass==TokenClass.SC) {
+                    		parseVarDecl();
+                    		parseVarDecls();
+                    	}
+            		} 	
+            		
+        		}
+        	}
+            
         }
     }
     private void parseVarTail() {
@@ -405,7 +446,51 @@ public class Parser {
     }
 
     private void parseFunDecls() {
-    	if(accept(TokenClass.INT,TokenClass.CHAR,TokenClass.VOID,TokenClass.STRUCT)){
+    	if(accept(TokenClass.INT,TokenClass.CHAR,TokenClass.VOID,TokenClass.STRUCT))
+           	if(accept(TokenClass.STRUCT)) {
+           		if(lookAhead(1).tokenClass==TokenClass.IDENTIFIER) {
+           			
+        		     if(lookAhead(2).tokenClass==TokenClass.ASTERIX) {
+        			     if(lookAhead(3).tokenClass==TokenClass.IDENTIFIER) {
+                    	     if(lookAhead(4).tokenClass==TokenClass.LPAR) {
+                    		     parseFunDecl();
+                    		     parseFunDecls();
+                           	 }
+            		      }
+        		     }
+        	    	 else if(lookAhead(2).tokenClass==TokenClass.IDENTIFIER) {
+                   	    if(lookAhead(3).tokenClass==TokenClass.LPAR) {
+                  	       parseFunDecl();
+                   		   parseFunDecls();
+                 	    }
+        		     }
+        		     
+           		}
+
+        	}
+        	else {
+        		if(accept(TokenClass.INT,TokenClass.CHAR,TokenClass.VOID)) {
+            		
+        			if(lookAhead(1).tokenClass==TokenClass.ASTERIX) {
+            			if(lookAhead(2).tokenClass==TokenClass.IDENTIFIER) {
+                        	if(lookAhead(3).tokenClass==TokenClass.LPAR) {
+                        		parseFunDecl();
+                        		parseFunDecls();
+                        	}
+                		}
+            		}
+            		else if(lookAhead(1).tokenClass==TokenClass.IDENTIFIER) {
+                    	if(lookAhead(2).tokenClass==TokenClass.LPAR) {
+                    		parseFunDecl();
+                    		parseFunDecls();
+                    	}
+            		} 	
+            		
+        		}
+        	}
+    		
+    		
+    	{
     		parseFunDecl();
     		parseFunDecls();
     	}
