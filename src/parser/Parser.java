@@ -515,12 +515,8 @@ public class Parser {
             		
         		}
         	}
-    		
-    		
-    	{
-    		parseFunDecl();
-    		parseFunDecls();
-    	}
+
+
     }
 
     
