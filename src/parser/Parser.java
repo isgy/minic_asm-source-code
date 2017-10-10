@@ -191,7 +191,8 @@ public class Parser {
         		     }
         	    	 else if(lookAhead(2).tokenClass==TokenClass.IDENTIFIER) {
                    	    if(lookAhead(3).tokenClass==TokenClass.LSBR || lookAhead(3).tokenClass==TokenClass.SC) {
-                  	       parseVarDecl();
+
+                   	       parseVarDecl();
                    		   parseVarDecls();
                  	    }
         		     }
@@ -205,6 +206,7 @@ public class Parser {
         			if(lookAhead(1).tokenClass==TokenClass.ASTERIX) {
             			if(lookAhead(2).tokenClass==TokenClass.IDENTIFIER) {
                         	if(lookAhead(3).tokenClass==TokenClass.LSBR || lookAhead(3).tokenClass==TokenClass.SC) {
+                        	    System.out.println("before_var_pointer");
                         		parseVarDecl();
                         		parseVarDecls();
                         	}
@@ -212,6 +214,7 @@ public class Parser {
             		}
             		else if(lookAhead(1).tokenClass==TokenClass.IDENTIFIER) {
                     	if(lookAhead(2).tokenClass==TokenClass.LSBR || lookAhead(2).tokenClass==TokenClass.SC) {
+                    		System.out.println("before_var");
                     		parseVarDecl();
                     		parseVarDecls();
                     	}
@@ -236,6 +239,7 @@ public class Parser {
 
     private void parseParams() {
     	if(accept(TokenClass.INT,TokenClass.CHAR,TokenClass.VOID,TokenClass.STRUCT)) {
+    		System.out.println("before_params");
     		parseTI();
     		parseParamsList();
     	}
@@ -278,6 +282,7 @@ public class Parser {
     private void parseExp4() {
     	parseExp5();
     	if(accept(TokenClass.PLUS,TokenClass.MINUS)) {
+    		System.out.println("before_plusminus");
     		nextToken();
     		parseExp4();
     	}
@@ -291,6 +296,7 @@ public class Parser {
     }
     private void parseExp6() {
     	if (accept(TokenClass.MINUS)) {
+    		System.out.println("before_exp6minus");
     		nextToken();
     		expect(TokenClass.IDENTIFIER,TokenClass.INT_LITERAL);
     		if(accept(TokenClass.LSBR,TokenClass.DOT)) {
@@ -316,9 +322,14 @@ public class Parser {
     		parseTcast();
     	}
     	else 
+   
+    		
+    		
+   
     	    parseExp7();
     }
     private void parseFuncall() {
+    	System.out.println("before_funcall");
     	expect(TokenClass.IDENTIFIER);
     	expect(TokenClass.LPAR);
     	parseArglist();
@@ -338,6 +349,7 @@ public class Parser {
     	}
     }
     private void parseExp7() {
+    	System.out.println("before_lastexp");
     	if(accept(TokenClass.INT_LITERAL,TokenClass.CHAR_LITERAL,TokenClass.STRING_LITERAL,TokenClass.IDENTIFIER)) {
     		if(accept(TokenClass.IDENTIFIER)) {
         		if(lookAhead(1).tokenClass==TokenClass.LPAR) {
@@ -375,6 +387,7 @@ public class Parser {
     	  		
     	}
     	else {
+    	//  if(accept(TokenClass.LPAR)) {
     		System.out.println(token.toString());
     		expect(TokenClass.LPAR);
     		parseExp();
@@ -390,6 +403,7 @@ public class Parser {
     	  			expect(TokenClass.IDENTIFIER);
     	  		}
     		}
+    	//  }
     	}
  
     }
@@ -407,10 +421,11 @@ public class Parser {
     }
     private void parseStmt() {
     	if(accept(TokenClass.LBRA)) {
+    		
     		parseBlock();
     	}
-    	if(accept(TokenClass.IF)) {
-    		//System.out.println("here");
+    	else if(accept(TokenClass.IF)) {
+    		System.out.println("before_if");
         	nextToken();
        // 	System.out.println(token.toString());
         	expect(TokenClass.LPAR);
@@ -443,6 +458,7 @@ public class Parser {
     	else {
     		parseExp();
     		if(accept(TokenClass.ASSIGN)) {
+    			System.out.println("before_assign");
     			nextToken();
     			parseExp();
     			expect(TokenClass.SC);
@@ -454,15 +470,19 @@ public class Parser {
     }
     private void parseStmts() {
     	if(accept(TokenClass.LBRA,TokenClass.IF,TokenClass.WHILE,TokenClass.RETURN,TokenClass.MINUS,TokenClass.LPAR,TokenClass.SIZEOF,TokenClass.ASTERIX,TokenClass.INT_LITERAL,TokenClass.CHAR_LITERAL,TokenClass.STRING_LITERAL,TokenClass.IDENTIFIER)) {
+    		System.out.println("before_stmts");
     		parseStmt();
     		parseStmts();
     	}
     }
     private void parseBlock() {
+    	System.out.println("before_block");
     	expect(TokenClass.LBRA);
     	parseVarDecls();
     	parseStmts();
+    	
     	expect(TokenClass.RBRA);
+    	System.out.println("end_block");
     }
     private void parseFunDecl() {
     	parseTI();
@@ -480,7 +500,8 @@ public class Parser {
         		     if(lookAhead(2).tokenClass==TokenClass.ASTERIX) {
         			     if(lookAhead(3).tokenClass==TokenClass.IDENTIFIER) {
                     	     if(lookAhead(4).tokenClass==TokenClass.LPAR) {
-                    		     parseFunDecl();
+                    		 
+                    	    	 parseFunDecl();
                     		     parseFunDecls();
                            	 }
             		      }
@@ -501,6 +522,7 @@ public class Parser {
         			if(lookAhead(1).tokenClass==TokenClass.ASTERIX) {
             			if(lookAhead(2).tokenClass==TokenClass.IDENTIFIER) {
                         	if(lookAhead(3).tokenClass==TokenClass.LPAR) {
+                        	   
                         		parseFunDecl();
                         		parseFunDecls();
                         	}
@@ -508,6 +530,7 @@ public class Parser {
             		}
             		else if(lookAhead(1).tokenClass==TokenClass.IDENTIFIER) {
                     	if(lookAhead(2).tokenClass==TokenClass.LPAR) {
+                    		 System.out.println("before_func");
                     		parseFunDecl();
                     		parseFunDecls();
                     	}
