@@ -375,6 +375,7 @@ public class Parser {
     	  		
     	}
     	else {
+    		System.out.println(token.toString());
     		expect(TokenClass.LPAR);
     		parseExp();
     		expect(TokenClass.RPAR);
@@ -409,9 +410,12 @@ public class Parser {
     		parseBlock();
     	}
     	if(accept(TokenClass.IF)) {
+    		//System.out.println("here");
         	nextToken();
+       // 	System.out.println(token.toString());
         	expect(TokenClass.LPAR);
         	parseExp();
+       // 	System.out.println(token.toString());
         	expect(TokenClass.RPAR);
         	parseStmt();
         	if(accept(TokenClass.ELSE)) {
