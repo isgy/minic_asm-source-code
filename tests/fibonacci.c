@@ -10,6 +10,7 @@ void main() {
   int next;
   int c;
   char t;
+  char* ss;
 
   // read n from the standard input
   n = read_i();
@@ -23,8 +24,22 @@ void main() {
  
   c = 0;
   while (c < n) {
-    if ( c <= 1 )
+    if ( c <= 1 || (c >= 6 || t >= 8)){
+       if(bee >= fb){
+          cc = 4;
+          while(t != 2){
+             bb = 5;
+             c[5] = tt;
+          }
+       }
+          else {
+            c = 4;
+          return;
+ 
+          }
+       
       next = c;
+    }
     else
       {
 	next = first + second;
@@ -34,5 +49,9 @@ void main() {
     print_i(next);
     print_s((char*)" ");
     c = c+1;
+    return; return foobar; 
   }
-  while (c >= 4);
+  return;
+  
+}
+

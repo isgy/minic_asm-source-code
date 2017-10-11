@@ -261,6 +261,7 @@ public class Parser {
     private void parseExp() {
     	parseExp1();
     	if(accept(TokenClass.OR)) {
+    		
     		nextToken();
     		parseExp();
     	}
@@ -325,7 +326,7 @@ public class Parser {
     		nextToken();
     		parseExp();
     	}
-    	else if(accept(TokenClass.LPAR)) {
+    	else if(accept(TokenClass.LPAR) && (lookAhead(1).tokenClass==TokenClass.INT || lookAhead(1).tokenClass==TokenClass.CHAR || lookAhead(1).tokenClass==TokenClass.VOID || lookAhead(1).tokenClass==TokenClass.STRUCT) ) {
     		parseTcast();
     	}
     	else 
@@ -458,11 +459,11 @@ public class Parser {
     	}
     	else if(accept(TokenClass.RETURN)) {
     		nextToken();
-    		if(accept(TokenClass.SC)) {
-    			expect(TokenClass.SC);
+    		if(accept(TokenClass.LPAR,TokenClass.CHAR_LITERAL,TokenClass.INT_LITERAL, TokenClass.STRING_LITERAL, TokenClass.IDENTIFIER, TokenClass.MINUS, TokenClass.ASTERIX, TokenClass.SIZEOF)) {
+    			parseExp();
+    		    expect(TokenClass.SC);
     		}
     		else{
-    		    parseExp();
     		    expect(TokenClass.SC);
     		}
     	}
