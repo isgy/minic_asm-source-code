@@ -35,4 +35,4 @@ void main() {
     print_s((char*)" ");
     c = c+1;
   }
-}
+  while (c >= 4);

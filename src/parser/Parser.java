@@ -122,9 +122,13 @@ public class Parser {
 
     private void parseProgram() {
         parseIncludes();
+        
         parseStructDecls();
+        System.out.println("parsedstructs");
         parseVarDecls();
+        System.out.println("parsedvars");
         parseFunDecls();
+        System.out.println("parsedfuncs");
         expect(TokenClass.EOF);
     }
 
@@ -178,6 +182,7 @@ public class Parser {
     private void parseVarDecls() {
         if(accept(TokenClass.INT,TokenClass.CHAR,TokenClass.VOID,TokenClass.STRUCT)) {
         //	parseTI();
+        	System.out.println("var1");
            	if(accept(TokenClass.STRUCT)) {
            		if(lookAhead(1).tokenClass==TokenClass.IDENTIFIER) {
            			
@@ -202,7 +207,9 @@ public class Parser {
         	}
         	else {
         		if(accept(TokenClass.INT,TokenClass.CHAR,TokenClass.VOID)) {
-            		
+            	//	System.out.println("var2");
+            	//	System.out.println(lookAhead(1).tokenClass.toString());
+            	//	System.out.println(lookAhead(2).tokenClass.toString());
         			if(lookAhead(1).tokenClass==TokenClass.ASTERIX) {
             			if(lookAhead(2).tokenClass==TokenClass.IDENTIFIER) {
                         	if(lookAhead(3).tokenClass==TokenClass.LSBR || lookAhead(3).tokenClass==TokenClass.SC) {
@@ -387,7 +394,7 @@ public class Parser {
     	  		
     	}
     	else {
-    	//  if(accept(TokenClass.LPAR)) {
+    	  if(accept(TokenClass.LPAR)) {
     		System.out.println(token.toString());
     		expect(TokenClass.LPAR);
     		parseExp();
@@ -403,7 +410,9 @@ public class Parser {
     	  			expect(TokenClass.IDENTIFIER);
     	  		}
     		}
-    	//  }
+    	  }
+    	  else 
+    		  expect(TokenClass.LPAR,TokenClass.INT_LITERAL,TokenClass.CHAR_LITERAL,TokenClass.STRING_LITERAL,TokenClass.IDENTIFIER);
     	}
  
     }
@@ -441,7 +450,9 @@ public class Parser {
     	else if(accept(TokenClass.WHILE)) {
     		nextToken();
     		expect(TokenClass.LPAR);
+    		
     		parseExp();
+    		
     		expect(TokenClass.RPAR);
     		parseStmt();
     	}

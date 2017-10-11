@@ -7,18 +7,20 @@
 /* sdgas
 *
 * sdfasd */
-char p/* sdat */y;
-char a11; char a12; char a13;
-char a21; char a22; char a23;
-char a31; char a32; char a33;
-char empty; // Empty cell character
-
+//char p/* sdat */y;
 struct Books {
    char  title[50];
    char  author[50];
    char  subject[100];
    int   book_id;
-} book;
+};
+
+
+
+char a11; char a12; char a13;
+char a21; char a22; char a23;
+char a31; char a32; char a33;
+char empty; // Empty cell character
 
 // Resets the board
 void reset() {
