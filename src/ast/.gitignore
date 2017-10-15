@@ -1,0 +1,13 @@
+/ASTNode.class
+/ASTPrinter.class
+/ASTVisitor.class
+/BaseType.class
+/Block.class
+/Expr.class
+/FunDecl.class
+/Program.class
+/Stmt.class
+/StructTypeDecl.class
+/Type.class
+/VarDecl.class
+/VarExpr.class
