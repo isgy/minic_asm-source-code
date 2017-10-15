@@ -1,10 +1,15 @@
 package parser;
 
+import ast.FunDecl;
+import ast.Program;
+import ast.StructTypeDecl;
+import ast.VarDecl;
 import lexer.Token;
 import lexer.Tokeniser;
 import lexer.Token.TokenClass;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 
@@ -26,11 +31,11 @@ public class Parser {
         this.tokeniser = tokeniser;
     }
 
-    public void parse() {
+    public Program parse() {
         // get the first token
         nextToken();
 
-        parseProgram();
+        return parseProgram();
     }
 
     public int getErrorCount() {
@@ -120,8 +125,9 @@ public class Parser {
     }
 
 
-    private void parseProgram() {
+    private Program parseProgram() {
         parseIncludes();
+<<<<<<< HEAD
         
         parseStructDecls();
         System.out.println("parsedstructs");
@@ -129,17 +135,24 @@ public class Parser {
         System.out.println("parsedvars");
         parseFunDecls();
         System.out.println("parsedfuncs");
+=======
+        List<StructTypeDecl> stds = parseStructDecls();
+        List<VarDecl> vds = parseVarDecls();
+        List<FunDecl> fds = parseFunDecls();
+>>>>>>> 291c74373d7c8e7fb12e1f5aeffd0f8c9d3a8214
         expect(TokenClass.EOF);
+        return new Program(stds, vds, fds);
     }
 
     // includes are ignored, so does not need to return an AST node
     private void parseIncludes() {
-	    if (accept(TokenClass.INCLUDE)) {
+        if (accept(TokenClass.INCLUDE)) {
             nextToken();
             expect(TokenClass.STRING_LITERAL);
             parseIncludes();
         }
     }
+<<<<<<< HEAD
     private void parseType() {
     	if(accept(TokenClass.STRUCT)) {
     		parseStructType();
@@ -557,4 +570,23 @@ public class Parser {
     
     
     // to be completed ...        
+=======
+
+    private List<StructTypeDecl> parseStructDecls() {
+        // to be completed ...
+        return null;
+    }
+
+    private List<VarDecl> parseVarDecls() {
+        // to be completed ...
+        return null;
+    }
+
+    private List<FunDecl> parseFunDecls() {
+        // to be completed ...
+        return null;
+    }
+
+    // to be completed ...
+>>>>>>> 291c74373d7c8e7fb12e1f5aeffd0f8c9d3a8214
 }
