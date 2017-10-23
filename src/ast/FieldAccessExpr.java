@@ -1,0 +1,10 @@
+package ast;
+
+public class FieldAccessExpr extends Expr {
+	Expr structure;
+	String fieldname;
+	public FieldAccessExpr(Expr st, String fn){structure = st; fieldname = fn;}
+    public <T> T accept(ASTVisitor<T> v) {
+        return v.visitFieldAccessExpr(this);
+    }
+}

@@ -1,9 +1,5 @@
 package parser;
-
-import ast.FunDecl;
-import ast.Program;
-import ast.StructTypeDecl;
-import ast.VarDecl;
+import ast.*;
 import lexer.Token;
 import lexer.Tokeniser;
 import lexer.Token.TokenClass;
@@ -127,19 +123,16 @@ public class Parser {
 
     private Program parseProgram() {
         parseIncludes();
-<<<<<<< HEAD
         
-        parseStructDecls();
-        System.out.println("parsedstructs");
-        parseVarDecls();
-        System.out.println("parsedvars");
-        parseFunDecls();
-        System.out.println("parsedfuncs");
-=======
+     //   parseStructDecls();
+     //   System.out.println("parsedstructs");
+     //   parseVarDecls();
+     //   System.out.println("parsedvars");
+     //   parseFunDecls();
+     //   System.out.println("parsedfuncs");
         List<StructTypeDecl> stds = parseStructDecls();
         List<VarDecl> vds = parseVarDecls();
         List<FunDecl> fds = parseFunDecls();
->>>>>>> 291c74373d7c8e7fb12e1f5aeffd0f8c9d3a8214
         expect(TokenClass.EOF);
         return new Program(stds, vds, fds);
     }
@@ -152,49 +145,106 @@ public class Parser {
             parseIncludes();
         }
     }
-<<<<<<< HEAD
-    private void parseType() {
+    private Type parseType() {
+    	Type s;
     	if(accept(TokenClass.STRUCT)) {
-    		parseStructType();
-    		if (accept(TokenClass.ASTERIX))
+    		s = parseStructType();
+    		if (accept(TokenClass.ASTERIX)) {
     			nextToken();
+    		    return new PointerType(s);
+    		}
+    		else 
+    			return s;
     	}
     	else {
-    		expect(TokenClass.INT,TokenClass.CHAR,TokenClass.VOID);
-    		if (accept(TokenClass.ASTERIX))
-    			nextToken();
+    		//expect(TokenClass.INT,TokenClass.CHAR,TokenClass.VOID);
+    	    if(accept(TokenClass.INT)) {
+    	    	nextToken();
+        	    s = BaseType.INT;
+        	}else if(accept(TokenClass.CHAR)) {
+        		nextToken();
+        		s = BaseType.CHAR;
+        	}else {
+        		expect(TokenClass.VOID);
+        		s = BaseType.VOID;
+        	}
+    			
+    		if (accept(TokenClass.ASTERIX)) {
+    			nextToken();       
+    		    return new PointerType(s);         //pointertype
+    		}else 
+    			return s;
     	}
+    	
     }
     private void parseTI() {
     	parseType();
     	expect(TokenClass.IDENTIFIER);
     }
-    private void parseStructType() {
+    private StructType parseStructType() {
     	expect(TokenClass.STRUCT);
-    	expect(TokenClass.IDENTIFIER);
+    //	expect(TokenClass.IDENTIFIER);
+    	Token n = expect(TokenClass.IDENTIFIER);
+    	return new StructType(n.data);
     }
-    private void parseStructDecl() {
-    	parseStructType();
+    private StructTypeDecl parseStructDecl() {
+    	List<VarDecl> vlist = new LinkedList<VarDecl>();
+    	StructType t = parseStructType();
     	expect(TokenClass.LBRA);
-    	parseVarDecl();
-    	parseVarDecls();
+    	VarDecl v = parseVarDecl();
+    	vlist.add(v);
+    	vlist = parseVarDecls(vlist);
     	expect(TokenClass.RBRA);
     	expect(TokenClass.SC);
+    	return new StructTypeDecl(t,vlist);
     }
-    private void parseStructDecls() {
+    private List<StructTypeDecl> parseStructDecls(){
+    	List<StructTypeDecl> sl = new LinkedList<StructTypeDecl>();
+    	return parseStructDecls(sl);
+    }
+    private List<StructTypeDecl> parseStructDecls(List<StructTypeDecl> l) {
+    	List<StructTypeDecl> slist = l;
         if(accept(TokenClass.STRUCT)) {
-        	parseStructDecl();
-        	parseStructDecls();
+        	StructTypeDecl st = parseStructDecl();
+        	slist.add(st);
+        	parseStructDecls(slist);
         }
+        return slist;
     }
-    private void parseVarDecl() {
-        parseTI();
-        parseVarTail();
+    private VarDecl parseVarDecl() {
+       // parseTI();  
+    	Type t = parseType();
+    	String s = parseIdentifier().name;
+    	if(accept(TokenClass.LSBR)) {
+    		nextToken();
+    		expect(TokenClass.INT_LITERAL);
+    		expect(TokenClass.RSBR);
+    		expect(TokenClass.SC);
+    	}
+    	else 
+    		expect(TokenClass.SC);
+    	    return new VarDecl(t,s);
     }
     
-    private void parseVarDecls() {
+ /*   private void parseVarTail() {
+    	if(accept(TokenClass.LSBR)) {
+    		nextToken();
+    		expect(TokenClass.INT_LITERAL);
+    		expect(TokenClass.RSBR);
+    		expect(TokenClass.SC);
+    	}
+    	else 
+    		expect(TokenClass.SC);
+    }*/
+
+    private List<VarDecl> parseVarDecls() {
+    	List<VarDecl> vds = new LinkedList<VarDecl>();
+    	return parseVarDecls(vds);
+    }
+    private List<VarDecl> parseVarDecls(List<VarDecl> vds) {
+    	//List<VarDecl> vds = new LinkedList<VarDecl>();
         if(accept(TokenClass.INT,TokenClass.CHAR,TokenClass.VOID,TokenClass.STRUCT)) {
-        //	parseTI();
+            
         	System.out.println("var1");
            	if(accept(TokenClass.STRUCT)) {
            		if(lookAhead(1).tokenClass==TokenClass.IDENTIFIER) {
@@ -202,16 +252,17 @@ public class Parser {
         		     if(lookAhead(2).tokenClass==TokenClass.ASTERIX) {
         			     if(lookAhead(3).tokenClass==TokenClass.IDENTIFIER) {
                     	     if(lookAhead(4).tokenClass==TokenClass.LSBR || lookAhead(4).tokenClass==TokenClass.SC) {
-                    		     parseVarDecl();
-                    		     parseVarDecls();
+                    		     VarDecl vd = parseVarDecl();
+                    	    	 vds.add(vd);
+                    		     parseVarDecls(vds);
                            	 }
             		      }
         		     }
         	    	 else if(lookAhead(2).tokenClass==TokenClass.IDENTIFIER) {
                    	    if(lookAhead(3).tokenClass==TokenClass.LSBR || lookAhead(3).tokenClass==TokenClass.SC) {
-
-                   	       parseVarDecl();
-                   		   parseVarDecls();
+                   	    	VarDecl vd = parseVarDecl();
+               	    	    vds.add(vd);
+               		        parseVarDecls(vds);
                  	    }
         		     }
         		     
@@ -227,16 +278,18 @@ public class Parser {
             			if(lookAhead(2).tokenClass==TokenClass.IDENTIFIER) {
                         	if(lookAhead(3).tokenClass==TokenClass.LSBR || lookAhead(3).tokenClass==TokenClass.SC) {
                         	    System.out.println("before_var_pointer");
-                        		parseVarDecl();
-                        		parseVarDecls();
+                        	    VarDecl vd = parseVarDecl();
+                   	    	    vds.add(vd);
+                   		        parseVarDecls(vds);
                         	}
                 		}
             		}
             		else if(lookAhead(1).tokenClass==TokenClass.IDENTIFIER) {
                     	if(lookAhead(2).tokenClass==TokenClass.LSBR || lookAhead(2).tokenClass==TokenClass.SC) {
                     		System.out.println("before_var");
-                    		parseVarDecl();
-                    		parseVarDecls();
+                    		VarDecl vd = parseVarDecl();
+               	    	    vds.add(vd);
+               		        parseVarDecls(vds);
                     	}
             		} 	
             		
@@ -244,166 +297,206 @@ public class Parser {
         	}
             
         }
+       return vds;
+		//return vds;
     }
-    private void parseVarTail() {
-    	if(accept(TokenClass.LSBR)) {
-    		nextToken();
-    		expect(TokenClass.INT_LITERAL);
-    		expect(TokenClass.RSBR);
-    		expect(TokenClass.SC);
-    	}
-    	else 
-    		expect(TokenClass.SC);
-    }
+ 
 
-
-    private void parseParams() {
-    	if(accept(TokenClass.INT,TokenClass.CHAR,TokenClass.VOID,TokenClass.STRUCT)) {
-    		System.out.println("before_params");
-    		parseTI();
-    		parseParamsList();
-    	}
-    }
-    private void parseParamsList() {
-    	if(accept(TokenClass.COMMA)) {
-    		nextToken();
-    		parseTI();
-    		parseParamsList();
-    	}
-    }
-    private void parseExp() {
-    	parseExp1();
+    private Expr parseExp() {
+    	Expr lhs = parseExp1();
     	if(accept(TokenClass.OR)) {
-    		
+    		Op op = Op.OR;
     		nextToken();
-    		parseExp();
+    		Expr rhs = parseExp();
+    		return new BinOp(op,lhs,rhs);
     	}
+    	return lhs;
     }
-    private void parseExp1() {
-    	parseExp2();
+    private Expr parseExp1() {
+    	Expr lhs = parseExp2();
     	if(accept(TokenClass.AND)) {
+    		Op op = Op.AND;
     		nextToken();
-    		parseExp1();
+    		Expr rhs = parseExp1();
+    		return new BinOp(op,lhs,rhs);
     	}
+    	return lhs;
     }
-    private void parseExp2() {
-    	parseExp3();
+    private Expr parseExp2() {
+    	Expr lhs = parseExp3();
     	if(accept(TokenClass.EQ,TokenClass.NE)) {
+    		Op op = Op.NE;
+    		if(accept(TokenClass.EQ)) {
+    			op = Op.EQ;
+    		}
     		nextToken();
-    		parseExp2();
+    		Expr rhs = parseExp2();
+    		return new BinOp(op,lhs,rhs);
     	}
+    	return lhs;
     }
-    private void parseExp3() {
-    	parseExp4();
+    private Expr parseExp3() {
+    	Expr lhs = parseExp4();
     	if(accept(TokenClass.LT,TokenClass.LE,TokenClass.GT,TokenClass.GE)) {
+    		Op op = Op.LT;
+    		if(accept(TokenClass.LE)) {
+    			op = Op.LE;
+    		}else if(accept(TokenClass.GT)){
+    			op = Op.GT;
+    		}else if(accept(TokenClass.GE)) {
+    			op = Op.GE;
+    		}
     		nextToken();
-    		parseExp3();
+    		Expr rhs = parseExp3();
+    		return new BinOp(op,lhs,rhs);
     	}
+    	return lhs;
     }
-    private void parseExp4() {
-    	parseExp5();
+    private Expr parseExp4() {
+    	Expr lhs = parseExp5();
     	if(accept(TokenClass.PLUS,TokenClass.MINUS)) {
+    		Op op = Op.ADD;
+    		if(accept(TokenClass.MINUS)) {
+    			op = Op.SUB;
+    		}
     		System.out.println("before_plusminus");
     		nextToken();
-    		parseExp4();
+    		Expr rhs = parseExp4();
+    		return new BinOp(op,lhs,rhs);
     	}
+    	return lhs;
     }
-    private void parseExp5() {
-    	parseExp6();
+    private Expr parseExp5() {
+    	Expr lhs = parseExp6();
     	if(accept(TokenClass.ASTERIX,TokenClass.DIV,TokenClass.REM)) {
+    		Op op = Op.MUL;
+    		if(accept(TokenClass.DIV)) {
+    			op = Op.DIV;
+    		}else if(accept(TokenClass.REM)) {
+    			op = Op.MOD;
+    		}
     		nextToken();
-    		parseExp5();
+    		Expr rhs = parseExp5();
+    		return new BinOp(op,lhs,rhs);
     	}
+    	return lhs;
     }
-    private void parseExp6() {
+    private VarExpr parseIdentifier() {
+    	Token n = expect(TokenClass.IDENTIFIER);
+    	return new VarExpr(n.data);
+    }
+    private IntLiteral parseInt_Literal() {
+    	Token n = expect(TokenClass.INT_LITERAL);
+    	return new IntLiteral(Integer.parseInt(n.data));
+    }
+    private ChrLiteral parseChr_Literal() {
+    	Token n = expect(TokenClass.CHAR_LITERAL);
+    	return new ChrLiteral(n.data.charAt(0));
+    }
+    private StrLiteral parseStr_Literal() {
+    	Token n = expect(TokenClass.STRING_LITERAL);
+    	return new StrLiteral(n.data);
+    }
+    private Expr parseExp6() {
     	if (accept(TokenClass.MINUS)) {
     		System.out.println("before_exp6minus");
     		nextToken();
-    		expect(TokenClass.IDENTIFIER,TokenClass.INT_LITERAL);
-    		if(accept(TokenClass.LSBR,TokenClass.DOT)) {
+    		// expect(TokenClass.IDENTIFIER,TokenClass.INT_LITERAL);
+    		Expr e;
+    		if(accept(TokenClass.IDENTIFIER)){
+    			e = parseIdentifier();
+    		}else
+    			e = parseInt_Literal();
+    		
+    		if(accept(TokenClass.LSBR,TokenClass.DOT)) {   //arrayaccess or fieldaccess
+    			
     			if(accept(TokenClass.LSBR)) {
     	  			nextToken();
-    	  			parseExp();
+    	  			Expr ex = parseExp();
     	  			expect(TokenClass.RSBR);
+    	  			return new ArrayAccessExpr(e, ex);
     	  		}
     	  		else {
     	  			expect(TokenClass.DOT);
-    	  			expect(TokenClass.IDENTIFIER);
+    	  		//	expect(TokenClass.IDENTIFIER);
+    	  			VarExpr id = parseIdentifier();
+    	  			return new FieldAccessExpr(e, id.name);
     	  		}
+    		
+    		}else {
+    			return new BinOp(Op.SUB,new IntLiteral(0),e);
     		}
+    		
+    		
     	}
         else if(accept(TokenClass.SIZEOF)) {
-    		parseSizeof();
+    		return parseSizeof();
     	}
     	else if(accept(TokenClass.ASTERIX)) {
     		nextToken();
-    		parseExp();
+    		Expr s = parseExp();                            //valueat
+    		return new ValueAtExpr(s);
     	}
     	else if(accept(TokenClass.LPAR) && (lookAhead(1).tokenClass==TokenClass.INT || lookAhead(1).tokenClass==TokenClass.CHAR || lookAhead(1).tokenClass==TokenClass.VOID || lookAhead(1).tokenClass==TokenClass.STRUCT) ) {
-    		parseTcast();
+    		return parseTcast();
     	}
     	else 
-   
-    		
-    		
-   
-    	    parseExp7();
+    	   return parseExp7();
     }
-    private void parseFuncall() {
-    	System.out.println("before_funcall");
-    	expect(TokenClass.IDENTIFIER);
-    	expect(TokenClass.LPAR);
-    	parseArglist();
-    	expect(TokenClass.RPAR);
-    }
-    private void parseArglist() {
-    	if(accept(TokenClass.INT_LITERAL,TokenClass.MINUS,TokenClass.ASTERIX,TokenClass.CHAR_LITERAL,TokenClass.STRING_LITERAL,TokenClass.SIZEOF,TokenClass.LPAR,TokenClass.IDENTIFIER)) {
-    	 	parseExp();
-    	 	parseArgrep();
-    	}
-    }
-    private void parseArgrep() {
-    	if(accept(TokenClass.COMMA)) {
-    		nextToken();
-    		parseExp();
-    		parseArgrep();
-    	}
-    }
-    private void parseExp7() {
+    
+    private Expr parseExp7() {
     	System.out.println("before_lastexp");
     	if(accept(TokenClass.INT_LITERAL,TokenClass.CHAR_LITERAL,TokenClass.STRING_LITERAL,TokenClass.IDENTIFIER)) {
     		if(accept(TokenClass.IDENTIFIER)) {
-        		if(lookAhead(1).tokenClass==TokenClass.LPAR) {
-        			parseFuncall();
+        		if(lookAhead(1).tokenClass==TokenClass.LPAR) {             //funcall
+        			return parseFuncall();
         		}
         		else {
-        			expect(TokenClass.IDENTIFIER);
-        			if(accept(TokenClass.LSBR,TokenClass.DOT)) {
+        			//expect(TokenClass.IDENTIFIER);
+        			VarExpr e = parseIdentifier();
+        			if(accept(TokenClass.LSBR,TokenClass.DOT)) {            //arr/field access
             			if(accept(TokenClass.LSBR)) {
-            	  			nextToken();
-            	  			parseExp();
+            	  			nextToken();                                      
+            	  			Expr ex = parseExp();
             	  			expect(TokenClass.RSBR);
+            	  			return new ArrayAccessExpr(e,ex);
             	  		}
             	  		else {
             	  			expect(TokenClass.DOT);
-            	  			expect(TokenClass.IDENTIFIER);
+            	  			//expect(TokenClass.IDENTIFIER);
+            	  			VarExpr ex = parseIdentifier();
+            	  			return new FieldAccessExpr(e, ex.name);
             	  		}
-            		}
+            		}else
+            			return e;
+        			
         		}
-    		}
+    		}                                                               ///////////////////////////////////////////////
     		else {
-    			expect(TokenClass.INT_LITERAL,TokenClass.CHAR_LITERAL,TokenClass.STRING_LITERAL);
+    			//expect(TokenClass.INT_LITERAL,TokenClass.CHAR_LITERAL,TokenClass.STRING_LITERAL);
+    			Expr e;
+    			if(accept(TokenClass.INT_LITERAL)) {
+    			    e = parseInt_Literal();
+    			}else if(accept(TokenClass.CHAR_LITERAL)) {
+    				e = parseChr_Literal();
+    			}else 
+    				e = parseStr_Literal();
+    			
     			if(accept(TokenClass.LSBR,TokenClass.DOT)) {
         			if(accept(TokenClass.LSBR)) {
         	  			nextToken();
-        	  			parseExp();
+        	  			Expr ex = parseExp();
         	  			expect(TokenClass.RSBR);
+        	  			return new ArrayAccessExpr(e,ex);
         	  		}
         	  		else {
         	  			expect(TokenClass.DOT);
-        	  			expect(TokenClass.IDENTIFIER);
+        	  			//expect(TokenClass.IDENTIFIER);
+        	  			VarExpr ex = parseIdentifier();
+        	  			return new FieldAccessExpr(e, ex.name);
         	  		}
-        		}
+        		}else
+        			return e;
     		}
     	  		
     	}
@@ -411,130 +504,215 @@ public class Parser {
     	  if(accept(TokenClass.LPAR)) {
     		System.out.println(token.toString());
     		expect(TokenClass.LPAR);
-    		parseExp();
+    		Expr e = parseExp();
     		expect(TokenClass.RPAR);
     		if(accept(TokenClass.LSBR,TokenClass.DOT)) {
     			if(accept(TokenClass.LSBR)) {
     	  			nextToken();
-    	  			parseExp();
+    	  			Expr ex = parseExp();
     	  			expect(TokenClass.RSBR);
+    	  			return new ArrayAccessExpr(e,ex);
     	  		}
     	  		else {
     	  			expect(TokenClass.DOT);
-    	  			expect(TokenClass.IDENTIFIER);
+    	  			//expect(TokenClass.IDENTIFIER);
+    	  			VarExpr ex = parseIdentifier();
+    	  			return new FieldAccessExpr(e, ex.name);
     	  		}
-    		}
+    		}else
+    			return e;
     	  }
     	  else 
-    		  expect(TokenClass.LPAR,TokenClass.INT_LITERAL,TokenClass.CHAR_LITERAL,TokenClass.STRING_LITERAL,TokenClass.IDENTIFIER);
+    		  expect(TokenClass.LPAR,TokenClass.INT_LITERAL,TokenClass.CHAR_LITERAL,TokenClass.STRING_LITERAL,TokenClass.IDENTIFIER); //error  
     	}
+    	return null;
  
     }
-    private void parseSizeof() {
+    
+    private Expr parseFuncall() {
+    	System.out.println("before_funcall");
+    	String id = parseIdentifier().name;
+    	expect(TokenClass.LPAR);
+    	List<Expr> args = parseArglist();
+    	expect(TokenClass.RPAR);
+    	return new FunCallExpr(id,args);
+    }
+    private List<Expr> parseArglist() {
+    	List<Expr> argslist = new LinkedList<Expr>();
+    	if(accept(TokenClass.INT_LITERAL,TokenClass.MINUS,TokenClass.ASTERIX,TokenClass.CHAR_LITERAL,TokenClass.STRING_LITERAL,TokenClass.SIZEOF,TokenClass.LPAR,TokenClass.IDENTIFIER)) {
+    	 	Expr e = parseExp();
+    	 	argslist.add(e);
+    	 	parseArgrep(argslist);
+    	}
+    	return argslist;
+    }
+    private void parseArgrep(List<Expr> list) {
+    	if(accept(TokenClass.COMMA)) {
+    		nextToken();
+    		Expr e = parseExp();
+    		list.add(e);
+    		parseArgrep(list);
+    	}
+    }
+
+    private Expr parseSizeof() {
     	expect(TokenClass.SIZEOF);
     	expect(TokenClass.LPAR);
-    	parseType();
+    	Type t = parseType();
     	expect(TokenClass.RPAR);
+    	return new SizeOfExpr(t);
     }
-    private void parseTcast() {
+    private Expr parseTcast() {
     	expect(TokenClass.LPAR);
-    	parseType();
+    	Type t = parseType();
     	expect(TokenClass.RPAR);
-    	parseExp();
+    	Expr e = parseExp();
+    	return new TypecastExpr(t,e);
     }
-    private void parseStmt() {
+    private Stmt parseStmt() {
     	if(accept(TokenClass.LBRA)) {
     		
-    		parseBlock();
+    		return parseBlock();
     	}
     	else if(accept(TokenClass.IF)) {
     		System.out.println("before_if");
         	nextToken();
        // 	System.out.println(token.toString());
         	expect(TokenClass.LPAR);
-        	parseExp();
+        	Expr ie = parseExp();
        // 	System.out.println(token.toString());
         	expect(TokenClass.RPAR);
-        	parseStmt();
+        	Stmt s = parseStmt();
         	if(accept(TokenClass.ELSE)) {
         		nextToken();
-        		parseStmt();
+        		Stmt es = parseStmt();
+        		return new If(ie,s,es);
         	}
+        	else 
+        		return new If(ie,s);
     	}
     	else if(accept(TokenClass.WHILE)) {
     		nextToken();
-    		expect(TokenClass.LPAR);
-    		
-    		parseExp();
-    		
+    		expect(TokenClass.LPAR);	
+    		Expr ex = parseExp();
     		expect(TokenClass.RPAR);
-    		parseStmt();
+    		Stmt st = parseStmt();
+    		return new While(ex,st);
     	}
     	else if(accept(TokenClass.RETURN)) {
     		nextToken();
     		if(accept(TokenClass.LPAR,TokenClass.CHAR_LITERAL,TokenClass.INT_LITERAL, TokenClass.STRING_LITERAL, TokenClass.IDENTIFIER, TokenClass.MINUS, TokenClass.ASTERIX, TokenClass.SIZEOF)) {
-    			parseExp();
+    			Expr e = parseExp();
     		    expect(TokenClass.SC);
+    		    return new Return(e);
     		}
     		else{
     		    expect(TokenClass.SC);
+    		    return new Return();
     		}
     	}
     	else {
-    		parseExp();
+    		Expr ea = parseExp();
     		if(accept(TokenClass.ASSIGN)) {
     			System.out.println("before_assign");
     			nextToken();
-    			parseExp();
+    			Expr e = parseExp();
     			expect(TokenClass.SC);
+    			return new Assign(ea,e);
     		}
-    		else
+    		else {
     			expect(TokenClass.SC);
+    			return new ExprStmt(ea);
+    		}
     	}
 
     }
-    private void parseStmts() {
+    
+    private List<Stmt> parseStmts() {
+    	List<Stmt> s = new LinkedList<Stmt>();
+    	return parseStmts(s);
+    }
+    private List<Stmt> parseStmts(List<Stmt> sl) {
     	if(accept(TokenClass.LBRA,TokenClass.IF,TokenClass.WHILE,TokenClass.RETURN,TokenClass.MINUS,TokenClass.LPAR,TokenClass.SIZEOF,TokenClass.ASTERIX,TokenClass.INT_LITERAL,TokenClass.CHAR_LITERAL,TokenClass.STRING_LITERAL,TokenClass.IDENTIFIER)) {
+    		
     		System.out.println("before_stmts");
-    		parseStmt();
+    		Stmt stm = parseStmt();
+    		sl.add(stm);
     		parseStmts();
     	}
+    	return sl;
     }
-    private void parseBlock() {
+    private Block parseBlock() {
     	System.out.println("before_block");
     	expect(TokenClass.LBRA);
-    	parseVarDecls();
-    	parseStmts();
-    	
+    	List<VarDecl> vars = parseVarDecls();
+    	List<Stmt> stmts = parseStmts();
     	expect(TokenClass.RBRA);
     	System.out.println("end_block");
+    	return new Block(vars,stmts);
     }
-    private void parseFunDecl() {
-    	parseTI();
+    private FunDecl parseFunDecl() {
+    	//parseTI();
+    	Type t = parseType();
+    	String s = parseIdentifier().name;
     	expect(TokenClass.LPAR);
-    	parseParams();
+    	List<VarDecl> params = parseParams();
     	expect(TokenClass.RPAR);
-    	parseBlock();
+    	Block b = parseBlock();
+    	return new FunDecl(t, s, params, b);
     }
 
-    private void parseFunDecls() {
-    	if(accept(TokenClass.INT,TokenClass.CHAR,TokenClass.VOID,TokenClass.STRUCT))
+    private List<FunDecl> parseFunDecls() {
+    	List<FunDecl> fds = new LinkedList<FunDecl>();
+    	return parseFunDecls(fds);
+    }
+    
+
+    private List<VarDecl> parseParams() {
+    	List<VarDecl> plist = new LinkedList<VarDecl>();
+    	if(accept(TokenClass.INT,TokenClass.CHAR,TokenClass.VOID,TokenClass.STRUCT)) {
+    		System.out.println("before_params");
+    		//parseTI();
+    		Type t = parseType();
+        	String s = parseIdentifier().name;
+        	VarDecl pa = new VarDecl(t,s);
+        	plist.add(pa);
+    		parseParamsList(plist);
+    	}
+    	return plist;
+    }
+    private void parseParamsList(List<VarDecl> p) {
+    	if(accept(TokenClass.COMMA)) {
+    		nextToken();
+    		Type t = parseType();
+        	String s = parseIdentifier().name;
+        	VarDecl pa = new VarDecl(t,s);
+        	p.add(pa);
+    		parseParamsList(p);
+    	}
+    }
+
+    
+    private List<FunDecl> parseFunDecls(List<FunDecl> f) {
+    	if(accept(TokenClass.INT,TokenClass.CHAR,TokenClass.VOID,TokenClass.STRUCT)) {
            	if(accept(TokenClass.STRUCT)) {
            		if(lookAhead(1).tokenClass==TokenClass.IDENTIFIER) {
            			
         		     if(lookAhead(2).tokenClass==TokenClass.ASTERIX) {
         			     if(lookAhead(3).tokenClass==TokenClass.IDENTIFIER) {
                     	     if(lookAhead(4).tokenClass==TokenClass.LPAR) {
-                    		 
-                    	    	 parseFunDecl();
-                    		     parseFunDecls();
+                         	     FunDecl fd = parseFunDecl();
+                    	    	 f.add(fd);
+                    		     parseFunDecls(f);
+                   
                            	 }
             		      }
         		     }
         	    	 else if(lookAhead(2).tokenClass==TokenClass.IDENTIFIER) {
                    	    if(lookAhead(3).tokenClass==TokenClass.LPAR) {
-                  	       parseFunDecl();
-                   		   parseFunDecls();
+                    	     FunDecl fd = parseFunDecl();
+               	    	     f.add(fd);
+               		         parseFunDecls(f);
                  	    }
         		     }
         		     
@@ -547,46 +725,29 @@ public class Parser {
         			if(lookAhead(1).tokenClass==TokenClass.ASTERIX) {
             			if(lookAhead(2).tokenClass==TokenClass.IDENTIFIER) {
                         	if(lookAhead(3).tokenClass==TokenClass.LPAR) {
-                        	   
-                        		parseFunDecl();
-                        		parseFunDecls();
+                        	     FunDecl fd = parseFunDecl();
+                   	    	     f.add(fd);
+                   		         parseFunDecls(f);
                         	}
                 		}
             		}
             		else if(lookAhead(1).tokenClass==TokenClass.IDENTIFIER) {
                     	if(lookAhead(2).tokenClass==TokenClass.LPAR) {
                     		 System.out.println("before_func");
-                    		parseFunDecl();
-                    		parseFunDecls();
+                    	     FunDecl fd = parseFunDecl();
+               	    	     f.add(fd);
+               		         parseFunDecls(f);
                     	}
             		} 	
             		
         		}
         	}
+    	}return f;
 
 
-    }
-
-    
-    
-    // to be completed ...        
-=======
-
-    private List<StructTypeDecl> parseStructDecls() {
-        // to be completed ...
-        return null;
-    }
-
-    private List<VarDecl> parseVarDecls() {
-        // to be completed ...
-        return null;
-    }
-
-    private List<FunDecl> parseFunDecls() {
-        // to be completed ...
-        return null;
-    }
-
-    // to be completed ...
->>>>>>> 291c74373d7c8e7fb12e1f5aeffd0f8c9d3a8214
+    }  
 }
+   
+
+    // to be completed ...:
+
