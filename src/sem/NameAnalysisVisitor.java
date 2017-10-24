@@ -13,13 +13,13 @@ Scope scope;
 
 	@Override
 	public Void visitArrayAccessExpr(ArrayAccessExpr i) {
-        i.array.accept(this);
-        
+        i.array.accept(this);        
         i.index.accept(this);
 		return null;
 	}
 	@Override
 	public Void visitArrayType(ArrayType i) {
+		i.tp.accept(this);
 		return null;
 	}
 	@Override
@@ -34,6 +34,8 @@ Scope scope;
 	}
 	@Override
 	public Void visitBinOp(BinOp i) {
+        i.lhs.accept(this);
+        i.rhs.accept(this);
 		return null;
 	}
 	@Override
@@ -52,6 +54,11 @@ Scope scope;
 	}
 	@Override
 	public Void visitIf(If i) {
+	     i.ifexp.accept(this);
+	     i.stm.accept(this);
+	     if(i.else_stm != null) { 
+	      	i.else_stm.accept(this); 
+	     }
 		return null;
 	}
 	@Override
@@ -64,10 +71,14 @@ Scope scope;
 	}
 	@Override
 	public Void visitPointerType(PointerType i) {
+		i.ptype.accept(this);
 		return null;
 	}
 	@Override
 	public Void visitReturn(Return i) {
+		if(i.ret != null) {
+		i.ret.accept(this);
+		}
 		return null;
 	}
 	@Override
@@ -99,9 +110,12 @@ Scope scope;
 		}
 		else {
 			scope.put(new StructSymbol(i));
+			Scope oldscope = scope;
+			scope = new Scope(oldscope);
 			for(VarDecl v : i.vardecls) {
 				v.accept(this);
 			}
+			scope = oldscope;
 		}
 		return null;
 	}
