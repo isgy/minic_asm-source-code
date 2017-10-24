@@ -15,7 +15,7 @@ public class ASTPrinter implements ASTVisitor<Void> {
         return null;
     }
     @Override
-    public Void visitOpExpr(Op o) {
+    public Void visitOp(Op o) {
         writer.print(o.toString());
         return null;
     }
@@ -83,7 +83,7 @@ public class ASTPrinter implements ASTVisitor<Void> {
     @Override
     public Void visitFunCallExpr(FunCallExpr fc) {
     	writer.print("FunCallExpr(");
-        writer.print(fc.function);
+        writer.print(fc.name);
         String delimiter = ",";
         for (Expr e : fc.args) {
             writer.print(delimiter);
@@ -266,7 +266,7 @@ public class ASTPrinter implements ASTVisitor<Void> {
     }
 
     @Override
-    public Void visitReturnStmt(Return r) {
+    public Void visitReturn(Return r) {
         writer.print("Return(");
         r.ret.accept(this);
         writer.print(")");

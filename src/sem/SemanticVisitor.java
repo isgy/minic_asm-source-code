@@ -1,5 +1,7 @@
 package sem;
 
+import ast.Stmt;
+
 /**
  * @author dhil
  * An interface for semantic visitors.
@@ -11,4 +13,6 @@ public interface SemanticVisitor<T> extends ast.ASTVisitor<T> {
 	 * @return number of errors
 	 */
 	public int getErrorCount();
+
+	
 }

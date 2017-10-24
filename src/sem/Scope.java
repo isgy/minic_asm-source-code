@@ -8,18 +8,25 @@ public class Scope {
 	
 	public Scope(Scope outer) { 
 		this.outer = outer; 
+        
 	}
 	
 	public Scope() { this(null); }
 	
 	public Symbol lookup(String name) {
-		// To be completed...
-		return null;
+		Symbol sym;
+		if(symbolTable.containsKey(name)) {
+			sym = symbolTable.get(name);
+			return sym;
+		}else {
+			sym = outer.lookup(name);
+		}
+	    return sym;
 	}
 	
 	public Symbol lookupCurrent(String name) {
-		// To be completed...
-		return null;
+		Symbol sym = symbolTable.get(name);
+		return sym;
 	}
 	
 	public void put(Symbol sym) {

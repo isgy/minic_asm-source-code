@@ -1,5 +1,6 @@
 package ast;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class Block extends Stmt {
@@ -11,6 +12,11 @@ public class Block extends Stmt {
 	    vars = v;
 	    stmts = s;
     }
+    public Block() {
+	    vars = new LinkedList<VarDecl>();
+	    stmts = new LinkedList<Stmt>();
+    }
+    
 
     public <T> T accept(ASTVisitor<T> v) {
 	    return v.visitBlock(this);

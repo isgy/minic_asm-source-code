@@ -20,7 +20,7 @@ public interface ASTVisitor<T> {
     public T visitValueAtExpr(ValueAtExpr e);
     public T visitSizeOfExpr(SizeOfExpr e);
     public T visitTypecastExpr(TypecastExpr e);
-    public T visitOpExpr(Op o);
+    public T visitOp(Op o);
     
     public T visitExprStmt(ExprStmt e);
 	public T visitWhile(While w);
@@ -32,7 +32,7 @@ public interface ASTVisitor<T> {
     public T visitProgram(Program p);
     public T visitVarDecl(VarDecl vd);
     public T visitVarExpr(VarExpr v);
-	public T visitReturnStmt(Return r);
+	public T visitReturn(Return r);
 
 	
     

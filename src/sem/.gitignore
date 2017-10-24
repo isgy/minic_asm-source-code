@@ -6,3 +6,6 @@
 /SemanticVisitor.class
 /Symbol.class
 /TypeCheckVisitor.class
+/VarSymbol.class
+/ProcSymbol.class
+/StructSymbol.class

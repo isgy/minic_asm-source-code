@@ -7,7 +7,7 @@ public class VarExpr extends Expr {
     public VarExpr(String name){
 	this.name = name;
     }
-
+    
     public <T> T accept(ASTVisitor<T> v) {
 	    return v.visitVarExpr(this);
     }

@@ -3,9 +3,11 @@ package ast;
 import java.util.List;
 
 public class FunCallExpr extends Expr {
-	String function;
+	public final String name;
 	List<Expr> args;
-	public FunCallExpr(String f, List<Expr> a){function = f; args = a;}
+	public FunDecl fd;    //for the name analyzer
+	
+	public FunCallExpr(String f, List<Expr> a){this.name = f; args = a;}
     public <T> T accept(ASTVisitor<T> v) {
         return v.visitFunCallExpr(this);
     }
