@@ -217,15 +217,17 @@ public class Parser {
     	String s = parseIdentifier().name;
     	if(accept(TokenClass.LSBR)) {
     		nextToken();
-    		expect(TokenClass.INT_LITERAL);
+    		//expect(TokenClass.INT_LITERAL);
+    		Token il = expect(TokenClass.INT_LITERAL);
     		expect(TokenClass.RSBR);
     		expect(TokenClass.SC);
+    		return new VarDecl(new ArrayType(t,Integer.parseInt(il.data)),s);
     	}
     	else 
     		expect(TokenClass.SC);
     	    return new VarDecl(t,s);
     }
-    
+
  /*   private void parseVarTail() {
     	if(accept(TokenClass.LSBR)) {
     		nextToken();

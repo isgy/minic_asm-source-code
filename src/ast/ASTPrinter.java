@@ -100,6 +100,7 @@ public class ASTPrinter implements ASTVisitor<Void> {
         b.lhs.accept(this);
         writer.print(",");
         writer.print(b.op);
+        writer.print(",");
         b.rhs.accept(this);
         writer.print(")");
         return null;
@@ -264,7 +265,7 @@ public class ASTPrinter implements ASTVisitor<Void> {
 
     @Override
     public Void visitVarExpr(VarExpr v) {
-        writer.print("Var(");
+        writer.print("VarExpr(");
         writer.print(v.name);
         writer.print(")");
         return null;

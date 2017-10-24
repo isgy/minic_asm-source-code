@@ -11,7 +11,8 @@ void main() {
   int c;
   char t;
   char* ss;
-
+  int a[2];
+  char c[10];
   // read n from the standard input
   n = read_i();
   
@@ -24,7 +25,7 @@ void main() {
  
   c = 0;
   while (c < n) {
-    if ( c <= 1 || (c >= 6 || t >= 8)){
+    if ( c <= 1 || (c >= 6 && t >= 8)){
        if(bee >= fb){
           cc = 4;
           while(t != 2){

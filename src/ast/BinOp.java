@@ -1,9 +1,9 @@
 package ast;
 
 public class BinOp extends Expr{
-	Op op;
-	Expr lhs;
-	Expr rhs;
+	public Op op;
+	public Expr lhs;
+	public Expr rhs;
 	public BinOp (Op op , Expr lhs, Expr rhs) {
 		this.op = op;
 		this.lhs = lhs;
