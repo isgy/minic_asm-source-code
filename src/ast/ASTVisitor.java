@@ -1,5 +1,7 @@
 package ast;
 
+import java.util.List;
+
 public interface ASTVisitor<T> {
     public T visitBaseType(BaseType bt);
     public T visitPointerType(PointerType p);
@@ -27,12 +29,14 @@ public interface ASTVisitor<T> {
 	public T visitIf(If i);
 	public T visitAssign(Assign a);
 	public T visitBlock(Block b);
+	public T visitBlock(Block b, List<VarDecl> p);
     
     public T visitFunDecl(FunDecl p);
     public T visitProgram(Program p);
     public T visitVarDecl(VarDecl vd);
     public T visitVarExpr(VarExpr v);
 	public T visitReturn(Return r);
+	
 
 	
     

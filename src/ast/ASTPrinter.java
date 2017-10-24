@@ -1,6 +1,7 @@
 package ast;
 
 import java.io.PrintWriter;
+import java.util.List;
 
 public class ASTPrinter implements ASTVisitor<Void> {
 
@@ -190,7 +191,11 @@ public class ASTPrinter implements ASTVisitor<Void> {
         return null;
     }
     
-
+    @Override
+    public Void visitBlock(Block b, List<VarDecl> p) {
+        b.accept(this);
+        return null;
+    }
     
     @Override
     public Void visitBlock(Block b) {
@@ -268,7 +273,9 @@ public class ASTPrinter implements ASTVisitor<Void> {
     @Override
     public Void visitReturn(Return r) {
         writer.print("Return(");
-        r.ret.accept(this);
+        if(r.ret != null) {
+           r.ret.accept(this);       	   
+        }
         writer.print(")");
         return null;
     }

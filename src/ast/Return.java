@@ -5,6 +5,6 @@ public class Return extends Stmt {
  	public Return(){ret = null;}
   	public Return(Expr e){ ret = e; }
     public <T> T accept(ASTVisitor<T> v) {
-         return v.visitReturnStmt(this);
+         return v.visitReturn(this);
      }
 }

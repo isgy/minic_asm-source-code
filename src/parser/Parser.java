@@ -638,7 +638,7 @@ public class Parser {
     		System.out.println("before_stmts");
     		Stmt stm = parseStmt();
     		sl.add(stm);
-    		parseStmts();
+    		parseStmts(sl);
     	}
     	return sl;
     }

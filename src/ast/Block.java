@@ -21,4 +21,8 @@ public class Block extends Stmt {
     public <T> T accept(ASTVisitor<T> v) {
 	    return v.visitBlock(this);
     }
+    public <T> T accept(ASTVisitor<T> v, List<VarDecl> p) {
+	    return v.visitBlock(this,p);
+    }
+
 }

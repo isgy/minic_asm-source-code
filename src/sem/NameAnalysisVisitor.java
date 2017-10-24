@@ -1,17 +1,21 @@
 package sem;
 
 import java.util.LinkedList;
+import java.util.List;
 
 import ast.*;
 
 public class NameAnalysisVisitor extends BaseSemanticVisitor<Void> {
 Scope scope;
-NameAnalysisVisitor(Scope scope) {this.scope = scope;}
-NameAnalysisVisitor(){this.scope = new Scope();}
+    public NameAnalysisVisitor(Scope scope) {this.scope = scope;}
+    public NameAnalysisVisitor(){this.scope = new Scope();}
     
 
 	@Override
 	public Void visitArrayAccessExpr(ArrayAccessExpr i) {
+        i.array.accept(this);
+        
+        i.index.accept(this);
 		return null;
 	}
 	@Override
@@ -20,6 +24,8 @@ NameAnalysisVisitor(){this.scope = new Scope();}
 	}
 	@Override
 	public Void visitAssign(Assign i) {
+        i.ex.accept(this);
+        i.isexp.accept(this);
 		return null;
 	}
 	@Override
@@ -36,10 +42,12 @@ NameAnalysisVisitor(){this.scope = new Scope();}
 	}
 	@Override
 	public Void visitExprStmt(ExprStmt i) {
+		i.exp.accept(this);
 		return null;
 	}
 	@Override
 	public Void visitFieldAccessExpr(FieldAccessExpr i) {
+		i.structure.accept(this);
 		return null;
 	}
 	@Override
@@ -64,6 +72,7 @@ NameAnalysisVisitor(){this.scope = new Scope();}
 	}
 	@Override
 	public Void visitSizeOfExpr(SizeOfExpr i) {
+		i.tp.accept(this);
 		return null;
 	}
 	@Override
@@ -73,36 +82,73 @@ NameAnalysisVisitor(){this.scope = new Scope();}
 
 	@Override
 	public Void visitStructType(StructType i) {
+		Symbol ss = scope.lookup(i.ident);
+		if(ss == null)
+			error("not declared");
+		else if(!ss.isStruc()) 
+			error("declared but not as a struct");
+		else 
+			i.sd = ((StructSymbol) ss).sd;
 		return null;
 	}
 	@Override
 	public Void visitStructTypeDecl(StructTypeDecl i) {
+		Symbol s = scope.lookupCurrent(i.stype.ident);
+		if (s!= null) {
+			error("variable is already defined");
+		}
+		else {
+			scope.put(new StructSymbol(i));
+			for(VarDecl v : i.vardecls) {
+				v.accept(this);
+			}
+		}
 		return null;
 	}
 	@Override
 	public Void visitTypecastExpr(TypecastExpr i) {
+        i.cast.accept(this);
+        i.exp.accept(this);
 		return null;
 	}
 	@Override
 	public Void visitValueAtExpr(ValueAtExpr i) {
+		i.valueat.accept(this);
 		return null;
 	}
 
 	@Override
 	public Void visitWhile(While i) {
+        i.exp.accept(this);
+        i.stm.accept(this);
 		return null;
 	}
-
 
 	@Override
 	public Void visitBlock(Block b) {
 		Scope oldscope = scope;
 		scope = new Scope(oldscope);
 		for(VarDecl v : b.vars) {
-			visitVarDecl(v);
+			v.accept(this);
 		}
 		for(Stmt s : b.stmts) {
-			
+			s.accept(this);
+		}
+		scope = oldscope;
+		return null;
+	}
+	@Override
+	public Void visitBlock(Block b, List<VarDecl> p) {
+		Scope oldscope = scope;
+		scope = new Scope(oldscope);
+		for(VarDecl ps : p) {
+			ps.accept(this);
+		}
+		for(VarDecl v : b.vars) {
+			v.accept(this);
+		}
+		for(Stmt s : b.stmts) {
+			s.accept(this);
 		}
 		scope = oldscope;
 		return null;
@@ -139,7 +185,17 @@ NameAnalysisVisitor(){this.scope = new Scope();}
 		FunDecl f6 = new FunDecl(new PointerType(BaseType.VOID),"mcmalloc",v6,new Block());
 		Symbol f6s = new ProcSymbol(f6);
 		
-		scope.put(f1s); scope.put(f2s); scope.put(f3s); scope.put(f4s); scope.put(f5s); scope.put(f6s);
+		scope.put(f1s); scope.put(f2s); scope.put(f3s); scope.put(f4s); scope.put(f5s); scope.put(f6s);   //put builtin functions in the global scope
+		
+        for (StructTypeDecl std : p.structTypeDecls) {
+            std.accept(this);
+        }
+        for (VarDecl vd : p.varDecls) {
+            vd.accept(this);
+        }
+        for (FunDecl fd : p.funDecls) {
+            fd.accept(this);
+        }
 		return null;
 	}
 
@@ -172,11 +228,10 @@ NameAnalysisVisitor(){this.scope = new Scope();}
 		if (f!= null) {
 			error("function is already defined");
 		}
-		else {
+		else {  
 			scope.put(new ProcSymbol(p));
-			for(VarDecl i : p.params) {
-				scope.put(new VarSymbol(i));
-			}
+            //params have block scope
+			p.block.accept(this,p.params);
 		}
 		return null;
 	}
