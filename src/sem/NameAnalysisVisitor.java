@@ -217,7 +217,7 @@ Scope scope;
 	@Override
 	public Void visitVarDecl(VarDecl vd) {
 		if(scope.lookupCurrent(vd.varName) != null) {
-			error("variable is already defined");
+			error(String.format("variable %s is already defined",vd.varName));
 		}
 		else {
 			scope.put(new VarSymbol(vd));
@@ -231,7 +231,7 @@ Scope scope;
 		if(vs == null)
 			error("not declared");
 		else if(!vs.isVar()) 
-			error("declared but not as a var");
+			error("not a var");
 		else 
 			v.vd = ((VarSymbol) vs).vd;
 		return null;

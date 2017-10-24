@@ -32,14 +32,8 @@ public class Scope {
 	}
 	
 	public Symbol lookupCurrent(String name) {
-		if(symbolTable == null) {
-			System.out.println("notabl");
-		}
-		Symbol sym = null;
-		if(symbolTable.get(name) != null) {
-		   return sym;
-		}else
-			return null;
+		Symbol sym = symbolTable.get(name);
+		return sym;
 	}
 	
 	public void put(Symbol sym) {
