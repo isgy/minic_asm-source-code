@@ -170,7 +170,7 @@ Scope scope;
 	
 	@Override
 	public Void visitProgram(Program p) {
-		
+		//scope = new Scope();
 		LinkedList<VarDecl> v1 = new LinkedList<VarDecl>();
 		LinkedList<VarDecl> v2 = new LinkedList<VarDecl>();
 		LinkedList<VarDecl> v3 = new LinkedList<VarDecl>();
@@ -199,8 +199,9 @@ Scope scope;
 		FunDecl f6 = new FunDecl(new PointerType(BaseType.VOID),"mcmalloc",v6,new Block());
 		Symbol f6s = new ProcSymbol(f6);
 		
+		//System.out.println(scope.getlen());
 		scope.put(f1s); scope.put(f2s); scope.put(f3s); scope.put(f4s); scope.put(f5s); scope.put(f6s);   //put builtin functions in the global scope
-		
+		//System.out.println("here");
         for (StructTypeDecl std : p.structTypeDecls) {
             std.accept(this);
         }
@@ -215,8 +216,7 @@ Scope scope;
 
 	@Override
 	public Void visitVarDecl(VarDecl vd) {
-		Symbol s = scope.lookupCurrent(vd.varName);
-		if (s!= null) {
+		if(scope.lookupCurrent(vd.varName) != null) {
 			error("variable is already defined");
 		}
 		else {
