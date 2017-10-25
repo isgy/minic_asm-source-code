@@ -4,7 +4,17 @@ import ast.StructTypeDecl;
 
 public class StructSymbol extends Symbol{
     StructTypeDecl sd;
-    char symtype = 's';
+
+    public boolean isVar() {
+    	return false;
+    }
+    public boolean isProc() {
+    	return false;
+    }
+    public boolean isStruc() {
+    	return true;
+    }
+    
     
     public StructSymbol(StructTypeDecl sd){
    	 this.sd = sd;

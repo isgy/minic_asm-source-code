@@ -236,9 +236,9 @@ Scope scope;
 	public Void visitVarExpr(VarExpr v) {
 		Symbol vs = scope.lookup(v.name);
 		if(vs == null)
-			error(String.format("%s is not declared",v.name));
+			error("is not declared"+v.name);
 		else if(!vs.isVar()) 
-			error(String.format("%s is not a var",v.name));
+			error(v.name+"is not a var, is"+vs.symtype);
 		else 
 			v.vd = ((VarSymbol) vs).vd;
 		return null;
@@ -247,7 +247,7 @@ Scope scope;
 	public Void visitFunDecl(FunDecl p) {
 		Symbol f = scope.lookupCurrent(p.name);
 		if (f!= null) {
-			error(String.format("function %s is already defined",p.name));
+			error("function is already defined"+p.name+f.name);
 		}
 		else {  
 			scope.put(new ProcSymbol(p));
@@ -261,9 +261,9 @@ Scope scope;
 	public Void visitFunCallExpr(FunCallExpr f) {
 		Symbol fc = scope.lookup(f.name);
 		if(fc == null)
-			error(String.format("%s is not declared",f.name));
+			error("is not declared"+f.name);
 		else if(!fc.isProc()) 
-			error(String.format("%s is not a function",f.name));
+			error(f.name+"is not a function,"+fc.symtype);
 		else 
 			f.fd = ((ProcSymbol) fc).fd;
 		return null;
