@@ -176,8 +176,9 @@ public class ASTPrinter implements ASTVisitor<Void> {
         i.ifexp.accept(this);
         writer.print(",");
         i.stm.accept(this);
-        writer.print(",");
-        if(i.else_stm != null) { 
+        
+        if(i.else_stm != null) {
+        	writer.print(",");
         	i.else_stm.accept(this); 
         }
         writer.print(")");

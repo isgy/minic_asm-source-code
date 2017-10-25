@@ -1,23 +1,34 @@
 package sem;
+import ast.*;
 
 import java.util.List;
 
 import ast.*;
 
 public class TypeCheckVisitor extends BaseSemanticVisitor<Type>{
-
-public TypeCheckVisitor() {}
+	Scope scope;
+    public TypeCheckVisitor(Scope scope) {this.scope = scope;}
+    public TypeCheckVisitor(){this.scope = new Scope();}
 	@Override
 	public Type visitArrayAccessExpr(ArrayAccessExpr i) {
-
+       // if(i.array.type )
 		return null;
 	}
 	@Override
 	public Type visitArrayType(ArrayType i) {
+		//if(i.tp.accept(this) )
         return null;
 	}
 	@Override
 	public Type visitAssign(Assign i) {
+		if(i.ex.accept(this) == BaseType.VOID) {
+			error("void assignment");
+		}
+		if(i.ex instanceof Type) {
+			//if(i.ex.type != ArrayType && i.ex.accept(this) == i.isexp.accept(this)) {
+		}
+			
+		
         return null;
 	}
 	@Override
@@ -74,7 +85,7 @@ public TypeCheckVisitor() {}
 				return null;
 			else 
 				error("no field in struct");
-		}
+		}   
 		return null;
 	}
 	@Override
@@ -90,6 +101,7 @@ public TypeCheckVisitor() {}
 	public Type visitIntLiteral(IntLiteral i) {
 	    i.type = BaseType.INT;
 		return BaseType.INT;
+		
 	}
 	@Override
 	public Type visitOp(Op i) {
@@ -109,11 +121,19 @@ public TypeCheckVisitor() {}
 	}
 	@Override
 	public Type visitSizeOfExpr(SizeOfExpr i) {
+		i.type = BaseType.INT;
 		return BaseType.INT;
 	}
 	@Override
 	public Type visitStrLiteral(StrLiteral i) {
 		char[] chars = i.str.toCharArray();
+		int n = i.str.length() + 1;
+        char[] ch = new char[n];
+		for(int id = 0; id < i.str.length(); id++) {
+			ch[id] = chars[id];
+		}
+		ch[ch.length - 1] = '\0';
+//		i.type = ch;
         return null;
 	}
 
@@ -145,6 +165,12 @@ public TypeCheckVisitor() {}
 	}
 	@Override
 	public Type visitBlock(Block b, List<VarDecl> p) {
+        for (VarDecl vd : b.vars) {
+            vd.accept(this);
+        }
+        for (Stmt s : b.stmts) {
+            s.accept(this);
+        }
 		return null;
 	}
 	
@@ -167,7 +193,7 @@ public TypeCheckVisitor() {}
 	@Override
 	public Type visitVarDecl(VarDecl vd) {
         if(vd.type == BaseType.VOID) {
-        	error("typerror void vardecl");
+        	error("typerror void vardecl");      
         }
         return null;
 	}
@@ -179,6 +205,7 @@ public TypeCheckVisitor() {}
 	}
 	@Override
 	public Type visitFunDecl(FunDecl p) {
+//already added decl in scope
         return null;
 	}
 

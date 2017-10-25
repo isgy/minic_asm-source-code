@@ -10,3 +10,6 @@
 /ProcSymbol.class
 /StructSymbol.class
 /StructNameVisitor.class
+/Expression.class
+/EvalVisitor.class
+/TypeSymbol.class

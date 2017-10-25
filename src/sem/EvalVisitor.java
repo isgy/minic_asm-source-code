@@ -1,31 +1,29 @@
 package sem;
-
-import java.util.LinkedList;
+import ast.*;
 import java.util.List;
 
-import ast.*;
+import java.util.LinkedList;
 
-public class NameAnalysisVisitor extends BaseSemanticVisitor<Void> {
-Scope scope;
-    public NameAnalysisVisitor(Scope scope) {this.scope = scope;}
-    public NameAnalysisVisitor(){this.scope = new Scope();}
+import ast.Assign;
+
+public class EvalVisitor extends BaseSemanticVisitor<Void> {
+	Scope scope;
+    public EvalVisitor(Scope scope) {this.scope = scope;}
+    public EvalVisitor (){this.scope = new Scope();}
     
 
 	@Override
 	public Void visitArrayAccessExpr(ArrayAccessExpr i) {
-        i.array.accept(this);        
-        i.index.accept(this);
+		//Symbol f = scope.lookupCurrent(i.array);
 		return null;
 	}
 	@Override
 	public Void visitArrayType(ArrayType i) {
-		i.tp.accept(this);
 		return null;
 	}
 	@Override
 	public Void visitAssign(Assign i) {
-        i.ex.accept(this);
-        i.isexp.accept(this);
+		//if (i.ex)
 		return null;
 	}
 	@Override
@@ -49,7 +47,7 @@ Scope scope;
 	}
 	@Override
 	public Void visitFieldAccessExpr(FieldAccessExpr i) {
-		i.structure.accept(this);
+
 		return null;
 	}
 	@Override
@@ -93,18 +91,18 @@ Scope scope;
 
 	@Override
 	public Void visitStructType(StructType i) {
-	/*	Symbol ss = scope.lookup(i.ident);
+		Symbol ss = scope.lookup(i.ident);
 		if(ss == null)
 			error("not declared");
 		else if(!ss.isStruc()) 
 			error("declared but not as a struct");
 		else 
-			i.sd = ((StructSymbol) ss).sd; */
-		return null; 
+			i.sd = ((StructSymbol) ss).sd;
+		return null;
 	}
 	@Override
 	public Void visitStructTypeDecl(StructTypeDecl i) {
-		/*Symbol s = scope.lookupCurrent(i.stype.ident);
+		Symbol s = scope.lookupCurrent(i.stype.ident);
 		if (s!= null) {
 			error("struct is already defined");
 		}
@@ -115,15 +113,8 @@ Scope scope;
 			for(VarDecl v : i.vardecls) {
 				v.accept(this);
 			}
-			scope = oldscope; 
-		}*/
-		Scope oldscope = scope;
-		scope = new Scope();
-		for(VarDecl v : i.vardecls) {
-			v.accept(this);
+			scope = oldscope;
 		}
-		scope = oldscope;
-		
 		return null;
 	}
 	@Override
@@ -236,9 +227,9 @@ Scope scope;
 	public Void visitVarExpr(VarExpr v) {
 		Symbol vs = scope.lookup(v.name);
 		if(vs == null)
-			error("is not declared"+v.name);
+			error("not declared");
 		else if(!vs.isVar()) 
-			error(v.name+"is not a var, is");
+			error("not a var");
 		else 
 			v.vd = ((VarSymbol) vs).vd;
 		return null;
@@ -247,7 +238,7 @@ Scope scope;
 	public Void visitFunDecl(FunDecl p) {
 		Symbol f = scope.lookupCurrent(p.name);
 		if (f!= null) {
-			error("function is already defined"+p.name+f.name);
+			error("function is already defined");
 		}
 		else {  
 			scope.put(new ProcSymbol(p));
@@ -261,11 +252,12 @@ Scope scope;
 	public Void visitFunCallExpr(FunCallExpr f) {
 		Symbol fc = scope.lookup(f.name);
 		if(fc == null)
-			error("is not declared"+f.name);
+			error("not declared");
 		else if(!fc.isProc()) 
-			error(f.name+"is not a function,");
+			error("declared but not a function");
 		else 
 			f.fd = ((ProcSymbol) fc).fd;
+		
 		return null;
 	}
 	

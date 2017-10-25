@@ -21,3 +21,4 @@ public class StructSymbol extends Symbol{
    	 this.name = sd.stype.ident;
     }
 }
+

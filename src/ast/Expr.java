@@ -8,7 +8,8 @@ public abstract class Expr implements ASTNode {
 	//| FieldAccessExpr | ValueAtExpr | SizeOfExpr | TypecastExpr
     public Type type; // to be filled in by the type analyser
   //  abstract String toStr();
-  //  abstract int eval();
+    //abstract int eval();
+    public int eval;
     public abstract <T> T accept(ASTVisitor<T> v);
 }
 

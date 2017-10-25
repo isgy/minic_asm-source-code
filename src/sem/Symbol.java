@@ -2,7 +2,7 @@ package sem;
 
 public abstract class Symbol {
 	public String name;
-	public char symtype;
+	
 	abstract boolean isVar();
 	abstract boolean isProc();
 	abstract boolean isStruc();

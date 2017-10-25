@@ -10,6 +10,7 @@ public class Scope {
 	public Scope(Scope outer) { 
 		this.outer = outer; 
 		symbolTable = new HashMap<String, Symbol>();
+		//typeTable = new HashMap<>
 	}
 	
 	public Scope() { 

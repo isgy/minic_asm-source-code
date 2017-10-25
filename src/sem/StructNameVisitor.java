@@ -13,8 +13,16 @@ public class StructNameVisitor extends BaseSemanticVisitor<Void> {
 
 	@Override
 	public Void visitArrayAccessExpr(ArrayAccessExpr i) {
-        i.array.accept(this);        
-        i.index.accept(this);
+/*		Symbol f = scope.lookupCurrent(i.array);
+		if (f!= null) {
+			error("function is already defined");
+		}
+		else {  
+			scope.put(new ProcSymbol(p));
+            //params have block scope
+			p.block.accept(this,p.params);
+		}
+        i.index.accept(this); */
 		return null;
 	}
 	@Override
@@ -259,6 +267,7 @@ public class StructNameVisitor extends BaseSemanticVisitor<Void> {
 			error("declared but not a function");
 		else 
 			f.fd = ((ProcSymbol) fc).fd;
+		
 		return null;
 	}
 	

@@ -16,6 +16,11 @@
  * =====================================================================================
  */
 #include "foo"
+   struct database {
+  int id_number;
+  int age;
+  int* salary;
+};
 
 
 void main() {
@@ -34,8 +39,9 @@ void main() {
     
   print_s((char*)"First ");
   print_i(n);
-  print_s((char*)" terms of Fibonacci series are : ");
- 
+  print_s((char*)" terms of Fibonacci series are : "); 
+  if(n < c){
+     second = c;
   c = 0;
   while (c < n) {
     if ( c <= 1 )
@@ -51,4 +57,4 @@ void main() {
     c = c+1;
   }
 }
-
+}
