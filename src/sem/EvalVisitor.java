@@ -91,30 +91,13 @@ public class EvalVisitor extends BaseSemanticVisitor<Void> {
 
 	@Override
 	public Void visitStructType(StructType i) {
-		Symbol ss = scope.lookup(i.ident);
-		if(ss == null)
-			error("not declared");
-		else if(!ss.isStruc()) 
-			error("declared but not as a struct");
-		else 
-			i.sd = ((StructSymbol) ss).sd;
+
 		return null;
 	}
 	@Override
 	public Void visitStructTypeDecl(StructTypeDecl i) {
-		Symbol s = scope.lookupCurrent(i.stype.ident);
-		if (s!= null) {
-			error("struct is already defined");
-		}
-		else {
-			scope.put(new StructSymbol(i));
-			Scope oldscope = scope;
-			scope = new Scope(oldscope);
-			for(VarDecl v : i.vardecls) {
-				v.accept(this);
-			}
-			scope = oldscope;
-		}
+
+		
 		return null;
 	}
 	@Override
@@ -138,7 +121,7 @@ public class EvalVisitor extends BaseSemanticVisitor<Void> {
 
 	@Override
 	public Void visitBlock(Block b) {
-		Scope oldscope = scope;
+/*		Scope oldscope = scope;
 		scope = new Scope(oldscope);
 		for(VarDecl v : b.vars) {
 			v.accept(this);
@@ -146,30 +129,21 @@ public class EvalVisitor extends BaseSemanticVisitor<Void> {
 		for(Stmt s : b.stmts) {
 			s.accept(this);
 		}
-		scope = oldscope;
+		scope = oldscope;*/
 		return null;
 	}
 	@Override
 	public Void visitBlock(Block b, List<VarDecl> p) {
-		Scope oldscope = scope;
+	/*	Scope oldscope = scope;
 		scope = new Scope(oldscope);
-		for(VarDecl ps : p) {
-			ps.accept(this);
-		}
-		for(VarDecl v : b.vars) {
-			v.accept(this);
-		}
-		for(Stmt s : b.stmts) {
-			s.accept(this);
-		}
-		scope = oldscope;
+
+		scope = oldscope;*/
 		return null;
 	}
 	
 	@Override
 	public Void visitProgram(Program p) {
 		//scope = new Scope();
-
         for (StructTypeDecl std : p.structTypeDecls) {
             std.accept(this);
         }
@@ -184,28 +158,28 @@ public class EvalVisitor extends BaseSemanticVisitor<Void> {
 
 	@Override
 	public Void visitVarDecl(VarDecl vd) {
-		if(scope.lookupCurrent(vd.varName) != null) {
+		/*if(scope.lookupCurrent(vd.varName) != null) {
 			error(String.format("variable %s is already defined",vd.varName));
 		}
 		else {
 			scope.put(new VarSymbol(vd));
-		}
+		}*/
 		return null;
 	}
 
 	@Override
 	public Void visitVarExpr(VarExpr v) {
-		Symbol vs = scope.lookup(v.name);
+	/*	Symbol vs = scope.lookup(v.name);
 		if(vs == null)
 			error("not declared");
 		else if(!vs.isVar()) 
 			error("not a var");
 		else 
-			v.vd = ((VarSymbol) vs).vd;
+			v.vd = ((VarSymbol) vs).vd;*/
 		return null;
 	}
 	@Override
-	public Void visitFunDecl(FunDecl p) {
+	public Void visitFunDecl(FunDecl p) {/*
 		Symbol f = scope.lookupCurrent(p.name);
 		if (f!= null) {
 			error("function is already defined");
@@ -214,19 +188,19 @@ public class EvalVisitor extends BaseSemanticVisitor<Void> {
 			scope.put(new ProcSymbol(p));
             //params have block scope
 			p.block.accept(this,p.params);
-		}
+		}*/
 		return null;
 	}
 
 	@Override
-	public Void visitFunCallExpr(FunCallExpr f) {
+	public Void visitFunCallExpr(FunCallExpr f) {/*
 		Symbol fc = scope.lookup(f.name);
 		if(fc == null)
 			error("not declared");
 		else if(!fc.isProc()) 
 			error("declared but not a function");
 		else 
-			f.fd = ((ProcSymbol) fc).fd;
+			f.fd = ((ProcSymbol) fc).fd;*/
 		
 		return null;
 	}
