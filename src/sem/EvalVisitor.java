@@ -7,9 +7,9 @@ import java.util.LinkedList;
 import ast.Assign;
 
 public class EvalVisitor extends BaseSemanticVisitor<Void> {
-	Scope scope;
-    public EvalVisitor(Scope scope) {this.scope = scope;}
-    public EvalVisitor (){this.scope = new Scope();}
+//	Scope scope;
+  //  public EvalVisitor(Scope scope) {this.scope = scope;}
+    //public EvalVisitor (){this.scope = new Scope();}
     
 
 	@Override
@@ -169,37 +169,7 @@ public class EvalVisitor extends BaseSemanticVisitor<Void> {
 	@Override
 	public Void visitProgram(Program p) {
 		//scope = new Scope();
-		LinkedList<VarDecl> v1 = new LinkedList<VarDecl>();
-		LinkedList<VarDecl> v2 = new LinkedList<VarDecl>();
-		LinkedList<VarDecl> v3 = new LinkedList<VarDecl>();
-		LinkedList<VarDecl> v0 = new LinkedList<VarDecl>();
-		LinkedList<VarDecl> v6 = new LinkedList<VarDecl>();
 
-		v1.add(new VarDecl(new PointerType(BaseType.CHAR),"s"));
-		FunDecl f1 = new FunDecl(BaseType.VOID,"print_s",v1,new Block());
-		Symbol f1s = new ProcSymbol(f1);
-		
-		v2.add(new VarDecl(BaseType.INT,"i"));
-		FunDecl f2 = new FunDecl(BaseType.VOID,"print_i",v2,new Block());
-		Symbol f2s = new ProcSymbol(f2);
-		
-		v3.add(new VarDecl(BaseType.CHAR,"c"));
-		FunDecl f3 = new FunDecl(BaseType.VOID,"print_c",v3,new Block());
-		Symbol f3s = new ProcSymbol(f3);
-		
-		FunDecl f4 = new FunDecl(BaseType.CHAR,"read_c",v0,new Block());
-		Symbol f4s = new ProcSymbol(f4);
-		
-		FunDecl f5 = new FunDecl(BaseType.INT,"read_i",v0,new Block());
-		Symbol f5s = new ProcSymbol(f5);
-		
-		v6.add(new VarDecl(BaseType.INT,"size"));
-		FunDecl f6 = new FunDecl(new PointerType(BaseType.VOID),"mcmalloc",v6,new Block());
-		Symbol f6s = new ProcSymbol(f6);
-		
-		//System.out.println(scope.getlen());
-		scope.put(f1s); scope.put(f2s); scope.put(f3s); scope.put(f4s); scope.put(f5s); scope.put(f6s);   //put builtin functions in the global scope
-		//System.out.println("here");
         for (StructTypeDecl std : p.structTypeDecls) {
             std.accept(this);
         }

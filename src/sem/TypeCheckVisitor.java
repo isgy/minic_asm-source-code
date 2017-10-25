@@ -161,16 +161,26 @@ public class TypeCheckVisitor extends BaseSemanticVisitor<Type>{
 
 	@Override
 	public Type visitBlock(Block b) {
+
+		for(VarDecl v : b.vars) {
+			v.accept(this);
+		}
+		for(Stmt s : b.stmts) {
+			s.accept(this);
+		}
         return null;
 	}
 	@Override
 	public Type visitBlock(Block b, List<VarDecl> p) {
-        for (VarDecl vd : b.vars) {
-            vd.accept(this);
-        }
-        for (Stmt s : b.stmts) {
-            s.accept(this);
-        }
+		for(VarDecl ps : p) {
+			ps.accept(this);
+		}
+		for(VarDecl v : b.vars) {
+			v.accept(this);
+		}
+		for(Stmt s : b.stmts) {
+			s.accept(this);
+		}
 		return null;
 	}
 	
