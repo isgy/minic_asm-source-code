@@ -5,10 +5,10 @@ import java.util.List;
 
 import ast.*;
 
-public class NameAnalysisVisitor extends BaseSemanticVisitor<Void> {
-Scope scope;
-    public NameAnalysisVisitor(Scope scope) {this.scope = scope;}
-    public NameAnalysisVisitor(){this.scope = new Scope();}
+public class StructNameVisitor extends BaseSemanticVisitor<Void> {
+	Scope scope;
+    public StructNameVisitor(Scope scope) {this.scope = scope;}
+    public StructNameVisitor(){this.scope = new Scope();}
     
 
 	@Override
@@ -49,7 +49,7 @@ Scope scope;
 	}
 	@Override
 	public Void visitFieldAccessExpr(FieldAccessExpr i) {
-		i.structure.accept(this);
+
 		return null;
 	}
 	@Override
@@ -93,18 +93,18 @@ Scope scope;
 
 	@Override
 	public Void visitStructType(StructType i) {
-	/*	Symbol ss = scope.lookup(i.ident);
+		Symbol ss = scope.lookup(i.ident);
 		if(ss == null)
 			error("not declared");
 		else if(!ss.isStruc()) 
 			error("declared but not as a struct");
 		else 
-			i.sd = ((StructSymbol) ss).sd; */
-		return null; 
+			i.sd = ((StructSymbol) ss).sd;
+		return null;
 	}
 	@Override
 	public Void visitStructTypeDecl(StructTypeDecl i) {
-		/*Symbol s = scope.lookupCurrent(i.stype.ident);
+		Symbol s = scope.lookupCurrent(i.stype.ident);
 		if (s!= null) {
 			error("struct is already defined");
 		}
@@ -115,15 +115,8 @@ Scope scope;
 			for(VarDecl v : i.vardecls) {
 				v.accept(this);
 			}
-			scope = oldscope; 
-		}*/
-		Scope oldscope = scope;
-		scope = new Scope();
-		for(VarDecl v : i.vardecls) {
-			v.accept(this);
+			scope = oldscope;
 		}
-		scope = oldscope;
-		
 		return null;
 	}
 	@Override
@@ -236,9 +229,9 @@ Scope scope;
 	public Void visitVarExpr(VarExpr v) {
 		Symbol vs = scope.lookup(v.name);
 		if(vs == null)
-			error(String.format("%s is not declared",v.name));
+			error("not declared");
 		else if(!vs.isVar()) 
-			error(String.format("%s is not a var",v.name));
+			error("not a var");
 		else 
 			v.vd = ((VarSymbol) vs).vd;
 		return null;
@@ -247,7 +240,7 @@ Scope scope;
 	public Void visitFunDecl(FunDecl p) {
 		Symbol f = scope.lookupCurrent(p.name);
 		if (f!= null) {
-			error(String.format("function %s is already defined",p.name));
+			error("function is already defined");
 		}
 		else {  
 			scope.put(new ProcSymbol(p));
@@ -261,9 +254,9 @@ Scope scope;
 	public Void visitFunCallExpr(FunCallExpr f) {
 		Symbol fc = scope.lookup(f.name);
 		if(fc == null)
-			error(String.format("%s is not declared",f.name));
+			error("not declared");
 		else if(!fc.isProc()) 
-			error(String.format("%s is not a function",f.name));
+			error("declared but not a function");
 		else 
 			f.fd = ((ProcSymbol) fc).fd;
 		return null;

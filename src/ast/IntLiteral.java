@@ -1,7 +1,7 @@
 package ast;
 
 public class IntLiteral extends Expr {
-	int i;
+	public int i;
 //	String toStr() {return ""+i;}
 //	int eval() {return i;}
 	public IntLiteral(int i){ this.i = i; }
