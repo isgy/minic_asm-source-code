@@ -154,6 +154,7 @@ public class TypeCheckVisitor extends BaseSemanticVisitor<Type>{
 			ch[id] = chars[id];
 		}
 		ch[ch.length - 1] = '\0';
+		i.chararray = ch;   
 		i.type = new ArrayType(BaseType.CHAR,i.str.length() + 1);
         return i.type;
 	}
@@ -272,7 +273,32 @@ public class TypeCheckVisitor extends BaseSemanticVisitor<Type>{
 
 	@Override
 	public Type visitFunCallExpr(FunCallExpr f) {
-		f.type = f.fd.type;
+		
+		if(f.fd.params.size() != f.args.size()) {
+			error("number of arguments do match params");
+		}else {
+			for(int i = 0; i < f.args.size(); i++) {    //linkedlist implements deque
+			 VarDecl v = f.fd.params.get(i);
+			 Expr arg = f.args.get(i);
+			 Type argtype = arg.accept(this);
+			 if(v.type.getClass() == ArrayType.class && argtype.getClass() == ArrayType.class) {
+				 ArrayType vt = (ArrayType) v.type;
+				 ArrayType at = (ArrayType) argtype;
+				 if(vt.num_elems != at.num_elems) {
+					 error("arrays of args and params are not the same length");
+					 return null;
+				 }else {
+					 f.type = f.fd.type;
+				 }
+			 }
+			 if(v.type != argtype) {
+				 error("type of params do not match args");
+				 return null;
+			 }
+			}
+			f.type = f.fd.type;  //if this is reached, param types match arguments. set the type for the funcall
+		}
+		
 		return f.fd.type;
 	}
 
