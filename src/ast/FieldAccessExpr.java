@@ -1,7 +1,8 @@
 package ast;
 
 public class FieldAccessExpr extends Expr {
-	//public StructTypeDecl sd;
+	public StructTypeDecl sd;
+	public VarDecl fd;
 	public Expr structure;
 	public String fieldname;
 	public FieldAccessExpr(Expr st, String fn){structure = st; fieldname = fn;}

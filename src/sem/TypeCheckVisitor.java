@@ -3,7 +3,6 @@ import ast.*;
 
 import java.util.List;
 
-import ast.*;
 
 public class TypeCheckVisitor extends BaseSemanticVisitor<Type>{
 	Scope scope;
@@ -11,25 +10,47 @@ public class TypeCheckVisitor extends BaseSemanticVisitor<Type>{
     public TypeCheckVisitor(){this.scope = new Scope();}
 	@Override
 	public Type visitArrayAccessExpr(ArrayAccessExpr i) {
-       // if(i.array.type )
+		if(i.array.accept(this).getClass() != ArrayType.class) {
+			if(i.array.accept(this).getClass() == PointerType.class) {
+				PointerType p = (PointerType) i.array.accept(this);
+				if(i.index.accept(this) == BaseType.INT) {
+					i.type = p.ptype;
+					i.isArrayAcc= true;
+					return p.ptype;
+				}
+			}
+			else 
+				error("arrayaccess not an array or pointer");
+		}else {
+			ArrayType a = (ArrayType) i.array.accept(this);
+			if(i.index.accept(this) == BaseType.INT) {
+				i.type = a.tp;
+				i.isArrayAcc = true;
+				return a.tp;
+			}
+		}
 		return null;
 	}
 	@Override
 	public Type visitArrayType(ArrayType i) {
-		//if(i.tp.accept(this) )
-        return null;
+		return i;
 	}
 	@Override
 	public Type visitAssign(Assign i) {
-		if(i.ex.accept(this) == BaseType.VOID) {
+		Type itype = i.ex.accept(this);
+		if(itype == BaseType.VOID) {
 			error("void assignment");
+		}else if(!(i.ex.isValatExp || i.ex.isArrayAcc || i.ex.isFieldAcc || i.ex.isVarExp) ){
+			error("cannot assign lhs");
+		}else {
+			if(i.isexp.accept(this) == itype) {
+				return null;
+			}
+			else {
+				error("assign types not equal");
+			}
 		}
-		if(i.ex instanceof Type) {
-			//if(i.ex.type != ArrayType && i.ex.accept(this) == i.isexp.accept(this)) {
-		}
-			
-		
-        return null;
+		return null;
 	}
 	@Override
 	public Type visitBaseType(BaseType bt) {
@@ -62,35 +83,35 @@ public class TypeCheckVisitor extends BaseSemanticVisitor<Type>{
 	}
 	@Override
 	public Type visitExprStmt(ExprStmt i) {
-		return i.accept(this);
+		return i.exp.accept(this);
 	}
 	@Override
 	public Type visitFieldAccessExpr(FieldAccessExpr i) {
-		StructType s = null;
-		try {
-			s = (StructType) i.structure.accept(this);
-		}
-	    catch (Exception e) {
-				error("fieldaccess");
-			}
-	    boolean c = false;
-		if(s != null) {
-			for(VarDecl v : s.sd.vardecls) {
+		if(i.structure.accept(this).getClass() != StructType.class) {
+			error("not a struct");
+		}else {
+			StructType t = (StructType) i.structure.accept(this);
+			boolean c = false;
+			for(VarDecl v : t.sd.vardecls) {
 				if(v.varName == i.fieldname) {
 					i.type = v.type;
 					c = true;
+					i.isFieldAcc = true;
 				}
 			}
 			if(c) 
 				return null;
 			else 
 				error("no field in struct");
-		}   
+			
+		}
 		return null;
 	}
 	@Override
 	public Type visitIf(If i) {
-	     i.ifexp.accept(this);
+	     if(i.ifexp.accept(this) != BaseType.INT) {
+	    	 error("ifexp not an int");
+	     }
 	     i.stm.accept(this);
 	     if(i.else_stm != null) { 
 	      	i.else_stm.accept(this); 
@@ -109,8 +130,7 @@ public class TypeCheckVisitor extends BaseSemanticVisitor<Type>{
 	}
 	@Override
 	public Type visitPointerType(PointerType i) {
-		i.ptype.accept(this);
-		return null;
+        return i;
 	}
 	@Override
 	public Type visitReturn(Return i) {
@@ -121,6 +141,7 @@ public class TypeCheckVisitor extends BaseSemanticVisitor<Type>{
 	}
 	@Override
 	public Type visitSizeOfExpr(SizeOfExpr i) {
+		i.tp.accept(this);
 		i.type = BaseType.INT;
 		return BaseType.INT;
 	}
@@ -133,30 +154,59 @@ public class TypeCheckVisitor extends BaseSemanticVisitor<Type>{
 			ch[id] = chars[id];
 		}
 		ch[ch.length - 1] = '\0';
-//		i.type = ch;
-        return null;
+		i.type = new ArrayType(BaseType.CHAR,i.str.length() + 1);
+        return i.type;
 	}
 
 	@Override
 	public Type visitStructType(StructType i) {
+		//if(i.sd.stype.ident == i.ident) {
+		//return i.sd.stype;
 		return i;
+	//	}
 	}
 	@Override
 	public Type visitStructTypeDecl(StructTypeDecl i) {
-		return null;
+	        if(i.stype.accept(this).getClass() != StructType.class) {
+	        	error("not a struct");
+	        }
+	        for (VarDecl vd : i.vardecls) {
+	            vd.accept(this);
+	        }
+	        return null;
 	}
 	@Override
 	public Type visitTypecastExpr(TypecastExpr i) {
-		return null;
+		if(i.exp.accept(this) == BaseType.CHAR && i.cast == BaseType.INT) {
+			i.type = BaseType.INT;
+		}else if(i.exp.accept(this).getClass() == ArrayType.class && i.cast.getClass() == PointerType.class) {
+			i.type = new PointerType(i.cast);
+		}else if(i.exp.accept(this).getClass() == PointerType.class && i.cast.getClass() == PointerType.class) {
+			i.type = new PointerType(i.cast);
+		}else
+			error("cannot cast");
+		
+		return i.type;
 	}
 	@Override
 	public Type visitValueAtExpr(ValueAtExpr i) {
-		Type t = i.accept(this);
+		if(i.valueat.accept(this).getClass() != PointerType.class) {
+			error("not a pointer");
+		}else {
+			PointerType t = (PointerType) i.valueat.accept(this);
+			i.type = t.ptype;
+			i.isValatExp = true;
+			return t.ptype;
+		}
 		return null;
 	}
 
 	@Override
 	public Type visitWhile(While i) {
+		if(i.exp.type != BaseType.INT) {
+			error("while_param_not_an_int");
+		}
+		i.stm.accept(this);
 		return null;
 	}
 
@@ -206,18 +256,18 @@ public class TypeCheckVisitor extends BaseSemanticVisitor<Type>{
         if(vd.type == BaseType.VOID) {
         	error("typerror void vardecl");      
         }
-        return null;
+        return vd.type;
 	}
 
 	@Override
 	public Type visitVarExpr(VarExpr v) {
         v.type = v.vd.type;
+        v.isVarExp = true;
 		return v.vd.type;
 	}
 	@Override
 	public Type visitFunDecl(FunDecl p) {
-//already added decl in scope
-        return null;
+        return p.type;
 	}
 
 	@Override

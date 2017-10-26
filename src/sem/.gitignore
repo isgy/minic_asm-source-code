@@ -13,3 +13,5 @@
 /Expression.class
 /EvalVisitor.class
 /TypeSymbol.class
+/ReturnSymbol.class
+/StructCheckVisitor.class

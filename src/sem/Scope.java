@@ -1,4 +1,5 @@
 package sem;
+import ast.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,6 +7,7 @@ import java.util.Map;
 public class Scope {
 	private Scope outer;
 	private Map<String, Symbol> symbolTable;
+	private StructTypeDecl sd;
 	
 	public Scope(Scope outer) { 
 		this.outer = outer; 
@@ -17,6 +19,7 @@ public class Scope {
 		symbolTable = new HashMap<String, Symbol>();
 	}
 	
+
 /*	public String getouter() {
 		return "hasouter";
 	} */
@@ -31,6 +34,7 @@ public class Scope {
 		}
 	    return sym;
 	}
+
 	
 	public Symbol lookupCurrent(String name) {
 		Symbol sym = symbolTable.get(name);

@@ -57,8 +57,8 @@ public class StructNameVisitor extends BaseSemanticVisitor<Void> {
 	}
 	@Override
 	public Void visitFieldAccessExpr(FieldAccessExpr i) {
-
-		return null;
+         i.structure.accept(this);
+	      return null;
 	}
 	@Override
 	public Void visitIf(If i) {
@@ -112,7 +112,7 @@ public class StructNameVisitor extends BaseSemanticVisitor<Void> {
 	}
 	@Override
 	public Void visitStructTypeDecl(StructTypeDecl i) {
-		Symbol s = scope.lookupCurrent(i.stype.ident);
+		Symbol s = scope.lookup(i.stype.ident);
 		if (s!= null) {
 			error("struct is already defined");
 		}
@@ -247,6 +247,7 @@ public class StructNameVisitor extends BaseSemanticVisitor<Void> {
 	@Override
 	public Void visitFunDecl(FunDecl p) {
 		Symbol f = scope.lookupCurrent(p.name);
+		p.type.accept(this);
 		if (f!= null) {
 			error("function is already defined");
 		}
@@ -267,7 +268,9 @@ public class StructNameVisitor extends BaseSemanticVisitor<Void> {
 			error("declared but not a function");
 		else 
 			f.fd = ((ProcSymbol) fc).fd;
-		
+		    for(Expr a : f.args) {
+		    	a.accept(this);
+		    }
 		return null;
 	}
 	

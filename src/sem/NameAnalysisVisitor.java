@@ -266,6 +266,9 @@ Scope scope;
 			error(f.name+"is not a function,");
 		else 
 			f.fd = ((ProcSymbol) fc).fd;
+	    for(Expr a : f.args) {
+	    	a.accept(this);
+	    }
 		return null;
 	}
 	

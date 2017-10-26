@@ -7,6 +7,10 @@ public abstract class Expr implements ASTNode {
 	//| VarExpr | FunCallExpr | BinOp | ArrayAccessExpr
 	//| FieldAccessExpr | ValueAtExpr | SizeOfExpr | TypecastExpr
     public Type type; // to be filled in by the type analyser
+    public boolean isValatExp = false;
+    public boolean isVarExp = false;
+    public boolean isFieldAcc = false;
+    public boolean isArrayAcc = false;
   //  abstract String toStr();
     //abstract int eval();
     public int eval;
