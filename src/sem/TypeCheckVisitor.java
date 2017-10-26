@@ -58,7 +58,9 @@ public class TypeCheckVisitor extends BaseSemanticVisitor<Type>{
 	}
 	@Override
 	public Type visitBinOp(BinOp i) {
+		
         Type lhsT = i.lhs.accept(this);
+        System.out.println(lhsT.toString());
         Type rhsT = i.rhs.accept(this);
         if(i.op == Op.ADD || i.op == Op.SUB || i.op == Op.MUL || i.op == Op.DIV || i.op == Op.MOD || i.op == Op.GT || i.op == Op.LT || i.op == Op.GE || i.op == Op.LE) {
         	if(lhsT == BaseType.INT && rhsT == BaseType.INT) {
@@ -78,8 +80,8 @@ public class TypeCheckVisitor extends BaseSemanticVisitor<Type>{
 	}
 	@Override
 	public Type visitChrLiteral(ChrLiteral i) {
-        i.type = BaseType.CHAR;
-		return BaseType.CHAR;
+		i.type = BaseType.CHAR;
+		return i.type;
 	}
 	@Override
 	public Type visitExprStmt(ExprStmt i) {
@@ -207,7 +209,7 @@ public class TypeCheckVisitor extends BaseSemanticVisitor<Type>{
 
 	@Override
 	public Type visitWhile(While i) {
-		if(i.exp.type != BaseType.INT) {
+		if(i.exp.accept(this) != BaseType.INT) {
 			error("while_param_not_an_int");
 		}
 		i.stm.accept(this);
