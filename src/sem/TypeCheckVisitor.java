@@ -5,9 +5,7 @@ import java.util.List;
 
 
 public class TypeCheckVisitor extends BaseSemanticVisitor<Type>{
-	Scope scope;
-    public TypeCheckVisitor(Scope scope) {this.scope = scope;}
-    public TypeCheckVisitor(){this.scope = new Scope();}
+
 	@Override
 	public Type visitArrayAccessExpr(ArrayAccessExpr i) {
 		if(i.array.accept(this).getClass() != ArrayType.class) {
@@ -37,6 +35,7 @@ public class TypeCheckVisitor extends BaseSemanticVisitor<Type>{
 	}
 	@Override
 	public Type visitAssign(Assign i) {
+		
 		Type itype = i.ex.accept(this);
 		if(itype == BaseType.VOID) {
 			error("void assignment");
@@ -50,6 +49,7 @@ public class TypeCheckVisitor extends BaseSemanticVisitor<Type>{
 				error("assign types not equal");
 			}
 		}
+		System.out.println(itype.toString());
 		return null;
 	}
 	@Override
@@ -135,7 +135,10 @@ public class TypeCheckVisitor extends BaseSemanticVisitor<Type>{
 	@Override
 	public Type visitReturn(Return i) {
 		if(i.ret != null) {
-		i.ret.accept(this);
+		   Type rt = i.ret.accept(this);
+		   if(i.fun.accept(this) != rt) {
+			   error("return type does not match");
+		   }
 		}
 		return null;
 	}
@@ -268,6 +271,10 @@ public class TypeCheckVisitor extends BaseSemanticVisitor<Type>{
 	}
 	@Override
 	public Type visitFunDecl(FunDecl p) {
+		for(VarDecl v : p.params) {
+			v.accept(this);
+		}
+		p.block.accept(this);
         return p.type;
 	}
 
@@ -298,6 +305,7 @@ public class TypeCheckVisitor extends BaseSemanticVisitor<Type>{
 			if(c) {
 			f.type = f.fd.type;  //if this is reached, param types match arguments. set the type for the funcall
 			return f.fd.type;
+			
 			}
 		}
 		

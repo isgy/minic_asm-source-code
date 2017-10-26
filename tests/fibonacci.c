@@ -13,18 +13,20 @@ void main() {
   char* ss;
   int a[2];
   char c[10];
+  int cc;
   // read n from the standard input
   n = read_i();
+  
   
   first = 0;
   second = 1;
     
   print_s((char*)"First ");
-  print_i(n);
+  print_i(8);
   print_s((char*)" terms of Fibonacci series are : ");
  
   c = 0;
-  while (c < n) {
+  while (c < 1) {
     if ( c <= 1 || (c >= 6 && t >= 8)){
        if(bee >= fb){
           cc = 4;

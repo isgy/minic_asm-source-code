@@ -269,6 +269,7 @@ public class StructNameVisitor extends BaseSemanticVisitor<Void> {
 		else 
 			f.fd = ((ProcSymbol) fc).fd;
 		    for(Expr a : f.args) {
+		    	
 		    	a.accept(this);
 		    }
 		return null;

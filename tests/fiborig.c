@@ -36,7 +36,7 @@ void main() {
   
   first = 0;
   second = 1;
-    
+ next = t;   
   print_s((char*)"First ");
   print_i(n);
   print_s((char*)" terms of Fibonacci series are : "); 
