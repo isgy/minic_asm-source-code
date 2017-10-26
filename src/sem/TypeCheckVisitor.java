@@ -138,9 +138,9 @@ public class TypeCheckVisitor extends BaseSemanticVisitor<Type>{
 	public Type visitReturn(Return i) {
 		if(i.ret != null) {
 		   Type rt = i.ret.accept(this);
-		   if(i.fun.accept(this) != rt) {
+		/*   if(i.fun.accept(this) != rt) {
 			   error("return type does not match");
-		   }
+		   } */
 		}
 		return null;
 	}
