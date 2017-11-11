@@ -215,6 +215,7 @@ public class ASTPrinter implements ASTVisitor<Void> {
             delimiter = ",";
             s.accept(this);
         }
+
         writer.print(")");
         return null;
     }
