@@ -12,8 +12,13 @@ void main() {
   char t;
   char* ss;
   int a[2];
-  char c[10];
+  //char c[10];
   int cc;
+  int bee;
+  int fb;
+  int tt;
+  int bb;
+  int foobar;
   // read n from the standard input
   n = read_i();
   

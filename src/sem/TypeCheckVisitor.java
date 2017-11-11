@@ -64,6 +64,8 @@ public class TypeCheckVisitor extends BaseSemanticVisitor<Type>{
         Type rhsT = i.rhs.accept(this);
         if(i.op == Op.ADD || i.op == Op.SUB || i.op == Op.MUL || i.op == Op.DIV || i.op == Op.MOD || i.op == Op.GT || i.op == Op.LT || i.op == Op.GE || i.op == Op.LE) {
         	if(lhsT == BaseType.INT && rhsT == BaseType.INT) {
+        		
+        		
         		i.type = BaseType.INT;
         		return BaseType.INT;
         	}
@@ -302,6 +304,8 @@ public class TypeCheckVisitor extends BaseSemanticVisitor<Type>{
 				 }
 			 }
 			 if(v.type != argtype) {
+				 System.out.println(v.type.toString());
+				 System.out.println(argtype.toString());
 				 error("type of params do not match args");
 				 c = false;
 			 }
