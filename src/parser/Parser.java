@@ -571,10 +571,10 @@ public class Parser {
     	Expr e = parseExp();
     	return new TypecastExpr(t,e);
     }
-    private Stmt parseStmt() {
+    private Stmt parseStmt(Type t5) {
     	if(accept(TokenClass.LBRA)) {
     		
-    		return parseBlock();
+    		return parseBlock(t5);
     	}
     	else if(accept(TokenClass.IF)) {
     		System.out.println("before_if");
@@ -584,10 +584,10 @@ public class Parser {
         	Expr ie = parseExp();
        // 	System.out.println(token.toString());
         	expect(TokenClass.RPAR);
-        	Stmt s = parseStmt();
+        	Stmt s = parseStmt(t5);
         	if(accept(TokenClass.ELSE)) {
         		nextToken();
-        		Stmt es = parseStmt();
+        		Stmt es = parseStmt(t5);
         		return new If(ie,s,es);
         	}
         	else 
@@ -598,7 +598,7 @@ public class Parser {
     		expect(TokenClass.LPAR);	
     		Expr ex = parseExp();
     		expect(TokenClass.RPAR);
-    		Stmt st = parseStmt();
+    		Stmt st = parseStmt(t5);
     		return new While(ex,st);
     	}
     	else if(accept(TokenClass.RETURN)) {
@@ -606,11 +606,11 @@ public class Parser {
     		if(accept(TokenClass.LPAR,TokenClass.CHAR_LITERAL,TokenClass.INT_LITERAL, TokenClass.STRING_LITERAL, TokenClass.IDENTIFIER, TokenClass.MINUS, TokenClass.ASTERIX, TokenClass.SIZEOF)) {
     			Expr e = parseExp();
     		    expect(TokenClass.SC);
-    		    return new Return(e);
+    		    return new Return(e,t5);
     		}
     		else{
     		    expect(TokenClass.SC);
-    		    return new Return();
+    		    return new Return(t5);
     		}
     	}
     	else {
@@ -630,25 +630,25 @@ public class Parser {
 
     }
     
-    private List<Stmt> parseStmts() {
+    private List<Stmt> parseStmts(Type ttt) {
     	List<Stmt> s = new LinkedList<Stmt>();
-    	return parseStmts(s);
+    	return parseStmts(ttt, s);
     }
-    private List<Stmt> parseStmts(List<Stmt> sl) {
+    private List<Stmt> parseStmts(Type t4, List<Stmt> sl) {
     	if(accept(TokenClass.LBRA,TokenClass.IF,TokenClass.WHILE,TokenClass.RETURN,TokenClass.MINUS,TokenClass.LPAR,TokenClass.SIZEOF,TokenClass.ASTERIX,TokenClass.INT_LITERAL,TokenClass.CHAR_LITERAL,TokenClass.STRING_LITERAL,TokenClass.IDENTIFIER)) {
     		
     		System.out.println("before_stmts");
-    		Stmt stm = parseStmt();
+    		Stmt stm = parseStmt(t4);
     		sl.add(stm);
-    		parseStmts(sl);
+    		parseStmts(t4, sl);
     	}
     	return sl;
     }
-    private Block parseBlock() {
+    private Block parseBlock(Type tt) {
     	System.out.println("before_block");
     	expect(TokenClass.LBRA);
     	List<VarDecl> vars = parseVarDecls();
-    	List<Stmt> stmts = parseStmts();
+    	List<Stmt> stmts = parseStmts(tt);
     	expect(TokenClass.RBRA);
     	System.out.println("end_block");
     	return new Block(vars,stmts);
@@ -660,7 +660,7 @@ public class Parser {
     	expect(TokenClass.LPAR);
     	List<VarDecl> params = parseParams();
     	expect(TokenClass.RPAR);
-    	Block b = parseBlock();
+    	Block b = parseBlock(t);
     	return new FunDecl(t, s, params, b);
     }
 

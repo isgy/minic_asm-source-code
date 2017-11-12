@@ -271,6 +271,11 @@ Scope scope;
 	    }
 		return null;
 	}
+	@Override
+	public Void visitProcType(ProcType procType) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 	// To be completed...

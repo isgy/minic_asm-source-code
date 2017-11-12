@@ -5,6 +5,9 @@ import java.util.List;
 
 
 public class TypeCheckVisitor extends BaseSemanticVisitor<Type>{
+//	Scope scope;
+//    public TypeCheckVisitor(Scope scope) {this.scope = scope;}
+//    public TypeCheckVisitor(){this.scope = new Scope();}
 
 	@Override
 	public Type visitArrayAccessExpr(ArrayAccessExpr i) {
@@ -113,7 +116,8 @@ public class TypeCheckVisitor extends BaseSemanticVisitor<Type>{
 	}
 	@Override
 	public Type visitIf(If i) {
-	     if(i.ifexp.accept(this) != BaseType.INT) {
+		 Type ex = i.ifexp.accept(this);
+	     if(ex != BaseType.INT) {
 	    	 error("ifexp not an int");
 	     }
 	     i.stm.accept(this);
@@ -140,10 +144,17 @@ public class TypeCheckVisitor extends BaseSemanticVisitor<Type>{
 	public Type visitReturn(Return i) {
 		if(i.ret != null) {
 		   Type rt = i.ret.accept(this);
+		   Type ft = i.rtype.accept(this);
+		   if(rt != ft) {
+			   error("return type does not match");
+		   }
 		/*   if(i.fun.accept(this) != rt) {
 			   error("return type does not match");
 		   } */
-		}
+		}else if(i.rtype.accept(this) != BaseType.VOID) {
+	        	error("not void");
+	        }   //if null return, check function type is void
+		
 		return null;
 	}
 	@Override
@@ -213,7 +224,8 @@ public class TypeCheckVisitor extends BaseSemanticVisitor<Type>{
 
 	@Override
 	public Type visitWhile(While i) {
-		if(i.exp.accept(this) != BaseType.INT) {
+		Type ex = i.exp.accept(this);
+		if(ex != BaseType.INT) {
 			error("while_param_not_an_int");
 		}
 		i.stm.accept(this);
@@ -266,7 +278,7 @@ public class TypeCheckVisitor extends BaseSemanticVisitor<Type>{
         if(vd.type == BaseType.VOID) {
         	error("typerror void vardecl");      
         }
-        return vd.type;
+        return null;
 	}
 
 	@Override
@@ -281,7 +293,7 @@ public class TypeCheckVisitor extends BaseSemanticVisitor<Type>{
 			v.accept(this);
 		}
 		p.block.accept(this);
-        return p.type;
+        return null;
 	}
 
 	@Override
@@ -319,6 +331,11 @@ public class TypeCheckVisitor extends BaseSemanticVisitor<Type>{
 		
 		return null;
 	
+	}
+	@Override
+	public Type visitProcType(ProcType procType) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 

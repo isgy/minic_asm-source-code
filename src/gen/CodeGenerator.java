@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.EmptyStackException;
+import java.util.List;
 import java.util.Stack;
 
 public class CodeGenerator implements ASTVisitor<Register> {
@@ -88,4 +89,130 @@ public class CodeGenerator implements ASTVisitor<Register> {
         // TODO: to complete
         return null;
     }
+
+	@Override
+	public Register visitPointerType(PointerType p) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Register visitStructType(StructType s) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Register visitArrayType(ArrayType p) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Register visitIntLiteral(IntLiteral e) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Register visitStrLiteral(StrLiteral e) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Register visitChrLiteral(ChrLiteral e) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Register visitFunCallExpr(FunCallExpr e) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Register visitBinOp(BinOp e) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Register visitArrayAccessExpr(ArrayAccessExpr e) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Register visitFieldAccessExpr(FieldAccessExpr e) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Register visitValueAtExpr(ValueAtExpr e) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Register visitSizeOfExpr(SizeOfExpr e) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Register visitTypecastExpr(TypecastExpr e) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Register visitOp(Op o) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Register visitExprStmt(ExprStmt e) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Register visitWhile(While w) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Register visitIf(If i) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Register visitAssign(Assign a) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Register visitBlock(Block b, List<VarDecl> p) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Register visitReturn(Return r) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Register visitProcType(ProcType procType) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

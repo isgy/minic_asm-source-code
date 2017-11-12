@@ -36,6 +36,7 @@ public interface ASTVisitor<T> {
     public T visitVarDecl(VarDecl vd);
     public T visitVarExpr(VarExpr v);
 	public T visitReturn(Return r);
+	public T visitProcType(ProcType procType);
 	
 
 	
