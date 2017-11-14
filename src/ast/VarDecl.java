@@ -3,7 +3,7 @@ package ast;
 public class VarDecl implements ASTNode {
     public final Type type;
     public final String varName;
-    public final int offset;
+    public final int offset = 0;
 
     public VarDecl(Type type, String varName) {
 	    this.type = type;
