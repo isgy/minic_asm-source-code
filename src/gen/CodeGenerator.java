@@ -14,7 +14,7 @@ public class CodeGenerator implements ASTVisitor<Register> {
     /*
      * Simple register allocator.
      */
-
+	String indent = "       ";
     // contains all the free temporary registers
     private Stack<Register> freeRegs = new Stack<Register>();
 
@@ -36,7 +36,7 @@ public class CodeGenerator implements ASTVisitor<Register> {
         freeRegs.push(reg);
     }
 
-
+    private boolean firstv = true;
 
 
 
@@ -57,6 +57,35 @@ public class CodeGenerator implements ASTVisitor<Register> {
 
     @Override
     public Register visitStructTypeDecl(StructTypeDecl st) {
+		int sizeof = 0;
+        for(VarDecl vd : st.vardecls) {
+        	sizeof = sizeof + 4;
+        }
+        writer.println(st.stype.ident+":");
+        for(VarDecl vd: st.vardecls) {
+        	if(vd.type.getClass() == ArrayType.class) {
+        		
+        		ArrayType at = (ArrayType) vd.type;
+        		if(at.tp == BaseType.CHAR) {
+        			writer.println(indent+".align  2");
+        			writer.println(indent+vd.varName+":    .space  "+at.num_elems);
+        		}
+        		else
+        			writer.println(indent+".align  2");
+        			writer.println(indent+vd.varName+":     .word   0:"+at.num_elems);
+        	}
+        	else if(vd.type == BaseType.CHAR) {
+        		writer.println(indent+vd.varName+":    .space  1");
+            }
+        	else if(vd.type == BaseType.INT) {
+        		writer.println(indent+vd.varName+":    .word  1");
+        	}
+        	else if(vd.type.getClass() == PointerType.class) {
+        		PointerType pt = (PointerType) vd.type;
+        		writer.println(indent+vd.varName+":     .word 1");
+        	}    	
+        	writer.println();
+        }
         return null;
     }
 
@@ -68,20 +97,81 @@ public class CodeGenerator implements ASTVisitor<Register> {
 
     @Override
     public Register visitFunDecl(FunDecl p) {
-        // TODO: to complete
-        return null;
+    	Register result = getRegister();
+    	if(p.name == "main") {
+            writer.println(indent+".globl main");
+    	}
+        writer.println(p.name+":");
+        if(p.name == "print_i") {
+        	writer.println("li   $v0, 1");
+        	writer.println("add  $a0, $t0, $zero");
+        	writer.println("syscall");
+        }
+        writer.println(indent+"addiu $sp, $sp, -4");
+        writer.println(indent+"sw $ra, 4($sp)");
+        
+        
+        
+        writer.println(indent+"lw $ra, 4($sp)");
+        writer.println(indent+"addiu $sp, $sp, 4");
+        writer.println("j $ra");
+        
+        return result ;
     }
 
     @Override
     public Register visitProgram(Program p) {
-        // TODO: to complete
+    	writer.println(indent+".data");
+    	for (StructTypeDecl std : p.structTypeDecls) {
+            std.accept(this);
+        }
+        for (VarDecl vd : p.varDecls) {
+            vd.accept(this);
+        }
+        firstv = false;
+        writer.println(indent+".text");
+        for (FunDecl fd : p.funDecls) {
+            fd.accept(this);
+        }
         return null;
     }
 
     @Override
     public Register visitVarDecl(VarDecl vd) {
-        // TODO: to complete
+        Register addrReg = getRegister();
+        Register result = getRegister();
+        if(firstv) {
+            	if(vd.type.getClass() == ArrayType.class) {
+            		
+            		ArrayType at = (ArrayType) vd.type;
+            		if(at.tp == BaseType.CHAR) {
+            			writer.println(indent+".align  2");
+            			writer.println(indent+vd.varName+":    .space  "+at.num_elems);
+            		}
+            		else
+            			writer.println(indent+".align  2");
+            			writer.println(indent+vd.varName+":     .word   0:"+at.num_elems);
+            	}
+            	else if(vd.type == BaseType.CHAR) {
+            		writer.println(indent+vd.varName+":    .space  1");
+                }
+            	else if(vd.type == BaseType.INT) {
+            		writer.println(indent+vd.varName+":    .word  1");
+            	}
+            	else if(vd.type.getClass() == PointerType.class) {
+            		PointerType pt = (PointerType) vd.type;
+            		writer.println(indent+vd.varName+":     .word 1");
+            	}    	
+            	writer.println();
+            	return null;
+        }
+        else{ 
+        //addiu $sp, $sp, -4     
+       // sw $zero, ($sp)     
+        writer.println("la addrReg "+vd.varName);
+        writer.println("la result ");
         return null;
+        }
     }
 
     @Override
@@ -104,14 +194,15 @@ public class CodeGenerator implements ASTVisitor<Register> {
 
 	@Override
 	public Register visitArrayType(ArrayType p) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
 	public Register visitIntLiteral(IntLiteral e) {
-		// TODO Auto-generated method stub
-		return null;
+		Register result = getRegister();
+		writer.println("li   "+result+", "+e.i);
+		return result;
 	}
 
 	@Override
@@ -134,8 +225,56 @@ public class CodeGenerator implements ASTVisitor<Register> {
 
 	@Override
 	public Register visitBinOp(BinOp e) {
-		// TODO Auto-generated method stub
-		return null;
+		Register lhsReg = e.lhs.accept(this);
+		Register rhsReg = e.rhs.accept(this);
+		Register result = getRegister();
+		switch(e.op) {
+		case ADD:
+			writer.println(indent+"add "+result+", "+lhsReg+", "+rhsReg);
+			break;
+		case MUL:
+			writer.println(indent+"mul "+result+", "+lhsReg+", "+rhsReg);
+			break;
+		case SUB:
+			 //la  $t0, tmpval
+			 // lw  $t1, 0($t0)  # $t1 == tmpval == 5
+			writer.println(indent+"sub "+result+", "+lhsReg+", "+rhsReg);
+			break;
+		case DIV:
+			writer.println(indent+"div "+lhsReg+", "+rhsReg);
+			writer.println(indent+"mflo "+result);
+			break;
+		case MOD:
+			writer.println(indent+"div "+lhsReg+", "+rhsReg);
+			writer.println(indent+"mfhi "+result);
+			break;
+		case GT:
+			writer.println(indent+"sgt "+result+", "+lhsReg+", "+rhsReg);
+			break;
+		case LT:
+			writer.println(indent+"slt "+result+", "+lhsReg+", "+rhsReg);
+			break;
+		case GE:
+		    writer.println(indent+"sge "+result+", "+lhsReg+", "+rhsReg);
+		    break;
+		case LE:
+			writer.println(indent+"sle "+result+", "+lhsReg+", "+rhsReg);
+			break;
+		case NE:
+			writer.println(indent+"sne "+result+", "+lhsReg+", "+rhsReg);
+			break;
+		case EQ:
+			writer.println(indent+"seq "+result+", "+lhsReg+", "+rhsReg);
+			break;
+		case OR:
+			writer.println(indent+"blez ");
+		case AND:
+			
+			
+		}
+		freeRegister(lhsReg);
+		freeRegister(rhsReg);
+		return result;
 	}
 
 	@Override
@@ -188,25 +327,54 @@ public class CodeGenerator implements ASTVisitor<Register> {
 
 	@Override
 	public Register visitIf(If i) {
-		// TODO Auto-generated method stub
+        Register res = i.ifexp.accept(this);
+        Register result;
+        if(i.else_stm != null) {
+        writer.print(indent+"blez "+res+" Else"); 
+        i.stm.accept(this);
+        writer.print(indent+"j Endif");
+        writer.print("Else: ");
+        
+        i.else_stm.accept(this);
+        writer.print("Endif: ");
+        }else {
+        	 writer.print(indent+"blez "+res+" Endif"); 	
+        	 i.stm.accept(this);
+        }
+
 		return null;
 	}
 
 	@Override
 	public Register visitAssign(Assign a) {
-		// TODO Auto-generated method stub
+        writer.print("Assign(");
+        a.ex.accept(this);
+        writer.print(",");
+        a.isexp.accept(this);
+        writer.print(")");
+       
 		return null;
 	}
 
 	@Override
 	public Register visitBlock(Block b, List<VarDecl> p) {
-		// TODO Auto-generated method stub
+
+		for(VarDecl v : b.vars) {
+			v.accept(this);
+		}
+		for(Stmt s : b.stmts) {
+			s.accept(this);
+		}
 		return null;
 	}
 
 	@Override
 	public Register visitReturn(Return r) {
-		// TODO Auto-generated method stub
+        writer.print("Return(");
+        if(r.ret != null) {
+           r.ret.accept(this);       	   
+        }
+        writer.print(")");
 		return null;
 	}
 
