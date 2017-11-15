@@ -29,7 +29,7 @@ public interface ASTVisitor<T> {
 	public T visitIf(If i);
 	public T visitAssign(Assign a);
 	public T visitBlock(Block b);
-	public T visitBlock(Block b, List<VarDecl> p);
+	public T visitBlock(Block b, List<VarDecl> p, FunDecl f);
     
     public T visitFunDecl(FunDecl p);
     public T visitProgram(Program p);

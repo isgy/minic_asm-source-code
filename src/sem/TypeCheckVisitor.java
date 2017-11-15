@@ -244,7 +244,7 @@ public class TypeCheckVisitor extends BaseSemanticVisitor<Type>{
         return null;
 	}
 	@Override
-	public Type visitBlock(Block b, List<VarDecl> p) {
+	public Type visitBlock(Block b, List<VarDecl> p, FunDecl f) {
 		for(VarDecl ps : p) {
 			ps.accept(this);
 		}

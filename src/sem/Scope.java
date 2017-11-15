@@ -19,10 +19,13 @@ public class Scope {
 		symbolTable = new HashMap<String, Symbol>();
 	}
 	
-
-/*	public String getouter() {
-		return "hasouter";
-	} */
+    
+	public boolean hasouter() {
+		if(this.outer != null) {
+		return true;
+		}else
+			return false;
+	} 
 	public Symbol lookup(String name) {
 		Symbol sym = null;
 		if(symbolTable.containsKey(name)) {

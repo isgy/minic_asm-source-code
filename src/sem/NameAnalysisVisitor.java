@@ -159,18 +159,28 @@ Scope scope;
 		return null;
 	}
 	@Override
-	public Void visitBlock(Block b, List<VarDecl> p) {
+	public Void visitBlock(Block b, List<VarDecl> p, FunDecl f) {
+		int offp = 8;
+		int offv = -4;
+		int lsz = 0;
 		Scope oldscope = scope;
 		scope = new Scope(oldscope);
 		for(VarDecl ps : p) {
 			ps.accept(this);
+			ps.offset = offp;
+			offp = offp + 8;
 		}
 		for(VarDecl v : b.vars) {
 			v.accept(this);
-		}
+			v.offset = offv;
+			offv = offv - 4;
+			lsz = lsz + 1;
+			}
+		
 		for(Stmt s : b.stmts) {
 			s.accept(this);
 		}
+		f.lsize = 4*lsz;
 		scope = oldscope;
 		return null;
 	}
@@ -228,6 +238,9 @@ Scope scope;
 		}
 		else {
 			scope.put(new VarSymbol(vd));
+			if(scope.hasouter()) {
+				vd.isLocal = true;
+			}
 		}
 		return null;
 	}
@@ -252,7 +265,7 @@ Scope scope;
 		else {  
 			scope.put(new ProcSymbol(p));
             //params have block scope
-			p.block.accept(this,p.params);
+			p.block.accept(this,p.params,p);
 		}
 		return null;
 	}

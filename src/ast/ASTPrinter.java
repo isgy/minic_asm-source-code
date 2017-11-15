@@ -196,7 +196,7 @@ public class ASTPrinter implements ASTVisitor<Void> {
     }
     
     @Override
-    public Void visitBlock(Block b, List<VarDecl> p) {
+    public Void visitBlock(Block b, List<VarDecl> p, FunDecl f) {
         b.accept(this);
         return null;
     }

@@ -160,7 +160,7 @@ public class StructNameVisitor extends BaseSemanticVisitor<Void> {
 		return null;
 	}
 	@Override
-	public Void visitBlock(Block b, List<VarDecl> p) {
+	public Void visitBlock(Block b, List<VarDecl> p,FunDecl f) {
 		Scope oldscope = scope;
 		scope = new Scope(oldscope);
 		for(VarDecl ps : p) {
@@ -254,7 +254,7 @@ public class StructNameVisitor extends BaseSemanticVisitor<Void> {
 		else {  
 			scope.put(new ProcSymbol(p));
             //params have block scope
-			p.block.accept(this,p.params);
+			p.block.accept(this,p.params,p);
 		}
 		return null;
 	}
