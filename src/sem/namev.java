@@ -1,3 +1,4 @@
+
 package sem;
 
 import java.util.LinkedList;
@@ -5,11 +6,11 @@ import java.util.List;
 
 import ast.*;
 
-public class NameAnalysisVisitor extends BaseSemanticVisitor<Void> {
+public class namev extends BaseSemanticVisitor<Void> {
 Scope scope;
-    public NameAnalysisVisitor(Scope scope) {this.scope = scope;}
-    public NameAnalysisVisitor(){this.scope = new Scope();}
-    
+    public namev(Scope scope) {this.scope = scope;}
+    public namev(){this.scope = new Scope();}
+    public int stringacc =0;
 
 	@Override
 	public Void visitArrayAccessExpr(ArrayAccessExpr i) {
@@ -88,6 +89,8 @@ Scope scope;
 	}
 	@Override
 	public Void visitStrLiteral(StrLiteral i) {
+		stringacc = stringacc + 1;
+		i.label = "str"+stringacc;
 		return null;
 	}
 
@@ -160,18 +163,27 @@ Scope scope;
 	}
 	@Override
 	public Void visitBlock(Block b, List<VarDecl> p, FunDecl f) {
+		int offp = 8;
+		int offv = -4;
+		int lsz = 0;
 		Scope oldscope = scope;
 		scope = new Scope(oldscope);
 		for(VarDecl ps : p) {
 			ps.accept(this);
+			ps.offset = offp;
+			offp = offp + 8;
 		}
 		for(VarDecl v : b.vars) {
 			v.accept(this);
+			v.offset = offv;
+			offv = offv - 4;
+			lsz = lsz + 1;
 			}
 		
 		for(Stmt s : b.stmts) {
 			s.accept(this);
 		}
+		f.lsize = 4*lsz;
 		scope = oldscope;
 		return null;
 	}

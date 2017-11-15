@@ -2,6 +2,7 @@ package sem;
 
 import java.util.ArrayList;
 
+
 public class SemanticAnalyzer {
 	
 	public int analyze(ast.Program prog) {
@@ -11,6 +12,8 @@ public class SemanticAnalyzer {
 			add(new NameAnalysisVisitor());
 			add(new StructNameVisitor());
 			add(new TypeCheckVisitor());
+			add(new namev());
+		
 		}};
 		// Error accumulator
 		int errors = 0;
