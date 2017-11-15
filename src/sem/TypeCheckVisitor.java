@@ -52,7 +52,8 @@ public class TypeCheckVisitor extends BaseSemanticVisitor<Type>{
 				error("assign types not equal");
 			}
 		}
-		System.out.println(itype.toString());
+		if(itype != null) {
+		System.out.println(itype.toString());}
 		return null;
 	}
 	@Override
@@ -317,7 +318,9 @@ public class TypeCheckVisitor extends BaseSemanticVisitor<Type>{
 			 }
 			 if(v.type != argtype) {
 				 System.out.println(v.type.toString());
+				 if(argtype != null) {
 				 System.out.println(argtype.toString());
+				 }
 				 error("type of params do not match args");
 				 c = false;
 			 }

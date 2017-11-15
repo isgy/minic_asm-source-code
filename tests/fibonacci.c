@@ -55,7 +55,7 @@ void main() {
 	second = next;
       }
     print_i(next);
-    print_s((char*)" ");
+    print_s((char*)" adg");
     c = c+1;
     return; return foobar; 
   }
