@@ -273,8 +273,8 @@ public class CodeGenerator implements ASTVisitor<Register> {
 	public Register visitIntLiteral(IntLiteral e) {
 		Register result = getRegister();
 		writer.println("li   "+result+", "+e.i);
-		writer.println("sw   "+result+", ($sp)");
-		writer.println("addi $sp, $sp, -4");
+	//	writer.println("sw   "+result+", ($sp)");
+	//	writer.println("addi $sp, $sp, -4");
 		return result;
 	}
 
