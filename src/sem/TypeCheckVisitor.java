@@ -199,22 +199,23 @@ public class TypeCheckVisitor extends BaseSemanticVisitor<Type>{
 	public Type visitTypecastExpr(TypecastExpr i) {
 		if(i.exp.accept(this) == BaseType.CHAR && i.cast == BaseType.INT) {
 			i.type = BaseType.INT;
-		if(i.exp.accept(this) == BaseType.INT && i.cast == BaseType.CHAR) {
+		}
+		else if(i.exp.accept(this) == BaseType.INT && i.cast == BaseType.CHAR) {
 				i.type = BaseType.INT;
-		}else if(i.exp.accept(this).getClass() == ArrayType.class && i.cast.accept(this).getClass() == PointerType.class) {
+		}
+		else if(i.exp.accept(this).getClass() == ast.ArrayType.class && i.cast.accept(this).getClass() == ast.PointerType.class) {
 			PointerType ca = (PointerType) i.cast;
 			i.type = new PointerType(ca.ptype);
-		}else if(i.exp.accept(this).getClass() == PointerType.class && i.cast.accept(this).getClass() == PointerType.class) {
+		}
+		else if(i.exp.accept(this).getClass() == ast.PointerType.class && i.cast.accept(this).getClass() == ast.PointerType.class) {
 			PointerType ca = (PointerType) i.cast;
 			i.type = new PointerType(ca.ptype);
 		}else
 			error("cannot cast");
-		}
-		//PointerType ca = (PointerType) i.cast;
-		//i.type = new PointerType(ca.ptype);
-		System.out.println(i.exp.accept(this).getClass());
+
+		/*System.out.println(i.exp.accept(this).getClass());
 		System.out.println(i.cast.accept(this).getClass());
-		System.out.println(i.type);
+		System.out.println(i.type); */
 		return i.type;
 	}
 	@Override
@@ -323,7 +324,7 @@ public class TypeCheckVisitor extends BaseSemanticVisitor<Type>{
 					 c = false;
 				 }
 			 }
-			 if(v.type != argtype) {
+			 if(v.type.getClass() != argtype.getClass()) {
 				 System.out.println(v.type.toString());
 				 if(argtype != null) {
 				 System.out.println(argtype.toString());
