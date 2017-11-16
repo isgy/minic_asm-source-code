@@ -1,0 +1,492 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 351272960 bytes for committing reserved memory.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_linux.cpp:2640), pid=32706, tid=0x00007f77b80cc700
+#
+# JRE version:  (8.0_144-b01) (build )
+# Java VM: OpenJDK 64-Bit Server VM (25.144-b01 mixed mode linux-amd64 compressed oops)
+# Core dump written. Default location: /home/jing/projects/ct-17-18/core or core.32706
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007f77b000a800):  JavaThread "Unknown thread" [_thread_in_vm, id=32713, stack(0x00007f77b7fcc000,0x00007f77b80cd000)]
+
+Stack: [0x00007f77b7fcc000,0x00007f77b80cd000],  sp=0x00007f77b80cb5b0,  free space=1021k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0xaa3d82]
+V  [libjvm.so+0x4d85e7]
+V  [libjvm.so+0x8e0be0]
+V  [libjvm.so+0x8db29e]
+V  [libjvm.so+0x95af06]
+V  [libjvm.so+0x94b23c]
+V  [libjvm.so+0x2b444e]
+V  [libjvm.so+0x908251]
+V  [libjvm.so+0xa6640a]
+V  [libjvm.so+0xa666f5]
+V  [libjvm.so+0x623f6f]
+V  [libjvm.so+0xa49d5b]
+V  [libjvm.so+0x6a3020]  JNI_CreateJavaVM+0x60
+C  [libjli.so+0x2c53]
+C  [libpthread.so.0+0x708a]  start_thread+0xda
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+
+Other Threads:
+
+=>0x00007f77b000a800 (exited) JavaThread "Unknown thread" [_thread_in_vm, id=32713, stack(0x00007f77b7fcc000,0x00007f77b80cd000)]
+
+VM state:not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (0 events):
+No events
+
+
+Dynamic libraries:
+5e0500000-719200000 ---p 00000000 00:00 0 
+719200000-723900000 rw-p 00000000 00:00 0 
+723900000-7c0000000 ---p 00000000 00:00 0 
+55963da8e000-55963da8f000 r-xp 00000000 103:02 10748803                  /usr/lib/jvm/java-8-openjdk/jre/bin/java
+55963dc8e000-55963dc8f000 r--p 00000000 103:02 10748803                  /usr/lib/jvm/java-8-openjdk/jre/bin/java
+55963dc8f000-55963dc90000 rw-p 00001000 103:02 10748803                  /usr/lib/jvm/java-8-openjdk/jre/bin/java
+55963f4be000-55963f4df000 rw-p 00000000 00:00 0                          [heap]
+7f77a005a000-7f77a0ac8000 ---p 00000000 00:00 0 
+7f77a0ac8000-7f77a0b1c000 rw-p 00000000 00:00 0 
+7f77a0b1c000-7f77a0fff000 ---p 00000000 00:00 0 
+7f77a0fff000-7f77a1000000 rw-p 00000000 00:00 0 
+7f77a1000000-7f77a1270000 rwxp 00000000 00:00 0 
+7f77a1270000-7f77b0000000 ---p 00000000 00:00 0 
+7f77b0000000-7f77b0033000 rw-p 00000000 00:00 0 
+7f77b0033000-7f77b4000000 ---p 00000000 00:00 0 
+7f77b4bc5000-7f77b4bcf000 rw-p 00000000 00:00 0 
+7f77b4bcf000-7f77b4f85000 ---p 00000000 00:00 0 
+7f77b4f85000-7f77b4f8d000 r-xp 00000000 103:02 10758387                  /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libzip.so
+7f77b4f8d000-7f77b518c000 ---p 00008000 103:02 10758387                  /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libzip.so
+7f77b518c000-7f77b518d000 r--p 00007000 103:02 10758387                  /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libzip.so
+7f77b518d000-7f77b518e000 rw-p 00008000 103:02 10758387                  /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libzip.so
+7f77b518e000-7f77b5199000 r-xp 00000000 103:02 8390781                   /usr/lib/libnss_files-2.26.so
+7f77b5199000-7f77b5398000 ---p 0000b000 103:02 8390781                   /usr/lib/libnss_files-2.26.so
+7f77b5398000-7f77b5399000 r--p 0000a000 103:02 8390781                   /usr/lib/libnss_files-2.26.so
+7f77b5399000-7f77b539a000 rw-p 0000b000 103:02 8390781                   /usr/lib/libnss_files-2.26.so
+7f77b539a000-7f77b53a0000 rw-p 00000000 00:00 0 
+7f77b53a0000-7f77b53ab000 r-xp 00000000 103:02 8390776                   /usr/lib/libnss_nis-2.26.so
+7f77b53ab000-7f77b55aa000 ---p 0000b000 103:02 8390776                   /usr/lib/libnss_nis-2.26.so
+7f77b55aa000-7f77b55ab000 r--p 0000a000 103:02 8390776                   /usr/lib/libnss_nis-2.26.so
+7f77b55ab000-7f77b55ac000 rw-p 0000b000 103:02 8390776                   /usr/lib/libnss_nis-2.26.so
+7f77b55ac000-7f77b55c0000 r-xp 00000000 103:02 8390772                   /usr/lib/libnsl-2.26.so
+7f77b55c0000-7f77b57c0000 ---p 00014000 103:02 8390772                   /usr/lib/libnsl-2.26.so
+7f77b57c0000-7f77b57c1000 r--p 00014000 103:02 8390772                   /usr/lib/libnsl-2.26.so
+7f77b57c1000-7f77b57c2000 rw-p 00015000 103:02 8390772                   /usr/lib/libnsl-2.26.so
+7f77b57c2000-7f77b57c4000 rw-p 00000000 00:00 0 
+7f77b57c4000-7f77b57cb000 r-xp 00000000 103:02 8390784                   /usr/lib/libnss_compat-2.26.so
+7f77b57cb000-7f77b59ca000 ---p 00007000 103:02 8390784                   /usr/lib/libnss_compat-2.26.so
+7f77b59ca000-7f77b59cb000 r--p 00006000 103:02 8390784                   /usr/lib/libnss_compat-2.26.so
+7f77b59cb000-7f77b59cc000 rw-p 00007000 103:02 8390784                   /usr/lib/libnss_compat-2.26.so
+7f77b59cc000-7f77b59fa000 r-xp 00000000 103:02 10753442                  /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libjava.so
+7f77b59fa000-7f77b5bf9000 ---p 0002e000 103:02 10753442                  /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libjava.so
+7f77b5bf9000-7f77b5bfa000 r--p 0002d000 103:02 10753442                  /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libjava.so
+7f77b5bfa000-7f77b5bfc000 rw-p 0002e000 103:02 10753442                  /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libjava.so
+7f77b5bfc000-7f77b5c09000 r-xp 00000000 103:02 10749052                  /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libverify.so
+7f77b5c09000-7f77b5e08000 ---p 0000d000 103:02 10749052                  /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libverify.so
+7f77b5e08000-7f77b5e0a000 r--p 0000c000 103:02 10749052                  /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libverify.so
+7f77b5e0a000-7f77b5e0b000 rw-p 0000e000 103:02 10749052                  /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/libverify.so
+7f77b5e0b000-7f77b5e12000 r-xp 00000000 103:02 8390766                   /usr/lib/librt-2.26.so
+7f77b5e12000-7f77b6011000 ---p 00007000 103:02 8390766                   /usr/lib/librt-2.26.so
+7f77b6011000-7f77b6012000 r--p 00006000 103:02 8390766                   /usr/lib/librt-2.26.so
+7f77b6012000-7f77b6013000 rw-p 00007000 103:02 8390766                   /usr/lib/librt-2.26.so
+7f77b6013000-7f77b615e000 r-xp 00000000 103:02 8390773                   /usr/lib/libm-2.26.so
+7f77b615e000-7f77b635d000 ---p 0014b000 103:02 8390773                   /usr/lib/libm-2.26.so
+7f77b635d000-7f77b635e000 r--p 0014a000 103:02 8390773                   /usr/lib/libm-2.26.so
+7f77b635e000-7f77b635f000 rw-p 0014b000 103:02 8390773                   /usr/lib/libm-2.26.so
+7f77b635f000-7f77b7002000 r-xp 00000000 103:02 10758390                  /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/server/libjvm.so
+7f77b7002000-7f77b7202000 ---p 00ca3000 103:02 10758390                  /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/server/libjvm.so
+7f77b7202000-7f77b7296000 r--p 00ca3000 103:02 10758390                  /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/server/libjvm.so
+7f77b7296000-7f77b72be000 rw-p 00d37000 103:02 10758390                  /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/server/libjvm.so
+7f77b72be000-7f77b72ef000 rw-p 00000000 00:00 0 
+7f77b72ef000-7f77b749d000 r-xp 00000000 103:02 8390839                   /usr/lib/libc-2.26.so
+7f77b749d000-7f77b769c000 ---p 001ae000 103:02 8390839                   /usr/lib/libc-2.26.so
+7f77b769c000-7f77b76a0000 r--p 001ad000 103:02 8390839                   /usr/lib/libc-2.26.so
+7f77b76a0000-7f77b76a2000 rw-p 001b1000 103:02 8390839                   /usr/lib/libc-2.26.so
+7f77b76a2000-7f77b76a6000 rw-p 00000000 00:00 0 
+7f77b76a6000-7f77b76a9000 r-xp 00000000 103:02 8390774                   /usr/lib/libdl-2.26.so
+7f77b76a9000-7f77b78a8000 ---p 00003000 103:02 8390774                   /usr/lib/libdl-2.26.so
+7f77b78a8000-7f77b78a9000 r--p 00002000 103:02 8390774                   /usr/lib/libdl-2.26.so
+7f77b78a9000-7f77b78aa000 rw-p 00003000 103:02 8390774                   /usr/lib/libdl-2.26.so
+7f77b78aa000-7f77b78b8000 r-xp 00000000 103:02 10758393                  /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/jli/libjli.so
+7f77b78b8000-7f77b7ab7000 ---p 0000e000 103:02 10758393                  /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/jli/libjli.so
+7f77b7ab7000-7f77b7ab8000 r--p 0000d000 103:02 10758393                  /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/jli/libjli.so
+7f77b7ab8000-7f77b7ab9000 rw-p 0000e000 103:02 10758393                  /usr/lib/jvm/java-8-openjdk/jre/lib/amd64/jli/libjli.so
+7f77b7ab9000-7f77b7acf000 r-xp 00000000 103:02 8399442                   /usr/lib/libz.so.1.2.11
+7f77b7acf000-7f77b7cce000 ---p 00016000 103:02 8399442                   /usr/lib/libz.so.1.2.11
+7f77b7cce000-7f77b7ccf000 r--p 00015000 103:02 8399442                   /usr/lib/libz.so.1.2.11
+7f77b7ccf000-7f77b7cd0000 rw-p 00016000 103:02 8399442                   /usr/lib/libz.so.1.2.11
+7f77b7cd0000-7f77b7ce9000 r-xp 00000000 103:02 8390860                   /usr/lib/libpthread-2.26.so
+7f77b7ce9000-7f77b7ee8000 ---p 00019000 103:02 8390860                   /usr/lib/libpthread-2.26.so
+7f77b7ee8000-7f77b7ee9000 r--p 00018000 103:02 8390860                   /usr/lib/libpthread-2.26.so
+7f77b7ee9000-7f77b7eea000 rw-p 00019000 103:02 8390860                   /usr/lib/libpthread-2.26.so
+7f77b7eea000-7f77b7eee000 rw-p 00000000 00:00 0 
+7f77b7eee000-7f77b7f13000 r-xp 00000000 103:02 8390840                   /usr/lib/ld-2.26.so
+7f77b7fcc000-7f77b7fcf000 ---p 00000000 00:00 0 
+7f77b7fcf000-7f77b80cf000 rw-p 00000000 00:00 0 
+7f77b8106000-7f77b810e000 rw-s 00000000 00:26 4413818                    /tmp/hsperfdata_jing/32706
+7f77b810e000-7f77b810f000 rw-p 00000000 00:00 0 
+7f77b810f000-7f77b8110000 r--p 00000000 00:00 0 
+7f77b8110000-7f77b8112000 rw-p 00000000 00:00 0 
+7f77b8112000-7f77b8113000 r--p 00024000 103:02 8390840                   /usr/lib/ld-2.26.so
+7f77b8113000-7f77b8114000 rw-p 00025000 103:02 8390840                   /usr/lib/ld-2.26.so
+7f77b8114000-7f77b8115000 rw-p 00000000 00:00 0 
+7ffe3210e000-7ffe32130000 rw-p 00000000 00:00 0                          [stack]
+7ffe321c9000-7ffe321cc000 r--p 00000000 00:00 0                          [vvar]
+7ffe321cc000-7ffe321ce000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+VM Arguments:
+jvm_args: -Dant.home=/usr/share/apache-ant -Dant.library.dir=/usr/share/apache-ant/lib -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true 
+java_command: org.apache.tools.ant.launch.Launcher -cp  build
+java_class_path (initial): /usr/share/apache-ant/lib/ant-launcher.jar:/usr/share/java/junit.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+_JAVA_OPTIONS=-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true
+PATH=/home/jing/.gem/ruby/2.4.0/bin:/home/jing/.cabal/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/adobe-air-sdk/bin:/opt/android-sdk/tools:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl
+LD_LIBRARY_PATH=:/usr/lib/gtk-2.0/modules/
+SHELL=/usr/bin/zsh
+DISPLAY=:0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0xaa46c0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGBUS: [libjvm.so+0xaa46c0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGFPE: [libjvm.so+0x8dc3d0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGPIPE: [libjvm.so+0x8dc3d0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGXFSZ: [libjvm.so+0x8dc3d0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGILL: [libjvm.so+0x8dc3d0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGUSR1: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGUSR2: [libjvm.so+0x8dc280], sa_mask[0]=00000000000000000000000000000000, sa_flags=SA_RESTART|SA_SIGINFO
+SIGHUP: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGINT: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGTERM: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGQUIT: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+
+
+---------------  S Y S T E M  ---------------
+
+OS:NAME="Arch Linux"
+PRETTY_NAME="Arch Linux"
+ID=arch
+ID_LIKE=archlinux
+ANSI_COLOR="0;36"
+HOME_URL="https://www.archlinux.org/"
+SUPPORT_URL="https://bbs.archlinux.org/"
+BUG_REPORT_URL="https://bugs.archlinux.org/"
+
+
+uname:Linux 4.13.11-1-ARCH #1 SMP PREEMPT Thu Nov 2 10:25:56 CET 2017 x86_64
+libc:glibc 2.26 NPTL 2.26 
+rlimit: STACK 8192k, CORE infinity, NPROC 127087, NOFILE 4096, AS infinity
+load average:0.47 0.46 0.52
+
+/proc/meminfo:
+MemTotal:       32807092 kB
+MemFree:          269452 kB
+MemAvailable:     224356 kB
+Buffers:           25744 kB
+Cached:          2601696 kB
+SwapCached:            0 kB
+Active:         29219084 kB
+Inactive:        2592308 kB
+Active(anon):   29111560 kB
+Inactive(anon):  2419116 kB
+Active(file):     107524 kB
+Inactive(file):   173192 kB
+Unevictable:          32 kB
+Mlocked:              32 kB
+SwapTotal:             0 kB
+SwapFree:              0 kB
+Dirty:               116 kB
+Writeback:             0 kB
+AnonPages:      29184968 kB
+Mapped:          2204612 kB
+Shmem:           2450244 kB
+Slab:             220556 kB
+SReclaimable:      88452 kB
+SUnreclaim:       132104 kB
+KernelStack:       28092 kB
+PageTables:       226568 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:    16403544 kB
+Committed_AS:   43713504 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:           0 kB
+VmallocChunk:          0 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:   8886272 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:      497156 kB
+DirectMap2M:    30816256 kB
+DirectMap1G:     2097152 kB
+
+
+CPU:total 8 (initial active 8) (4 cores per cpu, 2 threads per core) family 6 model 158 stepping 9, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, rtm, 3dnowpref, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2, adx
+
+/proc/cpuinfo:
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 158
+model name	: Intel(R) Core(TM) i7-7820HQ CPU @ 2.90GHz
+stepping	: 9
+microcode	: 0x48
+cpu MHz		: 2900.000
+cache size	: 8192 KB
+physical id	: 0
+siblings	: 8
+core id		: 0
+cpu cores	: 4
+apicid		: 0
+initial apicid	: 0
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb intel_pt tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 xsaves dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp
+bugs		:
+bogomips	: 5810.00
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 1
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 158
+model name	: Intel(R) Core(TM) i7-7820HQ CPU @ 2.90GHz
+stepping	: 9
+microcode	: 0x48
+cpu MHz		: 2900.000
+cache size	: 8192 KB
+physical id	: 0
+siblings	: 8
+core id		: 1
+cpu cores	: 4
+apicid		: 2
+initial apicid	: 2
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb intel_pt tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 xsaves dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp
+bugs		:
+bogomips	: 5810.04
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 2
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 158
+model name	: Intel(R) Core(TM) i7-7820HQ CPU @ 2.90GHz
+stepping	: 9
+microcode	: 0x48
+cpu MHz		: 2900.000
+cache size	: 8192 KB
+physical id	: 0
+siblings	: 8
+core id		: 2
+cpu cores	: 4
+apicid		: 4
+initial apicid	: 4
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb intel_pt tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 xsaves dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp
+bugs		:
+bogomips	: 5810.06
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 3
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 158
+model name	: Intel(R) Core(TM) i7-7820HQ CPU @ 2.90GHz
+stepping	: 9
+microcode	: 0x48
+cpu MHz		: 2900.000
+cache size	: 8192 KB
+physical id	: 0
+siblings	: 8
+core id		: 3
+cpu cores	: 4
+apicid		: 6
+initial apicid	: 6
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb intel_pt tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 xsaves dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp
+bugs		:
+bogomips	: 5810.03
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 4
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 158
+model name	: Intel(R) Core(TM) i7-7820HQ CPU @ 2.90GHz
+stepping	: 9
+microcode	: 0x48
+cpu MHz		: 2900.000
+cache size	: 8192 KB
+physical id	: 0
+siblings	: 8
+core id		: 0
+cpu cores	: 4
+apicid		: 1
+initial apicid	: 1
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb intel_pt tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 xsaves dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp
+bugs		:
+bogomips	: 5810.02
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 5
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 158
+model name	: Intel(R) Core(TM) i7-7820HQ CPU @ 2.90GHz
+stepping	: 9
+microcode	: 0x48
+cpu MHz		: 2900.000
+cache size	: 8192 KB
+physical id	: 0
+siblings	: 8
+core id		: 1
+cpu cores	: 4
+apicid		: 3
+initial apicid	: 3
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb intel_pt tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 xsaves dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp
+bugs		:
+bogomips	: 5810.02
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 6
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 158
+model name	: Intel(R) Core(TM) i7-7820HQ CPU @ 2.90GHz
+stepping	: 9
+microcode	: 0x48
+cpu MHz		: 2900.000
+cache size	: 8192 KB
+physical id	: 0
+siblings	: 8
+core id		: 2
+cpu cores	: 4
+apicid		: 5
+initial apicid	: 5
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb intel_pt tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 xsaves dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp
+bugs		:
+bogomips	: 5810.05
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 7
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 158
+model name	: Intel(R) Core(TM) i7-7820HQ CPU @ 2.90GHz
+stepping	: 9
+microcode	: 0x48
+cpu MHz		: 2900.000
+cache size	: 8192 KB
+physical id	: 0
+siblings	: 8
+core id		: 3
+cpu cores	: 4
+apicid		: 7
+initial apicid	: 7
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb intel_pt tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 xsaves dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp
+bugs		:
+bogomips	: 5810.07
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+
+
+Memory: 4k page, physical 32807092k(269452k free), swap 0k(0k free)
+
+vm_info: OpenJDK 64-Bit Server VM (25.144-b01) for linux-amd64 JRE (1.8.0_144-b01), built on Jul 28 2017 20:07:18 by "builduser" with gcc 7.1.1 20170630
+
+time: Thu Nov 16 02:02:13 2017
+elapsed time: 0 seconds (0d 0h 0m 0s)
+

@@ -201,13 +201,20 @@ public class TypeCheckVisitor extends BaseSemanticVisitor<Type>{
 			i.type = BaseType.INT;
 		if(i.exp.accept(this) == BaseType.INT && i.cast == BaseType.CHAR) {
 				i.type = BaseType.INT;
-		}else if(i.exp.accept(this).getClass() == ArrayType.class && i.cast.getClass() == PointerType.class) {
-			i.type = new PointerType(i.cast);
-		}else if(i.exp.accept(this).getClass() == PointerType.class && i.cast.getClass() == PointerType.class) {
-			i.type = new PointerType(i.cast);
+		}else if(i.exp.accept(this).getClass() == ArrayType.class && i.cast.accept(this).getClass() == PointerType.class) {
+			PointerType ca = (PointerType) i.cast;
+			i.type = new PointerType(ca.ptype);
+		}else if(i.exp.accept(this).getClass() == PointerType.class && i.cast.accept(this).getClass() == PointerType.class) {
+			PointerType ca = (PointerType) i.cast;
+			i.type = new PointerType(ca.ptype);
 		}else
 			error("cannot cast");
 		}
+		//PointerType ca = (PointerType) i.cast;
+		//i.type = new PointerType(ca.ptype);
+		System.out.println(i.exp.accept(this).getClass());
+		System.out.println(i.cast.accept(this).getClass());
+		System.out.println(i.type);
 		return i.type;
 	}
 	@Override

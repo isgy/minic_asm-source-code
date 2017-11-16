@@ -301,7 +301,7 @@ public class CodeGenerator implements ASTVisitor<Register> {
     		return null;
     	}
 		// TODO Auto-generated method stub
-		return null;
+        return null;
 	}
 
 	@Override
@@ -321,8 +321,6 @@ public class CodeGenerator implements ASTVisitor<Register> {
     	}
 		Register result = getRegister();
 		writer.println("li   "+result+", "+e.i);
-	//	writer.println("sw   "+result+", ($sp)");
-	//	writer.println("addi $sp, $sp, -4");
 		return result;
 	}
 
@@ -336,8 +334,6 @@ public class CodeGenerator implements ASTVisitor<Register> {
 		Register addr = getRegister();
 		writer.println("la "+addr+", "+e.label);
         writer.println("lb "+result+", 0("+addr+")");      
-       // writer.println("sw   "+result+", ($sp)");        // push onto stack
-       // writer.println("addi $sp, $sp, -4"); 
         freeRegister(addr);
 		return result;
 	}
@@ -353,8 +349,6 @@ public class CodeGenerator implements ASTVisitor<Register> {
 		Register addr = getRegister();
 		writer.println(indent+"la "+addr+", "+e.clabel);
         writer.println(indent+"lb "+result+", "+addr);      
-       // writer.println("sw   "+result+", ($sp)");        // push onto stack
-       // writer.println("addi $sp, $sp, -4"); 
         freeRegister(addr);
 		return result;
 	}
@@ -518,18 +512,6 @@ public class CodeGenerator implements ASTVisitor<Register> {
     	    }
     	}
     	 	
-		/*if 
-		Register result = getRegister();
-		Register addr = getRegister();
-		Register ab = getRegister();
-		if(p.tp == BaseType.CHAR) {
-		    writer.println(indent+"la "+addr+", "+e.array.($fp)"); 
-			sll reg1, reg1, 2 
-			add reg2, reg2, reg1
-			lw reg3, (reg2)
-		}else if(p.tp == BaseType.INT) { 
-			
-		} */
 		return null;
 	}
 
@@ -539,6 +521,12 @@ public class CodeGenerator implements ASTVisitor<Register> {
     		e.structure.accept(this);
     		return null;
     	}
+		/*Register result = getRegister();
+		Register addr = getRegister();
+		writer.println("la "+addr+", "+e.);
+        writer.println("lb "+result+", 0("+addr+")");      
+        freeRegister(addr);
+		return result;*/
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -548,6 +536,7 @@ public class CodeGenerator implements ASTVisitor<Register> {
     	if(beforeData) {
     		return null;
     	}
+    	
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -651,10 +640,10 @@ public class CodeGenerator implements ASTVisitor<Register> {
     	}
     	Register to = a.ex.accept(this);
     	Register from = a.isexp.accept(this);
-    	writer.println(indent+"addi $sp, $sp, -4");   
-    	writer.println(indent+"sw $zero, ($sp)");    	
+    	writer.println(indent+"la $sp, -4($sp)");   
+    	writer.println(indent+"sw $zero, 0($sp)");    	
     	writer.println(indent+"addi "+to+", "+from+", $zero");     
-    	writer.println(indent+"sw "+to+", ($sp)");
+    	writer.println(indent+"sw "+to+", 0($sp)");
 
 		return to;
 	}

@@ -15,7 +15,7 @@ Scope scope;
 	@Override
 	public Void visitArrayAccessExpr(ArrayAccessExpr i) {
 		
-		if(i.array.type.getClass() == VarExpr.class) {
+		if(i.array.isVarExp) {
 			VarExpr v = (VarExpr) i.array;
 			Symbol vs = scope.lookup(v.name);
 			if(vs.isVar() && vs != null && !scope.hasouter())
