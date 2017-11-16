@@ -18,6 +18,7 @@ public class CodeGenerator implements ASTVisitor<Register> {
      */
 	private LinkedList<StrLiteral> stlist = new LinkedList<StrLiteral>();
 	private LinkedList<ChrLiteral> chlist = new LinkedList<ChrLiteral>();
+	private LinkedList<VarDecl> vglob = new LinkedList<VarDecl>();
 	String indent = "       ";
     // contains all the free temporary registers
     private Stack<Register> freeRegs = new Stack<Register>();
@@ -43,7 +44,8 @@ public class CodeGenerator implements ASTVisitor<Register> {
     private boolean firstv = true;
 
     private boolean beforeData = true;
-
+    private boolean beforeMainVars = true;
+    private boolean hasmain = false;
     private PrintWriter writer; // use this writer to output the assembly instructions
 
 
@@ -111,6 +113,9 @@ public class CodeGenerator implements ASTVisitor<Register> {
     @Override
     public Register visitFunDecl(FunDecl p) {
     	if(beforeData) {
+    		if(p.name == "main") {
+        		hasmain = true;
+    		}
     		return null;
     	}
     	//Register result = getRegister();
@@ -119,7 +124,7 @@ public class CodeGenerator implements ASTVisitor<Register> {
             //for (VarDecl vd : p.params) {
               //  vd.accept(this);
             //}
-            p.block.accept(this);
+            p.block.accept(this, p.params, p);
             writer.println(indent+"li   $v0, 10");        
             writer.println(indent+"syscall");	
             return null;
@@ -140,7 +145,7 @@ public class CodeGenerator implements ASTVisitor<Register> {
 
         p.block.accept(this, p.params, p);
         
-        
+       
         writer.println(indent+"la $sp, 0($fp)"); 
         writer.println(indent+"lw $fp, 4($sp)");
         writer.println(indent+"lw $ra, 0($sp)");
@@ -163,6 +168,7 @@ public class CodeGenerator implements ASTVisitor<Register> {
             firstv = false;
           
             for (FunDecl fd : p.funDecls) {
+            	
                 fd.accept(this);
             }
     		return null;
@@ -231,6 +237,7 @@ public class CodeGenerator implements ASTVisitor<Register> {
     @Override
     public Register visitVarDecl(VarDecl vd) {
     	if(beforeData) {
+    		vglob.add(vd);
     		return null;
     	}
      //   Register addrReg = getRegister();
@@ -260,13 +267,14 @@ public class CodeGenerator implements ASTVisitor<Register> {
             	writer.println();
             	return null;
         }
-        else{  
+        else{  if(vd.isLocal) {
       /*   if(vd.type == BaseType.CHAR) {
         	 writer.println(indent+"la $sp, -4($sp)");  
              writer.println(indent+"sb $zero, 0($sp)");
          } */
          writer.println(indent+"la $sp, -4($sp)");  
          writer.println(indent+"sw $zero, 0($sp)");
+        }
       //  writer.println("la addrReg "+vd.varName);
       //  writer.println("la result ");
         return null;
@@ -370,7 +378,7 @@ public class CodeGenerator implements ASTVisitor<Register> {
     	if(beforeData) {
     		return null;
     	}
-    	
+    	Register ret = getRegister();
         for(Expr v : e.args) {
         	Register arg = v.accept(this);   //returns start address if arg is an array
         	writer.println(indent+"sw "+arg+", 0($sp)");
@@ -378,8 +386,9 @@ public class CodeGenerator implements ASTVisitor<Register> {
         	freeRegister(arg);
         }
         writer.println("jal "+e.name);
+        writer.println("addu "+ret+", $v0, $zero");
         writer.println("la $sp, "+e.fd.psize+"($sp)");
-        return null;
+        return ret;
 	}
 
 	@Override
@@ -679,9 +688,18 @@ public class CodeGenerator implements ASTVisitor<Register> {
     	if(beforeData) {
     		return null;
     	}
-
+    	if(f.name == "main") {
+			beforeData = true;
+			for(VarDecl v : b.vars) {
+				
+				v.accept(this);
+			}
+			beforeData = false;
+		}else {
 		for(VarDecl v : b.vars) {
+			
 			v.accept(this);
+		}
 		}
 		for(Stmt s : b.stmts) {
 			s.accept(this);
@@ -696,18 +714,13 @@ public class CodeGenerator implements ASTVisitor<Register> {
     	}
 
         if(r.ret != null) {
-        	r.ret.accept(this);
-            writer.println(indent+"la $sp, 0($fp)"); 
+        	Register ret = r.ret.accept(this);
+        	writer.println(indent+"addu $v0, "+ret+", $zero"); 
+         /*   writer.println(indent+"la $sp, 0($fp)"); 
             writer.println(indent+"lw $fp, 4($sp)");
             writer.println(indent+"lw $ra, 0($sp)");
             writer.println(indent+"la $sp, 8($sp)");
-            writer.println("j $ra");
-        }else {
-            writer.println(indent+"la $sp, 0($fp)"); 
-            writer.println(indent+"lw $fp, 4($sp)");
-            writer.println(indent+"lw $ra, 0($sp)");
-            writer.println(indent+"la $sp, 8($sp)");
-            writer.println("j $ra");
+            writer.println("j $ra"); */
         }
 		return null;
 	}
