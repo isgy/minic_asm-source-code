@@ -12,7 +12,7 @@ public abstract class Expr implements ASTNode {
     public boolean isFieldAcc = false;
     public boolean isArrayAcc = false;
   //  abstract String toStr();
-    //abstract int eval();
+    public abstract int eval();
     public int eval;
     public abstract <T> T accept(ASTVisitor<T> v);
 }

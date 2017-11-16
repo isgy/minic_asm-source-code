@@ -11,9 +11,16 @@ Scope scope;
     public namev(Scope scope) {this.scope = scope;}
     public namev(){this.scope = new Scope();}
     public int stringacc =0;
-
+    public int chracc = 0;
 	@Override
 	public Void visitArrayAccessExpr(ArrayAccessExpr i) {
+		
+		if(i.array.type.getClass() == VarExpr.class) {
+			VarExpr v = (VarExpr) i.array;
+			Symbol vs = scope.lookup(v.name);
+			if(vs.isVar() && vs != null && !scope.hasouter())
+				i.isLocal = false;
+		}
         i.array.accept(this);        
         i.index.accept(this);
 		return null;
@@ -41,6 +48,8 @@ Scope scope;
 	}
 	@Override
 	public Void visitChrLiteral(ChrLiteral i) {
+		chracc = chracc + 1;
+		i.clabel = "char"+chracc;
 		return null;
 	}
 	@Override
@@ -163,15 +172,14 @@ Scope scope;
 	}
 	@Override
 	public Void visitBlock(Block b, List<VarDecl> p, FunDecl f) {
-		int offp = 8;
 		int offv = -4;
 		int lsz = 0;
 		Scope oldscope = scope;
 		scope = new Scope(oldscope);
 		for(VarDecl ps : p) {
 			ps.accept(this);
-			ps.offset = offp;
-			offp = offp + 8;
+			ps.offset = offv;
+			offv = offv - 4;
 		}
 		for(VarDecl v : b.vars) {
 			v.accept(this);
