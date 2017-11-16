@@ -76,23 +76,23 @@ public class CodeGenerator implements ASTVisitor<Register> {
         		ArrayType at = (ArrayType) vd.type;
         		if(at.tp == BaseType.CHAR) {
         			writer.println(indent+".align  2");
-        			writer.println(indent+vd.varName+":    .space  "+at.num_elems);
+        			writer.println(indent+st.stype.ident+"."+vd.varName+":    .space  "+at.num_elems);
         		}
         		else
         			writer.println(indent+".align  2");
-        			writer.println(indent+vd.varName+":     .word   0:"+at.num_elems);
+        			writer.println(indent+st.stype.ident+"."+vd.varName+":     .word   0:"+at.num_elems);
         	}
         	else if(vd.type == BaseType.CHAR) {
-        		writer.println(indent+vd.varName+":    .space  1");
+        		writer.println(indent+st.stype.ident+"."+vd.varName+":    .space  1");
             }
         	else if(vd.type == BaseType.INT) {
         		writer.println(indent+".align  2");
-        		writer.println(indent+vd.varName+":    .word  1");
+        		writer.println(indent+st.stype.ident+"."+vd.varName+":    .word  1");
         	}
         	else if(vd.type.getClass() == PointerType.class) {
         		PointerType pt = (PointerType) vd.type;
         		writer.println(indent+".align  2");
-        		writer.println(indent+vd.varName+":     .word 1");
+        		writer.println(indent+st.stype.ident+"."+vd.varName+":     .word 1");
         	}    	
         	writer.println();
         }
@@ -218,6 +218,12 @@ public class CodeGenerator implements ASTVisitor<Register> {
         writer.println("li   $v0, 12");
         writer.println(indent+"syscall");
         writer.println(indent+"j $ra");
+        writer.println();
+        writer.println("mcmalloc");
+        writer.println("li   $v0, 9");
+        writer.println(indent+"lw $a0, 0($sp)");
+        writer.println(indent+"syscall");
+        writer.println(indent+"j $ra");
 
 		return null;
     }
@@ -227,8 +233,8 @@ public class CodeGenerator implements ASTVisitor<Register> {
     	if(beforeData) {
     		return null;
     	}
-        Register addrReg = getRegister();
-        Register result = getRegister();
+     //   Register addrReg = getRegister();
+     //   Register result = getRegister();
         if(firstv) {                           //global declarations                    
             	if(vd.type.getClass() == ArrayType.class) {
             		
@@ -254,11 +260,15 @@ public class CodeGenerator implements ASTVisitor<Register> {
             	writer.println();
             	return null;
         }
-        else{ 
-        //addiu $sp, $sp, -4     
-       // sw $zero, ($sp)     
-        writer.println("la addrReg "+vd.varName);
-        writer.println("la result ");
+        else{  
+      /*   if(vd.type == BaseType.CHAR) {
+        	 writer.println(indent+"la $sp, -4($sp)");  
+             writer.println(indent+"sb $zero, 0($sp)");
+         } */
+         writer.println(indent+"la $sp, -4($sp)");  
+         writer.println(indent+"sw $zero, 0($sp)");
+      //  writer.println("la addrReg "+vd.varName);
+      //  writer.println("la result ");
         return null;
         }
     }
@@ -270,7 +280,9 @@ public class CodeGenerator implements ASTVisitor<Register> {
     	}
     	
         if(v.vd.isLocal) {
-          
+              Register res = getRegister();
+        	  writer.println("lw   "+res+", "+v.vd.offset+"($fp)");
+        	  return res;
         }else{
           if(v.type == BaseType.INT) {
               Register res = getRegister();
@@ -281,7 +293,7 @@ public class CodeGenerator implements ASTVisitor<Register> {
         	  writer.println("lb   "+res+", "+v.name);
         	  return res;
           }
-  	
+  	      
         }
         return null;
     }
@@ -291,7 +303,7 @@ public class CodeGenerator implements ASTVisitor<Register> {
     	if(beforeData) {
     		return null;
     	}
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
@@ -360,10 +372,10 @@ public class CodeGenerator implements ASTVisitor<Register> {
     	}
     	
         for(Expr v : e.args) {
-        	Register tmp = getRegister();
         	Register arg = v.accept(this);   //returns start address if arg is an array
-        	writer.println(indent+"la $sp, -4($sp)");  
-        	writer.println(indent+"sw "+tmp+", 0($sp)");
+        	writer.println(indent+"sw "+arg+", 0($sp)");
+        	writer.println(indent+"la $sp, -4($sp)"); 
+        	freeRegister(arg);
         }
         writer.println("jal "+e.name);
         writer.println("la $sp, "+e.fd.psize+"($sp)");
@@ -477,10 +489,10 @@ public class CodeGenerator implements ASTVisitor<Register> {
             e.index.accept(this);
     		return null;
     	}
+   		Register base = getRegister();
+		Register ind = getRegister();
+		Register result = getRegister();
     	if(e.isLocal) {
-    		Register base = getRegister();
-    		Register ind = getRegister();
-    		Register result = getRegister();
             if(e.type == BaseType.CHAR) {
     	    writer.println(indent+"li "+ind+", "+e.index.eval());
     		writer.println(indent+"la "+base+", "+va.vd.offset+"($fp)"); 
@@ -494,9 +506,7 @@ public class CodeGenerator implements ASTVisitor<Register> {
         		writer.println(indent+"lw "+result+", ("+base+")");
     	    }
     	}else {
-    		Register base = getRegister();
-    		Register ind = getRegister();
-    		Register result = getRegister();
+ 
     		
             if(e.type == BaseType.CHAR) {
     	    writer.println(indent+"li "+ind+", "+e.index.eval());
@@ -511,8 +521,9 @@ public class CodeGenerator implements ASTVisitor<Register> {
         		writer.println(indent+"lw "+result+", ("+base+")");
     	    }
     	}
-    	 	
-		return null;
+    	 	freeRegister(base);
+    	 	freeRegister(ind);
+		return result;
 	}
 
 	@Override
@@ -521,14 +532,17 @@ public class CodeGenerator implements ASTVisitor<Register> {
     		e.structure.accept(this);
     		return null;
     	}
-		/*Register result = getRegister();
+		Register result = getRegister();
 		Register addr = getRegister();
-		writer.println("la "+addr+", "+e.);
-        writer.println("lb "+result+", 0("+addr+")");      
+		StructType t = (StructType) e.structure.type;
+		writer.println("la "+addr+", "+t.ident+"."+e.fieldname);
+		if(e.type == BaseType.CHAR) {
+        writer.println("lb "+result+", 0("+addr+")");    
+		}else {
+			writer.println("lw "+result+", 0("+addr+")");  
+		}
         freeRegister(addr);
-		return result;*/
-		// TODO Auto-generated method stub
-		return null;
+		return result;
 	}
 
 	@Override
@@ -536,9 +550,10 @@ public class CodeGenerator implements ASTVisitor<Register> {
     	if(beforeData) {
     		return null;
     	}
-    	
-		// TODO Auto-generated method stub
-		return null;
+    	Register result = getRegister();
+    	writer.println(indent+"lw "+result+", 0($sp)");
+	
+		return result;
 	}
 
 	@Override
@@ -553,7 +568,6 @@ public class CodeGenerator implements ASTVisitor<Register> {
     	}else {
     		writer.println("li   "+result+", "+4);
     	}
-    	
 		return result;
 	}
 
@@ -567,7 +581,7 @@ public class CodeGenerator implements ASTVisitor<Register> {
         writer.print(",");
         t.exp.accept(this);
         writer.print(")"); */
-        
+        e.exp.accept(this);
 		return null;
 	}
 
@@ -596,6 +610,13 @@ public class CodeGenerator implements ASTVisitor<Register> {
     		return null;
     	}
     	Register res = w.exp.accept(this);
+    	writer.println("top:");
+    	writer.println(indent+"bnez "+res+" istrue"); 
+    	writer.println(indent+"j done");
+    	writer.println("istrue:");
+    	w.stm.accept(this);
+    	writer.println(indent+"j top");
+    	writer.println("done:");
      /*   wh.exp.accept(this);
         writer.print(",");
         wh.stm.accept(this);
@@ -615,19 +636,21 @@ public class CodeGenerator implements ASTVisitor<Register> {
     	}
         Register res = i.ifexp.accept(this);
         Register result;
+         
+        //writer.print(indent+"blez "+res+" Else");
         if(i.else_stm != null) {
-        writer.print(indent+"blez "+res+" Else"); 
+        writer.println(indent+"blez "+res+" Else"); 
         i.stm.accept(this);
-        writer.print(indent+"j Endif");
-        writer.print("Else: ");
-        
+        writer.println(indent+"j Endif");
+        writer.println("Else: ");
         i.else_stm.accept(this);
-        writer.print("Endif: ");
+        writer.println("Endif: ");
         }else {
-        	 writer.print(indent+"blez "+res+" Endif"); 	
+        	 writer.println(indent+"blez "+res+" Endif"); 	
         	 i.stm.accept(this);
+        	 writer.println("Endif: ");
         }
-
+        freeRegister(res);
 		return null;
 	}
 
@@ -638,6 +661,9 @@ public class CodeGenerator implements ASTVisitor<Register> {
             a.isexp.accept(this);
     		return null;
     	}
+        if(a.ex.type == BaseType.INT) {
+      	  
+        }
     	Register to = a.ex.accept(this);
     	Register from = a.isexp.accept(this);
     	writer.println(indent+"la $sp, -4($sp)");   
