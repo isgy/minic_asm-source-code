@@ -1,0 +1,122 @@
+       .data
+       .align 2
+       .text
+main:
+       la $sp, -8($sp)
+       sw $fp, 4($sp)
+       sw $ra, 0($sp)
+       la $fp, 0($sp)
+       la $sp, −56($sp)
+       la $sp, -4($sp)
+       sw $zero, 0($sp)
+       la $sp, -4($sp)
+       sw $zero, 0($sp)
+       la $sp, -4($sp)
+       sw $zero, 0($sp)
+       la $sp, -4($sp)
+       sw $zero, 0($sp)
+       la $sp, -4($sp)
+       sw $zero, 0($sp)
+       la $sp, -4($sp)
+       sw $zero, 0($sp)
+       la $sp, -4($sp)
+       sw $zero, 0($sp)
+       la $sp, -4($sp)
+       sw $zero, 0($sp)
+       la $sp, -4($sp)
+       sw $zero, 0($sp)
+       la $sp, -4($sp)
+       sw $zero, 0($sp)
+       la $sp, -4($sp)
+       sw $zero, 0($sp)
+       la $sp, -4($sp)
+       sw $zero, 0($sp)
+       la $sp, -4($sp)
+       sw $zero, 0($sp)
+       la $sp, -4($sp)
+       sw $zero, 0($sp)
+lw   $t9, -4($fp)
+jal read_i
+addu $t8, $v0, $zero
+la $sp, 0($sp)
+       sw $t9, $t8
+lw   $s7, -8($fp)
+li   $s6, 0
+       sw $s7, $s6
+lw   $s5, -12($fp)
+li   $s4, 1
+       sw $s5, $s4
+li   $s2, 8
+       sw $s2, 0($sp)
+       la $sp, -4($sp)
+jal print_i
+addu $s3, $v0, $zero
+la $sp, 1($sp)
+la $s0, str1
+lb $s1, 0($s0)
+       sw null, 0($sp)
+       la $sp, -4($sp)
+jal print_s
+addu $s2, $v0, $zero
+la $sp, 1($sp)
+lw   null, -20($fp)
+li   $s0, 0
+       sw null, $s0
+lw   $t7, -20($fp)
+li   $t6, 1
+       blt $t7, $t6, lt
+       li $t5, 0
+       j nextexp
+lt:
+       li $t5, 1
+nextexp:
+top:
+       bnez $t5 istrue
+       j done
+istrue:
+       j top
+done:
+       la $sp, 0($fp)
+       lw $fp, 4($sp)
+       lw $ra, 0($sp)
+       la $sp, 8($sp)
+j $ra
+############################################################### Subroutines
+read_c:
+       li   $v0, 12
+       syscall
+       j $ra
+
+       print_i:
+       li   $v0, 1
+       lw $a0, 0($sp)
+       syscall
+       j $ra
+
+print_s:
+       li   $v0, 4
+       lw $a0, 0($sp)
+       syscall
+       j $ra
+
+print_c:
+       li   $v0, 11
+       lw $a0, 0($sp)
+       syscall
+       j $ra
+
+read_i:
+       li   $v0, 5
+       syscall
+       j $ra
+
+read_c
+li   $v0, 12
+       syscall
+       j $ra
+
+mcmalloc
+li   $v0, 9
+       lw $a0, 0($sp)
+       syscall
+       j $ra
