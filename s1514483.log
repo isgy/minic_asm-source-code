@@ -1,4 +1,4 @@
-Log for student s1514483, green deer at 2017-11-24T04-00-01+0000
+Log for student s1514483, green deer at 2017-11-24T16-00-02+0000
 Rootd: /home/s1467120/llvm-marking-suite
 UUN: s1514483
 Salias: green deer
@@ -6,8 +6,6 @@ Salias: green deer
 Moved to directory /home/s1467120/llvm-marking-suite/students/s1514483.repo
 Already on 'master'
 Your branch is up-to-date with 'origin/master'.
-From bitbucket.org:cwrbs/ct-17-18
-   f063c0a..01e3566  feedback   -> origin/feedback
 Already up-to-date.
 ========== Making temp copies
 cp: cannot stat '/home/s1467120/llvm-marking-suite/students/s1514483.repo/part-4/passes/': No such file or directory
