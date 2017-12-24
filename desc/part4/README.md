@@ -18,7 +18,7 @@ git clone https://github.com/llvm-mirror/llvm
 git clone https://github.com/llvm-mirror/clang llvm/tools/clang
 ```
 
-You have been given an extra 30GB of space for this course. The Debug build of LLVM requires around 10GBs of disk space! Be careful not to fill up your home directory.
+You have been given an extra 30GB of space for this course. The Debug build of LLVM requires around 30GB of disk space! Be careful not to fill up your home directory. If you are using DICE use the 'RelWithDebInfo' cmake build type, which uses less space.
 
 Create a directory called 'build' where you will build LLVM. This directory can be located anywhere EXCEPT under your LLVM source directory. We will place it under 'ug3-ct' in this document.
 
@@ -27,21 +27,20 @@ If you are using DICE, the correct version of Cmake is installed as 'cmake3'. If
 ```
 mkdir build
 cd build
-cmake3 -DLLVM_TARGETS_TO_BUILD=X86 -DCMAKE_BUILD_TYPE=Debug ../llvm
+cmake3 -DLLVM_TARGETS_TO_BUILD=X86 -DCMAKE_BUILD_TYPE=RelWithDebInfo ../llvm
 ```
 
-After Cmake finishes creating the Makefiles the next step is to actually build LLVM. This can take anywhere from 15-45 minutes depending 
-on your machine.
+After Cmake finishes creating the Makefiles the next step is to actually build LLVM. This can take anywhere from 15-45 minutes depending on your machine.
 
 ```
-make -j8
+make -j4
 ```
 
 After make finishes you will have a bin directory with the LLVM tools (clang, clang++, llc, etc). Try to compile a simple C example with Clang to LLVM bitcode to make sure it works.
 
 ```
 echo "int main() { return 1; }" > test.c
-~/ug3-ct/build/bin/clang -c -S -emit-llvm test.c -o test.ll
+~/ug3-ct/build/bin/clang -c -S -emit-llvm -Xclang -disable-O0-optnone test.c -o test.ll
 cat test.ll
 ```
 
@@ -85,7 +84,7 @@ Change to the directory for the skeleton pass and take a look at the source. It 
 
 ```
 cd llvm-pass-skeleton
-less skeleton\Skeleton.cpp
+less skeleton/Skeleton.cpp
 ```
 
 Let's build the pass now. Create a build directory and change to the directory.
@@ -177,11 +176,11 @@ SmallVector<Instruction*, 64> Worklist;
 
 You need to run LLVM's 'mem2reg' pass before your DCE pass to convert the bitcode into a form that will work with your optimization. Without running 'mem2reg' all instructions will store their destinations operands to the stack and load their source operands from the stack. The memory instructions will block the ability for you to discover dead code. When you run 'mem2reg', you are converting the stack allocated code in non-SSA form, into SSA form with virtual registers.
 
-Use the 'opt' tool to run 'mem2reg' before your DCE pass. Give your pass a command line option called 'mydce'.
+Use the 'opt' tool to run 'mem2reg' before your DCE pass. Give your pass a command line option called 'skeletonpass'.
 
 ```
-~/ug3-ct/build/bin/clang -emit-llvm -S dead.c
-~/ug3-ct/build/bin/opt -load skeleton/libSkeletonPass.so -mem2reg -mydce dead.ll
+~/ug3-ct/build/bin/clang -S -emit-llvm -Xclang -disable-O0-optnone dead.c
+~/ug3-ct/build/bin/opt -load skeleton/libSkeletonPass.so -mem2reg -skeletonpass dead.ll
 ``` 
 
 ## 4. Implement Iterative Liveness Analysis
@@ -190,4 +189,45 @@ For the last part of your project you will replace the isInstructionTriviallyDea
 
 ## 5. Submitting Your Project
 
-TODO
+As with parts 1-3, part 4 will be marked with a set of automated scripts that will run at 4am and 4pm every day. In order for the scripts to run correctly, your passes will have to be placed and named in a way that they expect. 
+
+### Structuring your repository for marking
+
+Passes should be stored in a folder `part-4/passes`. The folder should *only* contain passes, and nothing else, otherwise the scripts will fail. Your passes folder should contain two passes, named: 
+
+- `llvm-pass-simple-dce` (part 3, a Simple Dead Code Elimination Pass)
+- `llvm-pass-my-dce` (part 4, an Iteratrive Liveness Analysis pass)
+
+The sources for each pass should be in a folder named `skeleton`, and the pass (when compiled) should be a shared object called `libSkeletonPass.so`. If you cloned the skeleton pass repository (i.e. https://github.com/sampsyo/llvm-pass-skeleton.git), and did not change the CMakelists or the name of the source (`Skeleton.cpp`) then the pass should be configured correctly. 
+
+In other words, the `part-4/passes` folder should be structured as follows: 
+
+```
+part-4
+`-- passes
+    |-- llvm-pass-my-dce
+    |   |-- CMakeLists.txt
+    |   `-- skeleton
+    |       |-- CMakeLists.txt
+    |       `-- Skeleton.cpp
+    `-- llvm-pass-simple-dce
+        |-- CMakeLists.txt
+        `-- skeleton
+            |-- CMakeLists.txt
+            `-- Skeleton.cpp
+```
+
+(you should get a similar output if you run `tree --charset=ascii` in your `part-4` folder)
+
+It is generally good engineering practice to exclude build directories from your repository, so your passes should give a similar output to the above structure if you run `tree --charset=ascii` in your `part-4` folder.
+
+### Naming your pass
+
+When registering the pass with LLVM, it should be called `skeletonpass`. Otherwise, our scripts will not be able to call it. In other words, your pass registration code (in C++) should look like (SimpleDCE used as an example): 
+
+```
+char SimpleDCE::ID = 0;
+__attribute__((unused)) static RegisterPass<SimpleDCE>
+    X("skeletonpass", "Simple dead code elimination"); // NOLINT
+
+```
