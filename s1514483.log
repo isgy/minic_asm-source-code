@@ -1,4 +1,4 @@
-Log for student s1514483, green deer at 2017-12-30T16-00-02+0000
+Log for student s1514483, green deer at 2017-12-31T04-00-01+0000
 Rootd: /home/s1467120/llvm-marking-suite
 UUN: s1514483
 Salias: green deer
@@ -8,7 +8,11 @@ Already on 'master'
 Your branch is up-to-date with 'origin/master'.
 Already up-to-date.
 ========== Making temp copies
-cp: cannot stat '/home/s1467120/llvm-marking-suite/students/s1514483.repo/part-4/passes/': No such file or directory
-Cannot copy part 4 directory for student s1514483, it may not exist!
+Moved to directory /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4
+========== Compiling passes
+rm -rf /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/build
+rm -rf /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+make: *** No rule to make target '/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/build/skeleton/libSkeletonPass.so', needed by 'all'.  Stop.
+Building/running passes for student s1514483 failed!
 Building/running marking script for student s1514483 failed!
 Finished marking student s1514483
