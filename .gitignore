@@ -1,3 +1,4 @@
 /src/nbproject/private/
 **/part-4/passes/llvm-pass-my-dce/build
-**/.git
+.*
+!/.gitignore
