@@ -1,4 +1,4 @@
-Log for student s1514483, green deer at 2018-01-05T16-00-01+0000
+Log for student s1514483, green deer at 2018-01-06T04-00-01+0000
 Rootd: /home/s1467120/llvm-marking-suite
 UUN: s1514483
 Salias: green deer
@@ -55,10 +55,6 @@ make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tmp/s1514483/part
 /home/s1467120/llvm-marking-suite/llvm-build/bin/clang -O0 -Xclang -disable-O0-optnone -emit-llvm -S /home/s1467120/llvm-marking-suite/tests/test06.c -o test06_unopt.ll
 /home/s1467120/llvm-marking-suite/llvm-build/bin/clang -O0 -Xclang -disable-O0-optnone -emit-llvm -S /home/s1467120/llvm-marking-suite/tests/test07.c -o test07_unopt.ll
 /home/s1467120/llvm-marking-suite/llvm-build/bin/clang -O0 -Xclang -disable-O0-optnone -emit-llvm -S /home/s1467120/llvm-marking-suite/tests/test08.c -o test08_unopt.ll
-/home/s1467120/llvm-marking-suite/tests/test04.c:9:18: warning: data argument not used by format string [-Wformat-extra-args]
-    printf("d\n",j);
-           ~~~~~ ^
-1 warning generated.
 /home/s1467120/llvm-marking-suite/llvm-build/bin/clang -O0 -Xclang -disable-O0-optnone -emit-llvm -S /home/s1467120/llvm-marking-suite/tests/test09.c -o test09_unopt.ll
 /home/s1467120/llvm-marking-suite/llvm-build/bin/clang -O0 -Xclang -disable-O0-optnone -emit-llvm -S /home/s1467120/llvm-marking-suite/tests/test10.c -o test10_unopt.ll
 /home/s1467120/llvm-marking-suite/llvm-build/bin/clang -O0 -Xclang -disable-O0-optnone -emit-llvm -S /home/s1467120/llvm-marking-suite/tests/test11.c -o test11_unopt.ll
@@ -66,13 +62,17 @@ make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tmp/s1514483/part
 /home/s1467120/llvm-marking-suite/llvm-build/bin/clang -O0 -Xclang -disable-O0-optnone -emit-llvm -S /home/s1467120/llvm-marking-suite/tests/test13.c -o test13_unopt.ll
 /home/s1467120/llvm-marking-suite/llvm-build/bin/clang -O0 -Xclang -disable-O0-optnone -emit-llvm -S /home/s1467120/llvm-marking-suite/tests/test14.c -o test14_unopt.ll
 /home/s1467120/llvm-marking-suite/llvm-build/bin/clang -O0 -Xclang -disable-O0-optnone -emit-llvm -S /home/s1467120/llvm-marking-suite/tests/test15.c -o test15_unopt.ll
+/home/s1467120/llvm-marking-suite/tests/test04.c:9:18: warning: data argument not used by format string [-Wformat-extra-args]
+    printf("d\n",j);
+           ~~~~~ ^
+1 warning generated.
 /home/s1467120/llvm-marking-suite/llvm-build/bin/clang -O0 -Xclang -disable-O0-optnone -emit-llvm -S /home/s1467120/llvm-marking-suite/tests/test16.c -o test16_unopt.ll
-/home/s1467120/llvm-marking-suite/llvm-build/bin/clang -O0 -Xclang -disable-O0-optnone -emit-llvm -S /home/s1467120/llvm-marking-suite/tests/test17.c -o test17_unopt.ll
-/home/s1467120/llvm-marking-suite/llvm-build/bin/clang -O0 -Xclang -disable-O0-optnone -emit-llvm -S /home/s1467120/llvm-marking-suite/tests/test18.c -o test18_unopt.ll
 /home/s1467120/llvm-marking-suite/tests/test15.c:9:19: warning: data argument not used by format string [-Wformat-extra-args]
     printf("d\n", j);
            ~~~~~  ^
 1 warning generated.
+/home/s1467120/llvm-marking-suite/llvm-build/bin/clang -O0 -Xclang -disable-O0-optnone -emit-llvm -S /home/s1467120/llvm-marking-suite/tests/test17.c -o test17_unopt.ll
+/home/s1467120/llvm-marking-suite/llvm-build/bin/clang -O0 -Xclang -disable-O0-optnone -emit-llvm -S /home/s1467120/llvm-marking-suite/tests/test18.c -o test18_unopt.ll
 /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -mem2reg -S test01_unopt.ll -o test01_prepass.ll 2>/dev/null
 /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -mem2reg -S test02_unopt.ll -o test02_prepass.ll 2>/dev/null
 /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -mem2reg -S test03_unopt.ll -o test03_prepass.ll 2>/dev/null
@@ -126,88 +126,65 @@ make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tmp/s1514483/part
 /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S test18_prepass.ll -o  test18_postpass.ll &>  test18_compout.res
 /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test01_prepass.ll test01_prepass.count
 /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test02_prepass.ll test02_prepass.count
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+#  
+make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
 /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test03_prepass.ll test03_prepass.count
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
 /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test04_prepass.ll test04_prepass.count
 /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test05_prepass.ll test05_prepass.count
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
 /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test06_prepass.ll test06_prepass.count
+make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+#  
 /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test07_prepass.ll test07_prepass.count
-~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
-~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-#  
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
 make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
 make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
 #  
-#  
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
-make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
-#  
-#  
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+INSTR COUNT: call: 1
+ret: 1
+TOTAL: 2
 make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-#  
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
 make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
 /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test08_prepass.ll test08_prepass.count
+#  
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
 make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
 make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+#  
 make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
 ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
 #  
-~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
-~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
-~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
-~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
 INSTR COUNT: add: 1
 call: 1
 ret: 1
 TOTAL: 3
-INSTR COUNT: add: 2
-br: 3
-call: 2
-icmp: 1
-phi: 1
-ret: 1
-TOTAL: 10
-INSTR COUNT: add: 3
-br: 4
-call: 1
-icmp: 1
-phi: 2
-ret: 1
-TOTAL: 12
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
 make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
 make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
 #  
-INSTR COUNT: add: 3
-br: 4
-call: 2
-icmp: 1
-phi: 2
-ret: 1
-TOTAL: 13
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
-~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-INSTR COUNT: call: 1
-ret: 1
-TOTAL: 2
+#  
+2
+/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test09_prepass.ll test09_prepass.count
 INSTR COUNT: add: 1
 br: 3
 call: 1
@@ -215,7 +192,22 @@ icmp: 1
 phi: 1
 ret: 1
 TOTAL: 8
-10
+INSTR COUNT: add: 3
+br: 4
+call: 1
+icmp: 1
+phi: 2
+ret: 1
+TOTAL: 12
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+3
+make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+#  
+make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
 INSTR COUNT: add: 3
 br: 3
 call: 1
@@ -223,18 +215,23 @@ icmp: 1
 phi: 1
 ret: 1
 TOTAL: 10
-13
-3
-12
-/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test09_prepass.ll test09_prepass.count
 /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test10_prepass.ll test10_prepass.count
-/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test11_prepass.ll test11_prepass.count
-~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-10
+INSTR COUNT: add: 3
+br: 4
+call: 2
+icmp: 1
+phi: 2
+ret: 1
+TOTAL: 13
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
 make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
 make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+#  
+make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+12
 INSTR COUNT: add: 3
 br: 4
 call: 1
@@ -242,44 +239,44 @@ icmp: 1
 phi: 1
 ret: 1
 TOTAL: 11
-#  
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+INSTR COUNT: add: 2
+br: 3
+call: 2
+icmp: 1
+phi: 1
+ret: 1
+TOTAL: 10
+/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test11_prepass.ll test11_prepass.count
+10
+13
 /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test12_prepass.ll test12_prepass.count
+/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test13_prepass.ll test13_prepass.count
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+10
 make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
 make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
 #  
-#  
-/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test13_prepass.ll test13_prepass.count
-2
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-8
-~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-11
 /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test14_prepass.ll test14_prepass.count
 make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test15_prepass.ll test15_prepass.count
 make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
 make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
-/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test16_prepass.ll test16_prepass.count
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
 #  
-~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
 make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
 make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
 #  
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+11
 make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
 make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
 make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
 #  
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
-~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+8
 INSTR COUNT: add: 3
 br: 4
 call: 1
@@ -287,24 +284,21 @@ icmp: 1
 phi: 1
 ret: 1
 TOTAL: 11
-~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-INSTR COUNT: add: 3
+/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test15_prepass.ll test15_prepass.count
+make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+INSTR COUNT: add: 2
 br: 7
 call: 1
 icmp: 2
-phi: 7
+phi: 6
 ret: 1
-TOTAL: 21
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+TOTAL: 19
 ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
 make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
 make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
 #  
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
-#  
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
-~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+11
 INSTR COUNT: add: 1
 alloca: 1
 call: 1
@@ -312,6 +306,14 @@ load: 1
 ret: 1
 store: 2
 TOTAL: 7
+make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+19
+/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test16_prepass.ll test16_prepass.count
+7
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test18_prepass.ll test18_prepass.count
+/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test01_postpass.ll test01_postpass.count
 INSTR COUNT: add: 3
 alloca: 1
 br: 4
@@ -322,29 +324,19 @@ phi: 1
 ret: 1
 store: 3
 TOTAL: 17
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
-INSTR COUNT: add: 4
+/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test02_postpass.ll test02_postpass.count
+INSTR COUNT: add: 3
 br: 7
 call: 1
 icmp: 2
-mul: 1
 phi: 7
 ret: 1
-TOTAL: 23
-~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-11
-7
-/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test18_prepass.ll test18_prepass.count
+TOTAL: 21
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-INSTR COUNT: add: 3
-alloca: 1
-br: 4
-call: 1
-icmp: 1
-phi: 1
-ret: 1
-store: 1
-TOTAL: 13
+make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+#  
 INSTR COUNT: add: 3
 alloca: 1
 br: 4
@@ -355,62 +347,64 @@ phi: 1
 ret: 1
 store: 3
 TOTAL: 18
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
 make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
 make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
 #  
+make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+#  
+make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+#  
 17
-/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test01_postpass.ll test01_postpass.count
-INSTR COUNT: add: 2
+make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+18
+21
+/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test03_postpass.ll test03_postpass.count
+/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test04_postpass.ll test04_postpass.count
+INSTR COUNT: add: 4
 br: 7
 call: 1
 icmp: 2
-phi: 6
+mul: 1
+phi: 7
 ret: 1
-TOTAL: 19
-23
-21
-/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test02_postpass.ll test02_postpass.count
-~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-13
-18
-/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test03_postpass.ll test03_postpass.count
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
-#  
-/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test04_postpass.ll test04_postpass.count
+TOTAL: 23
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
 /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test05_postpass.ll test05_postpass.count
-/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test06_postpass.ll test06_postpass.count
+INSTR COUNT: call: 1
+ret: 1
+TOTAL: 2
+INSTR COUNT: add: 3
+alloca: 1
+br: 4
+call: 1
+icmp: 1
+phi: 1
+ret: 1
+store: 1
+TOTAL: 13
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
 make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
 make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
-~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
-~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-#  
-~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
-#  
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
-~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
 #  
 make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
 make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
 #  
 make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
-~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
 make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
 ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-#  
-19
+~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+13
 INSTR COUNT: add: 4
 alloca: 2
 br: 7
@@ -422,15 +416,19 @@ phi: 6
 ret: 1
 store: 5
 TOTAL: 32
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
-~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+2
+/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test06_postpass.ll test06_postpass.count
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+#  
+make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
 INSTR COUNT: add: 1
 call: 1
 ret: 1
 TOTAL: 3
-INSTR COUNT: call: 1
-ret: 1
-TOTAL: 2
+#  
 /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test07_postpass.ll test07_postpass.count
 INSTR COUNT: add: 3
 br: 4
@@ -439,47 +437,8 @@ icmp: 1
 phi: 2
 ret: 1
 TOTAL: 12
-~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
 make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-INSTR COUNT: add: 2
-br: 3
-call: 2
-icmp: 1
-phi: 1
-ret: 1
-TOTAL: 10
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
-#  
-3
-12
-2
-/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test08_postpass.ll test08_postpass.count
-/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test09_postpass.ll test09_postpass.count
-32
-/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test10_postpass.ll test10_postpass.count
-~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-INSTR COUNT: add: 1
-br: 3
-call: 1
-icmp: 1
-phi: 1
-ret: 1
-TOTAL: 8
-~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test11_postpass.ll test11_postpass.count
-~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
-#  
-#  
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
-~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
 INSTR COUNT: add: 3
 br: 4
 call: 2
@@ -488,36 +447,57 @@ phi: 2
 ret: 1
 TOTAL: 13
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-#  
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+32
 make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+23
+/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test08_postpass.ll test08_postpass.count
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
 make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
 make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
 #  
+make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+INSTR COUNT: add: 2
+br: 3
+call: 2
+icmp: 1
+phi: 1
+ret: 1
+TOTAL: 10
+#  
+12
 13
-10
-/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test12_postpass.ll test12_postpass.count
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
-~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
-~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-INSTR COUNT: add: 3
+/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test09_postpass.ll test09_postpass.count
+3
+INSTR COUNT: add: 1
 br: 3
 call: 1
 icmp: 1
 phi: 1
 ret: 1
-TOTAL: 10
+TOTAL: 8
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test10_postpass.ll test10_postpass.count
+/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test11_postpass.ll test11_postpass.count
 make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
 make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
 #  
-8
-/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test13_postpass.ll test13_postpass.count
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
 make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+8
+make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+#  
+make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+#  
 INSTR COUNT: add: 3
 br: 4
 call: 1
@@ -525,14 +505,20 @@ icmp: 1
 phi: 1
 ret: 1
 TOTAL: 11
-/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test14_postpass.ll test14_postpass.count
-~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
-#  
+/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test12_postpass.ll test12_postpass.count
 make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test13_postpass.ll test13_postpass.count
+10
+INSTR COUNT: add: 3
+br: 4
+call: 1
+icmp: 1
+phi: 1
+ret: 1
+TOTAL: 11
 INSTR COUNT: add: 3
 br: 7
 call: 1
@@ -540,25 +526,6 @@ icmp: 2
 phi: 7
 ret: 1
 TOTAL: 21
-INSTR COUNT: add: 4
-br: 7
-call: 1
-icmp: 2
-mul: 1
-phi: 7
-ret: 1
-TOTAL: 23
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
-#  
-11
-INSTR COUNT: add: 3
-br: 4
-call: 1
-icmp: 1
-phi: 1
-ret: 1
-TOTAL: 11
 INSTR COUNT: add: 2
 br: 7
 call: 1
@@ -566,32 +533,51 @@ icmp: 2
 phi: 6
 ret: 1
 TOTAL: 19
-10
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test14_postpass.ll test14_postpass.count
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+INSTR COUNT: add: 3
+br: 3
+call: 1
+icmp: 1
+phi: 1
+ret: 1
+TOTAL: 10
+#  
+#  
+21
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
 make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test15_postpass.ll test15_postpass.count
 ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-23
-/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test16_postpass.ll test16_postpass.count
+make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+11
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-21
-19
+#  
+10
+/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test16_postpass.ll test16_postpass.count
+make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
+11
+#  
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
 /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test18_postpass.ll test18_postpass.count
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
 /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -mem2reg -S test17_unopt.ll -o test17_prepass.ll 2>/dev/null
-#  
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
-#  
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
-~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-/home/s1467120/llvm-marking-suite/llvm-build/bin/clang test01.s -o test01.out
 make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
 make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
 make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+#  
+make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
 #  
 INSTR COUNT: add: 1
 alloca: 1
@@ -600,21 +586,23 @@ load: 1
 ret: 1
 store: 2
 TOTAL: 7
-/home/s1467120/llvm-marking-suite/llvm-build/bin/clang test02.s -o test02.out
-INSTR COUNT: add: 3
-alloca: 1
-br: 4
-call: 1
-icmp: 1
-load: 2
-phi: 1
-ret: 1
-store: 3
-TOTAL: 17
-11
 make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-/home/s1467120/llvm-marking-suite/llvm-build/bin/clang test03.s -o test03.out
+make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+19
+make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+/home/s1467120/llvm-marking-suite/llvm-build/bin/clang test01.s -o test01.out
+/home/s1467120/llvm-marking-suite/llvm-build/bin/clang test02.s -o test02.out
+INSTR COUNT: add: 4
+br: 7
+call: 1
+icmp: 2
+mul: 1
+phi: 7
+ret: 1
+TOTAL: 23
 INSTR COUNT: add: 3
 alloca: 1
 br: 4
@@ -625,21 +613,6 @@ ret: 1
 store: 1
 TOTAL: 13
 7
-/home/s1467120/llvm-marking-suite/llvm-build/bin/clang test04.s -o test04.out
-17
-/home/s1467120/llvm-marking-suite/llvm-build/bin/clang test05.s -o test05.out
-INSTR COUNT: add: 3
-alloca: 1
-br: 4
-call: 2
-icmp: 1
-load: 2
-phi: 1
-ret: 1
-store: 3
-TOTAL: 18
-13
-/home/s1467120/llvm-marking-suite/llvm-build/bin/clang test06.s -o test06.out
 INSTR COUNT: add: 4
 alloca: 2
 br: 7
@@ -651,11 +624,38 @@ phi: 6
 ret: 1
 store: 5
 TOTAL: 32
+/home/s1467120/llvm-marking-suite/llvm-build/bin/clang test03.s -o test03.out
+INSTR COUNT: add: 3
+alloca: 1
+br: 4
+call: 2
+icmp: 1
+load: 2
+phi: 1
+ret: 1
+store: 3
+TOTAL: 18
+32
+INSTR COUNT: add: 3
+alloca: 1
+br: 4
+call: 1
+icmp: 1
+load: 2
+phi: 1
+ret: 1
+store: 3
+TOTAL: 17
+/home/s1467120/llvm-marking-suite/llvm-build/bin/clang test04.s -o test04.out
+23
+13
+/home/s1467120/llvm-marking-suite/llvm-build/bin/clang test05.s -o test05.out
+17
 18
+/home/s1467120/llvm-marking-suite/llvm-build/bin/clang test06.s -o test06.out
 /home/s1467120/llvm-marking-suite/llvm-build/bin/clang test07.s -o test07.out
 /home/s1467120/llvm-marking-suite/llvm-build/bin/clang test08.s -o test08.out
 /home/s1467120/llvm-marking-suite/llvm-build/bin/clang test09.s -o test09.out
-32
 /home/s1467120/llvm-marking-suite/llvm-build/bin/clang test10.s -o test10.out
 /home/s1467120/llvm-marking-suite/llvm-build/bin/clang test11.s -o test11.out
 /home/s1467120/llvm-marking-suite/llvm-build/bin/clang test12.s -o test12.out
@@ -667,30 +667,15 @@ TOTAL: 32
 /home/s1467120/llvm-marking-suite/llvm-build/bin/clang test18.s -o test18.out
 /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S test17_prepass.ll -o  test17_postpass.ll &>  test17_compout.res
 /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test17_prepass.ll test17_prepass.count
-~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
 ./test01.out > test01_output.res
-./test02.out > test02_output.res
-./test03.out > test03_output.res
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
 make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
 make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
 #  
-./test04.out > test04_output.res
+./test02.out > test02_output.res
 make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
-./test05.out > test05_output.res
 ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-./test06.out > test06_output.res
-./test07.out > test07_output.res
-./test08.out > test08_output.res
-./test09.out > test09_output.res
-./test10.out > test10_output.res
-./test11.out > test11_output.res
-./test12.out > test12_output.res
-./test13.out > test13_output.res
-./test14.out > test14_output.res
-./test15.out > test15_output.res
-/home/s1467120/llvm-marking-suite/llvm-build/bin/clang test17.s -o test17.out
-/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test17_postpass.ll test17_postpass.count
-./test16.out > test16_output.res
+./test03.out > test03_output.res
 INSTR COUNT: add: 3
 alloca: 1
 br: 7
@@ -701,14 +686,29 @@ phi: 6
 ret: 1
 store: 2
 TOTAL: 24
-~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+./test04.out > test04_output.res
+./test05.out > test05_output.res
+./test06.out > test06_output.res
+./test07.out > test07_output.res
+./test08.out > test08_output.res
+./test09.out > test09_output.res
+./test10.out > test10_output.res
+24
+./test11.out > test11_output.res
+./test12.out > test12_output.res
+/home/s1467120/llvm-marking-suite/llvm-build/bin/clang test17.s -o test17.out
+/home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite test17_postpass.ll test17_postpass.count
 ./test18.out > test18_output.res
+./test13.out > test13_output.res
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+./test16.out > test16_output.res
+./test15.out > test15_output.res
 make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
 make[2]: warning: jobserver unavailable: using -j1.  Add '+' to parent make rule.
 #  
 make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
-24
+./test14.out > test14_output.res
 INSTR COUNT: add: 3
 alloca: 1
 br: 7
@@ -726,9 +726,9 @@ make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tmp/s1514483/part-
 rm /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/buildmake: unlink: /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/build: Is a directory
 
 ========== Comparing with GOLD
-{"pass_results": [{"pass": "llvm-pass-simple-dce", "results": [{"expected_count_before": 19, "test": "test10", "dce_count_before": 19, "dce_count_after": 19, "expected_count_after": 19, "correct": true}, {"expected_count_before": 23, "test": "test12", "dce_count_before": 23, "dce_count_after": 23, "expected_count_after": 21, "correct": true}, {"expected_count_before": 2, "test": "test01", "dce_count_before": 2, "dce_count_after": 2, "expected_count_after": 2, "correct": true}, {"expected_count_before": 3, "test": "test02", "dce_count_before": 3, "dce_count_after": 3, "expected_count_after": 2, "correct": true}, {"expected_count_before": 12, "test": "test03", "dce_count_before": 12, "dce_count_after": 12, "expected_count_after": 12, "correct": true}, {"expected_count_before": 13, "test": "test04", "dce_count_before": 13, "dce_count_after": 13, "expected_count_after": 13, "correct": true}, {"expected_count_before": 8, "test": "test05", "dce_count_before": 8, "dce_count_after": 8, "expected_count_after": 8, "correct": true}, {"expected_count_before": 10, "test": "test06", "dce_count_before": 10, "dce_count_after": 10, "expected_count_after": 10, "correct": true}, {"expected_count_before": 10, "test": "test07", "dce_count_before": 10, "dce_count_after": 10, "expected_count_after": 9, "correct": true}, {"expected_count_before": 11, "test": "test08", "dce_count_before": 11, "dce_count_after": 11, "expected_count_after": 11, "correct": true}, {"expected_count_before": 21, "test": "test11", "dce_count_before": 21, "dce_count_after": 21, "expected_count_after": 21, "correct": true}, {"expected_count_before": 11, "test": "test09", "dce_count_before": 11, "dce_count_after": 11, "expected_count_after": 10, "correct": true}, {"expected_count_before": 7, "test": "test13", "dce_count_before": 7, "dce_count_after": 7, "expected_count_after": 7, "correct": true}, {"expected_count_before": 17, "test": "test14", "dce_count_before": 17, "dce_count_after": 17, "expected_count_after": 17, "correct": true}, {"expected_count_before": 18, "test": "test15", "dce_count_before": 18, "dce_count_after": 18, "expected_count_after": 18, "correct": true}, {"expected_count_before": 13, "test": "test16", "dce_count_before": 13, "dce_count_after": 13, "expected_count_after": 13, "correct": true}, {"expected_count_before": 24, "test": "test17", "dce_count_before": 24, "dce_count_after": 24, "expected_count_after": 24, "correct": true}, {"expected_count_before": 32, "test": "test18", "dce_count_before": 32, "dce_count_after": 32, "expected_count_after": 32, "correct": true}]}], "student_alias": "green deer", "student_id": "s1514483"}
+{"student_alias": "green deer", "student_id": "s1514483", "pass_results": [{"results": [{"expected_count_after": 19, "dce_count_before": 19, "correct": true, "test": "test10", "expected_count_before": 19, "dce_count_after": 19}, {"expected_count_after": 21, "dce_count_before": 23, "correct": true, "test": "test12", "expected_count_before": 23, "dce_count_after": 23}, {"expected_count_after": 2, "dce_count_before": 2, "correct": true, "test": "test01", "expected_count_before": 2, "dce_count_after": 2}, {"expected_count_after": 2, "dce_count_before": 3, "correct": true, "test": "test02", "expected_count_before": 3, "dce_count_after": 3}, {"expected_count_after": 12, "dce_count_before": 12, "correct": true, "test": "test03", "expected_count_before": 12, "dce_count_after": 12}, {"expected_count_after": 13, "dce_count_before": 13, "correct": true, "test": "test04", "expected_count_before": 13, "dce_count_after": 13}, {"expected_count_after": 8, "dce_count_before": 8, "correct": true, "test": "test05", "expected_count_before": 8, "dce_count_after": 8}, {"expected_count_after": 10, "dce_count_before": 10, "correct": true, "test": "test06", "expected_count_before": 10, "dce_count_after": 10}, {"expected_count_after": 9, "dce_count_before": 10, "correct": true, "test": "test07", "expected_count_before": 10, "dce_count_after": 10}, {"expected_count_after": 11, "dce_count_before": 11, "correct": true, "test": "test08", "expected_count_before": 11, "dce_count_after": 11}, {"expected_count_after": 21, "dce_count_before": 21, "correct": true, "test": "test11", "expected_count_before": 21, "dce_count_after": 21}, {"expected_count_after": 10, "dce_count_before": 11, "correct": true, "test": "test09", "expected_count_before": 11, "dce_count_after": 11}, {"expected_count_after": 7, "dce_count_before": 7, "correct": true, "test": "test13", "expected_count_before": 7, "dce_count_after": 7}, {"expected_count_after": 17, "dce_count_before": 17, "correct": true, "test": "test14", "expected_count_before": 17, "dce_count_after": 17}, {"expected_count_after": 18, "dce_count_before": 18, "correct": true, "test": "test15", "expected_count_before": 18, "dce_count_after": 18}, {"expected_count_after": 13, "dce_count_before": 13, "correct": true, "test": "test16", "expected_count_before": 13, "dce_count_after": 13}, {"expected_count_after": 24, "dce_count_before": 24, "correct": true, "test": "test17", "expected_count_before": 24, "dce_count_after": 24}, {"expected_count_after": 32, "dce_count_before": 32, "correct": true, "test": "test18", "expected_count_before": 32, "dce_count_after": 32}], "pass": "llvm-pass-simple-dce"}]}
 ========== Generating report
-# Results at time 2018-01-05T16-07-38+0000
+# Results at time 2018-01-06T04-04-57+0000
 
 Results for student *s1514483* aka *green deer*
 
@@ -758,7 +758,7 @@ test17|True|24|24|24|24
 test18|True|32|32|32|32
 
 
-# Results at time 2018-01-05T16-07-38+0000
+# Results at time 2018-01-06T04-04-57+0000
 
 Results for student *green deer*
 
@@ -792,14 +792,14 @@ Moved to directory /home/s1467120/llvm-marking-suite/students/s1514483.repo
 Switched to a new branch 'feedback'
 Branch feedback set up to track remote branch feedback from origin.
 Already up-to-date.
-[feedback 1f7790d] Feedback on submission at 2018-01-05T16-07-38+0000
+[feedback 7712071] Feedback on submission at 2018-01-06T04-04-57+0000
  1 file changed, 1 insertion(+), 1 deletion(-)
 remote: 
 remote: Create pull request for feedback:        
 remote:   https://bitbucket.org/cwrbs/ct-17-18/pull-requests/new?source=feedback&t=1        
 remote: 
 To bitbucket.org:cwrbs/ct-17-18.git
-   926583c..1f7790d  feedback -> feedback
+   c555731..7712071  feedback -> feedback
 /home/s1467120/llvm-marking-suite/students/s1514483.repo
 Building/running marking script for student s1514483 succeeded!
 Finished marking student s1514483
