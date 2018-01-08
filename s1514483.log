@@ -1,4 +1,4 @@
-Log for student s1514483, green deer at 2018-01-07T16-00-01+0000
+Log for student s1514483, green deer at 2018-01-08T17-26-07+0000
 Rootd: /home/s1467120/llvm-marking-suite
 UUN: s1514483
 Salias: green deer
@@ -6,6 +6,19 @@ Salias: green deer
 Moved to directory /home/s1467120/llvm-marking-suite/students/s1514483.repo
 Already on 'master'
 Your branch is up-to-date with 'origin/master'.
+Already up-to-date.
+========== Making temp copies
+Moved to directory /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4
+========== Compiling passes
+rm -rf /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/build
+rm -rf /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+mkdir -p /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build
+cd /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build; export LLVM_DIR=/home/s1467120/llvm-marking-suite/llvm-build/; cmake ..
+-- The C compiler identification is GNU 4.8.5
+-- The CXX compiler identification is GNU 4.8.5
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
 -- Detecting C compile features
 -- Detecting C compile features - done
@@ -14,53 +27,76 @@ Your branch is up-to-date with 'origin/master'.
 -- Detecting CXX compiler ABI info
 -- Detecting CXX compiler ABI info - done
 -- Detecting CXX compile features
-Already up-to-date.
-========== Making temp copies
-Moved to directory /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4
-========== Compiling passes
-rm -rf /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/build /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/passes/build
-rm -rf /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/passes/output
-mkdir -p /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build
-cd /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build; export LLVM_DIR=/home/s1467120/llvm-marking-suite/llvm-build/; cmake ..
--- Detecting CXX compile features - failed
-CMake Error at skeleton/CMakeLists.txt:7 (target_compile_features):
-  target_compile_features no known features for CXX compiler
-
-  "GNU"
-
-  version 4.8.5.
-
-
--- Configuring incomplete, errors occurred!
-See also "/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/CMakeFiles/CMakeError.log".
-Makefile:17: recipe for target '/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build' failed
-make: *** [/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build] Error 1
-rm /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/buildmake: unlink: /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build: Is a directory
-
-Building/running passes for student s1514483 failed!
-Building/running marking script for student s1514483 failed!
-Finished marking student s1514483
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build
+cd /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build; make
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build'
+make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build'
+make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build'
+Scanning dependencies of target SkeletonPass
+make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build'
+make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build'
+[ 50%] Building CXX object skeleton/CMakeFiles/SkeletonPass.dir/Skeleton.cpp.o
+[100%] Linking CXX shared module libSkeletonPass.so
+make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build'
+[100%] Built target SkeletonPass
+make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build'
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build'
+mkdir -p /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/build
+cd /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/build; export LLVM_DIR=/home/s1467120/llvm-marking-suite/llvm-build/; cmake ..
 -- The C compiler identification is GNU 4.8.5
+-- The CXX compiler identification is GNU 4.8.5
 -- Check for working C compiler: /usr/bin/cc
 -- Check for working C compiler: /usr/bin/cc -- works
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
 -- Detecting C compile features
 -- Detecting C compile features - done
-CMake Error at skeleton/CMakeLists.txt:7 (target_compile_features):
-  target_compile_features no known features for CXX compiler
-
-  "GNU"
-
-  version 4.8.5.
-
-
--- Configuring incomplete, errors occurred!
-See also "/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/CMakeFiles/CMakeOutput.log".
-See also "/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/CMakeFiles/CMakeError.log".
-Makefile:17: recipe for target '/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build' failed
-make: *** [/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build] Error 1
-rm /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/buildmake: unlink: /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build: Is a directory
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/build
+cd /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/build; make
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/build'
+make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/build'
+make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/build'
+Scanning dependencies of target SkeletonPass
+make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/build'
+make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/build'
+[ 50%] Building CXX object skeleton/CMakeFiles/SkeletonPass.dir/Skeleton.cpp.o
+[100%] Linking CXX shared module libSkeletonPass.so
+make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/build'
+[100%] Built target SkeletonPass
+make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/build'
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/build'
+rm -rf /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output
+mkdir -p /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output; cp MakeRunPasses /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/Makefile; cd /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output; make PASSOBJ=/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output'
+/home/s1467120/llvm-marking-suite/llvm-build/bin/clang -O0 -Xclang -disable-O0-optnone -emit-llvm -S /home/s1467120/llvm-marking-suite/tests/test01.c -o test01_unopt.ll
+/home/s1467120/llvm-marking-suite/llvm-build/bin/opt -mem2reg -S test01_unopt.ll -o test01_prepass.ll 2>/dev/null
+/home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S test01_prepass.ll -o  test01_postpass.ll &>  test01_compout.res
+/home/s1467120/llvm-marking-suite/llvm-build/bin/clang -O0 -Xclang -disable-O0-optnone -emit-llvm -S /home/s1467120/llvm-marking-suite/tests/test02.c -o test02_unopt.ll
+/home/s1467120/llvm-marking-suite/llvm-build/bin/opt -mem2reg -S test02_unopt.ll -o test02_prepass.ll 2>/dev/null
+/home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S test02_prepass.ll -o  test02_postpass.ll &>  test02_compout.res
+/home/s1467120/llvm-marking-suite/llvm-build/bin/clang -O0 -Xclang -disable-O0-optnone -emit-llvm -S /home/s1467120/llvm-marking-suite/tests/test03.c -o test03_unopt.ll
+/home/s1467120/llvm-marking-suite/llvm-build/bin/opt -mem2reg -S test03_unopt.ll -o test03_prepass.ll 2>/dev/null
+/home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S test03_prepass.ll -o  test03_postpass.ll &>  test03_compout.res
+/bin/sh: line 1: 13011 Segmentation fault      (core dumped) /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S test03_prepass.ll -o test03_postpass.ll &> test03_compout.res
+Makefile:42: recipe for target 'test03_compout.res' failed
+make[1]: *** [test03_compout.res] Error 139
+rm test02_unopt.ll test01_unopt.ll test03_unopt.ll
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output'
+Makefile:24: recipe for target '/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output' failed
+make: *** [/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output] Error 2
+rm /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/buildmake: unlink: /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/build: Is a directory
+ /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/buildmake: unlink: /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build: Is a directory
 
 Building/running passes for student s1514483 failed!
 Building/running marking script for student s1514483 failed!
