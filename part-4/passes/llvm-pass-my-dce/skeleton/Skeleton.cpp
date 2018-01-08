@@ -15,7 +15,7 @@
  *
  * =====================================================================================
  */
-#define DEBUG_TYPE "SimpleDCE"
+#define DEBUG_TYPE "MyDCE"
 #include "llvm/Pass.h"
 #include "llvm/IR/Function.h"
 #include "llvm/Support/raw_ostream.h"
@@ -32,12 +32,12 @@ using namespace llvm;
 //STATISTIC(NumIE, "no. of instructions removed 1");
 //STATISTIC(NumIE2, "no. of inst removed");
 namespace {
-struct SimpleDCE : public FunctionPass {
+struct MyDCE : public FunctionPass {
    std::map<std::string, int> opCounter;
     static char ID;
     int NumIE = 0;
     int NumIE2 = 0;
-    SimpleDCE() : FunctionPass(ID) {}
+    MyDCE() : FunctionPass(ID) {}
     virtual bool runOnFunction(Function &F) {
         SmallVector<Instruction*, 64> WL;
     //    std::set<Instruction*> dc;
@@ -89,13 +89,13 @@ struct SimpleDCE : public FunctionPass {
     }
 };
 }
-char SimpleDCE::ID = 0;
-__attribute__((unused)) static RegisterPass<SimpleDCE>
-X("skeletonpass", "Simple dead code elimination"); // NOLINT
-static void registerSimpleDCEPass(const PassManagerBuilder &,
+char MyDCE::ID = 0;
+__attribute__((unused)) static RegisterPass<MyDCE>
+X("skeletonpass", "liveness analysis pass"); // NOLINT
+static void registerMyDCEPass(const PassManagerBuilder &,
                          legacy::PassManagerBase &PM) {
-  PM.add(new SimpleDCE());
+  PM.add(new MyDCE());
 }
 static RegisterStandardPasses
   RegisterMyPass(PassManagerBuilder::EP_EarlyAsPossible,
-                 registerSimpleDCEPass);
+                 registerMyDCEPass);
