@@ -22,15 +22,13 @@
 #include "llvm/IR/LegacyPassManager.h"
 #include "llvm/Transforms/IPO/PassManagerBuilder.h"
 #include "llvm/IR/Instructions.h"
-
+#include "llvm/Transforms/Utils/Local.h"
 #include "llvm/ADT/SmallVector.h"
 
 #include <vector>
 using namespace llvm;
 //using namespace std;
 
-//STATISTIC(NumIE, "no. of instructions removed 1");
-//STATISTIC(NumIE2, "no. of inst removed");
 namespace {
 struct SimpleDCE : public FunctionPass {
    std::map<std::string, int> opCounter;
@@ -40,40 +38,40 @@ struct SimpleDCE : public FunctionPass {
     SimpleDCE() : FunctionPass(ID) {}
     virtual bool runOnFunction(Function &F) {
         SmallVector<Instruction*, 64> WL;
+        //SmallPtrSet<Instruction*, 64> ALV;
+
     //    std::set<Instruction*> dc;
 		  errs() << "I saw a function called " << F.getName() << "!\n";
         errs() << "Function " << F.getName() << '\n';
         for (Function::iterator bb = F.begin(), e = F.end(); bb != e; ++bb) {
             bool isDead = false;
             for (BasicBlock::iterator i = bb->begin(), e = bb->end(); i != e; ++i) {
-                  if (!(isa<TerminatorInst>(*i)) && !i->mayHaveSideEffects()){
-                     WL.push_back(&*i);
-						}
-                 	if(opCounter.find(i->getOpcodeName()) == opCounter.end()) {
-                 	   opCounter[i->getOpcodeName()] = 1;
-                  } else {
-                	   opCounter[i->getOpcodeName()] += 1;
-                	}
+//                  if(!(isa<TerminatorInst>(*i)) && !i->mayHaveSideEffects()){
+                  if(isInstructionTriviallyDead(&*i)){
+         //           ALV.insert(&*i);
+                    WL.push_back(&*i);
+                  }
             }
             while (!WL.empty()) {
                Instruction* i = WL.pop_back_val();
                i->eraseFromParent();
-               ++NumIE;
-               ++NumIE2;
+           //    for(Use &O : i->operands()){
+            //      if(Instruction *i = dyn_cast<Instruction>(O)){
+          //           if(ALV.insert(i).second){
+             //           WL.push_back(i);
+              //       }
+               //   }
+               //}
             }
 
-          /*  for (BasicBlock::iterator i = bb->begin(), e = bb->end(); i != e; ++i) {
+   /*           for (BasicBlock::iterator i = bb->begin(), e = bb->end(); i != e; ++i) {
                 if (isInstructionTriviallyDead(i)) {
                     i->eraseFromParent();
                     isDead = true;
                     ++NumIE;
                 }
-                if(opCounter.find(i->getOpcodeName()) == opCounter.end()) {
-                    opCounter[i->getOpcodeName()] = 1;
-                } else {
-                    opCounter[i->getOpcodeName()] += 1;
                 }
-            } */
+            }  */
 	
         }
         std::map <std::string, int>::iterator i = opCounter.begin();
