@@ -24,10 +24,11 @@
 #include "llvm/IR/Instructions.h"
 #include "llvm/Transforms/Utils/Local.h"
 #include "llvm/ADT/SmallVector.h"
-
+#include "llvm/ADT/Statistic.h"
 #include <vector>
 using namespace llvm;
 //using namespace std;
+STATISTIC(NumIE, "no. of insts removed");
 
 namespace {
 struct SimpleDCE : public FunctionPass {
@@ -50,6 +51,7 @@ struct SimpleDCE : public FunctionPass {
                   if(isInstructionTriviallyDead(&*i)){
          //           ALV.insert(&*i);
                     WL.push_back(&*i);
+                    
                   }
             }
             while (!WL.empty()) {

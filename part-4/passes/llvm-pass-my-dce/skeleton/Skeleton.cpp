@@ -15,65 +15,65 @@
  *
  * =====================================================================================
  */
-#define DEBUG_TYPE "MyDCE"
+#define DEBUG_TYPE "SimpleDCE"
 #include "llvm/Pass.h"
 #include "llvm/IR/Function.h"
 #include "llvm/Support/raw_ostream.h"
 #include "llvm/IR/LegacyPassManager.h"
 #include "llvm/Transforms/IPO/PassManagerBuilder.h"
 #include "llvm/IR/Instructions.h"
-
+#include "llvm/Transforms/Utils/Local.h"
 #include "llvm/ADT/SmallVector.h"
-
+#include "llvm/ADT/Statistic.h"
 #include <vector>
 using namespace llvm;
 //using namespace std;
+STATISTIC(NumIE, "no. of insts removed");
 
-//STATISTIC(NumIE, "no. of instructions removed 1");
-//STATISTIC(NumIE2, "no. of inst removed");
 namespace {
-struct MyDCE : public FunctionPass {
+struct SimpleDCE : public FunctionPass {
    std::map<std::string, int> opCounter;
     static char ID;
     int NumIE = 0;
     int NumIE2 = 0;
-    MyDCE() : FunctionPass(ID) {}
+    SimpleDCE() : FunctionPass(ID) {}
     virtual bool runOnFunction(Function &F) {
         SmallVector<Instruction*, 64> WL;
+        //SmallPtrSet<Instruction*, 64> ALV;
+
     //    std::set<Instruction*> dc;
 		  errs() << "I saw a function called " << F.getName() << "!\n";
         errs() << "Function " << F.getName() << '\n';
         for (Function::iterator bb = F.begin(), e = F.end(); bb != e; ++bb) {
             bool isDead = false;
             for (BasicBlock::iterator i = bb->begin(), e = bb->end(); i != e; ++i) {
-                  if (!(isa<TerminatorInst>(*i)) && !i->mayHaveSideEffects()){
-                     WL.push_back(&*i);
-						}
-                 	if(opCounter.find(i->getOpcodeName()) == opCounter.end()) {
-                 	   opCounter[i->getOpcodeName()] = 1;
-                  } else {
-                	   opCounter[i->getOpcodeName()] += 1;
-                	}
+//                  if(!(isa<TerminatorInst>(*i)) && !i->mayHaveSideEffects()){
+                  if(isInstructionTriviallyDead(&*i)){
+         //           ALV.insert(&*i);
+                    WL.push_back(&*i);
+                    
+                  }
             }
             while (!WL.empty()) {
                Instruction* i = WL.pop_back_val();
                i->eraseFromParent();
-               ++NumIE;
-               ++NumIE2;
+           //    for(Use &O : i->operands()){
+            //      if(Instruction *i = dyn_cast<Instruction>(O)){
+          //           if(ALV.insert(i).second){
+             //           WL.push_back(i);
+              //       }
+               //   }
+               //}
             }
 
-          /*  for (BasicBlock::iterator i = bb->begin(), e = bb->end(); i != e; ++i) {
+   /*           for (BasicBlock::iterator i = bb->begin(), e = bb->end(); i != e; ++i) {
                 if (isInstructionTriviallyDead(i)) {
                     i->eraseFromParent();
                     isDead = true;
                     ++NumIE;
                 }
-                if(opCounter.find(i->getOpcodeName()) == opCounter.end()) {
-                    opCounter[i->getOpcodeName()] = 1;
-                } else {
-                    opCounter[i->getOpcodeName()] += 1;
                 }
-            } */
+            }  */
 	
         }
         std::map <std::string, int>::iterator i = opCounter.begin();
@@ -89,13 +89,13 @@ struct MyDCE : public FunctionPass {
     }
 };
 }
-char MyDCE::ID = 0;
-__attribute__((unused)) static RegisterPass<MyDCE>
-X("skeletonpass", "liveness analysis pass"); // NOLINT
-static void registerMyDCEPass(const PassManagerBuilder &,
+char SimpleDCE::ID = 0;
+__attribute__((unused)) static RegisterPass<SimpleDCE>
+X("skeletonpass", "Simple dead code elimination"); // NOLINT
+static void registerSimpleDCEPass(const PassManagerBuilder &,
                          legacy::PassManagerBase &PM) {
-  PM.add(new MyDCE());
+  PM.add(new SimpleDCE());
 }
 static RegisterStandardPasses
   RegisterMyPass(PassManagerBuilder::EP_EarlyAsPossible,
-                 registerMyDCEPass);
+                 registerSimpleDCEPass);
