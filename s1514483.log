@@ -1,4 +1,4 @@
-Log for student s1514483, green deer at 2018-01-10T04-00-01+0000
+Log for student s1514483, green deer at 2018-01-10T11-16-55+0000
 Rootd: /home/s1467120/llvm-marking-suite
 UUN: s1514483
 Salias: green deer
@@ -88,8 +88,8 @@ make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tmp/s1514483/part
 /home/s1467120/llvm-marking-suite/llvm-build/bin/clang -O0 -Xclang -disable-O0-optnone -emit-llvm -S /home/s1467120/llvm-marking-suite/tests/test03.c -o test03_unopt.ll
 /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -mem2reg -S test03_unopt.ll -o test03_prepass.ll 2>/dev/null
 /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S test03_prepass.ll -o  test03_postpass.ll &>  test03_compout.res
-/bin/sh: line 1: 16663 Segmentation fault      (core dumped) /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S test03_prepass.ll -o test03_postpass.ll &> test03_compout.res
-Makefile:42: recipe for target 'test03_compout.res' failed
+/bin/sh: line 1: 29494 Segmentation fault      (core dumped) /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S test03_prepass.ll -o test03_postpass.ll &> test03_compout.res
+Makefile:45: recipe for target 'test03_compout.res' failed
 make[1]: *** [test03_compout.res] Error 139
 rm test02_unopt.ll test01_unopt.ll test03_unopt.ll
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output'
