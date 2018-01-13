@@ -26,6 +26,9 @@
 #include "llvm/ADT/SmallVector.h"
 #include "llvm/ADT/Statistic.h"
 #include <vector>
+#include <iostream>
+#include <map>
+#include <set>
 using namespace llvm;
 //using namespace std;
 STATISTIC(NumIE, "no. of insts removed");
@@ -35,7 +38,7 @@ struct SimpleDCE : public FunctionPass {
    std::map<std::string, int> opCounter;
     static char ID;
     int NumIE = 0;
-    int NumIE2 = 0;
+    //int NumIE2 = 0;
     SimpleDCE() : FunctionPass(ID) {}
     virtual bool runOnFunction(Function &F) {
         SmallVector<Instruction*, 64> WL;
@@ -57,6 +60,7 @@ struct SimpleDCE : public FunctionPass {
             while (!WL.empty()) {
                Instruction* i = WL.pop_back_val();
                i->eraseFromParent();
+               ++NumIE;
            //    for(Use &O : i->operands()){
             //      if(Instruction *i = dyn_cast<Instruction>(O)){
           //           if(ALV.insert(i).second){
@@ -65,16 +69,6 @@ struct SimpleDCE : public FunctionPass {
                //   }
                //}
             }
-
-   /*           for (BasicBlock::iterator i = bb->begin(), e = bb->end(); i != e; ++i) {
-                if (isInstructionTriviallyDead(i)) {
-                    i->eraseFromParent();
-                    isDead = true;
-                    ++NumIE;
-                }
-                }
-            }  */
-	
         }
         std::map <std::string, int>::iterator i = opCounter.begin();
         std::map <std::string, int>::iterator e = opCounter.end();
