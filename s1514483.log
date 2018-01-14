@@ -1,4 +1,4 @@
-Log for student s1514483, green deer at 2018-01-14T16-00-02+0000
+Log for student s1514483, green deer at 2018-01-14T22-58-26+0000
 Rootd: /home/s1467120/llvm-marking-suite
 UUN: s1514483
 Salias: green deer
@@ -77,21 +77,2193 @@ make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tmp/s1514483/part-
 make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/build'
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/build'
 rm -rf /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output
-mkdir -p /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output; cp MakeRunPasses /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/Makefile; cd /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output; make PASSOBJ=/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so
-make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output'
-/home/s1467120/llvm-marking-suite/llvm-build/bin/clang -O0 -Xclang -disable-O0-optnone -emit-llvm -S /home/s1467120/llvm-marking-suite/tests/test01.c -o test01_unopt.ll
-/home/s1467120/llvm-marking-suite/llvm-build/bin/opt -mem2reg -S test01_unopt.ll -o test01_prepass.ll 2>/dev/null
-/home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S test01_prepass.ll -o  test01_postpass.ll &>  test01_compout.res
-/bin/sh: line 1:  1660 Segmentation fault      (core dumped) /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S test01_prepass.ll -o test01_postpass.ll &> test01_compout.res
-Makefile:45: recipe for target 'test01_compout.res' failed
-make[1]: *** [test01_compout.res] Error 139
-rm test01_unopt.ll
-make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output'
-Makefile:24: recipe for target '/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output' failed
-make: *** [/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output] Error 2
+mkdir -p /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output; /home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output
+ff = /home/s1467120/llvm-marking-suite/tests/test01.c
+unopt = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test01_unopt.ll
+prepass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test01_prepass.ll
+postpass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test01_postpass.ll
+compout = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test01_compout.res
+assembly = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test01.s
+program = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test01.out
+output = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test01_output.res
+precount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test01_prepass.count
+postcount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test01_postpass.count
+precount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test01_prepass.volcount
+postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test01_postpass.volcount
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: call: 1
+ret: 1
+TOTAL: 2
+2
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: call: 1
+ret: 1
+TOTAL: 2
+VOLATILES: 0
+0
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 34: 26924 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 84: [: missing `]'
+Pass timed out, and thus failed!
+ff = /home/s1467120/llvm-marking-suite/tests/test02.c
+unopt = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test02_unopt.ll
+prepass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test02_prepass.ll
+postpass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test02_postpass.ll
+compout = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test02_compout.res
+assembly = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test02.s
+program = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test02.out
+output = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test02_output.res
+precount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test02_prepass.count
+postcount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test02_postpass.count
+precount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test02_prepass.volcount
+postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test02_postpass.volcount
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 1
+call: 1
+ret: 1
+TOTAL: 3
+3
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 1
+call: 1
+ret: 1
+TOTAL: 3
+VOLATILES: 0
+0
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 34: 26949 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 84: [: missing `]'
+Pass timed out, and thus failed!
+ff = /home/s1467120/llvm-marking-suite/tests/test03.c
+unopt = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test03_unopt.ll
+prepass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test03_prepass.ll
+postpass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test03_postpass.ll
+compout = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test03_compout.res
+assembly = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test03.s
+program = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test03.out
+output = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test03_output.res
+precount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test03_prepass.count
+postcount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test03_postpass.count
+precount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test03_prepass.volcount
+postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test03_postpass.volcount
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+br: 4
+call: 1
+icmp: 1
+phi: 2
+ret: 1
+TOTAL: 12
+12
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+br: 4
+call: 1
+icmp: 1
+phi: 2
+ret: 1
+TOTAL: 12
+VOLATILES: 0
+0
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 34: 26974 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 84: [: missing `]'
+Pass timed out, and thus failed!
+ff = /home/s1467120/llvm-marking-suite/tests/test04.c
+unopt = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test04_unopt.ll
+prepass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test04_prepass.ll
+postpass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test04_postpass.ll
+compout = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test04_compout.res
+assembly = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test04.s
+program = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test04.out
+output = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test04_output.res
+precount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test04_prepass.count
+postcount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test04_postpass.count
+precount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test04_prepass.volcount
+postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test04_postpass.volcount
+/home/s1467120/llvm-marking-suite/tests/test04.c:9:18: warning: data argument not used by format string [-Wformat-extra-args]
+    printf("d\n",j);
+           ~~~~~ ^
+1 warning generated.
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+br: 4
+call: 2
+icmp: 1
+phi: 2
+ret: 1
+TOTAL: 13
+13
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+br: 4
+call: 2
+icmp: 1
+phi: 2
+ret: 1
+TOTAL: 13
+VOLATILES: 0
+0
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 34: 26999 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 84: [: missing `]'
+Pass timed out, and thus failed!
+ff = /home/s1467120/llvm-marking-suite/tests/test05.c
+unopt = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test05_unopt.ll
+prepass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test05_prepass.ll
+postpass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test05_postpass.ll
+compout = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test05_compout.res
+assembly = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test05.s
+program = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test05.out
+output = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test05_output.res
+precount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test05_prepass.count
+postcount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test05_postpass.count
+precount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test05_prepass.volcount
+postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test05_postpass.volcount
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 1
+br: 3
+call: 1
+icmp: 1
+phi: 1
+ret: 1
+TOTAL: 8
+8
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 1
+br: 3
+call: 1
+icmp: 1
+phi: 1
+ret: 1
+TOTAL: 8
+VOLATILES: 0
+0
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 34: 27024 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 84: [: missing `]'
+Pass timed out, and thus failed!
+ff = /home/s1467120/llvm-marking-suite/tests/test06.c
+unopt = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test06_unopt.ll
+prepass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test06_prepass.ll
+postpass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test06_postpass.ll
+compout = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test06_compout.res
+assembly = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test06.s
+program = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test06.out
+output = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test06_output.res
+precount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test06_prepass.count
+postcount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test06_postpass.count
+precount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test06_prepass.volcount
+postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test06_postpass.volcount
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 2
+br: 3
+call: 2
+icmp: 1
+phi: 1
+ret: 1
+TOTAL: 10
+10
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 2
+br: 3
+call: 2
+icmp: 1
+phi: 1
+ret: 1
+TOTAL: 10
+VOLATILES: 0
+0
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 34: 27049 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 84: [: missing `]'
+Pass timed out, and thus failed!
+ff = /home/s1467120/llvm-marking-suite/tests/test07.c
+unopt = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test07_unopt.ll
+prepass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test07_prepass.ll
+postpass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test07_postpass.ll
+compout = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test07_compout.res
+assembly = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test07.s
+program = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test07.out
+output = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test07_output.res
+precount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test07_prepass.count
+postcount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test07_postpass.count
+precount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test07_prepass.volcount
+postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test07_postpass.volcount
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+br: 3
+call: 1
+icmp: 1
+phi: 1
+ret: 1
+TOTAL: 10
+10
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+br: 3
+call: 1
+icmp: 1
+phi: 1
+ret: 1
+TOTAL: 10
+VOLATILES: 0
+0
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 34: 27074 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 84: [: missing `]'
+Pass timed out, and thus failed!
+ff = /home/s1467120/llvm-marking-suite/tests/test08.c
+unopt = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test08_unopt.ll
+prepass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test08_prepass.ll
+postpass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test08_postpass.ll
+compout = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test08_compout.res
+assembly = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test08.s
+program = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test08.out
+output = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test08_output.res
+precount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test08_prepass.count
+postcount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test08_postpass.count
+precount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test08_prepass.volcount
+postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test08_postpass.volcount
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+br: 4
+call: 1
+icmp: 1
+phi: 1
+ret: 1
+TOTAL: 11
+11
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+br: 4
+call: 1
+icmp: 1
+phi: 1
+ret: 1
+TOTAL: 11
+VOLATILES: 0
+0
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 34: 27099 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 84: [: missing `]'
+Pass timed out, and thus failed!
+ff = /home/s1467120/llvm-marking-suite/tests/test09.c
+unopt = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test09_unopt.ll
+prepass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test09_prepass.ll
+postpass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test09_postpass.ll
+compout = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test09_compout.res
+assembly = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test09.s
+program = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test09.out
+output = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test09_output.res
+precount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test09_prepass.count
+postcount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test09_postpass.count
+precount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test09_prepass.volcount
+postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test09_postpass.volcount
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+br: 4
+call: 1
+icmp: 1
+phi: 1
+ret: 1
+TOTAL: 11
+11
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+br: 4
+call: 1
+icmp: 1
+phi: 1
+ret: 1
+TOTAL: 11
+VOLATILES: 0
+0
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 34: 27124 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 84: [: missing `]'
+Pass timed out, and thus failed!
+ff = /home/s1467120/llvm-marking-suite/tests/test10.c
+unopt = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test10_unopt.ll
+prepass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test10_prepass.ll
+postpass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test10_postpass.ll
+compout = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test10_compout.res
+assembly = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test10.s
+program = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test10.out
+output = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test10_output.res
+precount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test10_prepass.count
+postcount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test10_postpass.count
+precount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test10_prepass.volcount
+postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test10_postpass.volcount
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 2
+br: 7
+call: 1
+icmp: 2
+phi: 6
+ret: 1
+TOTAL: 19
+19
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 2
+br: 7
+call: 1
+icmp: 2
+phi: 6
+ret: 1
+TOTAL: 19
+VOLATILES: 0
+0
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 34: 27149 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 84: [: missing `]'
+Pass timed out, and thus failed!
+ff = /home/s1467120/llvm-marking-suite/tests/test11.c
+unopt = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test11_unopt.ll
+prepass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test11_prepass.ll
+postpass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test11_postpass.ll
+compout = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test11_compout.res
+assembly = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test11.s
+program = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test11.out
+output = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test11_output.res
+precount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test11_prepass.count
+postcount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test11_postpass.count
+precount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test11_prepass.volcount
+postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test11_postpass.volcount
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+br: 7
+call: 1
+icmp: 2
+phi: 7
+ret: 1
+TOTAL: 21
+21
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+br: 7
+call: 1
+icmp: 2
+phi: 7
+ret: 1
+TOTAL: 21
+VOLATILES: 0
+0
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 34: 27174 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 84: [: missing `]'
+Pass timed out, and thus failed!
+ff = /home/s1467120/llvm-marking-suite/tests/test12.c
+unopt = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test12_unopt.ll
+prepass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test12_prepass.ll
+postpass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test12_postpass.ll
+compout = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test12_compout.res
+assembly = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test12.s
+program = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test12.out
+output = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test12_output.res
+precount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test12_prepass.count
+postcount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test12_postpass.count
+precount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test12_prepass.volcount
+postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test12_postpass.volcount
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 4
+br: 7
+call: 1
+icmp: 2
+mul: 1
+phi: 7
+ret: 1
+TOTAL: 23
+23
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 4
+br: 7
+call: 1
+icmp: 2
+mul: 1
+phi: 7
+ret: 1
+TOTAL: 23
+VOLATILES: 0
+0
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 34: 27199 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 84: [: missing `]'
+Pass timed out, and thus failed!
+ff = /home/s1467120/llvm-marking-suite/tests/test13.c
+unopt = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test13_unopt.ll
+prepass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test13_prepass.ll
+postpass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test13_postpass.ll
+compout = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test13_compout.res
+assembly = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test13.s
+program = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test13.out
+output = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test13_output.res
+precount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test13_prepass.count
+postcount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test13_postpass.count
+precount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test13_prepass.volcount
+postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test13_postpass.volcount
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 1
+alloca: 1
+call: 1
+load: 1
+ret: 1
+store: 2
+TOTAL: 7
+7
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 1
+alloca: 1
+call: 1
+load: 1
+ret: 1
+store: 2
+TOTAL: 7
+VOLATILES: 1
+1
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 34: 27224 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 84: [: missing `]'
+Pass timed out, and thus failed!
+ff = /home/s1467120/llvm-marking-suite/tests/test14.c
+unopt = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test14_unopt.ll
+prepass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test14_prepass.ll
+postpass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test14_postpass.ll
+compout = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test14_compout.res
+assembly = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test14.s
+program = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test14.out
+output = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test14_output.res
+precount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test14_prepass.count
+postcount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test14_postpass.count
+precount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test14_prepass.volcount
+postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test14_postpass.volcount
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+alloca: 1
+br: 4
+call: 1
+icmp: 1
+load: 2
+phi: 1
+ret: 1
+store: 3
+TOTAL: 17
+17
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+alloca: 1
+br: 4
+call: 1
+icmp: 1
+load: 2
+phi: 1
+ret: 1
+store: 3
+TOTAL: 17
+VOLATILES: 2
+2
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 34: 27249 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 84: [: missing `]'
+Pass timed out, and thus failed!
+ff = /home/s1467120/llvm-marking-suite/tests/test15.c
+unopt = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test15_unopt.ll
+prepass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test15_prepass.ll
+postpass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test15_postpass.ll
+compout = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test15_compout.res
+assembly = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test15.s
+program = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test15.out
+output = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test15_output.res
+precount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test15_prepass.count
+postcount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test15_postpass.count
+precount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test15_prepass.volcount
+postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test15_postpass.volcount
+/home/s1467120/llvm-marking-suite/tests/test15.c:9:19: warning: data argument not used by format string [-Wformat-extra-args]
+    printf("d\n", j);
+           ~~~~~  ^
+1 warning generated.
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+alloca: 1
+br: 4
+call: 2
+icmp: 1
+load: 2
+phi: 1
+ret: 1
+store: 3
+TOTAL: 18
+18
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+alloca: 1
+br: 4
+call: 2
+icmp: 1
+load: 2
+phi: 1
+ret: 1
+store: 3
+TOTAL: 18
+VOLATILES: 2
+2
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 34: 27274 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 84: [: missing `]'
+Pass timed out, and thus failed!
+ff = /home/s1467120/llvm-marking-suite/tests/test16.c
+unopt = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test16_unopt.ll
+prepass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test16_prepass.ll
+postpass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test16_postpass.ll
+compout = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test16_compout.res
+assembly = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test16.s
+program = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test16.out
+output = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test16_output.res
+precount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test16_prepass.count
+postcount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test16_postpass.count
+precount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test16_prepass.volcount
+postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test16_postpass.volcount
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+alloca: 2
+br: 4
+call: 1
+icmp: 1
+load: 2
+phi: 1
+ret: 1
+store: 2
+TOTAL: 17
+17
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+alloca: 2
+br: 4
+call: 1
+icmp: 1
+load: 2
+phi: 1
+ret: 1
+store: 2
+TOTAL: 17
+VOLATILES: 2
+2
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 34: 27299 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 84: [: missing `]'
+Pass timed out, and thus failed!
+ff = /home/s1467120/llvm-marking-suite/tests/test17.c
+unopt = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test17_unopt.ll
+prepass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test17_prepass.ll
+postpass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test17_postpass.ll
+compout = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test17_compout.res
+assembly = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test17.s
+program = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test17.out
+output = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test17_output.res
+precount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test17_prepass.count
+postcount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test17_postpass.count
+precount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test17_prepass.volcount
+postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test17_postpass.volcount
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+alloca: 1
+br: 7
+call: 1
+icmp: 2
+load: 1
+phi: 6
+ret: 1
+store: 2
+TOTAL: 24
+24
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+alloca: 1
+br: 7
+call: 1
+icmp: 2
+load: 1
+phi: 6
+ret: 1
+store: 2
+TOTAL: 24
+VOLATILES: 1
+1
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 34: 27324 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 84: [: missing `]'
+Pass timed out, and thus failed!
+ff = /home/s1467120/llvm-marking-suite/tests/test18.c
+unopt = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test18_unopt.ll
+prepass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test18_prepass.ll
+postpass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test18_postpass.ll
+compout = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test18_compout.res
+assembly = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test18.s
+program = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test18.out
+output = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test18_output.res
+precount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test18_prepass.count
+postcount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test18_postpass.count
+precount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test18_prepass.volcount
+postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test18_postpass.volcount
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 4
+alloca: 2
+br: 7
+call: 1
+icmp: 2
+load: 3
+mul: 1
+phi: 6
+ret: 1
+store: 5
+TOTAL: 32
+32
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 4
+alloca: 2
+br: 7
+call: 1
+icmp: 2
+load: 3
+mul: 1
+phi: 6
+ret: 1
+store: 5
+TOTAL: 32
+VOLATILES: 3
+3
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 34: 27349 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 84: [: missing `]'
+Pass timed out, and thus failed!
+# cp MakeRunPasses /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/Makefile; cd /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output; make PASSOBJ=/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so
+rm -rf /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+mkdir -p /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output; /home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/build/skeleton/libSkeletonPass.so /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output
+ff = /home/s1467120/llvm-marking-suite/tests/test01.c
+unopt = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test01_unopt.ll
+prepass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test01_prepass.ll
+postpass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test01_postpass.ll
+compout = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test01_compout.res
+assembly = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test01.s
+program = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test01.out
+output = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test01_output.res
+precount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test01_prepass.count
+postcount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test01_postpass.count
+precount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test01_prepass.volcount
+postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test01_postpass.volcount
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: call: 1
+ret: 1
+TOTAL: 2
+2
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: call: 1
+ret: 1
+TOTAL: 2
+VOLATILES: 0
+0
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: call: 1
+ret: 1
+TOTAL: 2
+2
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: call: 1
+ret: 1
+TOTAL: 2
+VOLATILES: 0
+0
+ff = /home/s1467120/llvm-marking-suite/tests/test02.c
+unopt = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test02_unopt.ll
+prepass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test02_prepass.ll
+postpass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test02_postpass.ll
+compout = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test02_compout.res
+assembly = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test02.s
+program = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test02.out
+output = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test02_output.res
+precount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test02_prepass.count
+postcount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test02_postpass.count
+precount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test02_prepass.volcount
+postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test02_postpass.volcount
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 1
+call: 1
+ret: 1
+TOTAL: 3
+3
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 1
+call: 1
+ret: 1
+TOTAL: 3
+VOLATILES: 0
+0
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: call: 1
+ret: 1
+TOTAL: 2
+2
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: call: 1
+ret: 1
+TOTAL: 2
+VOLATILES: 0
+0
+ff = /home/s1467120/llvm-marking-suite/tests/test03.c
+unopt = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test03_unopt.ll
+prepass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test03_prepass.ll
+postpass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test03_postpass.ll
+compout = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test03_compout.res
+assembly = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test03.s
+program = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test03.out
+output = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test03_output.res
+precount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test03_prepass.count
+postcount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test03_postpass.count
+precount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test03_prepass.volcount
+postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test03_postpass.volcount
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+br: 4
+call: 1
+icmp: 1
+phi: 2
+ret: 1
+TOTAL: 12
+12
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+br: 4
+call: 1
+icmp: 1
+phi: 2
+ret: 1
+TOTAL: 12
+VOLATILES: 0
+0
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+br: 4
+call: 1
+icmp: 1
+phi: 2
+ret: 1
+TOTAL: 12
+12
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+br: 4
+call: 1
+icmp: 1
+phi: 2
+ret: 1
+TOTAL: 12
+VOLATILES: 0
+0
+ff = /home/s1467120/llvm-marking-suite/tests/test04.c
+unopt = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test04_unopt.ll
+prepass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test04_prepass.ll
+postpass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test04_postpass.ll
+compout = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test04_compout.res
+assembly = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test04.s
+program = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test04.out
+output = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test04_output.res
+precount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test04_prepass.count
+postcount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test04_postpass.count
+precount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test04_prepass.volcount
+postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test04_postpass.volcount
+/home/s1467120/llvm-marking-suite/tests/test04.c:9:18: warning: data argument not used by format string [-Wformat-extra-args]
+    printf("d\n",j);
+           ~~~~~ ^
+1 warning generated.
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+br: 4
+call: 2
+icmp: 1
+phi: 2
+ret: 1
+TOTAL: 13
+13
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+br: 4
+call: 2
+icmp: 1
+phi: 2
+ret: 1
+TOTAL: 13
+VOLATILES: 0
+0
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+br: 4
+call: 2
+icmp: 1
+phi: 2
+ret: 1
+TOTAL: 13
+13
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+br: 4
+call: 2
+icmp: 1
+phi: 2
+ret: 1
+TOTAL: 13
+VOLATILES: 0
+0
+ff = /home/s1467120/llvm-marking-suite/tests/test05.c
+unopt = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test05_unopt.ll
+prepass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test05_prepass.ll
+postpass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test05_postpass.ll
+compout = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test05_compout.res
+assembly = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test05.s
+program = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test05.out
+output = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test05_output.res
+precount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test05_prepass.count
+postcount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test05_postpass.count
+precount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test05_prepass.volcount
+postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test05_postpass.volcount
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 1
+br: 3
+call: 1
+icmp: 1
+phi: 1
+ret: 1
+TOTAL: 8
+8
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 1
+br: 3
+call: 1
+icmp: 1
+phi: 1
+ret: 1
+TOTAL: 8
+VOLATILES: 0
+0
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 1
+br: 3
+call: 1
+icmp: 1
+phi: 1
+ret: 1
+TOTAL: 8
+8
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 1
+br: 3
+call: 1
+icmp: 1
+phi: 1
+ret: 1
+TOTAL: 8
+VOLATILES: 0
+0
+ff = /home/s1467120/llvm-marking-suite/tests/test06.c
+unopt = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test06_unopt.ll
+prepass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test06_prepass.ll
+postpass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test06_postpass.ll
+compout = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test06_compout.res
+assembly = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test06.s
+program = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test06.out
+output = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test06_output.res
+precount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test06_prepass.count
+postcount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test06_postpass.count
+precount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test06_prepass.volcount
+postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test06_postpass.volcount
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 2
+br: 3
+call: 2
+icmp: 1
+phi: 1
+ret: 1
+TOTAL: 10
+10
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 2
+br: 3
+call: 2
+icmp: 1
+phi: 1
+ret: 1
+TOTAL: 10
+VOLATILES: 0
+0
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 2
+br: 3
+call: 2
+icmp: 1
+phi: 1
+ret: 1
+TOTAL: 10
+10
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 2
+br: 3
+call: 2
+icmp: 1
+phi: 1
+ret: 1
+TOTAL: 10
+VOLATILES: 0
+0
+ff = /home/s1467120/llvm-marking-suite/tests/test07.c
+unopt = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test07_unopt.ll
+prepass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test07_prepass.ll
+postpass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test07_postpass.ll
+compout = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test07_compout.res
+assembly = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test07.s
+program = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test07.out
+output = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test07_output.res
+precount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test07_prepass.count
+postcount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test07_postpass.count
+precount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test07_prepass.volcount
+postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test07_postpass.volcount
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+br: 3
+call: 1
+icmp: 1
+phi: 1
+ret: 1
+TOTAL: 10
+10
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+br: 3
+call: 1
+icmp: 1
+phi: 1
+ret: 1
+TOTAL: 10
+VOLATILES: 0
+0
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 2
+br: 3
+call: 1
+icmp: 1
+phi: 1
+ret: 1
+TOTAL: 9
+9
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 2
+br: 3
+call: 1
+icmp: 1
+phi: 1
+ret: 1
+TOTAL: 9
+VOLATILES: 0
+0
+ff = /home/s1467120/llvm-marking-suite/tests/test08.c
+unopt = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test08_unopt.ll
+prepass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test08_prepass.ll
+postpass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test08_postpass.ll
+compout = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test08_compout.res
+assembly = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test08.s
+program = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test08.out
+output = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test08_output.res
+precount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test08_prepass.count
+postcount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test08_postpass.count
+precount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test08_prepass.volcount
+postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test08_postpass.volcount
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+br: 4
+call: 1
+icmp: 1
+phi: 1
+ret: 1
+TOTAL: 11
+11
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+br: 4
+call: 1
+icmp: 1
+phi: 1
+ret: 1
+TOTAL: 11
+VOLATILES: 0
+0
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+br: 4
+call: 1
+icmp: 1
+phi: 1
+ret: 1
+TOTAL: 11
+11
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+br: 4
+call: 1
+icmp: 1
+phi: 1
+ret: 1
+TOTAL: 11
+VOLATILES: 0
+0
+ff = /home/s1467120/llvm-marking-suite/tests/test09.c
+unopt = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test09_unopt.ll
+prepass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test09_prepass.ll
+postpass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test09_postpass.ll
+compout = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test09_compout.res
+assembly = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test09.s
+program = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test09.out
+output = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test09_output.res
+precount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test09_prepass.count
+postcount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test09_postpass.count
+precount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test09_prepass.volcount
+postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test09_postpass.volcount
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+br: 4
+call: 1
+icmp: 1
+phi: 1
+ret: 1
+TOTAL: 11
+11
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+br: 4
+call: 1
+icmp: 1
+phi: 1
+ret: 1
+TOTAL: 11
+VOLATILES: 0
+0
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 2
+br: 4
+call: 1
+icmp: 1
+phi: 1
+ret: 1
+TOTAL: 10
+10
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 2
+br: 4
+call: 1
+icmp: 1
+phi: 1
+ret: 1
+TOTAL: 10
+VOLATILES: 0
+0
+ff = /home/s1467120/llvm-marking-suite/tests/test10.c
+unopt = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test10_unopt.ll
+prepass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test10_prepass.ll
+postpass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test10_postpass.ll
+compout = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test10_compout.res
+assembly = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test10.s
+program = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test10.out
+output = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test10_output.res
+precount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test10_prepass.count
+postcount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test10_postpass.count
+precount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test10_prepass.volcount
+postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test10_postpass.volcount
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 2
+br: 7
+call: 1
+icmp: 2
+phi: 6
+ret: 1
+TOTAL: 19
+19
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 2
+br: 7
+call: 1
+icmp: 2
+phi: 6
+ret: 1
+TOTAL: 19
+VOLATILES: 0
+0
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 2
+br: 7
+call: 1
+icmp: 2
+phi: 6
+ret: 1
+TOTAL: 19
+19
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 2
+br: 7
+call: 1
+icmp: 2
+phi: 6
+ret: 1
+TOTAL: 19
+VOLATILES: 0
+0
+ff = /home/s1467120/llvm-marking-suite/tests/test11.c
+unopt = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test11_unopt.ll
+prepass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test11_prepass.ll
+postpass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test11_postpass.ll
+compout = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test11_compout.res
+assembly = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test11.s
+program = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test11.out
+output = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test11_output.res
+precount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test11_prepass.count
+postcount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test11_postpass.count
+precount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test11_prepass.volcount
+postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test11_postpass.volcount
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+br: 7
+call: 1
+icmp: 2
+phi: 7
+ret: 1
+TOTAL: 21
+21
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+br: 7
+call: 1
+icmp: 2
+phi: 7
+ret: 1
+TOTAL: 21
+VOLATILES: 0
+0
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+br: 7
+call: 1
+icmp: 2
+phi: 7
+ret: 1
+TOTAL: 21
+21
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+br: 7
+call: 1
+icmp: 2
+phi: 7
+ret: 1
+TOTAL: 21
+VOLATILES: 0
+0
+ff = /home/s1467120/llvm-marking-suite/tests/test12.c
+unopt = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test12_unopt.ll
+prepass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test12_prepass.ll
+postpass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test12_postpass.ll
+compout = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test12_compout.res
+assembly = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test12.s
+program = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test12.out
+output = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test12_output.res
+precount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test12_prepass.count
+postcount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test12_postpass.count
+precount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test12_prepass.volcount
+postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test12_postpass.volcount
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 4
+br: 7
+call: 1
+icmp: 2
+mul: 1
+phi: 7
+ret: 1
+TOTAL: 23
+23
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 4
+br: 7
+call: 1
+icmp: 2
+mul: 1
+phi: 7
+ret: 1
+TOTAL: 23
+VOLATILES: 0
+0
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+br: 7
+call: 1
+icmp: 2
+phi: 7
+ret: 1
+TOTAL: 21
+21
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+br: 7
+call: 1
+icmp: 2
+phi: 7
+ret: 1
+TOTAL: 21
+VOLATILES: 0
+0
+ff = /home/s1467120/llvm-marking-suite/tests/test13.c
+unopt = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test13_unopt.ll
+prepass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test13_prepass.ll
+postpass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test13_postpass.ll
+compout = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test13_compout.res
+assembly = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test13.s
+program = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test13.out
+output = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test13_output.res
+precount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test13_prepass.count
+postcount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test13_postpass.count
+precount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test13_prepass.volcount
+postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test13_postpass.volcount
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 1
+alloca: 1
+call: 1
+load: 1
+ret: 1
+store: 2
+TOTAL: 7
+7
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 1
+alloca: 1
+call: 1
+load: 1
+ret: 1
+store: 2
+TOTAL: 7
+VOLATILES: 1
+1
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 1
+alloca: 1
+call: 1
+load: 1
+ret: 1
+store: 2
+TOTAL: 7
+7
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 1
+alloca: 1
+call: 1
+load: 1
+ret: 1
+store: 2
+TOTAL: 7
+VOLATILES: 1
+1
+ff = /home/s1467120/llvm-marking-suite/tests/test14.c
+unopt = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test14_unopt.ll
+prepass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test14_prepass.ll
+postpass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test14_postpass.ll
+compout = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test14_compout.res
+assembly = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test14.s
+program = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test14.out
+output = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test14_output.res
+precount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test14_prepass.count
+postcount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test14_postpass.count
+precount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test14_prepass.volcount
+postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test14_postpass.volcount
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+alloca: 1
+br: 4
+call: 1
+icmp: 1
+load: 2
+phi: 1
+ret: 1
+store: 3
+TOTAL: 17
+17
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+alloca: 1
+br: 4
+call: 1
+icmp: 1
+load: 2
+phi: 1
+ret: 1
+store: 3
+TOTAL: 17
+VOLATILES: 2
+2
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+alloca: 1
+br: 4
+call: 1
+icmp: 1
+load: 2
+phi: 1
+ret: 1
+store: 3
+TOTAL: 17
+17
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+alloca: 1
+br: 4
+call: 1
+icmp: 1
+load: 2
+phi: 1
+ret: 1
+store: 3
+TOTAL: 17
+VOLATILES: 2
+2
+ff = /home/s1467120/llvm-marking-suite/tests/test15.c
+unopt = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test15_unopt.ll
+prepass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test15_prepass.ll
+postpass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test15_postpass.ll
+compout = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test15_compout.res
+assembly = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test15.s
+program = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test15.out
+output = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test15_output.res
+precount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test15_prepass.count
+postcount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test15_postpass.count
+precount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test15_prepass.volcount
+postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test15_postpass.volcount
+/home/s1467120/llvm-marking-suite/tests/test15.c:9:19: warning: data argument not used by format string [-Wformat-extra-args]
+    printf("d\n", j);
+           ~~~~~  ^
+1 warning generated.
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+alloca: 1
+br: 4
+call: 2
+icmp: 1
+load: 2
+phi: 1
+ret: 1
+store: 3
+TOTAL: 18
+18
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+alloca: 1
+br: 4
+call: 2
+icmp: 1
+load: 2
+phi: 1
+ret: 1
+store: 3
+TOTAL: 18
+VOLATILES: 2
+2
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+alloca: 1
+br: 4
+call: 2
+icmp: 1
+load: 2
+phi: 1
+ret: 1
+store: 3
+TOTAL: 18
+18
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+alloca: 1
+br: 4
+call: 2
+icmp: 1
+load: 2
+phi: 1
+ret: 1
+store: 3
+TOTAL: 18
+VOLATILES: 2
+2
+ff = /home/s1467120/llvm-marking-suite/tests/test16.c
+unopt = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test16_unopt.ll
+prepass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test16_prepass.ll
+postpass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test16_postpass.ll
+compout = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test16_compout.res
+assembly = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test16.s
+program = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test16.out
+output = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test16_output.res
+precount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test16_prepass.count
+postcount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test16_postpass.count
+precount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test16_prepass.volcount
+postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test16_postpass.volcount
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+alloca: 2
+br: 4
+call: 1
+icmp: 1
+load: 2
+phi: 1
+ret: 1
+store: 2
+TOTAL: 17
+17
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+alloca: 2
+br: 4
+call: 1
+icmp: 1
+load: 2
+phi: 1
+ret: 1
+store: 2
+TOTAL: 17
+VOLATILES: 2
+2
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+alloca: 2
+br: 4
+call: 1
+icmp: 1
+load: 2
+phi: 1
+ret: 1
+store: 2
+TOTAL: 17
+17
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+alloca: 2
+br: 4
+call: 1
+icmp: 1
+load: 2
+phi: 1
+ret: 1
+store: 2
+TOTAL: 17
+VOLATILES: 2
+2
+ff = /home/s1467120/llvm-marking-suite/tests/test17.c
+unopt = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test17_unopt.ll
+prepass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test17_prepass.ll
+postpass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test17_postpass.ll
+compout = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test17_compout.res
+assembly = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test17.s
+program = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test17.out
+output = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test17_output.res
+precount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test17_prepass.count
+postcount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test17_postpass.count
+precount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test17_prepass.volcount
+postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test17_postpass.volcount
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+alloca: 1
+br: 7
+call: 1
+icmp: 2
+load: 1
+phi: 6
+ret: 1
+store: 2
+TOTAL: 24
+24
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+alloca: 1
+br: 7
+call: 1
+icmp: 2
+load: 1
+phi: 6
+ret: 1
+store: 2
+TOTAL: 24
+VOLATILES: 1
+1
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+alloca: 1
+br: 7
+call: 1
+icmp: 2
+load: 1
+phi: 6
+ret: 1
+store: 2
+TOTAL: 24
+24
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 3
+alloca: 1
+br: 7
+call: 1
+icmp: 2
+load: 1
+phi: 6
+ret: 1
+store: 2
+TOTAL: 24
+VOLATILES: 1
+1
+ff = /home/s1467120/llvm-marking-suite/tests/test18.c
+unopt = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test18_unopt.ll
+prepass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test18_prepass.ll
+postpass = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test18_postpass.ll
+compout = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test18_compout.res
+assembly = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test18.s
+program = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test18.out
+output = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test18_output.res
+precount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test18_prepass.count
+postcount = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test18_postpass.count
+precount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test18_prepass.volcount
+postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test18_postpass.volcount
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 4
+alloca: 2
+br: 7
+call: 1
+icmp: 2
+load: 3
+mul: 1
+phi: 6
+ret: 1
+store: 5
+TOTAL: 32
+32
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 4
+alloca: 2
+br: 7
+call: 1
+icmp: 2
+load: 3
+mul: 1
+phi: 6
+ret: 1
+store: 5
+TOTAL: 32
+VOLATILES: 3
+3
+~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 4
+alloca: 2
+br: 7
+call: 1
+icmp: 2
+load: 3
+mul: 1
+phi: 6
+ret: 1
+store: 5
+TOTAL: 32
+32
+~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
+make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
+~/llvm-marking-suite/tmp/s1514483/part-4
+INSTR COUNT: add: 4
+alloca: 2
+br: 7
+call: 1
+icmp: 2
+load: 3
+mul: 1
+phi: 6
+ret: 1
+store: 5
+TOTAL: 32
+VOLATILES: 3
+3
+# cp MakeRunPasses /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/Makefile; cd /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output; make PASSOBJ=/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/build/skeleton/libSkeletonPass.so
 rm /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/buildmake: unlink: /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/build: Is a directory
  /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/buildmake: unlink: /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build: Is a directory
 
-Building/running passes for student s1514483 failed!
-Building/running marking script for student s1514483 failed!
+========== Comparing with GOLD
+Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output//test10_postpass.count
+Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output//test10_postpass.volcount
+Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output//test12_postpass.count
+Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output//test12_postpass.volcount
+Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output//test01_postpass.count
+Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output//test01_postpass.volcount
+Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output//test02_postpass.count
+Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output//test02_postpass.volcount
+Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output//test03_postpass.count
+Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output//test03_postpass.volcount
+Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output//test04_postpass.count
+Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output//test04_postpass.volcount
+Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output//test05_postpass.count
+Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output//test05_postpass.volcount
+Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output//test06_postpass.count
+Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output//test06_postpass.volcount
+Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output//test07_postpass.count
+Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output//test07_postpass.volcount
+Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output//test08_postpass.count
+Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output//test08_postpass.volcount
+Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output//test11_postpass.count
+Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output//test11_postpass.volcount
+Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output//test09_postpass.count
+Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output//test09_postpass.volcount
+Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output//test13_postpass.count
+Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output//test13_postpass.volcount
+Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output//test14_postpass.count
+Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output//test14_postpass.volcount
+Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output//test15_postpass.count
+Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output//test15_postpass.volcount
+Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output//test17_postpass.count
+Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output//test17_postpass.volcount
+Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output//test18_postpass.count
+Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output//test18_postpass.volcount
+Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output//test16_postpass.count
+Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output//test16_postpass.volcount
+{"student_alias": "green deer", "student_id": "s1514483", "pass_results": [{"pass": "llvm-pass-my-dce", "results": [{"volatile_count_before": 0, "correct": false, "expected_count_after": 18, "test": "test10", "dce_count_after": "Failed", "expected_count_before": 19, "dce_count_before": 19, "volatile_count_after": "Failed"}, {"volatile_count_before": 0, "correct": false, "expected_count_after": 20, "test": "test12", "dce_count_after": "Failed", "expected_count_before": 23, "dce_count_before": 23, "volatile_count_after": "Failed"}, {"volatile_count_before": 0, "correct": false, "expected_count_after": 2, "test": "test01", "dce_count_after": "Failed", "expected_count_before": 2, "dce_count_before": 2, "volatile_count_after": "Failed"}, {"volatile_count_before": 0, "correct": false, "expected_count_after": 2, "test": "test02", "dce_count_after": "Failed", "expected_count_before": 3, "dce_count_before": 3, "volatile_count_after": "Failed"}, {"volatile_count_before": 0, "correct": false, "expected_count_after": 12, "test": "test03", "dce_count_after": "Failed", "expected_count_before": 12, "dce_count_before": 12, "volatile_count_after": "Failed"}, {"volatile_count_before": 0, "correct": false, "expected_count_after": 13, "test": "test04", "dce_count_after": "Failed", "expected_count_before": 13, "dce_count_before": 13, "volatile_count_after": "Failed"}, {"volatile_count_before": 0, "correct": false, "expected_count_after": 7, "test": "test05", "dce_count_after": "Failed", "expected_count_before": 8, "dce_count_before": 8, "volatile_count_after": "Failed"}, {"volatile_count_before": 0, "correct": false, "expected_count_after": 9, "test": "test06", "dce_count_after": "Failed", "expected_count_before": 10, "dce_count_before": 10, "volatile_count_after": "Failed"}, {"volatile_count_before": 0, "correct": false, "expected_count_after": 8, "test": "test07", "dce_count_after": "Failed", "expected_count_before": 10, "dce_count_before": 10, "volatile_count_after": "Failed"}, {"volatile_count_before": 0, "correct": false, "expected_count_after": 11, "test": "test08", "dce_count_after": "Failed", "expected_count_before": 11, "dce_count_before": 11, "volatile_count_after": "Failed"}, {"volatile_count_before": 0, "correct": false, "expected_count_after": 20, "test": "test11", "dce_count_after": "Failed", "expected_count_before": 21, "dce_count_before": 21, "volatile_count_after": "Failed"}, {"volatile_count_before": 0, "correct": false, "expected_count_after": 10, "test": "test09", "dce_count_after": "Failed", "expected_count_before": 11, "dce_count_before": 11, "volatile_count_after": "Failed"}, {"volatile_count_before": 1, "correct": false, "expected_count_after": 7, "test": "test13", "dce_count_after": "Failed", "expected_count_before": 7, "dce_count_before": 7, "volatile_count_after": "Failed"}, {"volatile_count_before": 2, "correct": false, "expected_count_after": 17, "test": "test14", "dce_count_after": "Failed", "expected_count_before": 17, "dce_count_before": 17, "volatile_count_after": "Failed"}, {"volatile_count_before": 2, "correct": false, "expected_count_after": 18, "test": "test15", "dce_count_after": "Failed", "expected_count_before": 18, "dce_count_before": 18, "volatile_count_after": "Failed"}, {"volatile_count_before": 1, "correct": false, "expected_count_after": 23, "test": "test17", "dce_count_after": "Failed", "expected_count_before": 24, "dce_count_before": 24, "volatile_count_after": "Failed"}, {"volatile_count_before": 3, "correct": false, "expected_count_after": 32, "test": "test18", "dce_count_after": "Failed", "expected_count_before": 32, "dce_count_before": 32, "volatile_count_after": "Failed"}, {"volatile_count_before": 2, "correct": false, "expected_count_after": 17, "test": "test16", "dce_count_after": "Failed", "expected_count_before": 17, "dce_count_before": 17, "volatile_count_after": "Failed"}]}, {"pass": "llvm-pass-simple-dce", "results": [{"volatile_count_before": 0, "correct": true, "expected_count_after": 19, "test": "test10", "dce_count_after": 19, "expected_count_before": 19, "dce_count_before": 19, "volatile_count_after": 0}, {"volatile_count_before": 0, "correct": true, "expected_count_after": 21, "test": "test12", "dce_count_after": 21, "expected_count_before": 23, "dce_count_before": 23, "volatile_count_after": 0}, {"volatile_count_before": 0, "correct": true, "expected_count_after": 2, "test": "test01", "dce_count_after": 2, "expected_count_before": 2, "dce_count_before": 2, "volatile_count_after": 0}, {"volatile_count_before": 0, "correct": true, "expected_count_after": 2, "test": "test02", "dce_count_after": 2, "expected_count_before": 3, "dce_count_before": 3, "volatile_count_after": 0}, {"volatile_count_before": 0, "correct": true, "expected_count_after": 12, "test": "test03", "dce_count_after": 12, "expected_count_before": 12, "dce_count_before": 12, "volatile_count_after": 0}, {"volatile_count_before": 0, "correct": true, "expected_count_after": 13, "test": "test04", "dce_count_after": 13, "expected_count_before": 13, "dce_count_before": 13, "volatile_count_after": 0}, {"volatile_count_before": 0, "correct": true, "expected_count_after": 8, "test": "test05", "dce_count_after": 8, "expected_count_before": 8, "dce_count_before": 8, "volatile_count_after": 0}, {"volatile_count_before": 0, "correct": true, "expected_count_after": 10, "test": "test06", "dce_count_after": 10, "expected_count_before": 10, "dce_count_before": 10, "volatile_count_after": 0}, {"volatile_count_before": 0, "correct": true, "expected_count_after": 9, "test": "test07", "dce_count_after": 9, "expected_count_before": 10, "dce_count_before": 10, "volatile_count_after": 0}, {"volatile_count_before": 0, "correct": true, "expected_count_after": 11, "test": "test08", "dce_count_after": 11, "expected_count_before": 11, "dce_count_before": 11, "volatile_count_after": 0}, {"volatile_count_before": 0, "correct": true, "expected_count_after": 21, "test": "test11", "dce_count_after": 21, "expected_count_before": 21, "dce_count_before": 21, "volatile_count_after": 0}, {"volatile_count_before": 0, "correct": true, "expected_count_after": 10, "test": "test09", "dce_count_after": 10, "expected_count_before": 11, "dce_count_before": 11, "volatile_count_after": 0}, {"volatile_count_before": 1, "correct": true, "expected_count_after": 7, "test": "test13", "dce_count_after": 7, "expected_count_before": 7, "dce_count_before": 7, "volatile_count_after": 1}, {"volatile_count_before": 2, "correct": true, "expected_count_after": 17, "test": "test14", "dce_count_after": 17, "expected_count_before": 17, "dce_count_before": 17, "volatile_count_after": 2}, {"volatile_count_before": 2, "correct": true, "expected_count_after": 18, "test": "test15", "dce_count_after": 18, "expected_count_before": 18, "dce_count_before": 18, "volatile_count_after": 2}, {"volatile_count_before": 1, "correct": true, "expected_count_after": 24, "test": "test17", "dce_count_after": 24, "expected_count_before": 24, "dce_count_before": 24, "volatile_count_after": 1}, {"volatile_count_before": 3, "correct": true, "expected_count_after": 32, "test": "test18", "dce_count_after": 32, "expected_count_before": 32, "dce_count_before": 32, "volatile_count_after": 3}, {"volatile_count_before": 2, "correct": true, "expected_count_after": 17, "test": "test16", "dce_count_after": 17, "expected_count_before": 17, "dce_count_before": 17, "volatile_count_after": 2}]}]}
+========== Generating report
+# Results at time 2018-01-14T23-08-20+0000
+
+Results for student *s1514483* aka *green deer*
+
+* * * 
+
+## Pass llvm-pass-my-dce
+
+Test|Correct output|Instructions count before|Expected instruction count before|Instructions count after|Expected instruction count after|Volatile instructions before DCE|Volatile instructions after DCE
+:------|:-----:|------:|------:|------:|------:|------:|------:
+test01|False|2|2|Failed|2|0|Failed
+test02|False|3|3|Failed|2|0|Failed
+test03|False|12|12|Failed|12|0|Failed
+test04|False|13|13|Failed|13|0|Failed
+test05|False|8|8|Failed|7|0|Failed
+test06|False|10|10|Failed|9|0|Failed
+test07|False|10|10|Failed|8|0|Failed
+test08|False|11|11|Failed|11|0|Failed
+test09|False|11|11|Failed|10|0|Failed
+test10|False|19|19|Failed|18|0|Failed
+test11|False|21|21|Failed|20|0|Failed
+test12|False|23|23|Failed|20|0|Failed
+test13|False|7|7|Failed|7|1|Failed
+test14|False|17|17|Failed|17|2|Failed
+test15|False|18|18|Failed|18|2|Failed
+test16|False|17|17|Failed|17|2|Failed
+test17|False|24|24|Failed|23|1|Failed
+test18|False|32|32|Failed|32|3|Failed
+
+
+* * * 
+
+## Pass llvm-pass-simple-dce
+
+Test|Correct output|Instructions count before|Expected instruction count before|Instructions count after|Expected instruction count after|Volatile instructions before DCE|Volatile instructions after DCE
+:------|:-----:|------:|------:|------:|------:|------:|------:
+test01|True|2|2|2|2|0|0
+test02|True|3|3|2|2|0|0
+test03|True|12|12|12|12|0|0
+test04|True|13|13|13|13|0|0
+test05|True|8|8|8|8|0|0
+test06|True|10|10|10|10|0|0
+test07|True|10|10|9|9|0|0
+test08|True|11|11|11|11|0|0
+test09|True|11|11|10|10|0|0
+test10|True|19|19|19|19|0|0
+test11|True|21|21|21|21|0|0
+test12|True|23|23|21|21|0|0
+test13|True|7|7|7|7|1|1
+test14|True|17|17|17|17|2|2
+test15|True|18|18|18|18|2|2
+test16|True|17|17|17|17|2|2
+test17|True|24|24|24|24|1|1
+test18|True|32|32|32|32|3|3
+
+
+# Results at time 2018-01-14T23-08-20+0000
+
+Results for student *green deer*
+
+* * * 
+
+## Pass llvm-pass-my-dce
+
+Test|Correct output|Instructions count before|Expected instruction count before|Instructions count after|Expected instruction count after|Volatile instructions before DCE|Volatile instructions after DCE
+:------|:-----:|------:|------:|------:|------:|------:|------:
+test01|False|2|2|Failed|2|0|Failed
+test02|False|3|3|Failed|2|0|Failed
+test03|False|12|12|Failed|12|0|Failed
+test04|False|13|13|Failed|13|0|Failed
+test05|False|8|8|Failed|7|0|Failed
+test06|False|10|10|Failed|9|0|Failed
+test07|False|10|10|Failed|8|0|Failed
+test08|False|11|11|Failed|11|0|Failed
+test09|False|11|11|Failed|10|0|Failed
+test10|False|19|19|Failed|18|0|Failed
+test11|False|21|21|Failed|20|0|Failed
+test12|False|23|23|Failed|20|0|Failed
+test13|False|7|7|Failed|7|1|Failed
+test14|False|17|17|Failed|17|2|Failed
+test15|False|18|18|Failed|18|2|Failed
+test16|False|17|17|Failed|17|2|Failed
+test17|False|24|24|Failed|23|1|Failed
+test18|False|32|32|Failed|32|3|Failed
+
+
+* * * 
+
+## Pass llvm-pass-simple-dce
+
+Test|Correct output|Instructions count before|Expected instruction count before|Instructions count after|Expected instruction count after|Volatile instructions before DCE|Volatile instructions after DCE
+:------|:-----:|------:|------:|------:|------:|------:|------:
+test01|True|2|2|2|2|0|0
+test02|True|3|3|2|2|0|0
+test03|True|12|12|12|12|0|0
+test04|True|13|13|13|13|0|0
+test05|True|8|8|8|8|0|0
+test06|True|10|10|10|10|0|0
+test07|True|10|10|9|9|0|0
+test08|True|11|11|11|11|0|0
+test09|True|11|11|10|10|0|0
+test10|True|19|19|19|19|0|0
+test11|True|21|21|21|21|0|0
+test12|True|23|23|21|21|0|0
+test13|True|7|7|7|7|1|1
+test14|True|17|17|17|17|2|2
+test15|True|18|18|18|18|2|2
+test16|True|17|17|17|17|2|2
+test17|True|24|24|24|24|1|1
+test18|True|32|32|32|32|3|3
+
+
+Moved to directory /home/s1467120/llvm-marking-suite/students/s1514483.repo
+Switched to a new branch 'feedback'
+Branch feedback set up to track remote branch feedback from origin.
+Already up-to-date.
+[feedback 57ff63f] Feedback on submission at 2018-01-14T23-08-20+0000
+ 1 file changed, 19 insertions(+), 19 deletions(-)
+remote: 
+remote: Create pull request for feedback:        
+remote:   https://bitbucket.org/cwrbs/ct-17-18/pull-requests/new?source=feedback&t=1        
+remote: 
+To bitbucket.org:cwrbs/ct-17-18.git
+   cc6a671..57ff63f  feedback -> feedback
+/home/s1467120/llvm-marking-suite/students/s1514483.repo
+Building/running marking script for student s1514483 succeeded!
 Finished marking student s1514483
