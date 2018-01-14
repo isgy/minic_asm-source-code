@@ -38,20 +38,25 @@ STATISTIC(NumIE, "no. of insts removed");
 
 namespace {
 
-struct BBLiveness {
-	BitVector *use;
-	BitVector *def;
-	BitVector *in;
-	BitVector *out;
-	BasicBlock *bb;
-};
 struct SimpleDCE : public FunctionPass {
    std::map<std::string, int> opCounter;
-   std::map<const Instruction*, int> instructions;
+   std::map<Instruction*, int> instructions;
+
+   class usedef {
+   public:
+    std::set<Instruction*> use;
+    std::set<Instruction*> def;
+   };
+   class live {
+   public:
+    std::set<Instruction*> in;
+    std::set<Instruction*> out;
+  };
     static char ID;
     int NumIE = 0;
     int NumIE2 = 0;
     SimpleDCE() : FunctionPass(ID) {}
+
     virtual bool deadInstr(Instruction* instr) {
       if (isa<TerminatorInst>(instr) || instr->mayHaveSideEffects() || isa<LandingPadInst>(instr)) {
           return false;
@@ -60,52 +65,68 @@ struct SimpleDCE : public FunctionPass {
     }
     virtual bool runOnFunction(Function &F) {
         SmallVector<Instruction*, 64> WL;
-        std::map<BasicBlock*, std::set<Instruction*>*> liveout_bb;
-        std::map<BasicBlock*, std::set<Instruction*>*> livein_bb;
-        std::set<BasicBlock*> WL_bb; 
+        SmallVector<BasicBlock*, 64> WL_bb;
+// std::map<BasicBlock*, std::set<Instruction*>*> liveout_bb;
+      //  std::map<BasicBlock*, std::set<Instruction*>*> livein_bb;
+       // std::set<BasicBlock*> WL_bb; 
+        std::map<BasicBlock*, usedef> useMap;
+        std::map<BasicBlock*, live> liveMap;
         static int id = 1;
         for (inst_iterator i = inst_begin(F), E = inst_end(F); i != E; ++i, ++id){
            instructions.insert(std::make_pair(&*i, id));
         }
         //SmallPtrSet<Instruction*, 64> ALV;
         bool changed = false;
-      
-      DenseMap<const BasicBlock*, usedef> bbMap;
-      
-      findUseDef(F, bbMap);
-
-      DenseMap<const BasicBlock*, in_out> liveMap;
-      in_out_sets(F, bbMap, liveMap);
-
-      DenseMap<const Instruction*, in_out> instliveMap;
-      in_out_sets(F, bbMap, instliveMap);
-
-      for (inst_iterator i = inst_begin(F), E = inst_end(F); i != E; ++i) {
-        beforeAfter s = iBAMap.lookup(&*i);
-        errs() << "%" << instMap.lookup(&*i) << ": { ";
-        std::for_each(s.before.begin(), s.before.end(), print_elem);
-        errs() << "} { ";
-        std::for_each(s.after.begin(), s.after.end(), print_elem);
-        errs() << "}\n";
-      }
-
-    //    std::set<Instruction*> dc;
-		  errs() << "I saw a function called " << F.getName() << "!\n";
-        errs() << "Function " << F.getName() << '\n';
         for (Function::iterator bb = F.begin(), e = F.end(); bb != e; ++bb) {
-                  bool isDead = false;
-                  WL_bb.insert(&*bb);
-                  std::set<Instruction*>* livein_i = new std::set<Instruction*>();
-                  livein_bb.insert(std::pair<BasicBlock*, std::set<Instruction*>*>(&*bb, livein_i));
-                  std::set<Instruction*>* liveout_i = new std::set<Instruction*>();
-                  liveout_bb.insert(std::pair<BasicBlock*, std::set<Instruction*>*>(&*bb, liveout_i)); 
-                  outs() << "Basic blocks of " << F.getName() << " in post-order:\n";
-                  for (po_iterator<BasicBlock *> I = po_begin(&F.getEntryBlock()),
-                               IE = po_end(&F.getEntryBlock());
-                               I != IE; ++I) {
-  outs() << "  " << (*I)->getName() << "\n";
-}
-            for (BasicBlock::iterator i = bb->begin(), e = bb->end(); i != e; ++i) {
+        usedef a;
+        for (BasicBlock::iterator i = bb->begin(), e = bb->end(); i != e; ++i) {
+          int num_op = i->getNumOperands();
+          for (int j = 0; j < num_op; j++) {
+            Value *v = i->getOperand(j); //get the use set of the basic block
+            if (isa<Instruction>(v)) {
+              Instruction *inst = (Instruction*) v;
+              if (!a.def.count(inst)){ //the instruction isn't already defined
+                a.use.insert(inst);}
+            }
+         }
+          a.def.insert(&*i);  
+        }
+        useMap.insert(std::make_pair(&*bb, a));
+       }
+      for (Function::iterator bb = F.begin(), e = F.end(); bb != e; ++bb) {
+                  WL_bb.push_back(&*bb);
+      }
+      while (!WL_bb.empty()) {
+        BasicBlock *cur = WL_bb.pop_back_val();
+        live bbl = liveMap.find(cur)->second;
+      //  bool islive = !liveMap.count(b);
+        std::set<Instruction*> newOut;
+        for (succ_iterator sc = succ_begin(cur), e = succ_end(cur); sc != e; ++sc) {
+          std::set<Instruction*> l_in(liveMap.find(*sc)->second.in);
+          for (auto s : l_in){
+           newOut.insert(s);  
+          }
+        }
+
+        if (newOut != liveMap.find(cur)->second.out){
+          liveMap.find(cur)->second.in.clear();
+          liveMap.find(cur)->second.out = newOut;
+          for (auto i : newOut){
+           liveMap.find(cur)->second.in.insert(i);
+          }
+          for (auto i : useMap.find(cur)->second.def) {
+          liveMap.find(cur)->second.in.erase(i);
+          }
+          for (auto i : useMap.find(cur)->second.use) {
+           liveMap.find(cur)->second.in.insert(i);
+          }
+         for (pred_iterator p = pred_begin(cur), e = pred_end(cur); p != e; ++p)
+            WL_bb.push_back(*p);
+         }
+      }
+      for (Function::iterator bb = F.begin(), e = F.end(); bb != e; ++bb) {
+      }
+/*             for (BasicBlock::iterator i = bb->begin(), e = bb->end(); i != e; ++i) {
                   if(isInstDead(&*i)){
          //           ALV.insert(&*i);
                     WL.push_back(&*i);
@@ -114,7 +135,7 @@ struct SimpleDCE : public FunctionPass {
             while (!WL.empty()) {
                Instruction* i = WL.pop_back_val();
                i->eraseFromParent();
-            }
+            }        */
 
    /*           for (BasicBlock::iterator i = bb->begin(), e = bb->end(); i != e; ++i) {
                 if (isInstructionTriviallyDead(i)) {
@@ -125,18 +146,9 @@ struct SimpleDCE : public FunctionPass {
                 }
             }  */
 	
-        }
-        std::map <std::string, int>::iterator i = opCounter.begin();
-        std::map <std::string, int>::iterator e = opCounter.end();
-        while (i != e) {
-            errs() << i->first << ": " << i->second << "\n";
-            i++;
-        }
-        errs() << "\n";
-        opCounter.clear();
-        //return !WL.empty();
+      
         return false;
-    }
+} 
 };
 }
 char SimpleDCE::ID = 0;
