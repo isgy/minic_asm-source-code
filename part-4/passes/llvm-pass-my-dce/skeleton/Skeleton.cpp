@@ -64,9 +64,8 @@ struct SimpleDCE : public FunctionPass {
       return true;
     }
     virtual bool runOnFunction(Function &F) {
-        SmallVector<Instruction*, 64> WL;
+   //     SmallVector<Instruction*, 64> WL;
         SmallVector<BasicBlock*, 64> WL_bb;
-// std::map<BasicBlock*, std::set<Instruction*>*> liveout_bb;
       //  std::map<BasicBlock*, std::set<Instruction*>*> livein_bb;
        // std::set<BasicBlock*> WL_bb; 
         std::map<BasicBlock*, usedef> useMap;
@@ -140,9 +139,6 @@ struct SimpleDCE : public FunctionPass {
           in_i.erase(&*i);
           for (Use &U : i->operands()) {
            Value *v = U.get();
-          //int num_op = i->getNumOperands();
-          //for (int j = 0; j < num_op; j++) { 
-         // Value *v = i->getOperand(j);
             if (isa<Instruction>(v)){
               in_i.insert((Instruction *) v); }
           }
