@@ -81,8 +81,6 @@ struct SimpleDCE : public FunctionPass {
          // int num_op = i->getNumOperands();
           for (Use &U : i->operands()) {  //get the use set of the basic block
             Value *v = U.get();
-           //for (int j = 0; j < num_op; j++) {
-           // Value *v = i->getOperand(j); //get the use set of the basic block
             if (isa<Instruction>(v)) {
               Instruction *inst = (Instruction*) v;
               if (!a.def.count(inst)){ //the instruction isn't already defined
@@ -158,7 +156,8 @@ struct SimpleDCE : public FunctionPass {
       for (Function::iterator bb = F.begin(), e = F.end(); bb != e; ++bb) {
          for (BasicBlock::reverse_iterator i = bb->rbegin(), re = bb->rend(); i != re; ++i) {
             bool deadIns = true;
-            for (User* ui : i->users()) {
+//          for (User* ui : i->users()) {
+            if(!useMap.find(&*bb)->second.use.count(&*i)){
             deadIns = false;
             }
             bool isliveout = i_liveMap.find(&*i)->second.out.count(&*i);
