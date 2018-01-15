@@ -26,7 +26,8 @@
 #include "llvm/ADT/SmallVector.h"
 
 #include "llvm/ADT/BitVector.h"
-#include "llvm/ADT/PostOrderIterator.h"
+//#include "llvm/ADT/PostOrderIterator.h"
+
 //#include "llvm/IR/InstIterator.h"
 
 #include "llvm/ADT/Statistic.h"
@@ -151,21 +152,40 @@ struct SimpleDCE : public FunctionPass {
           i_liveMap.insert(std::make_pair(&*i, live_i));
           out_i = in_i;
          } 
-      } 
+
+         }
+     SmallVector<Instruction*, 64> u;
       for (Function::iterator bb = F.begin(), e = F.end(); bb != e; ++bb) {
+         for (BasicBlock::reverse_iterator i = bb->rbegin(), re = bb->rend(); i != re; ++i) {
+            bool deadIns = true;
+            for (User* ui : i->users()) {
+            deadIns = false;
+            }
+            bool isliveout = i_liveMap.find(&*i)->second.out.count(&*i);
+            if (!isliveout && deadIns){
+              u.push_back(&*i);
+           }
+         }
+        }
+      for (auto it = u.begin(); it != u.end(); it++) {
+         if(couldRemove(*it)){
+            (*it)->eraseFromParent();
+         }
+        ++NumIE;
+      }
+ /*       for (Function::iterator bb = F.begin(), e = F.end(); bb != e; ++bb) {
           for (BasicBlock::iterator i = bb->begin(), e = bb->end(); i != e; ++i) {
-                  if(couldRemove(&*i) && (i_liveMap.find(&*i)->second.out.count(&*i) == 0)){
+                  if(couldRemove(&*i)){
          //           ALV.insert(&*i);
                     WL.push_back(&*i);
                     }
-               }
-            
+            }
             while (!WL.empty()) {
                Instruction* i = WL.pop_back_val();
                i->eraseFromParent();
                ++NumIE;
             }
-       }
+       } */
 
         return false;
 } 

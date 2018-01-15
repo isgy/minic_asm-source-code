@@ -16,10 +16,14 @@
  * =====================================================================================
  */
 #include <stdlib.h>
-int main(){
-   int x;
-   int y;
-  int a = x + y;
-  a = 1;
-  return a;
-}
+
+int main()
+ {
+   int a = 24;
+   int b = 25; /* Assignment to dead variable */
+   int c;
+   c = a * 4;
+   return c;
+   b = 24; /* Unreachable code */
+   return 0;
+ }
