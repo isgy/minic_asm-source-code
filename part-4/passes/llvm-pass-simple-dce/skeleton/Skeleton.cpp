@@ -24,6 +24,8 @@
 #include "llvm/IR/Instructions.h"
 #include "llvm/Transforms/Utils/Local.h"
 #include "llvm/ADT/SmallVector.h"
+#include "llvm/IR/InstIterator.h"
+
 #include "llvm/ADT/Statistic.h"
 #include <vector>
 #include <iostream>
@@ -42,19 +44,21 @@ struct SimpleDCE : public FunctionPass {
     SimpleDCE() : FunctionPass(ID) {}
     virtual bool runOnFunction(Function &F) {
         SmallVector<Instruction*, 64> WL;
-        //SmallPtrSet<Instruction*, 64> ALV;
-
+/*          SmallVector<Instruction*, 64> ALV;
+        for (inst_iterator i = inst_begin(F), e = inst_end(F); i != e; ++i){
+          ALV.push_back(&*i);
+        } */
     //    std::set<Instruction*> dc;
 		  errs() << "I saw a function called " << F.getName() << "!\n";
         errs() << "Function " << F.getName() << '\n';
         for (Function::iterator bb = F.begin(), e = F.end(); bb != e; ++bb) {
-            bool isDead = false;
+//            int numDead = WL.size();
+//            int newNum = 0;
             for (BasicBlock::iterator i = bb->begin(), e = bb->end(); i != e; ++i) {
 //                  if(!(isa<TerminatorInst>(*i)) && !i->mayHaveSideEffects()){
                   if(isInstructionTriviallyDead(&*i)){
          //           ALV.insert(&*i);
                     WL.push_back(&*i);
-                    
                   }
             }
             while (!WL.empty()) {

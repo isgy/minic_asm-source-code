@@ -16,10 +16,10 @@
  * =====================================================================================
  */
 #include <stdlib.h>
-void main(){
-int foo(int x, int y) {
+int main(){
+   int x;
+   int y;
   int a = x + y;
   a = 1;
   return a;
-}
 }
