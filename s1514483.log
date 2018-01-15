@@ -1,4 +1,4 @@
-Log for student s1514483, green deer at 2018-01-15T03-15-01+0000
+Log for student s1514483, green deer at 2018-01-15T04-15-01+0000
 + rootd=/home/s1467120/llvm-marking-suite
 + echo 'Rootd: /home/s1467120/llvm-marking-suite'
 Rootd: /home/s1467120/llvm-marking-suite
@@ -12,7 +12,7 @@ Salias: green deer
 + tmprpo=/home/s1467120/llvm-marking-suite/tmp/s1514483/
 + logd=/home/s1467120/llvm-marking-suite/logs
 ++ date +%Y-%m-%dT%H-%M-%S%z
-+ now=2018-01-15T03-27-04+0000
++ now=2018-01-15T04-27-31+0000
 + echo '========== Updating Repository'
 ========== Updating Repository
 + cd /home/s1467120/llvm-marking-suite/students/s1514483.repo
@@ -23,16 +23,7 @@ Moved to directory /home/s1467120/llvm-marking-suite/students/s1514483.repo
 Already on 'master'
 Your branch is up-to-date with 'origin/master'.
 + git pull
-From bitbucket.org:cwrbs/ct-17-18
-   a309e8a..3bb514c  master     -> origin/master
-Updating a309e8a..3bb514c
-Fast-forward
- .../passes/llvm-pass-my-dce/skeleton/Skeleton.cpp  | 98 +++++++++++++---------
- .../llvm-pass-simple-dce/skeleton/Skeleton.cpp     | 12 ++-
- tests/dead.c                                       |  6 +-
- tests/dead.ll                                      | 30 +++++++
- 4 files changed, 100 insertions(+), 46 deletions(-)
- create mode 100644 tests/dead.ll
+Already up-to-date.
 + '[' 0 -ne 0 ']'
 + echo '========== Making temp copies'
 ========== Making temp copies
@@ -394,7 +385,7 @@ TOTAL: 12
 VOLATILES: 0
 0
 + timeout 10 /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test03_prepass.ll -o /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test03_postpass.ll
-/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 36:  2467 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 36: 25213 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
 + ec=139
 + '[' 139 -ne 0 ']'
 + '[' 139 -ne 124 ']'
@@ -405,7 +396,7 @@ Instruction does not dominate all uses!
   <badref> = <Invalid operator> #0 0x0000000000c5e1e7 llvm::sys::PrintStackTrace(llvm::raw_ostream&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5e1e7)
 #1 0x0000000000c5cf4b llvm::sys::RunSignalHandlers() (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5cf4b)
 #2 0x0000000000c5d2f3 SignalHandler(int) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5d2f3)
-#3 0x00007f1394613b00 __restore_rt (/lib64/libpthread.so.0+0x10b00)
+#3 0x00007fb835611b00 __restore_rt (/lib64/libpthread.so.0+0x10b00)
 #4 0x00000000009be02e (anonymous namespace)::AssemblyWriter::printMetadataAttachments(llvm::SmallVectorImpl<std::pair<unsigned int, llvm::MDNode*> > const&, llvm::StringRef) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x9be02e)
 #5 0x00000000009c1ba1 (anonymous namespace)::AssemblyWriter::printInstruction(llvm::Instruction const&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x9c1ba1)
 #6 0x00000000009c3dae llvm::Value::print(llvm::raw_ostream&, llvm::ModuleSlotTracker&, bool) const (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x9c3dae)
@@ -418,7 +409,7 @@ Instruction does not dominate all uses!
 #13 0x0000000000a1f7c4 llvm::FPPassManager::runOnModule(llvm::Module&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa1f7c4)
 #14 0x0000000000a1fc9d llvm::legacy::PassManagerImpl::run(llvm::Module&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa1fc9d)
 #15 0x0000000000622eb6 main (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x622eb6)
-#16 0x00007f139318d6e5 __libc_start_main (/lib64/libc.so.6+0x206e5)
+#16 0x00007fb83418b6e5 __libc_start_main (/lib64/libc.so.6+0x206e5)
 #17 0x0000000000653fc9 _start /home/abuild/rpmbuild/BUILD/glibc-2.22/csu/../sysdeps/x86_64/start.S:121:0
 Stack dump:
 0.	Program arguments: /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test03_prepass.ll -o /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test03_postpass.ll 
@@ -503,7 +494,7 @@ TOTAL: 13
 VOLATILES: 0
 0
 + timeout 10 /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test04_prepass.ll -o /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test04_postpass.ll
-/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 36:  2493 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 36: 25239 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
 + ec=139
 + '[' 139 -ne 0 ']'
 + '[' 139 -ne 124 ']'
@@ -513,7 +504,7 @@ Running pass failed with errors:
 #0 0x0000000000c5e1e7 llvm::sys::PrintStackTrace(llvm::raw_ostream&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5e1e7)
 #1 0x0000000000c5cf4b llvm::sys::RunSignalHandlers() (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5cf4b)
 #2 0x0000000000c5d2f3 SignalHandler(int) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5d2f3)
-#3 0x00007fe60fd40b00 __restore_rt (/lib64/libpthread.so.0+0x10b00)
+#3 0x00007fbc93bedb00 __restore_rt (/lib64/libpthread.so.0+0x10b00)
 #4 0x0000000000a3635a llvm::Type::isIntegerTy(unsigned int) const (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa3635a)
 #5 0x0000000000a4b7ca (anonymous namespace)::Verifier::verify(llvm::Function const&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa4b7ca)
 #6 0x0000000000a4da99 (anonymous namespace)::VerifierLegacyPass::runOnFunction(llvm::Function&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa4da99)
@@ -521,7 +512,7 @@ Running pass failed with errors:
 #8 0x0000000000a1f7c4 llvm::FPPassManager::runOnModule(llvm::Module&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa1f7c4)
 #9 0x0000000000a1fc9d llvm::legacy::PassManagerImpl::run(llvm::Module&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa1fc9d)
 #10 0x0000000000622eb6 main (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x622eb6)
-#11 0x00007fe60e8ba6e5 __libc_start_main (/lib64/libc.so.6+0x206e5)
+#11 0x00007fbc927676e5 __libc_start_main (/lib64/libc.so.6+0x206e5)
 #12 0x0000000000653fc9 _start /home/abuild/rpmbuild/BUILD/glibc-2.22/csu/../sysdeps/x86_64/start.S:121:0
 Stack dump:
 0.	Program arguments: /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test04_prepass.ll -o /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test04_postpass.ll 
@@ -602,7 +593,7 @@ TOTAL: 8
 VOLATILES: 0
 0
 + timeout 10 /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test05_prepass.ll -o /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test05_postpass.ll
-/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 36:  2519 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 36: 25265 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
 + ec=139
 + '[' 139 -ne 0 ']'
 + '[' 139 -ne 124 ']'
@@ -610,14 +601,14 @@ VOLATILES: 0
 Running pass failed with errors: 
 + cat /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test05_compout.res
 Instruction does not dominate all uses!
-#0 0x0000000000c5e1e7 llvm::sys::PrintStackTrace(llvm::raw_ostream&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5e1e7)
+  #0 0x0000000000c5e1e7 llvm::sys::PrintStackTrace(llvm::raw_ostream&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5e1e7)
 #1 0x0000000000c5cf4b llvm::sys::RunSignalHandlers() (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5cf4b)
 #2 0x0000000000c5d2f3 SignalHandler(int) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5d2f3)
-#3 0x00007fc482746b00 __restore_rt (/lib64/libpthread.so.0+0x10b00)
-#4 0x0000000000a39571 llvm::TypeFinder::run(llvm::Module const&, bool) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa39571)
-#5 0x00000000009bc5e1 (anonymous namespace)::TypePrinting::incorporateTypes(llvm::Module const&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x9bc5e1)
-#6 0x00000000009c27a3 (anonymous namespace)::AssemblyWriter::AssemblyWriter(llvm::formatted_raw_ostream&, llvm::SlotTracker&, llvm::Module const*, llvm::AssemblyAnnotationWriter*, bool, bool) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x9c27a3)
-#7 0x00000000009c3da3 llvm::Value::print(llvm::raw_ostream&, llvm::ModuleSlotTracker&, bool) const (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x9c3da3)
+#3 0x00007fc63c493b00 __restore_rt (/lib64/libpthread.so.0+0x10b00)
+#4 0x00000000009bcee7 llvm::SlotTracker::processFunction() (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x9bcee7)
+#5 0x00000000009bd14a llvm::SlotTracker::getLocalSlot(llvm::Value const*) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x9bd14a)
+#6 0x00000000009c0a2f (anonymous namespace)::AssemblyWriter::printInstruction(llvm::Instruction const&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x9c0a2f)
+#7 0x00000000009c3dae llvm::Value::print(llvm::raw_ostream&, llvm::ModuleSlotTracker&, bool) const (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x9c3dae)
 #8 0x0000000000a3d3ac llvm::VerifierSupport::Write(llvm::Value const*) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa3d3ac)
 #9 0x0000000000a4781c (anonymous namespace)::Verifier::visitInstruction(llvm::Instruction&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa4781c)
 #10 0x0000000000a47a63 (anonymous namespace)::Verifier::visitTerminatorInst(llvm::TerminatorInst&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa47a63)
@@ -627,7 +618,7 @@ Instruction does not dominate all uses!
 #14 0x0000000000a1f7c4 llvm::FPPassManager::runOnModule(llvm::Module&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa1f7c4)
 #15 0x0000000000a1fc9d llvm::legacy::PassManagerImpl::run(llvm::Module&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa1fc9d)
 #16 0x0000000000622eb6 main (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x622eb6)
-#17 0x00007fc4812c06e5 __libc_start_main (/lib64/libc.so.6+0x206e5)
+#17 0x00007fc63b00d6e5 __libc_start_main (/lib64/libc.so.6+0x206e5)
 #18 0x0000000000653fc9 _start /home/abuild/rpmbuild/BUILD/glibc-2.22/csu/../sysdeps/x86_64/start.S:121:0
 Stack dump:
 0.	Program arguments: /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test05_prepass.ll -o /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test05_postpass.ll 
@@ -708,7 +699,7 @@ TOTAL: 10
 VOLATILES: 0
 0
 + timeout 10 /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test06_prepass.ll -o /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test06_postpass.ll
-/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 36:  2545 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 36: 25292 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
 + ec=139
 + '[' 139 -ne 0 ']'
 + '[' 139 -ne 124 ']'
@@ -718,7 +709,7 @@ Running pass failed with errors:
 #0 0x0000000000c5e1e7 llvm::sys::PrintStackTrace(llvm::raw_ostream&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5e1e7)
 #1 0x0000000000c5cf4b llvm::sys::RunSignalHandlers() (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5cf4b)
 #2 0x0000000000c5d2f3 SignalHandler(int) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5d2f3)
-#3 0x00007f817bbb3b00 __restore_rt (/lib64/libpthread.so.0+0x10b00)
+#3 0x00007f92f4d0ab00 __restore_rt (/lib64/libpthread.so.0+0x10b00)
 #4 0x0000000000a3635a llvm::Type::isIntegerTy(unsigned int) const (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa3635a)
 #5 0x0000000000a4b7ca (anonymous namespace)::Verifier::verify(llvm::Function const&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa4b7ca)
 #6 0x0000000000a4da99 (anonymous namespace)::VerifierLegacyPass::runOnFunction(llvm::Function&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa4da99)
@@ -726,7 +717,7 @@ Running pass failed with errors:
 #8 0x0000000000a1f7c4 llvm::FPPassManager::runOnModule(llvm::Module&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa1f7c4)
 #9 0x0000000000a1fc9d llvm::legacy::PassManagerImpl::run(llvm::Module&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa1fc9d)
 #10 0x0000000000622eb6 main (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x622eb6)
-#11 0x00007f817a72d6e5 __libc_start_main (/lib64/libc.so.6+0x206e5)
+#11 0x00007f92f38846e5 __libc_start_main (/lib64/libc.so.6+0x206e5)
 #12 0x0000000000653fc9 _start /home/abuild/rpmbuild/BUILD/glibc-2.22/csu/../sysdeps/x86_64/start.S:121:0
 Stack dump:
 0.	Program arguments: /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test06_prepass.ll -o /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test06_postpass.ll 
@@ -807,7 +798,7 @@ TOTAL: 10
 VOLATILES: 0
 0
 + timeout 10 /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test07_prepass.ll -o /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test07_postpass.ll
-/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 36:  2571 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 36: 25318 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
 + ec=139
 + '[' 139 -ne 0 ']'
 + '[' 139 -ne 124 ']'
@@ -818,8 +809,8 @@ Instruction does not dominate all uses!
   <badref> = icmp slt opaque#0 0x0000000000c5e1e7 llvm::sys::PrintStackTrace(llvm::raw_ostream&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5e1e7)
 #1 0x0000000000c5cf4b llvm::sys::RunSignalHandlers() (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5cf4b)
 #2 0x0000000000c5d2f3 SignalHandler(int) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5d2f3)
-#3 0x00007f979ae07b00 __restore_rt (/lib64/libpthread.so.0+0x10b00)
-#4 0x00007fff6999a8c8
+#3 0x00007fd7c2207b00 __restore_rt (/lib64/libpthread.so.0+0x10b00)
+#4 0x00007ffdb0238ba8
 Stack dump:
 0.	Program arguments: /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test07_prepass.ll -o /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test07_postpass.ll 
 1.	Running pass 'Function Pass Manager' on module '/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test07_prepass.ll'.
@@ -899,7 +890,7 @@ TOTAL: 11
 VOLATILES: 0
 0
 + timeout 10 /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test08_prepass.ll -o /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test08_postpass.ll
-/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 36:  2597 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 36: 25344 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
 + ec=139
 + '[' 139 -ne 0 ']'
 + '[' 139 -ne 124 ']'
@@ -910,7 +901,7 @@ Instruction does not dominate all uses!
 #0 0x0000000000c5e1e7 llvm::sys::PrintStackTrace(llvm::raw_ostream&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5e1e7)
 #1 0x0000000000c5cf4b llvm::sys::RunSignalHandlers() (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5cf4b)
 #2 0x0000000000c5d2f3 SignalHandler(int) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5d2f3)
-#3 0x00007f47e6223b00 __restore_rt (/lib64/libpthread.so.0+0x10b00)
+#3 0x00007f3ab902bb00 __restore_rt (/lib64/libpthread.so.0+0x10b00)
 #4 0x00000000009baca0 getModuleFromVal(llvm::Value const*) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x9baca0)
 #5 0x00000000009c3d84 llvm::Value::print(llvm::raw_ostream&, llvm::ModuleSlotTracker&, bool) const (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x9c3d84)
 #6 0x0000000000a3d3ac llvm::VerifierSupport::Write(llvm::Value const*) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa3d3ac)
@@ -922,7 +913,7 @@ Instruction does not dominate all uses!
 #12 0x0000000000a1f7c4 llvm::FPPassManager::runOnModule(llvm::Module&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa1f7c4)
 #13 0x0000000000a1fc9d llvm::legacy::PassManagerImpl::run(llvm::Module&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa1fc9d)
 #14 0x0000000000622eb6 main (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x622eb6)
-#15 0x00007f47e4d9d6e5 __libc_start_main (/lib64/libc.so.6+0x206e5)
+#15 0x00007f3ab7ba56e5 __libc_start_main (/lib64/libc.so.6+0x206e5)
 #16 0x0000000000653fc9 _start /home/abuild/rpmbuild/BUILD/glibc-2.22/csu/../sysdeps/x86_64/start.S:121:0
 Stack dump:
 0.	Program arguments: /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test08_prepass.ll -o /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test08_postpass.ll 
@@ -1003,7 +994,7 @@ TOTAL: 11
 VOLATILES: 0
 0
 + timeout 10 /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test09_prepass.ll -o /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test09_postpass.ll
-/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 36:  2623 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 36: 25374 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
 + ec=139
 + '[' 139 -ne 0 ']'
 + '[' 139 -ne 124 ']'
@@ -1014,7 +1005,7 @@ Instruction does not dominate all uses!
 #0 0x0000000000c5e1e7 llvm::sys::PrintStackTrace(llvm::raw_ostream&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5e1e7)
 #1 0x0000000000c5cf4b llvm::sys::RunSignalHandlers() (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5cf4b)
 #2 0x0000000000c5d2f3 SignalHandler(int) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5d2f3)
-#3 0x00007ff9bb4d4b00 __restore_rt (/lib64/libpthread.so.0+0x10b00)
+#3 0x00007ff084596b00 __restore_rt (/lib64/libpthread.so.0+0x10b00)
 #4 0x0000000000a39571 llvm::TypeFinder::run(llvm::Module const&, bool) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa39571)
 #5 0x00000000009bc5e1 (anonymous namespace)::TypePrinting::incorporateTypes(llvm::Module const&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x9bc5e1)
 #6 0x00000000009c27a3 (anonymous namespace)::AssemblyWriter::AssemblyWriter(llvm::formatted_raw_ostream&, llvm::SlotTracker&, llvm::Module const*, llvm::AssemblyAnnotationWriter*, bool, bool) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x9c27a3)
@@ -1028,7 +1019,7 @@ Instruction does not dominate all uses!
 #14 0x0000000000a1f7c4 llvm::FPPassManager::runOnModule(llvm::Module&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa1f7c4)
 #15 0x0000000000a1fc9d llvm::legacy::PassManagerImpl::run(llvm::Module&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa1fc9d)
 #16 0x0000000000622eb6 main (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x622eb6)
-#17 0x00007ff9ba04e6e5 __libc_start_main (/lib64/libc.so.6+0x206e5)
+#17 0x00007ff0831106e5 __libc_start_main (/lib64/libc.so.6+0x206e5)
 #18 0x0000000000653fc9 _start /home/abuild/rpmbuild/BUILD/glibc-2.22/csu/../sysdeps/x86_64/start.S:121:0
 Stack dump:
 0.	Program arguments: /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test09_prepass.ll -o /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test09_postpass.ll 
@@ -1109,7 +1100,7 @@ TOTAL: 19
 VOLATILES: 0
 0
 + timeout 10 /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test10_prepass.ll -o /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test10_postpass.ll
-/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 36:  2649 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 36: 25401 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
 + ec=139
 + '[' 139 -ne 0 ']'
 + '[' 139 -ne 124 ']'
@@ -1120,24 +1111,28 @@ Instruction does not dominate all uses!
   <badref> = icmp slt metadata #0 0x0000000000c5e1e7 llvm::sys::PrintStackTrace(llvm::raw_ostream&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5e1e7)
 #1 0x0000000000c5cf4b llvm::sys::RunSignalHandlers() (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5cf4b)
 #2 0x0000000000c5d2f3 SignalHandler(int) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5d2f3)
-#3 0x00007f29cf60db00 __restore_rt (/lib64/libpthread.so.0+0x10b00)
-#4 0x00000000009bcce9 llvm::SlotTracker::processModule() (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x9bcce9)
-#5 0x00000000009bcfb3 llvm::SlotTracker::initialize() (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x9bcfb3)
-#6 0x00000000009bd14a llvm::SlotTracker::getLocalSlot(llvm::Value const*) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x9bd14a)
-#7 0x00000000009bd326 WriteAsOperandInternal(llvm::raw_ostream&, llvm::Value const*, (anonymous namespace)::TypePrinting*, llvm::SlotTracker*, llvm::Module const*) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x9bd326)
-#8 0x00000000009c1a1b (anonymous namespace)::AssemblyWriter::printInstruction(llvm::Instruction const&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x9c1a1b)
-#9 0x00000000009c3dae llvm::Value::print(llvm::raw_ostream&, llvm::ModuleSlotTracker&, bool) const (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x9c3dae)
-#10 0x0000000000a3d3ac llvm::VerifierSupport::Write(llvm::Value const*) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa3d3ac)
-#11 0x0000000000a4781c (anonymous namespace)::Verifier::visitInstruction(llvm::Instruction&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa4781c)
-#12 0x0000000000a47a63 (anonymous namespace)::Verifier::visitTerminatorInst(llvm::TerminatorInst&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa47a63)
-#13 0x0000000000a4b821 (anonymous namespace)::Verifier::verify(llvm::Function const&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa4b821)
-#14 0x0000000000a4da99 (anonymous namespace)::VerifierLegacyPass::runOnFunction(llvm::Function&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa4da99)
-#15 0x0000000000a1f6df llvm::FPPassManager::runOnFunction(llvm::Function&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa1f6df)
-#16 0x0000000000a1f7c4 llvm::FPPassManager::runOnModule(llvm::Module&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa1f7c4)
-#17 0x0000000000a1fc9d llvm::legacy::PassManagerImpl::run(llvm::Module&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa1fc9d)
-#18 0x0000000000622eb6 main (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x622eb6)
-#19 0x00007f29ce1876e5 __libc_start_main (/lib64/libc.so.6+0x206e5)
-#20 0x0000000000653fc9 _start /home/abuild/rpmbuild/BUILD/glibc-2.22/csu/../sysdeps/x86_64/start.S:121:0
+#3 0x00007ffae8bd0b00 __restore_rt (/lib64/libpthread.so.0+0x10b00)
+#4 0x0000000000a237a1 bool llvm::DenseMapBase<llvm::DenseMap<llvm::GlobalObject const*, llvm::MDGlobalAttachmentMap, llvm::DenseMapInfo<llvm::GlobalObject const*>, llvm::detail::DenseMapPair<llvm::GlobalObject const*, llvm::MDGlobalAttachmentMap> >, llvm::GlobalObject const*, llvm::MDGlobalAttachmentMap, llvm::DenseMapInfo<llvm::GlobalObject const*>, llvm::detail::DenseMapPair<llvm::GlobalObject const*, llvm::MDGlobalAttachmentMap> >::LookupBucketFor<llvm::GlobalObject const*>(llvm::GlobalObject const* const&, llvm::detail::DenseMapPair<llvm::GlobalObject const*, llvm::MDGlobalAttachmentMap>*&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa237a1)
+#5 0x0000000000a2c120 llvm::DenseMapBase<llvm::DenseMap<llvm::GlobalObject const*, llvm::MDGlobalAttachmentMap, llvm::DenseMapInfo<llvm::GlobalObject const*>, llvm::detail::DenseMapPair<llvm::GlobalObject const*, llvm::MDGlobalAttachmentMap> >, llvm::GlobalObject const*, llvm::MDGlobalAttachmentMap, llvm::DenseMapInfo<llvm::GlobalObject const*>, llvm::detail::DenseMapPair<llvm::GlobalObject const*, llvm::MDGlobalAttachmentMap> >::FindAndConstruct(llvm::GlobalObject const* const&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa2c120)
+#6 0x0000000000a2c38d llvm::GlobalObject::getAllMetadata(llvm::SmallVectorImpl<std::pair<unsigned int, llvm::MDNode*> >&) const (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa2c38d)
+#7 0x00000000009bc99a llvm::SlotTracker::processGlobalObjectMetadata(llvm::GlobalObject const&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x9bc99a)
+#8 0x00000000009bcd07 llvm::SlotTracker::processModule() (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x9bcd07)
+#9 0x00000000009bcfb3 llvm::SlotTracker::initialize() (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x9bcfb3)
+#10 0x00000000009bd14a llvm::SlotTracker::getLocalSlot(llvm::Value const*) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x9bd14a)
+#11 0x00000000009bd326 WriteAsOperandInternal(llvm::raw_ostream&, llvm::Value const*, (anonymous namespace)::TypePrinting*, llvm::SlotTracker*, llvm::Module const*) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x9bd326)
+#12 0x00000000009c1a1b (anonymous namespace)::AssemblyWriter::printInstruction(llvm::Instruction const&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x9c1a1b)
+#13 0x00000000009c3dae llvm::Value::print(llvm::raw_ostream&, llvm::ModuleSlotTracker&, bool) const (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x9c3dae)
+#14 0x0000000000a3d3ac llvm::VerifierSupport::Write(llvm::Value const*) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa3d3ac)
+#15 0x0000000000a4781c (anonymous namespace)::Verifier::visitInstruction(llvm::Instruction&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa4781c)
+#16 0x0000000000a47a63 (anonymous namespace)::Verifier::visitTerminatorInst(llvm::TerminatorInst&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa47a63)
+#17 0x0000000000a4b821 (anonymous namespace)::Verifier::verify(llvm::Function const&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa4b821)
+#18 0x0000000000a4da99 (anonymous namespace)::VerifierLegacyPass::runOnFunction(llvm::Function&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa4da99)
+#19 0x0000000000a1f6df llvm::FPPassManager::runOnFunction(llvm::Function&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa1f6df)
+#20 0x0000000000a1f7c4 llvm::FPPassManager::runOnModule(llvm::Module&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa1f7c4)
+#21 0x0000000000a1fc9d llvm::legacy::PassManagerImpl::run(llvm::Module&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa1fc9d)
+#22 0x0000000000622eb6 main (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x622eb6)
+#23 0x00007ffae774a6e5 __libc_start_main (/lib64/libc.so.6+0x206e5)
+#24 0x0000000000653fc9 _start /home/abuild/rpmbuild/BUILD/glibc-2.22/csu/../sysdeps/x86_64/start.S:121:0
 Stack dump:
 0.	Program arguments: /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test10_prepass.ll -o /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test10_postpass.ll 
 1.	Running pass 'Function Pass Manager' on module '/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test10_prepass.ll'.
@@ -1217,7 +1212,7 @@ TOTAL: 21
 VOLATILES: 0
 0
 + timeout 10 /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test11_prepass.ll -o /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test11_postpass.ll
-/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 36:  2675 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 36: 25427 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
 + ec=139
 + '[' 139 -ne 0 ']'
 + '[' 139 -ne 124 ']'
@@ -1228,7 +1223,7 @@ Instruction does not dominate all uses!
   <badref> = icmp slt #0 0x0000000000c5e1e7 llvm::sys::PrintStackTrace(llvm::raw_ostream&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5e1e7)
 #1 0x0000000000c5cf4b llvm::sys::RunSignalHandlers() (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5cf4b)
 #2 0x0000000000c5d2f3 SignalHandler(int) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5d2f3)
-#3 0x00007f70cf0fab00 __restore_rt (/lib64/libpthread.so.0+0x10b00)
+#3 0x00007f9eb1d16b00 __restore_rt (/lib64/libpthread.so.0+0x10b00)
 #4 0x00000000009bad51 (anonymous namespace)::TypePrinting::print(llvm::Type*, llvm::raw_ostream&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x9bad51)
 #5 0x00000000009be1e4 (anonymous namespace)::AssemblyWriter::writeOperand(llvm::Value const*, bool) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x9be1e4)
 #6 0x00000000009c1a1b (anonymous namespace)::AssemblyWriter::printInstruction(llvm::Instruction const&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x9c1a1b)
@@ -1242,7 +1237,7 @@ Instruction does not dominate all uses!
 #14 0x0000000000a1f7c4 llvm::FPPassManager::runOnModule(llvm::Module&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa1f7c4)
 #15 0x0000000000a1fc9d llvm::legacy::PassManagerImpl::run(llvm::Module&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa1fc9d)
 #16 0x0000000000622eb6 main (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x622eb6)
-#17 0x00007f70cdc746e5 __libc_start_main (/lib64/libc.so.6+0x206e5)
+#17 0x00007f9eb08906e5 __libc_start_main (/lib64/libc.so.6+0x206e5)
 #18 0x0000000000653fc9 _start /home/abuild/rpmbuild/BUILD/glibc-2.22/csu/../sysdeps/x86_64/start.S:121:0
 Stack dump:
 0.	Program arguments: /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test11_prepass.ll -o /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test11_postpass.ll 
@@ -1325,7 +1320,7 @@ TOTAL: 23
 VOLATILES: 0
 0
 + timeout 10 /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test12_prepass.ll -o /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test12_postpass.ll
-/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 36:  2701 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 36: 25453 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
 + ec=139
 + '[' 139 -ne 0 ']'
 + '[' 139 -ne 124 ']'
@@ -1335,7 +1330,7 @@ Running pass failed with errors:
 #0 0x0000000000c5e1e7 llvm::sys::PrintStackTrace(llvm::raw_ostream&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5e1e7)
 #1 0x0000000000c5cf4b llvm::sys::RunSignalHandlers() (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5cf4b)
 #2 0x0000000000c5d2f3 SignalHandler(int) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5d2f3)
-#3 0x00007fe49ec35b00 __restore_rt (/lib64/libpthread.so.0+0x10b00)
+#3 0x00007f329bdcfb00 __restore_rt (/lib64/libpthread.so.0+0x10b00)
 #4 0x0000000000a3635a llvm::Type::isIntegerTy(unsigned int) const (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa3635a)
 #5 0x0000000000a4b7ca (anonymous namespace)::Verifier::verify(llvm::Function const&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa4b7ca)
 #6 0x0000000000a4da99 (anonymous namespace)::VerifierLegacyPass::runOnFunction(llvm::Function&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa4da99)
@@ -1343,7 +1338,7 @@ Running pass failed with errors:
 #8 0x0000000000a1f7c4 llvm::FPPassManager::runOnModule(llvm::Module&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa1f7c4)
 #9 0x0000000000a1fc9d llvm::legacy::PassManagerImpl::run(llvm::Module&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa1fc9d)
 #10 0x0000000000622eb6 main (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x622eb6)
-#11 0x00007fe49d7af6e5 __libc_start_main (/lib64/libc.so.6+0x206e5)
+#11 0x00007f329a9496e5 __libc_start_main (/lib64/libc.so.6+0x206e5)
 #12 0x0000000000653fc9 _start /home/abuild/rpmbuild/BUILD/glibc-2.22/csu/../sysdeps/x86_64/start.S:121:0
 Stack dump:
 0.	Program arguments: /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test12_prepass.ll -o /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test12_postpass.ll 
@@ -1424,7 +1419,7 @@ TOTAL: 7
 VOLATILES: 1
 1
 + timeout 10 /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test13_prepass.ll -o /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test13_postpass.ll
-/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 36:  2728 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 36: 25479 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
 + ec=139
 + '[' 139 -ne 0 ']'
 + '[' 139 -ne 124 ']'
@@ -1434,14 +1429,14 @@ Running pass failed with errors:
 #0 0x0000000000c5e1e7 llvm::sys::PrintStackTrace(llvm::raw_ostream&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5e1e7)
 #1 0x0000000000c5cf4b llvm::sys::RunSignalHandlers() (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5cf4b)
 #2 0x0000000000c5d2f3 SignalHandler(int) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5d2f3)
-#3 0x00007f0bd2192b00 __restore_rt (/lib64/libpthread.so.0+0x10b00)
+#3 0x00007fb6b440eb00 __restore_rt (/lib64/libpthread.so.0+0x10b00)
 #4 0x0000000000a4bc6b (anonymous namespace)::Verifier::verify(llvm::Function const&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa4bc6b)
 #5 0x0000000000a4da99 (anonymous namespace)::VerifierLegacyPass::runOnFunction(llvm::Function&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa4da99)
 #6 0x0000000000a1f6df llvm::FPPassManager::runOnFunction(llvm::Function&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa1f6df)
 #7 0x0000000000a1f7c4 llvm::FPPassManager::runOnModule(llvm::Module&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa1f7c4)
 #8 0x0000000000a1fc9d llvm::legacy::PassManagerImpl::run(llvm::Module&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa1fc9d)
 #9 0x0000000000622eb6 main (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x622eb6)
-#10 0x00007f0bd0d0c6e5 __libc_start_main (/lib64/libc.so.6+0x206e5)
+#10 0x00007fb6b2f886e5 __libc_start_main (/lib64/libc.so.6+0x206e5)
 #11 0x0000000000653fc9 _start /home/abuild/rpmbuild/BUILD/glibc-2.22/csu/../sysdeps/x86_64/start.S:121:0
 Stack dump:
 0.	Program arguments: /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test13_prepass.ll -o /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test13_postpass.ll 
@@ -1528,7 +1523,7 @@ TOTAL: 17
 VOLATILES: 2
 2
 + timeout 10 /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test14_prepass.ll -o /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test14_postpass.ll
-/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 36:  2758 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 36: 25505 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
 + ec=139
 + '[' 139 -ne 0 ']'
 + '[' 139 -ne 124 ']'
@@ -1538,14 +1533,14 @@ Running pass failed with errors:
 #0 0x0000000000c5e1e7 llvm::sys::PrintStackTrace(llvm::raw_ostream&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5e1e7)
 #1 0x0000000000c5cf4b llvm::sys::RunSignalHandlers() (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5cf4b)
 #2 0x0000000000c5d2f3 SignalHandler(int) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5d2f3)
-#3 0x00007f70a6e5fb00 __restore_rt (/lib64/libpthread.so.0+0x10b00)
+#3 0x00007fd53e07cb00 __restore_rt (/lib64/libpthread.so.0+0x10b00)
 #4 0x0000000000a4bc6b (anonymous namespace)::Verifier::verify(llvm::Function const&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa4bc6b)
 #5 0x0000000000a4da99 (anonymous namespace)::VerifierLegacyPass::runOnFunction(llvm::Function&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa4da99)
 #6 0x0000000000a1f6df llvm::FPPassManager::runOnFunction(llvm::Function&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa1f6df)
 #7 0x0000000000a1f7c4 llvm::FPPassManager::runOnModule(llvm::Module&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa1f7c4)
 #8 0x0000000000a1fc9d llvm::legacy::PassManagerImpl::run(llvm::Module&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa1fc9d)
 #9 0x0000000000622eb6 main (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x622eb6)
-#10 0x00007f70a59d96e5 __libc_start_main (/lib64/libc.so.6+0x206e5)
+#10 0x00007fd53cbf66e5 __libc_start_main (/lib64/libc.so.6+0x206e5)
 #11 0x0000000000653fc9 _start /home/abuild/rpmbuild/BUILD/glibc-2.22/csu/../sysdeps/x86_64/start.S:121:0
 Stack dump:
 0.	Program arguments: /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test14_prepass.ll -o /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test14_postpass.ll 
@@ -1636,7 +1631,7 @@ TOTAL: 18
 VOLATILES: 2
 2
 + timeout 10 /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test15_prepass.ll -o /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test15_postpass.ll
-/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 36:  2784 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 36: 25531 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
 + ec=139
 + '[' 139 -ne 0 ']'
 + '[' 139 -ne 124 ']'
@@ -1647,8 +1642,8 @@ Store operand must be a pointer.
   store volatile i32 0, opaque#0 0x0000000000c5e1e7 llvm::sys::PrintStackTrace(llvm::raw_ostream&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5e1e7)
 #1 0x0000000000c5cf4b llvm::sys::RunSignalHandlers() (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5cf4b)
 #2 0x0000000000c5d2f3 SignalHandler(int) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5d2f3)
-#3 0x00007f4b784bfb00 __restore_rt (/lib64/libpthread.so.0+0x10b00)
-#4 0x00007ffec5e49608
+#3 0x00007f95ad5a3b00 __restore_rt (/lib64/libpthread.so.0+0x10b00)
+#4 0x00007ffd2f84d528
 Stack dump:
 0.	Program arguments: /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test15_prepass.ll -o /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test15_postpass.ll 
 1.	Running pass 'Function Pass Manager' on module '/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test15_prepass.ll'.
@@ -1734,7 +1729,7 @@ TOTAL: 17
 VOLATILES: 2
 2
 + timeout 10 /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test16_prepass.ll -o /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test16_postpass.ll
-/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 36:  2810 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 36: 25557 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
 + ec=139
 + '[' 139 -ne 0 ']'
 + '[' 139 -ne 124 ']'
@@ -1744,7 +1739,7 @@ Running pass failed with errors:
 #0 0x0000000000c5e1e7 llvm::sys::PrintStackTrace(llvm::raw_ostream&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5e1e7)
 #1 0x0000000000c5cf4b llvm::sys::RunSignalHandlers() (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5cf4b)
 #2 0x0000000000c5d2f3 SignalHandler(int) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5d2f3)
-#3 0x00007f828a93eb00 __restore_rt (/lib64/libpthread.so.0+0x10b00)
+#3 0x00007f4dc436eb00 __restore_rt (/lib64/libpthread.so.0+0x10b00)
 #4 0x0000000000a3635a llvm::Type::isIntegerTy(unsigned int) const (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa3635a)
 #5 0x0000000000a4b7ca (anonymous namespace)::Verifier::verify(llvm::Function const&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa4b7ca)
 #6 0x0000000000a4da99 (anonymous namespace)::VerifierLegacyPass::runOnFunction(llvm::Function&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa4da99)
@@ -1752,7 +1747,7 @@ Running pass failed with errors:
 #8 0x0000000000a1f7c4 llvm::FPPassManager::runOnModule(llvm::Module&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa1f7c4)
 #9 0x0000000000a1fc9d llvm::legacy::PassManagerImpl::run(llvm::Module&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa1fc9d)
 #10 0x0000000000622eb6 main (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x622eb6)
-#11 0x00007f82894b86e5 __libc_start_main (/lib64/libc.so.6+0x206e5)
+#11 0x00007f4dc2ee86e5 __libc_start_main (/lib64/libc.so.6+0x206e5)
 #12 0x0000000000653fc9 _start /home/abuild/rpmbuild/BUILD/glibc-2.22/csu/../sysdeps/x86_64/start.S:121:0
 Stack dump:
 0.	Program arguments: /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test16_prepass.ll -o /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test16_postpass.ll 
@@ -1839,7 +1834,7 @@ TOTAL: 24
 VOLATILES: 1
 1
 + timeout 10 /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test17_prepass.ll -o /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test17_postpass.ll
-/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 36:  2837 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 36: 25583 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
 + ec=139
 + '[' 139 -ne 0 ']'
 + '[' 139 -ne 124 ']'
@@ -1850,8 +1845,8 @@ Store operand must be a pointer.
   store volatile i32 10, <{}>#0 0x0000000000c5e1e7 llvm::sys::PrintStackTrace(llvm::raw_ostream&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5e1e7)
 #1 0x0000000000c5cf4b llvm::sys::RunSignalHandlers() (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5cf4b)
 #2 0x0000000000c5d2f3 SignalHandler(int) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5d2f3)
-#3 0x00007fb4ae868b00 __restore_rt (/lib64/libpthread.so.0+0x10b00)
-#4 0x00007ffc411991c8
+#3 0x00007f6ab4b1cb00 __restore_rt (/lib64/libpthread.so.0+0x10b00)
+#4 0x00007ffe91676ca8
 Stack dump:
 0.	Program arguments: /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test17_prepass.ll -o /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test17_postpass.ll 
 1.	Running pass 'Function Pass Manager' on module '/home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test17_prepass.ll'.
@@ -1939,7 +1934,7 @@ TOTAL: 32
 VOLATILES: 3
 3
 + timeout 10 /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test18_prepass.ll -o /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test18_postpass.ll
-/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 36:  2863 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
+/home/s1467120/llvm-marking-suite/scripts/passes/RunPasses.sh: line 36: 25609 Segmentation fault      timeout 10 $llvmd/opt -load $passobj -skeletonpass -S $prepass -o $postpass &> $compout
 + ec=139
 + '[' 139 -ne 0 ']'
 + '[' 139 -ne 124 ']'
@@ -1950,7 +1945,7 @@ Store operand must be a pointer.
   store volatile i32 10, void #0 0x0000000000c5e1e7 llvm::sys::PrintStackTrace(llvm::raw_ostream&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5e1e7)
 #1 0x0000000000c5cf4b llvm::sys::RunSignalHandlers() (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5cf4b)
 #2 0x0000000000c5d2f3 SignalHandler(int) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xc5d2f3)
-#3 0x00007f0415c93b00 __restore_rt (/lib64/libpthread.so.0+0x10b00)
+#3 0x00007f416b65fb00 __restore_rt (/lib64/libpthread.so.0+0x10b00)
 #4 0x00000000009bbf75 llvm::SlotTracker::SlotTracker(llvm::Function const*, bool) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x9bbf75)
 #5 0x00000000009bc110 createSlotTracker(llvm::Value const*) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x9bc110)
 #6 0x00000000009bd30f WriteAsOperandInternal(llvm::raw_ostream&, llvm::Value const*, (anonymous namespace)::TypePrinting*, llvm::SlotTracker*, llvm::Module const*) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x9bd30f)
@@ -1963,7 +1958,7 @@ Store operand must be a pointer.
 #13 0x0000000000a1f7c4 llvm::FPPassManager::runOnModule(llvm::Module&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa1f7c4)
 #14 0x0000000000a1fc9d llvm::legacy::PassManagerImpl::run(llvm::Module&) (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0xa1fc9d)
 #15 0x0000000000622eb6 main (/home/s1467120/llvm-marking-suite/llvm-build/bin/opt+0x622eb6)
-#16 0x00007f041480d6e5 __libc_start_main (/lib64/libc.so.6+0x206e5)
+#16 0x00007f416a1d96e5 __libc_start_main (/lib64/libc.so.6+0x206e5)
 #17 0x0000000000653fc9 _start /home/abuild/rpmbuild/BUILD/glibc-2.22/csu/../sysdeps/x86_64/start.S:121:0
 Stack dump:
 0.	Program arguments: /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test18_prepass.ll -o /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test18_postpass.ll 
@@ -3995,12 +3990,12 @@ Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s15144
 Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output//test18_postpass.volcount
 Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output//test16_postpass.count
 Failed to find the counts from file /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output//test16_postpass.volcount
-{"pass_results": [{"results": [{"test": "test10", "correct": false, "dce_count_after": "Failed", "expected_count_before": 19, "volatile_count_after": "Failed", "volatile_count_before": 0, "dce_count_before": 19, "expected_count_after": 18}, {"test": "test12", "correct": false, "dce_count_after": "Failed", "expected_count_before": 23, "volatile_count_after": "Failed", "volatile_count_before": 0, "dce_count_before": 23, "expected_count_after": 20}, {"test": "test01", "correct": true, "dce_count_after": 2, "expected_count_before": 2, "volatile_count_after": 0, "volatile_count_before": 0, "dce_count_before": 2, "expected_count_after": 2}, {"test": "test02", "correct": true, "dce_count_after": 2, "expected_count_before": 3, "volatile_count_after": 0, "volatile_count_before": 0, "dce_count_before": 3, "expected_count_after": 2}, {"test": "test03", "correct": false, "dce_count_after": "Failed", "expected_count_before": 12, "volatile_count_after": "Failed", "volatile_count_before": 0, "dce_count_before": 12, "expected_count_after": 12}, {"test": "test04", "correct": false, "dce_count_after": "Failed", "expected_count_before": 13, "volatile_count_after": "Failed", "volatile_count_before": 0, "dce_count_before": 13, "expected_count_after": 13}, {"test": "test05", "correct": false, "dce_count_after": "Failed", "expected_count_before": 8, "volatile_count_after": "Failed", "volatile_count_before": 0, "dce_count_before": 8, "expected_count_after": 7}, {"test": "test06", "correct": false, "dce_count_after": "Failed", "expected_count_before": 10, "volatile_count_after": "Failed", "volatile_count_before": 0, "dce_count_before": 10, "expected_count_after": 9}, {"test": "test07", "correct": false, "dce_count_after": "Failed", "expected_count_before": 10, "volatile_count_after": "Failed", "volatile_count_before": 0, "dce_count_before": 10, "expected_count_after": 8}, {"test": "test08", "correct": false, "dce_count_after": "Failed", "expected_count_before": 11, "volatile_count_after": "Failed", "volatile_count_before": 0, "dce_count_before": 11, "expected_count_after": 11}, {"test": "test11", "correct": false, "dce_count_after": "Failed", "expected_count_before": 21, "volatile_count_after": "Failed", "volatile_count_before": 0, "dce_count_before": 21, "expected_count_after": 20}, {"test": "test09", "correct": false, "dce_count_after": "Failed", "expected_count_before": 11, "volatile_count_after": "Failed", "volatile_count_before": 0, "dce_count_before": 11, "expected_count_after": 10}, {"test": "test13", "correct": false, "dce_count_after": "Failed", "expected_count_before": 7, "volatile_count_after": "Failed", "volatile_count_before": 1, "dce_count_before": 7, "expected_count_after": 7}, {"test": "test14", "correct": false, "dce_count_after": "Failed", "expected_count_before": 17, "volatile_count_after": "Failed", "volatile_count_before": 2, "dce_count_before": 17, "expected_count_after": 17}, {"test": "test15", "correct": false, "dce_count_after": "Failed", "expected_count_before": 18, "volatile_count_after": "Failed", "volatile_count_before": 2, "dce_count_before": 18, "expected_count_after": 18}, {"test": "test17", "correct": false, "dce_count_after": "Failed", "expected_count_before": 24, "volatile_count_after": "Failed", "volatile_count_before": 1, "dce_count_before": 24, "expected_count_after": 23}, {"test": "test18", "correct": false, "dce_count_after": "Failed", "expected_count_before": 32, "volatile_count_after": "Failed", "volatile_count_before": 3, "dce_count_before": 32, "expected_count_after": 32}, {"test": "test16", "correct": false, "dce_count_after": "Failed", "expected_count_before": 17, "volatile_count_after": "Failed", "volatile_count_before": 2, "dce_count_before": 17, "expected_count_after": 17}], "pass": "llvm-pass-my-dce"}, {"results": [{"test": "test10", "correct": true, "dce_count_after": 19, "expected_count_before": 19, "volatile_count_after": 0, "volatile_count_before": 0, "dce_count_before": 19, "expected_count_after": 19}, {"test": "test12", "correct": true, "dce_count_after": 21, "expected_count_before": 23, "volatile_count_after": 0, "volatile_count_before": 0, "dce_count_before": 23, "expected_count_after": 21}, {"test": "test01", "correct": true, "dce_count_after": 2, "expected_count_before": 2, "volatile_count_after": 0, "volatile_count_before": 0, "dce_count_before": 2, "expected_count_after": 2}, {"test": "test02", "correct": true, "dce_count_after": 2, "expected_count_before": 3, "volatile_count_after": 0, "volatile_count_before": 0, "dce_count_before": 3, "expected_count_after": 2}, {"test": "test03", "correct": true, "dce_count_after": 12, "expected_count_before": 12, "volatile_count_after": 0, "volatile_count_before": 0, "dce_count_before": 12, "expected_count_after": 12}, {"test": "test04", "correct": true, "dce_count_after": 13, "expected_count_before": 13, "volatile_count_after": 0, "volatile_count_before": 0, "dce_count_before": 13, "expected_count_after": 13}, {"test": "test05", "correct": true, "dce_count_after": 8, "expected_count_before": 8, "volatile_count_after": 0, "volatile_count_before": 0, "dce_count_before": 8, "expected_count_after": 8}, {"test": "test06", "correct": true, "dce_count_after": 10, "expected_count_before": 10, "volatile_count_after": 0, "volatile_count_before": 0, "dce_count_before": 10, "expected_count_after": 10}, {"test": "test07", "correct": true, "dce_count_after": 9, "expected_count_before": 10, "volatile_count_after": 0, "volatile_count_before": 0, "dce_count_before": 10, "expected_count_after": 9}, {"test": "test08", "correct": true, "dce_count_after": 11, "expected_count_before": 11, "volatile_count_after": 0, "volatile_count_before": 0, "dce_count_before": 11, "expected_count_after": 11}, {"test": "test11", "correct": true, "dce_count_after": 21, "expected_count_before": 21, "volatile_count_after": 0, "volatile_count_before": 0, "dce_count_before": 21, "expected_count_after": 21}, {"test": "test09", "correct": true, "dce_count_after": 10, "expected_count_before": 11, "volatile_count_after": 0, "volatile_count_before": 0, "dce_count_before": 11, "expected_count_after": 10}, {"test": "test13", "correct": true, "dce_count_after": 7, "expected_count_before": 7, "volatile_count_after": 1, "volatile_count_before": 1, "dce_count_before": 7, "expected_count_after": 7}, {"test": "test14", "correct": true, "dce_count_after": 17, "expected_count_before": 17, "volatile_count_after": 2, "volatile_count_before": 2, "dce_count_before": 17, "expected_count_after": 17}, {"test": "test15", "correct": true, "dce_count_after": 18, "expected_count_before": 18, "volatile_count_after": 2, "volatile_count_before": 2, "dce_count_before": 18, "expected_count_after": 18}, {"test": "test17", "correct": true, "dce_count_after": 24, "expected_count_before": 24, "volatile_count_after": 1, "volatile_count_before": 1, "dce_count_before": 24, "expected_count_after": 24}, {"test": "test18", "correct": true, "dce_count_after": 32, "expected_count_before": 32, "volatile_count_after": 3, "volatile_count_before": 3, "dce_count_before": 32, "expected_count_after": 32}, {"test": "test16", "correct": true, "dce_count_after": 17, "expected_count_before": 17, "volatile_count_after": 2, "volatile_count_before": 2, "dce_count_before": 17, "expected_count_after": 17}], "pass": "llvm-pass-simple-dce"}], "student_id": "s1514483", "student_alias": "green deer"}
+{"pass_results": [{"pass": "llvm-pass-my-dce", "results": [{"correct": false, "expected_count_after": 18, "test": "test10", "volatile_count_after": "Failed", "dce_count_before": 19, "expected_count_before": 19, "dce_count_after": "Failed", "volatile_count_before": 0}, {"correct": false, "expected_count_after": 20, "test": "test12", "volatile_count_after": "Failed", "dce_count_before": 23, "expected_count_before": 23, "dce_count_after": "Failed", "volatile_count_before": 0}, {"correct": true, "expected_count_after": 2, "test": "test01", "volatile_count_after": 0, "dce_count_before": 2, "expected_count_before": 2, "dce_count_after": 2, "volatile_count_before": 0}, {"correct": true, "expected_count_after": 2, "test": "test02", "volatile_count_after": 0, "dce_count_before": 3, "expected_count_before": 3, "dce_count_after": 2, "volatile_count_before": 0}, {"correct": false, "expected_count_after": 12, "test": "test03", "volatile_count_after": "Failed", "dce_count_before": 12, "expected_count_before": 12, "dce_count_after": "Failed", "volatile_count_before": 0}, {"correct": false, "expected_count_after": 13, "test": "test04", "volatile_count_after": "Failed", "dce_count_before": 13, "expected_count_before": 13, "dce_count_after": "Failed", "volatile_count_before": 0}, {"correct": false, "expected_count_after": 7, "test": "test05", "volatile_count_after": "Failed", "dce_count_before": 8, "expected_count_before": 8, "dce_count_after": "Failed", "volatile_count_before": 0}, {"correct": false, "expected_count_after": 9, "test": "test06", "volatile_count_after": "Failed", "dce_count_before": 10, "expected_count_before": 10, "dce_count_after": "Failed", "volatile_count_before": 0}, {"correct": false, "expected_count_after": 8, "test": "test07", "volatile_count_after": "Failed", "dce_count_before": 10, "expected_count_before": 10, "dce_count_after": "Failed", "volatile_count_before": 0}, {"correct": false, "expected_count_after": 11, "test": "test08", "volatile_count_after": "Failed", "dce_count_before": 11, "expected_count_before": 11, "dce_count_after": "Failed", "volatile_count_before": 0}, {"correct": false, "expected_count_after": 20, "test": "test11", "volatile_count_after": "Failed", "dce_count_before": 21, "expected_count_before": 21, "dce_count_after": "Failed", "volatile_count_before": 0}, {"correct": false, "expected_count_after": 10, "test": "test09", "volatile_count_after": "Failed", "dce_count_before": 11, "expected_count_before": 11, "dce_count_after": "Failed", "volatile_count_before": 0}, {"correct": false, "expected_count_after": 7, "test": "test13", "volatile_count_after": "Failed", "dce_count_before": 7, "expected_count_before": 7, "dce_count_after": "Failed", "volatile_count_before": 1}, {"correct": false, "expected_count_after": 17, "test": "test14", "volatile_count_after": "Failed", "dce_count_before": 17, "expected_count_before": 17, "dce_count_after": "Failed", "volatile_count_before": 2}, {"correct": false, "expected_count_after": 18, "test": "test15", "volatile_count_after": "Failed", "dce_count_before": 18, "expected_count_before": 18, "dce_count_after": "Failed", "volatile_count_before": 2}, {"correct": false, "expected_count_after": 23, "test": "test17", "volatile_count_after": "Failed", "dce_count_before": 24, "expected_count_before": 24, "dce_count_after": "Failed", "volatile_count_before": 1}, {"correct": false, "expected_count_after": 32, "test": "test18", "volatile_count_after": "Failed", "dce_count_before": 32, "expected_count_before": 32, "dce_count_after": "Failed", "volatile_count_before": 3}, {"correct": false, "expected_count_after": 17, "test": "test16", "volatile_count_after": "Failed", "dce_count_before": 17, "expected_count_before": 17, "dce_count_after": "Failed", "volatile_count_before": 2}]}, {"pass": "llvm-pass-simple-dce", "results": [{"correct": true, "expected_count_after": 19, "test": "test10", "volatile_count_after": 0, "dce_count_before": 19, "expected_count_before": 19, "dce_count_after": 19, "volatile_count_before": 0}, {"correct": true, "expected_count_after": 21, "test": "test12", "volatile_count_after": 0, "dce_count_before": 23, "expected_count_before": 23, "dce_count_after": 21, "volatile_count_before": 0}, {"correct": true, "expected_count_after": 2, "test": "test01", "volatile_count_after": 0, "dce_count_before": 2, "expected_count_before": 2, "dce_count_after": 2, "volatile_count_before": 0}, {"correct": true, "expected_count_after": 2, "test": "test02", "volatile_count_after": 0, "dce_count_before": 3, "expected_count_before": 3, "dce_count_after": 2, "volatile_count_before": 0}, {"correct": true, "expected_count_after": 12, "test": "test03", "volatile_count_after": 0, "dce_count_before": 12, "expected_count_before": 12, "dce_count_after": 12, "volatile_count_before": 0}, {"correct": true, "expected_count_after": 13, "test": "test04", "volatile_count_after": 0, "dce_count_before": 13, "expected_count_before": 13, "dce_count_after": 13, "volatile_count_before": 0}, {"correct": true, "expected_count_after": 8, "test": "test05", "volatile_count_after": 0, "dce_count_before": 8, "expected_count_before": 8, "dce_count_after": 8, "volatile_count_before": 0}, {"correct": true, "expected_count_after": 10, "test": "test06", "volatile_count_after": 0, "dce_count_before": 10, "expected_count_before": 10, "dce_count_after": 10, "volatile_count_before": 0}, {"correct": true, "expected_count_after": 9, "test": "test07", "volatile_count_after": 0, "dce_count_before": 10, "expected_count_before": 10, "dce_count_after": 9, "volatile_count_before": 0}, {"correct": true, "expected_count_after": 11, "test": "test08", "volatile_count_after": 0, "dce_count_before": 11, "expected_count_before": 11, "dce_count_after": 11, "volatile_count_before": 0}, {"correct": true, "expected_count_after": 21, "test": "test11", "volatile_count_after": 0, "dce_count_before": 21, "expected_count_before": 21, "dce_count_after": 21, "volatile_count_before": 0}, {"correct": true, "expected_count_after": 10, "test": "test09", "volatile_count_after": 0, "dce_count_before": 11, "expected_count_before": 11, "dce_count_after": 10, "volatile_count_before": 0}, {"correct": true, "expected_count_after": 7, "test": "test13", "volatile_count_after": 1, "dce_count_before": 7, "expected_count_before": 7, "dce_count_after": 7, "volatile_count_before": 1}, {"correct": true, "expected_count_after": 17, "test": "test14", "volatile_count_after": 2, "dce_count_before": 17, "expected_count_before": 17, "dce_count_after": 17, "volatile_count_before": 2}, {"correct": true, "expected_count_after": 18, "test": "test15", "volatile_count_after": 2, "dce_count_before": 18, "expected_count_before": 18, "dce_count_after": 18, "volatile_count_before": 2}, {"correct": true, "expected_count_after": 24, "test": "test17", "volatile_count_after": 1, "dce_count_before": 24, "expected_count_before": 24, "dce_count_after": 24, "volatile_count_before": 1}, {"correct": true, "expected_count_after": 32, "test": "test18", "volatile_count_after": 3, "dce_count_before": 32, "expected_count_before": 32, "dce_count_after": 32, "volatile_count_before": 3}, {"correct": true, "expected_count_after": 17, "test": "test16", "volatile_count_after": 2, "dce_count_before": 17, "expected_count_before": 17, "dce_count_after": 17, "volatile_count_before": 2}]}], "student_id": "s1514483", "student_alias": "green deer"}
 + '[' 0 -ne 0 ']'
 + echo '========== Generating report'
 ========== Generating report
-+ python3 /home/s1467120/llvm-marking-suite/scripts/make_report.py /home/s1467120/llvm-marking-suite/tmp/s1514483//results/results.markdown /home/s1467120/llvm-marking-suite/tmp/s1514483//results/results.json 2018-01-15T03-27-04+0000
-# Results at time 2018-01-15T03-27-04+0000
++ python3 /home/s1467120/llvm-marking-suite/scripts/make_report.py /home/s1467120/llvm-marking-suite/tmp/s1514483//results/results.markdown /home/s1467120/llvm-marking-suite/tmp/s1514483//results/results.json 2018-01-15T04-27-31+0000
+# Results at time 2018-01-15T04-27-31+0000
 
 Results for student *s1514483* aka *green deer*
 
@@ -4057,8 +4052,8 @@ test18|True|32|32|32|32|3|3
 
 
 + '[' 0 -ne 0 ']'
-+ python3 /home/s1467120/llvm-marking-suite/scripts/make_report.py '/home/s1467120/llvm-marking-suite/tmp/s1514483//results/green deer.markdown' /home/s1467120/llvm-marking-suite/tmp/s1514483//results/results.json 2018-01-15T03-27-04+0000 --redact
-# Results at time 2018-01-15T03-27-04+0000
++ python3 /home/s1467120/llvm-marking-suite/scripts/make_report.py '/home/s1467120/llvm-marking-suite/tmp/s1514483//results/green deer.markdown' /home/s1467120/llvm-marking-suite/tmp/s1514483//results/results.json 2018-01-15T04-27-31+0000 --redact
+# Results at time 2018-01-15T04-27-31+0000
 
 Results for student *green deer*
 
@@ -4115,7 +4110,7 @@ test18|True|32|32|32|32|3|3
 
 
 + '[' 0 -ne 0 ']'
-+ python3 /home/s1467120/llvm-marking-suite/scripts/make_scoretable.py /home/s1467120/llvm-marking-suite/tmp/s1514483//results/score-s1514483.csv /home/s1467120/llvm-marking-suite/tmp/s1514483//results/results.json 2018-01-15T03-27-04+0000
++ python3 /home/s1467120/llvm-marking-suite/scripts/make_scoretable.py /home/s1467120/llvm-marking-suite/tmp/s1514483//results/score-s1514483.csv /home/s1467120/llvm-marking-suite/tmp/s1514483//results/results.json 2018-01-15T04-27-31+0000
 test	correct	count_before	count_after	expected_count_before	expected_count_after	volatile_count_before	volatile_count_after
 test01-llvm-pass-my-dce	True	2	2	2	2	0	0
 test02-llvm-pass-my-dce	True	3	3	2	2	0	0
@@ -4166,16 +4161,16 @@ Branch feedback set up to track remote branch feedback from origin.
 Already up-to-date.
 + cp /home/s1467120/llvm-marking-suite/tmp/s1514483//results/results.markdown part4_feedback.md
 + git add part4_feedback.md
-+ git commit -a -m 'Feedback on submission at 2018-01-15T03-27-04+0000'
-[feedback fa08260] Feedback on submission at 2018-01-15T03-27-04+0000
- 1 file changed, 3 insertions(+), 3 deletions(-)
++ git commit -a -m 'Feedback on submission at 2018-01-15T04-27-31+0000'
+[feedback 1c2c440] Feedback on submission at 2018-01-15T04-27-31+0000
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 + git push
 remote: 
 remote: Create pull request for feedback:        
 remote:   https://bitbucket.org/cwrbs/ct-17-18/pull-requests/new?source=feedback&t=1        
 remote: 
 To bitbucket.org:cwrbs/ct-17-18.git
-   3b26ecd..fa08260  feedback -> feedback
+   b7bf5c6..1c2c440  feedback -> feedback
 + cp '/home/s1467120/llvm-marking-suite/tmp/s1514483//results/green deer.markdown' '/home/s1467120/llvm-marking-suite/cdbr/scoreboard/part-4/green deer.markdown'
 + mkdir -p /home/s1467120/llvm-marking-suite/marks/
 + cp /home/s1467120/llvm-marking-suite/tmp/s1514483//results/score-s1514483.csv /home/s1467120/llvm-marking-suite/marks/
