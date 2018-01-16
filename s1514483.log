@@ -1,4 +1,4 @@
-Log for student s1514483, green deer at 2018-01-15T09-15-01+0000
+Log for student s1514483, green deer at 2018-01-16T02-15-02+0000
 + rootd=/home/s1467120/llvm-marking-suite
 + echo 'Rootd: /home/s1467120/llvm-marking-suite'
 Rootd: /home/s1467120/llvm-marking-suite
@@ -12,7 +12,7 @@ Salias: green deer
 + tmprpo=/home/s1467120/llvm-marking-suite/tmp/s1514483/
 + logd=/home/s1467120/llvm-marking-suite/logs
 ++ date +%Y-%m-%dT%H-%M-%S%z
-+ now=2018-01-15T09-29-17+0000
++ now=2018-01-16T02-33-06+0000
 + echo '========== Updating Repository'
 ========== Updating Repository
 + cd /home/s1467120/llvm-marking-suite/students/s1514483.repo
@@ -23,12 +23,7 @@ Moved to directory /home/s1467120/llvm-marking-suite/students/s1514483.repo
 Already on 'master'
 Your branch is up-to-date with 'origin/master'.
 + git pull
-From bitbucket.org:cwrbs/ct-17-18
-   8d4dc32..306e2bc  master     -> origin/master
-Updating 8d4dc32..306e2bc
-Fast-forward
- part-4/passes/llvm-pass-my-dce/skeleton/Skeleton.cpp | 6 +-----
- 1 file changed, 1 insertion(+), 5 deletions(-)
+Already up-to-date.
 + '[' 0 -ne 0 ']'
 + echo '========== Making temp copies'
 ========== Making temp copies
@@ -181,14 +176,7 @@ postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llv
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test01_prepass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test01_prepass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: call: 1
@@ -214,14 +202,7 @@ Running optimisation pass succeeded!
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test01_postpass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test01_postpass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: call: 1
@@ -285,14 +266,7 @@ postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llv
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test02_prepass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test02_prepass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 1
@@ -320,14 +294,7 @@ Running optimisation pass succeeded!
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test02_postpass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test02_postpass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 1
@@ -393,17 +360,7 @@ postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llv
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test03_prepass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test03_prepass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[ 50%] Linking CXX shared module libSkeletonPass.so
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 3
@@ -527,14 +484,7 @@ TOTAL: 13
 + /home/s1467120/llvm-marking-suite/tools/cv/count_volatile.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test04_prepass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test04_prepass.volcount
 ~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
-cd llvm-pass-count-volatile/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv/llvm-pass-count-volatile/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv/llvm-pass-count-volatile/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv/llvm-pass-count-volatile/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv/llvm-pass-count-volatile/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv/llvm-pass-count-volatile/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv/llvm-pass-count-volatile/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 3
@@ -732,14 +682,7 @@ postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llv
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test06_prepass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test06_prepass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 2
@@ -773,14 +716,7 @@ Running optimisation pass succeeded!
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test06_postpass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test06_postpass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 2
@@ -852,14 +788,7 @@ postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llv
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test07_prepass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test07_prepass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 3
@@ -893,14 +822,7 @@ Running optimisation pass succeeded!
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test07_postpass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test07_postpass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 3
@@ -972,14 +894,7 @@ postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llv
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test08_prepass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test08_prepass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 3
@@ -1013,14 +928,7 @@ Running optimisation pass succeeded!
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test08_postpass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test08_postpass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 3
@@ -1092,14 +1000,7 @@ postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llv
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test09_prepass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test09_prepass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 3
@@ -1133,14 +1034,7 @@ Running optimisation pass succeeded!
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test09_postpass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test09_postpass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 3
@@ -1212,14 +1106,7 @@ postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llv
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test10_prepass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test10_prepass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 2
@@ -1253,14 +1140,7 @@ Running optimisation pass succeeded!
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test10_postpass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test10_postpass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 2
@@ -1332,14 +1212,7 @@ postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llv
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test11_prepass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test11_prepass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 3
@@ -1373,14 +1246,7 @@ Running optimisation pass succeeded!
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test11_postpass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test11_postpass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 3
@@ -1452,14 +1318,7 @@ postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llv
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test12_prepass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test12_prepass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 4
@@ -1583,14 +1442,7 @@ TOTAL: 7
 + /home/s1467120/llvm-marking-suite/tools/cv/count_volatile.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test13_prepass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test13_prepass.volcount
 ~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
-cd llvm-pass-count-volatile/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv/llvm-pass-count-volatile/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv/llvm-pass-count-volatile/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv/llvm-pass-count-volatile/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv/llvm-pass-count-volatile/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv/llvm-pass-count-volatile/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv/llvm-pass-count-volatile/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 1
@@ -1804,14 +1656,7 @@ postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llv
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test15_prepass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test15_prepass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 3
@@ -1851,14 +1696,7 @@ Running optimisation pass succeeded!
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test15_postpass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test15_postpass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 3
@@ -1936,14 +1774,7 @@ postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llv
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test16_prepass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test16_prepass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 3
@@ -1983,14 +1814,7 @@ Running optimisation pass succeeded!
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test16_postpass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test16_postpass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 3
@@ -2068,14 +1892,7 @@ postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llv
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test17_prepass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test17_prepass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 3
@@ -2115,14 +1932,7 @@ Running optimisation pass succeeded!
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test17_postpass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test17_postpass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 3
@@ -2200,14 +2010,7 @@ postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llv
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test18_prepass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test18_prepass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 4
@@ -2249,14 +2052,7 @@ Running optimisation pass succeeded!
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test18_postpass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-my-dce/output/test18_postpass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 4
@@ -2362,14 +2158,7 @@ postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llv
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test01_prepass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test01_prepass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: call: 1
@@ -2395,14 +2184,7 @@ Running optimisation pass succeeded!
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test01_postpass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test01_postpass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: call: 1
@@ -2466,14 +2248,7 @@ postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llv
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test02_prepass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test02_prepass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 1
@@ -2501,17 +2276,7 @@ Running optimisation pass succeeded!
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test02_postpass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test02_postpass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[ 50%] Linking CXX shared module libSkeletonPass.so
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: call: 1
@@ -2589,21 +2354,18 @@ TOTAL: 12
 + /home/s1467120/llvm-marking-suite/tools/cv/count_volatile.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test03_prepass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test03_prepass.volcount
 ~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
-cd llvm-pass-count-volatile/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv/llvm-pass-count-volatile/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv/llvm-pass-count-volatile/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv/llvm-pass-count-volatile/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv/llvm-pass-count-volatile/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv/llvm-pass-count-volatile/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv/llvm-pass-count-volatile/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
 ~/llvm-marking-suite/tmp/s1514483/part-4
-Error opening '/home/s1467120/llvm-marking-suite/tools/cv/llvm-pass-count-volatile/build/skeleton/libSkeletonPass.so': /home/s1467120/llvm-marking-suite/tools/cv/llvm-pass-count-volatile/build/skeleton/libSkeletonPass.so: file too short
-  -load request ignored.
-opt: Unknown command line argument '-skeletonpass'.  Try: '/home/s1467120/llvm-marking-suite/llvm-build/bin/opt -help'
-opt: Did you mean '-debug-pass'?
-1467120
+INSTR COUNT: add: 3
+br: 4
+call: 1
+icmp: 1
+phi: 2
+ret: 1
+TOTAL: 12
+VOLATILES: 0
+0
 + timeout 10 /home/s1467120/llvm-marking-suite/llvm-build/bin/opt -load /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/build/skeleton/libSkeletonPass.so -skeletonpass -S /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test03_prepass.ll -o /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test03_postpass.ll
 + ec=0
 + '[' 0 -ne 0 ']'
@@ -2794,14 +2556,7 @@ postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llv
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test05_prepass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test05_prepass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 1
@@ -2835,14 +2590,7 @@ Running optimisation pass succeeded!
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test05_postpass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test05_postpass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 1
@@ -2914,14 +2662,7 @@ postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llv
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test06_prepass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test06_prepass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 2
@@ -2955,14 +2696,7 @@ Running optimisation pass succeeded!
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test06_postpass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test06_postpass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 2
@@ -3034,14 +2768,7 @@ postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llv
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test07_prepass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test07_prepass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 3
@@ -3075,14 +2802,7 @@ Running optimisation pass succeeded!
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test07_postpass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test07_postpass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 2
@@ -3154,14 +2874,7 @@ postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llv
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test08_prepass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test08_prepass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 3
@@ -3195,14 +2908,7 @@ Running optimisation pass succeeded!
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test08_postpass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test08_postpass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 3
@@ -3274,14 +2980,7 @@ postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llv
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test09_prepass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test09_prepass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 3
@@ -3315,14 +3014,7 @@ Running optimisation pass succeeded!
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test09_postpass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test09_postpass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 2
@@ -3394,14 +3086,7 @@ postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llv
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test10_prepass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test10_prepass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 2
@@ -3435,14 +3120,7 @@ Running optimisation pass succeeded!
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test10_postpass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test10_postpass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 2
@@ -3517,11 +3195,14 @@ make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
 make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
-Error opening '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build/skeleton/libSkeletonPass.so': /home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build/skeleton/libSkeletonPass.so: file too short
-  -load request ignored.
-opt: Unknown command line argument '-skeletonpass'.  Try: '/home/s1467120/llvm-marking-suite/llvm-build/bin/opt -help'
-opt: Did you mean '-debug-pass'?
-1467120
+INSTR COUNT: add: 3
+br: 7
+call: 1
+icmp: 2
+phi: 7
+ret: 1
+TOTAL: 21
+21
 + /home/s1467120/llvm-marking-suite/tools/cv/count_volatile.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test11_prepass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test11_prepass.volcount
 ~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
@@ -3667,21 +3348,18 @@ TOTAL: 21
 + /home/s1467120/llvm-marking-suite/tools/cv/count_volatile.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test12_postpass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test12_postpass.volcount
 ~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
-cd llvm-pass-count-volatile/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv/llvm-pass-count-volatile/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv/llvm-pass-count-volatile/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv/llvm-pass-count-volatile/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv/llvm-pass-count-volatile/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv/llvm-pass-count-volatile/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv/llvm-pass-count-volatile/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/cv'
 ~/llvm-marking-suite/tmp/s1514483/part-4
-Error opening '/home/s1467120/llvm-marking-suite/tools/cv/llvm-pass-count-volatile/build/skeleton/libSkeletonPass.so': /home/s1467120/llvm-marking-suite/tools/cv/llvm-pass-count-volatile/build/skeleton/libSkeletonPass.so: file too short
-  -load request ignored.
-opt: Unknown command line argument '-skeletonpass'.  Try: '/home/s1467120/llvm-marking-suite/llvm-build/bin/opt -help'
-opt: Did you mean '-debug-pass'?
-1467120
+INSTR COUNT: add: 3
+br: 7
+call: 1
+icmp: 2
+phi: 7
+ret: 1
+TOTAL: 21
+VOLATILES: 0
+0
 + /home/s1467120/llvm-marking-suite/llvm-build/bin/llc /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test12_postpass.ll -o /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test12.s
 + /home/s1467120/llvm-marking-suite/llvm-build/bin/clang /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test12.s -o /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test12.out
 + /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test12.out
@@ -3834,14 +3512,7 @@ postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llv
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test14_prepass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test14_prepass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 3
@@ -3881,14 +3552,7 @@ Running optimisation pass succeeded!
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test14_postpass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test14_postpass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 3
@@ -3970,14 +3634,7 @@ postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llv
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test15_prepass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test15_prepass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 3
@@ -4017,14 +3674,7 @@ Running optimisation pass succeeded!
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test15_postpass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test15_postpass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 3
@@ -4102,14 +3752,7 @@ postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llv
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test16_prepass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test16_prepass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 3
@@ -4149,14 +3792,7 @@ Running optimisation pass succeeded!
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test16_postpass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test16_postpass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 3
@@ -4234,14 +3870,7 @@ postcount_vol = /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llv
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test17_prepass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test17_prepass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
 INSTR COUNT: add: 3
@@ -4281,21 +3910,20 @@ Running optimisation pass succeeded!
 + /home/s1467120/llvm-marking-suite/tools/ci/count_instructions.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test17_postpass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test17_postpass.count
 ~/llvm-marking-suite/tools/ci ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci'
-cd llvm-pass-count-instructions/build; make
-make[2]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[3]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Entering directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[4]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-[100%] Built target SkeletonPass
-make[3]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
-make[2]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build'
+make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/s1467120/llvm-marking-suite/tools/ci'
 ~/llvm-marking-suite/tmp/s1514483/part-4
-Error opening '/home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build/skeleton/libSkeletonPass.so': /home/s1467120/llvm-marking-suite/tools/ci/llvm-pass-count-instructions/build/skeleton/libSkeletonPass.so: file too short
-  -load request ignored.
-opt: Unknown command line argument '-skeletonpass'.  Try: '/home/s1467120/llvm-marking-suite/llvm-build/bin/opt -help'
-opt: Did you mean '-debug-pass'?
-1467120
+INSTR COUNT: add: 3
+alloca: 1
+br: 7
+call: 1
+icmp: 2
+load: 1
+phi: 6
+ret: 1
+store: 2
+TOTAL: 24
+24
 + /home/s1467120/llvm-marking-suite/tools/cv/count_volatile.sh /home/s1467120/llvm-marking-suite /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test17_postpass.ll /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple-dce/output/test17_postpass.volcount
 ~/llvm-marking-suite/tools/cv ~/llvm-marking-suite/tmp/s1514483/part-4
 make[1]: Entering directory '/home/s1467120/llvm-marking-suite/tools/cv'
@@ -4450,12 +4078,12 @@ rm /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes/llvm-pass-simple
 ++ pwd
 ++ ls passes
 + python3 /home/s1467120/llvm-marking-suite/scripts/mark.py /home/s1467120/llvm-marking-suite/tmp/s1514483//results/results.json s1514483 'green deer' /home/s1467120/llvm-marking-suite/tmp/s1514483/part-4/passes /home/s1467120/llvm-marking-suite/gold/passes/ /home/s1467120/llvm-marking-suite/tests llvm-pass-my-dce llvm-pass-simple-dce
-{"pass_results": [{"results": [{"expected_count_before": 19, "expected_count_after": 18, "correct": true, "dce_count_after": 19, "dce_count_before": 19, "test": "test10", "volatile_count_after": 0, "volatile_count_before": 0}, {"expected_count_before": 23, "expected_count_after": 20, "correct": true, "dce_count_after": 23, "dce_count_before": 23, "test": "test12", "volatile_count_after": 0, "volatile_count_before": 0}, {"expected_count_before": 2, "expected_count_after": 2, "correct": true, "dce_count_after": 2, "dce_count_before": 2, "test": "test01", "volatile_count_after": 0, "volatile_count_before": 0}, {"expected_count_before": 3, "expected_count_after": 2, "correct": true, "dce_count_after": 3, "dce_count_before": 3, "test": "test02", "volatile_count_after": 0, "volatile_count_before": 0}, {"expected_count_before": 12, "expected_count_after": 12, "correct": true, "dce_count_after": 12, "dce_count_before": 12, "test": "test03", "volatile_count_after": 0, "volatile_count_before": 0}, {"expected_count_before": 13, "expected_count_after": 13, "correct": true, "dce_count_after": 13, "dce_count_before": 13, "test": "test04", "volatile_count_after": 0, "volatile_count_before": 0}, {"expected_count_before": 8, "expected_count_after": 7, "correct": true, "dce_count_after": 8, "dce_count_before": 8, "test": "test05", "volatile_count_after": 0, "volatile_count_before": 0}, {"expected_count_before": 10, "expected_count_after": 9, "correct": true, "dce_count_after": 10, "dce_count_before": 10, "test": "test06", "volatile_count_after": 0, "volatile_count_before": 0}, {"expected_count_before": 10, "expected_count_after": 8, "correct": true, "dce_count_after": 10, "dce_count_before": 10, "test": "test07", "volatile_count_after": 0, "volatile_count_before": 0}, {"expected_count_before": 11, "expected_count_after": 11, "correct": true, "dce_count_after": 11, "dce_count_before": 11, "test": "test08", "volatile_count_after": 0, "volatile_count_before": 0}, {"expected_count_before": 21, "expected_count_after": 20, "correct": true, "dce_count_after": 21, "dce_count_before": 21, "test": "test11", "volatile_count_after": 0, "volatile_count_before": 0}, {"expected_count_before": 11, "expected_count_after": 10, "correct": true, "dce_count_after": 11, "dce_count_before": 11, "test": "test09", "volatile_count_after": 0, "volatile_count_before": 0}, {"expected_count_before": 7, "expected_count_after": 7, "correct": true, "dce_count_after": 7, "dce_count_before": 7, "test": "test13", "volatile_count_after": 1, "volatile_count_before": 1}, {"expected_count_before": 17, "expected_count_after": 17, "correct": true, "dce_count_after": 17, "dce_count_before": 17, "test": "test14", "volatile_count_after": 2, "volatile_count_before": 2}, {"expected_count_before": 18, "expected_count_after": 18, "correct": true, "dce_count_after": 18, "dce_count_before": 18, "test": "test15", "volatile_count_after": 2, "volatile_count_before": 2}, {"expected_count_before": 24, "expected_count_after": 23, "correct": true, "dce_count_after": 24, "dce_count_before": 24, "test": "test17", "volatile_count_after": 1, "volatile_count_before": 1}, {"expected_count_before": 32, "expected_count_after": 32, "correct": true, "dce_count_after": 32, "dce_count_before": 32, "test": "test18", "volatile_count_after": 3, "volatile_count_before": 3}, {"expected_count_before": 17, "expected_count_after": 17, "correct": true, "dce_count_after": 17, "dce_count_before": 17, "test": "test16", "volatile_count_after": 2, "volatile_count_before": 2}], "pass": "llvm-pass-my-dce"}, {"results": [{"expected_count_before": 19, "expected_count_after": 19, "correct": true, "dce_count_after": 19, "dce_count_before": 19, "test": "test10", "volatile_count_after": 0, "volatile_count_before": 0}, {"expected_count_before": 23, "expected_count_after": 21, "correct": true, "dce_count_after": 21, "dce_count_before": 23, "test": "test12", "volatile_count_after": 1467120, "volatile_count_before": 0}, {"expected_count_before": 2, "expected_count_after": 2, "correct": true, "dce_count_after": 2, "dce_count_before": 2, "test": "test01", "volatile_count_after": 0, "volatile_count_before": 0}, {"expected_count_before": 3, "expected_count_after": 2, "correct": true, "dce_count_after": 2, "dce_count_before": 3, "test": "test02", "volatile_count_after": 0, "volatile_count_before": 0}, {"expected_count_before": 12, "expected_count_after": 12, "correct": true, "dce_count_after": 12, "dce_count_before": 12, "test": "test03", "volatile_count_after": 0, "volatile_count_before": 1467120}, {"expected_count_before": 13, "expected_count_after": 13, "correct": true, "dce_count_after": 13, "dce_count_before": 13, "test": "test04", "volatile_count_after": 0, "volatile_count_before": 0}, {"expected_count_before": 8, "expected_count_after": 8, "correct": true, "dce_count_after": 8, "dce_count_before": 8, "test": "test05", "volatile_count_after": 0, "volatile_count_before": 0}, {"expected_count_before": 10, "expected_count_after": 10, "correct": true, "dce_count_after": 10, "dce_count_before": 10, "test": "test06", "volatile_count_after": 0, "volatile_count_before": 0}, {"expected_count_before": 10, "expected_count_after": 9, "correct": true, "dce_count_after": 9, "dce_count_before": 10, "test": "test07", "volatile_count_after": 0, "volatile_count_before": 0}, {"expected_count_before": 11, "expected_count_after": 11, "correct": true, "dce_count_after": 11, "dce_count_before": 11, "test": "test08", "volatile_count_after": 0, "volatile_count_before": 0}, {"expected_count_before": 21, "expected_count_after": 21, "correct": true, "dce_count_after": 21, "dce_count_before": 1467120, "test": "test11", "volatile_count_after": 0, "volatile_count_before": 0}, {"expected_count_before": 11, "expected_count_after": 10, "correct": true, "dce_count_after": 10, "dce_count_before": 11, "test": "test09", "volatile_count_after": 0, "volatile_count_before": 0}, {"expected_count_before": 7, "expected_count_after": 7, "correct": true, "dce_count_after": 7, "dce_count_before": 7, "test": "test13", "volatile_count_after": 1, "volatile_count_before": 1}, {"expected_count_before": 17, "expected_count_after": 17, "correct": true, "dce_count_after": 17, "dce_count_before": 17, "test": "test14", "volatile_count_after": 2, "volatile_count_before": 2}, {"expected_count_before": 18, "expected_count_after": 18, "correct": true, "dce_count_after": 18, "dce_count_before": 18, "test": "test15", "volatile_count_after": 2, "volatile_count_before": 2}, {"expected_count_before": 24, "expected_count_after": 24, "correct": true, "dce_count_after": 1467120, "dce_count_before": 24, "test": "test17", "volatile_count_after": 1, "volatile_count_before": 1}, {"expected_count_before": 32, "expected_count_after": 32, "correct": true, "dce_count_after": 32, "dce_count_before": 32, "test": "test18", "volatile_count_after": 3, "volatile_count_before": 3}, {"expected_count_before": 17, "expected_count_after": 17, "correct": true, "dce_count_after": 17, "dce_count_before": 17, "test": "test16", "volatile_count_after": 2, "volatile_count_before": 2}], "pass": "llvm-pass-simple-dce"}], "student_alias": "green deer", "student_id": "s1514483"}
+{"pass_results": [{"pass": "llvm-pass-my-dce", "results": [{"expected_count_after": 18, "correct": true, "test": "test10", "dce_count_before": 19, "volatile_count_before": 0, "dce_count_after": 19, "volatile_count_after": 0, "expected_count_before": 19}, {"expected_count_after": 20, "correct": true, "test": "test12", "dce_count_before": 23, "volatile_count_before": 0, "dce_count_after": 23, "volatile_count_after": 0, "expected_count_before": 23}, {"expected_count_after": 2, "correct": true, "test": "test01", "dce_count_before": 2, "volatile_count_before": 0, "dce_count_after": 2, "volatile_count_after": 0, "expected_count_before": 2}, {"expected_count_after": 2, "correct": true, "test": "test02", "dce_count_before": 3, "volatile_count_before": 0, "dce_count_after": 3, "volatile_count_after": 0, "expected_count_before": 3}, {"expected_count_after": 12, "correct": true, "test": "test03", "dce_count_before": 12, "volatile_count_before": 0, "dce_count_after": 12, "volatile_count_after": 0, "expected_count_before": 12}, {"expected_count_after": 13, "correct": true, "test": "test04", "dce_count_before": 13, "volatile_count_before": 0, "dce_count_after": 13, "volatile_count_after": 0, "expected_count_before": 13}, {"expected_count_after": 7, "correct": true, "test": "test05", "dce_count_before": 8, "volatile_count_before": 0, "dce_count_after": 8, "volatile_count_after": 0, "expected_count_before": 8}, {"expected_count_after": 9, "correct": true, "test": "test06", "dce_count_before": 10, "volatile_count_before": 0, "dce_count_after": 10, "volatile_count_after": 0, "expected_count_before": 10}, {"expected_count_after": 8, "correct": true, "test": "test07", "dce_count_before": 10, "volatile_count_before": 0, "dce_count_after": 10, "volatile_count_after": 0, "expected_count_before": 10}, {"expected_count_after": 11, "correct": true, "test": "test08", "dce_count_before": 11, "volatile_count_before": 0, "dce_count_after": 11, "volatile_count_after": 0, "expected_count_before": 11}, {"expected_count_after": 20, "correct": true, "test": "test11", "dce_count_before": 21, "volatile_count_before": 0, "dce_count_after": 21, "volatile_count_after": 0, "expected_count_before": 21}, {"expected_count_after": 10, "correct": true, "test": "test09", "dce_count_before": 11, "volatile_count_before": 0, "dce_count_after": 11, "volatile_count_after": 0, "expected_count_before": 11}, {"expected_count_after": 7, "correct": true, "test": "test13", "dce_count_before": 7, "volatile_count_before": 1, "dce_count_after": 7, "volatile_count_after": 1, "expected_count_before": 7}, {"expected_count_after": 17, "correct": true, "test": "test14", "dce_count_before": 17, "volatile_count_before": 2, "dce_count_after": 17, "volatile_count_after": 2, "expected_count_before": 17}, {"expected_count_after": 18, "correct": true, "test": "test15", "dce_count_before": 18, "volatile_count_before": 2, "dce_count_after": 18, "volatile_count_after": 2, "expected_count_before": 18}, {"expected_count_after": 23, "correct": true, "test": "test17", "dce_count_before": 24, "volatile_count_before": 1, "dce_count_after": 24, "volatile_count_after": 1, "expected_count_before": 24}, {"expected_count_after": 32, "correct": true, "test": "test18", "dce_count_before": 32, "volatile_count_before": 3, "dce_count_after": 32, "volatile_count_after": 3, "expected_count_before": 32}, {"expected_count_after": 17, "correct": true, "test": "test16", "dce_count_before": 17, "volatile_count_before": 2, "dce_count_after": 17, "volatile_count_after": 2, "expected_count_before": 17}]}, {"pass": "llvm-pass-simple-dce", "results": [{"expected_count_after": 19, "correct": true, "test": "test10", "dce_count_before": 19, "volatile_count_before": 0, "dce_count_after": 19, "volatile_count_after": 0, "expected_count_before": 19}, {"expected_count_after": 21, "correct": true, "test": "test12", "dce_count_before": 23, "volatile_count_before": 0, "dce_count_after": 21, "volatile_count_after": 0, "expected_count_before": 23}, {"expected_count_after": 2, "correct": true, "test": "test01", "dce_count_before": 2, "volatile_count_before": 0, "dce_count_after": 2, "volatile_count_after": 0, "expected_count_before": 2}, {"expected_count_after": 2, "correct": true, "test": "test02", "dce_count_before": 3, "volatile_count_before": 0, "dce_count_after": 2, "volatile_count_after": 0, "expected_count_before": 3}, {"expected_count_after": 12, "correct": true, "test": "test03", "dce_count_before": 12, "volatile_count_before": 0, "dce_count_after": 12, "volatile_count_after": 0, "expected_count_before": 12}, {"expected_count_after": 13, "correct": true, "test": "test04", "dce_count_before": 13, "volatile_count_before": 0, "dce_count_after": 13, "volatile_count_after": 0, "expected_count_before": 13}, {"expected_count_after": 8, "correct": true, "test": "test05", "dce_count_before": 8, "volatile_count_before": 0, "dce_count_after": 8, "volatile_count_after": 0, "expected_count_before": 8}, {"expected_count_after": 10, "correct": true, "test": "test06", "dce_count_before": 10, "volatile_count_before": 0, "dce_count_after": 10, "volatile_count_after": 0, "expected_count_before": 10}, {"expected_count_after": 9, "correct": true, "test": "test07", "dce_count_before": 10, "volatile_count_before": 0, "dce_count_after": 9, "volatile_count_after": 0, "expected_count_before": 10}, {"expected_count_after": 11, "correct": true, "test": "test08", "dce_count_before": 11, "volatile_count_before": 0, "dce_count_after": 11, "volatile_count_after": 0, "expected_count_before": 11}, {"expected_count_after": 21, "correct": true, "test": "test11", "dce_count_before": 21, "volatile_count_before": 0, "dce_count_after": 21, "volatile_count_after": 0, "expected_count_before": 21}, {"expected_count_after": 10, "correct": true, "test": "test09", "dce_count_before": 11, "volatile_count_before": 0, "dce_count_after": 10, "volatile_count_after": 0, "expected_count_before": 11}, {"expected_count_after": 7, "correct": true, "test": "test13", "dce_count_before": 7, "volatile_count_before": 1, "dce_count_after": 7, "volatile_count_after": 1, "expected_count_before": 7}, {"expected_count_after": 17, "correct": true, "test": "test14", "dce_count_before": 17, "volatile_count_before": 2, "dce_count_after": 17, "volatile_count_after": 2, "expected_count_before": 17}, {"expected_count_after": 18, "correct": true, "test": "test15", "dce_count_before": 18, "volatile_count_before": 2, "dce_count_after": 18, "volatile_count_after": 2, "expected_count_before": 18}, {"expected_count_after": 24, "correct": true, "test": "test17", "dce_count_before": 24, "volatile_count_before": 1, "dce_count_after": 24, "volatile_count_after": 1, "expected_count_before": 24}, {"expected_count_after": 32, "correct": true, "test": "test18", "dce_count_before": 32, "volatile_count_before": 3, "dce_count_after": 32, "volatile_count_after": 3, "expected_count_before": 32}, {"expected_count_after": 17, "correct": true, "test": "test16", "dce_count_before": 17, "volatile_count_before": 2, "dce_count_after": 17, "volatile_count_after": 2, "expected_count_before": 17}]}], "student_alias": "green deer", "student_id": "s1514483"}
 + '[' 0 -ne 0 ']'
 + echo '========== Generating report'
 ========== Generating report
-+ python3 /home/s1467120/llvm-marking-suite/scripts/make_report.py /home/s1467120/llvm-marking-suite/tmp/s1514483//results/results.markdown /home/s1467120/llvm-marking-suite/tmp/s1514483//results/results.json 2018-01-15T09-29-17+0000
-# Results at time 2018-01-15T09-29-17+0000
++ python3 /home/s1467120/llvm-marking-suite/scripts/make_report.py /home/s1467120/llvm-marking-suite/tmp/s1514483//results/results.markdown /home/s1467120/llvm-marking-suite/tmp/s1514483//results/results.json 2018-01-16T02-33-06+0000
+# Results at time 2018-01-16T02-33-06+0000
 
 Results for student *s1514483* aka *green deer*
 
@@ -4493,7 +4121,7 @@ Test|Correct output|Instructions count before|Expected instruction count before|
 :------|:-----:|------:|------:|------:|------:|------:|------:
 test01|True|2|2|2|2|0|0
 test02|True|3|3|2|2|0|0
-test03|True|12|12|12|12|1467120|0
+test03|True|12|12|12|12|0|0
 test04|True|13|13|13|13|0|0
 test05|True|8|8|8|8|0|0
 test06|True|10|10|10|10|0|0
@@ -4501,19 +4129,19 @@ test07|True|10|10|9|9|0|0
 test08|True|11|11|11|11|0|0
 test09|True|11|11|10|10|0|0
 test10|True|19|19|19|19|0|0
-test11|True|1467120|21|21|21|0|0
-test12|True|23|23|21|21|0|1467120
+test11|True|21|21|21|21|0|0
+test12|True|23|23|21|21|0|0
 test13|True|7|7|7|7|1|1
 test14|True|17|17|17|17|2|2
 test15|True|18|18|18|18|2|2
 test16|True|17|17|17|17|2|2
-test17|True|24|24|1467120|24|1|1
+test17|True|24|24|24|24|1|1
 test18|True|32|32|32|32|3|3
 
 
 + '[' 0 -ne 0 ']'
-+ python3 /home/s1467120/llvm-marking-suite/scripts/make_report.py '/home/s1467120/llvm-marking-suite/tmp/s1514483//results/green deer.markdown' /home/s1467120/llvm-marking-suite/tmp/s1514483//results/results.json 2018-01-15T09-29-17+0000 --redact
-# Results at time 2018-01-15T09-29-17+0000
++ python3 /home/s1467120/llvm-marking-suite/scripts/make_report.py '/home/s1467120/llvm-marking-suite/tmp/s1514483//results/green deer.markdown' /home/s1467120/llvm-marking-suite/tmp/s1514483//results/results.json 2018-01-16T02-33-06+0000 --redact
+# Results at time 2018-01-16T02-33-06+0000
 
 Results for student *green deer*
 
@@ -4551,7 +4179,7 @@ Test|Correct output|Instructions count before|Expected instruction count before|
 :------|:-----:|------:|------:|------:|------:|------:|------:
 test01|True|2|2|2|2|0|0
 test02|True|3|3|2|2|0|0
-test03|True|12|12|12|12|1467120|0
+test03|True|12|12|12|12|0|0
 test04|True|13|13|13|13|0|0
 test05|True|8|8|8|8|0|0
 test06|True|10|10|10|10|0|0
@@ -4559,18 +4187,18 @@ test07|True|10|10|9|9|0|0
 test08|True|11|11|11|11|0|0
 test09|True|11|11|10|10|0|0
 test10|True|19|19|19|19|0|0
-test11|True|1467120|21|21|21|0|0
-test12|True|23|23|21|21|0|1467120
+test11|True|21|21|21|21|0|0
+test12|True|23|23|21|21|0|0
 test13|True|7|7|7|7|1|1
 test14|True|17|17|17|17|2|2
 test15|True|18|18|18|18|2|2
 test16|True|17|17|17|17|2|2
-test17|True|24|24|1467120|24|1|1
+test17|True|24|24|24|24|1|1
 test18|True|32|32|32|32|3|3
 
 
 + '[' 0 -ne 0 ']'
-+ python3 /home/s1467120/llvm-marking-suite/scripts/make_scoretable.py /home/s1467120/llvm-marking-suite/tmp/s1514483//results/score-s1514483.csv /home/s1467120/llvm-marking-suite/tmp/s1514483//results/results.json 2018-01-15T09-29-17+0000
++ python3 /home/s1467120/llvm-marking-suite/scripts/make_scoretable.py /home/s1467120/llvm-marking-suite/tmp/s1514483//results/score-s1514483.csv /home/s1467120/llvm-marking-suite/tmp/s1514483//results/results.json 2018-01-16T02-33-06+0000
 test	correct	count_before	count_after	expected_count_before	expected_count_after	volatile_count_before	volatile_count_after
 test01-llvm-pass-my-dce	True	2	2	2	2	0	0
 test02-llvm-pass-my-dce	True	3	3	3	2	0	0
@@ -4592,7 +4220,7 @@ test17-llvm-pass-my-dce	True	24	24	24	23	1	1
 test18-llvm-pass-my-dce	True	32	32	32	32	3	3
 test01-llvm-pass-simple-dce	True	2	2	2	2	0	0
 test02-llvm-pass-simple-dce	True	3	3	2	2	0	0
-test03-llvm-pass-simple-dce	True	12	12	12	12	1467120	0
+test03-llvm-pass-simple-dce	True	12	12	12	12	0	0
 test04-llvm-pass-simple-dce	True	13	13	13	13	0	0
 test05-llvm-pass-simple-dce	True	8	8	8	8	0	0
 test06-llvm-pass-simple-dce	True	10	10	10	10	0	0
@@ -4600,13 +4228,13 @@ test07-llvm-pass-simple-dce	True	10	10	9	9	0	0
 test08-llvm-pass-simple-dce	True	11	11	11	11	0	0
 test09-llvm-pass-simple-dce	True	11	11	10	10	0	0
 test10-llvm-pass-simple-dce	True	19	19	19	19	0	0
-test11-llvm-pass-simple-dce	True	1467120	21	21	21	0	0
-test12-llvm-pass-simple-dce	True	23	23	21	21	0	1467120
+test11-llvm-pass-simple-dce	True	21	21	21	21	0	0
+test12-llvm-pass-simple-dce	True	23	23	21	21	0	0
 test13-llvm-pass-simple-dce	True	7	7	7	7	1	1
 test14-llvm-pass-simple-dce	True	17	17	17	17	2	2
 test15-llvm-pass-simple-dce	True	18	18	18	18	2	2
 test16-llvm-pass-simple-dce	True	17	17	17	17	2	2
-test17-llvm-pass-simple-dce	True	24	24	1467120	24	1	1
+test17-llvm-pass-simple-dce	True	24	24	24	24	1	1
 test18-llvm-pass-simple-dce	True	32	32	32	32	3	3
 + '[' 0 -ne 0 ']'
 + cd /home/s1467120/llvm-marking-suite/students/s1514483.repo
@@ -4621,8 +4249,8 @@ Branch feedback set up to track remote branch feedback from origin.
 Already up-to-date.
 + cp /home/s1467120/llvm-marking-suite/tmp/s1514483//results/results.markdown part4_feedback.md
 + git add part4_feedback.md
-+ git commit -a -m 'Feedback on submission at 2018-01-15T09-29-17+0000'
-[feedback 239a334] Feedback on submission at 2018-01-15T09-29-17+0000
++ git commit -a -m 'Feedback on submission at 2018-01-16T02-33-06+0000'
+[feedback 0df2e5e] Feedback on submission at 2018-01-16T02-33-06+0000
  1 file changed, 5 insertions(+), 5 deletions(-)
 + git push
 remote: 
@@ -4630,7 +4258,7 @@ remote: Create pull request for feedback:
 remote:   https://bitbucket.org/cwrbs/ct-17-18/pull-requests/new?source=feedback&t=1        
 remote: 
 To bitbucket.org:cwrbs/ct-17-18.git
-   78a6150..239a334  feedback -> feedback
+   af575f4..0df2e5e  feedback -> feedback
 + cp '/home/s1467120/llvm-marking-suite/tmp/s1514483//results/green deer.markdown' '/home/s1467120/llvm-marking-suite/cdbr/scoreboard/part-4/green deer.markdown'
 + mkdir -p /home/s1467120/llvm-marking-suite/marks/
 + cp /home/s1467120/llvm-marking-suite/tmp/s1514483//results/score-s1514483.csv /home/s1467120/llvm-marking-suite/marks/
